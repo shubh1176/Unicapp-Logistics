@@ -22,10 +22,10 @@ function OurServices() {
 
         <div className='flex flex-row gap-7 mb-8 mt-16 mx-8 px-56'>
           <div className='flex flex-col items-center'>
-            <div className='bg-[#F8EBAB] h-56 w-56 rounded-2xl flex justify-center items-center'>
+            <div className='bg-[#F8EBAB] h-60 w-60 rounded-2xl flex justify-center items-center'>
                 <Image src={'/images/groupimage.svg'} height={200} width={200} alt="Flower" />
             </div>
-            <div className='w-56 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/Pickup-and-drop')}>
+            <div className='w-60 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/Pickup-and-drop')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-2'>
                 <span className='font-generalRegular text-white py-2 px-2 space-x-1'>Pickup & Drop</span>
                 <Button className="rounded-full bg-[#9E3CE1] border-spacing-1 p-2 hover:bg-[#9E3CE1]"><LucideArrowUpRight/></Button>
@@ -33,10 +33,10 @@ function OurServices() {
             </div>
           </div>
           <div className='flex flex-col items-center'>
-            <div className='bg-[#F8EBAB] h-56 w-56 rounded-2xl flex justify-center items-center'>
+            <div className='bg-[#F8EBAB] h-60 w-60 rounded-2xl flex justify-center items-center'>
               <Image src={'/images/delivery.svg'} height={60} width={150} alt="Delivery" />
             </div>
-            <div className='w-56 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/courier')}>
+            <div className='w-60 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/courier')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-2'>
                 <span className='font-generalRegular text-white py-2 px-2 space-x-1'>Intercity Courier</span>
                 <Button className="rounded-full bg-[#9E3CE1] border-spacing-1 p-2 hover:bg-[#9E3CE1]" onClick={()=>router.replace('/courier')}><LucideArrowUpRight/></Button>
@@ -44,10 +44,10 @@ function OurServices() {
             </div>
           </div>
           <div className='flex flex-col items-center'>
-            <div className='bg-[#F8EBAB] h-56 w-56 rounded-2xl flex justify-center items-center'>
+            <div className='bg-[#F8EBAB] h-60 w-60 rounded-2xl flex justify-center items-center'>
               <Image src={'/images/shmf.svg'} height={110} width={194} alt="API Integration" />
             </div>
-            <div className='w-56 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/businesses')}>
+            <div className='w-60 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/businesses')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-2'>
                 <span className='font-generalRegular text-white py-2 px-2 space-x-1'>API Integration</span>
                 <Button className="rounded-full bg-[#9E3CE1] border-spacing-1 p-2 hover:bg-[#9E3CE1]" ><LucideArrowUpRight/></Button>
@@ -55,10 +55,10 @@ function OurServices() {
             </div>
           </div>
           <div className='flex flex-col items-center'>
-            <div className='bg-[#F8EBAB] h-56 w-56 rounded-2xl flex justify-center items-center'>
+            <div className='bg-[#F8EBAB] h-60 w-60 rounded-2xl flex justify-center items-center'>
               <Image src={'/images/delman.svg'} height={90} width={170} alt="Last-mile Delivery" />
             </div>
-            <div className='w-56 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/businesses')}>
+            <div className='w-60 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/businesses')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-2'>
                 <span className='font-generalRegular text-white py-2 px-2 space-x-1'>Last-mile Delivery</span>
                 <Button className="rounded-full bg-[#9E3CE1] border-spacing-1 p-2 hover:bg-[#9E3CE1]" onClick={()=>router.replace('/businesses')}><LucideArrowUpRight/></Button>
