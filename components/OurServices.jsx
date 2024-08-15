@@ -9,7 +9,7 @@ function OurServices() {
   const router = useRouter()
   return (
     <div className='bg-[#fefae060]'>
-      <div className='flex flex-col items-center gap-10 border-solid bg-[#ffffffa3] px-1 pb-5 pt-16 mt-10 mb-10 mx-24 rounded-3xl shadow-lg'>
+      <div className='flex flex-col items-center gap-10 border-solid bg-[#ffffffa3] px-8 pb-5 pt-16 mt-10 mb-10 mx-24 rounded-3xl shadow-lg'>
         <span className='bg-[#7cc4f851] text-[#4B8EBF] rounded-lg py-2 px-3 font-generalMedium'>OUR SERVICES</span>
         <div className='text-center'>
           <h2 className='text-[#000000] font-filson text-6xl'>One-stop solution for all</h2>
