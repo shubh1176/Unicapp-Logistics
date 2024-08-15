@@ -231,7 +231,7 @@ function Contact() {
       </div>
 
       <div className='mt-20 mb-36'>
-      <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] text-white rounded-xl pl-4 py-3 mx-56 mt-36 mb-16 flex flex-row gap-4 items-center">
+      <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] text-white rounded-xl pl-4 pr-4 py-3 mx-56 mt-36 mb-16 flex flex-row gap-4 items-center">
           <div className='translate-x-6'>
             <h2 className="text-4xl font-bold mb-4 font-filson translate-y-4 ">Get an estimate</h2>
             <p className="mb-4 font-generalRegular ">Enter your pickup & drop locations to check prices for delivery and courier.</p>
