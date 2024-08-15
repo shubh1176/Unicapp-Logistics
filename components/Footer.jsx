@@ -37,7 +37,7 @@ function Footer() {
             <span className="ml-2 text-sm text-neutral-400">44, Backary portion, 2nd Floor, Regal Building,<br></br> Connaught Place, New Delhi -110001</span>
           </div>
           <div className="flex items-center">
-            <Image src="/images/instagram.svg" alt="Instagram" width={24} height={24} />
+            <Image src="/images/Instagram.svg" alt="Instagram" width={24} height={24} />
             <span className="ml-2 text-sm text-neutral-400">@unicapp.in</span>
           </div>
         </div>
