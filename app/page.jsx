@@ -1,16 +1,17 @@
-"use client"
-import Faq from "@/components/Faq";
-import Footer from "@/components/Footer";
-import OurServices from "@/components/OurServices";
-import { Button } from "@/components/ui/button";
-import WhyUs from "@/components/WhyUs";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+"use client";
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import Header from "../components/Header";
 
-export default function Home() {
+const Faq = dynamic(() => import("@/components/Faq"), { ssr: false });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
+const OurServices = dynamic(() => import("@/components/OurServices"), { ssr: false });
+const WhyUs = dynamic(() => import("@/components/WhyUs"), { ssr: false });
 
+export default function Home() {
   const router = useRouter();
+
   return (
     <div className="flex flex-col gap-4 justify-center bg-[#F1EDEA] mb-0">
       <div className="relative">
@@ -67,39 +68,40 @@ export default function Home() {
         </div>
       </div>
     </div>
-    <div className="bg-[#fefae060] rounded-sm">
+      <div className="bg-[#fefae060] rounded-sm">
         <OurServices />
-    </div>
+      </div>
 
-    <div>
-      <WhyUs />
-    </div>
+      <div>
+        <WhyUs />
+      </div>
 
-    <div className="relative flex flex-col content-center items-center mt-32 mb-32">
-      <div className="relative">
-        <Image src={'/images/sticker.svg'} height={850} width={1050} />
-        <div className="absolute bottom-40 right-60 w-20 h-20 transform translate-x-6 -translate-y-4 rotate-0">
-          <Image src={'/images/iconblack.svg'} height={90} width={90} />
+      <div className="relative flex flex-col content-center items-center mt-32 mb-32">
+        <div className="relative">
+          <Image src={'/images/sticker.svg'} height={850} width={1050} priority={true} />
+          <div className="absolute bottom-40 right-60 w-20 h-20 transform translate-x-6 -translate-y-4 rotate-0">
+            <Image src={'/images/iconblack.svg'} height={90} width={90} priority={true} />
+          </div>
         </div>
       </div>
-    </div>
 
-
-    <div className="flex flex-col content-center items-center mt-20 mb-40">
-      <div>
-       <span className=" font-filson text-[#000000] text-5xl">Wondering how to </span><span className=" font-filson text-[#9E3CE1] text-5xl">use</span><span className=" font-filson text-[#000000] text-5xl"> it?</span>
+      <div className="flex flex-col content-center items-center mt-20 mb-40">
+        <div>
+          <span className="font-filson text-[#000000] text-5xl">Wondering how to </span>
+          <span className="font-filson text-[#9E3CE1] text-5xl">use</span>
+          <span className="font-filson text-[#000000] text-5xl"> it?</span>
+        </div>
+        <span className="font-generalRegular mb-10 text-2xl mt-5">Don't worry, it's easy ;)</span>
+        <Image src={'/images/howtouse.svg'} height={900} width={1100} loading="lazy" />
       </div>
-      <span className="font-generalRegular mb-10 text-2xl mt-5">Don't worry, it's easy ;)</span>
-      <Image src={'/images/howtouse.svg'} height={900} width={1100} />
+
+      <div className="mt-20 mb-10">
+        <Faq />
+      </div>
+
+      <div className="mt-10">
+        <Footer />
+      </div>
     </div>
-    <div className="mt-20 mb-10">
-      <Faq/>
-    </div>
-    <div className="mt-10">
-      <Footer />
-    
-    </div>
-    </div>
-    
   );
 }
