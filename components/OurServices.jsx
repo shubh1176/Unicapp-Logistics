@@ -20,7 +20,7 @@ function OurServices() {
           <span className='font-generalRegular text-2xl'>A personal <span className='font-generalRegular text-[#9E3CE1] text-2xl'>delivery</span> partner for everyone</span>
         </div>
 
-        <div className='flex flex-row gap-7 mb-8 mt-16 mx-8'>
+        <div className='flex flex-row gap-7 mb-8 mt-16 mx-8 px-56 px-10'>
           <div className='flex flex-col items-center'>
             <div className='bg-[#F8EBAB] h-56 w-72 rounded-2xl flex justify-center items-center'>
                 <Image src={'/images/groupimage.svg'} height={250} width={250} alt="Flower" />
