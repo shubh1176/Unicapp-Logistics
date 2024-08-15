@@ -109,7 +109,7 @@ function RightDiv() {
           <label className='block mb-2 font-generalRegular'>Pickup address</label>
           <div className='relative w-80'>
             <Image
-              src={'/images/arrowup.svg'} 
+              src={'/images/Arrowup.svg'} 
               width={15}
               height={18}
               className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer ml-1 text-xl'
