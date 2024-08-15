@@ -194,7 +194,7 @@ function EstimateComponent() {
   }, [pickupCoords, dropCoords, pickupAddress, dropAddress, showPriceDetails]);
 
   return (
-    <div className="relative flex flex-col items-start p-10 mx-28 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg h-full">
+    <div className="relative flex flex-col items-start p-10 mx-14 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg h-full">
       <div className="w-1/2 pr-4">
         <h1 className="text-6xl font-filson mb-4 translate-x-4">
           Get an <span className="text-[#F3E545] font-filson">Estimate</span>
@@ -220,7 +220,7 @@ function EstimateComponent() {
         </div>
       </div>
 
-      <div className="absolute right-0 transform -translate-x-10 translate-y-6 bg-white bg-opacity-25 rounded-xl min-h-28 max-w-full">
+      <div className="absolute right-0 transform -translate-x-5 translate-y-6 bg-white bg-opacity-25 rounded-xl min-h-28 max-w-full">
         <div className="bg-black bg-opacity-25 w-full h-full rounded-xl py-6 px-4 border-black border-2 border-opacity-5">
           <div className="flex flex-row gap-3 mb-4 w-auto mr-5">
             <div
