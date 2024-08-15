@@ -110,7 +110,7 @@ const RightDiv2 = () => {
           {timeSlots.map((timeOption, index) => (
             <Button
               key={index}
-              className={`py-2 px-20 -mr-2 mb-2 w-40 rounded-xl border ${time === timeOption ? 'bg-[#8B14CC] text-white border-transparent' : 'bg-white border-gray-300 text-black'} hover:bg-white hover:text-black hover:border-[#8D26CA]`}
+              className={`py-2 px-24 -mr-2 mb-2 w-40 rounded-xl border ${time === timeOption ? 'bg-[#8B14CC] text-white border-transparent' : 'bg-white border-gray-300 text-black'} hover:bg-white hover:text-black hover:border-[#8D26CA]`}
               onClick={() => handleTimeChange(timeOption)}
             >
               {timeOption}
