@@ -12,7 +12,7 @@ export default function Home() {
 
   const router = useRouter();
   return (
-    <div className="flex flex-col gap-4 justify-center bg-[#fefae060]">
+    <div className="flex flex-col gap-4 justify-center bg-[#F1EDEA] mb-0">
       <div className="relative">
       <Header />
       <div className="text-center bg-gradient-to-b h-5/6 from-[#8D14CE] to-[#470A68] text-white pb-24 pt-8 rounded-br-3xl rounded-bl-3xl flex flex-col justify-center items-center">
@@ -62,8 +62,8 @@ export default function Home() {
           <Image src={'/images/envelop.svg'} alt="Envelope" fill objectFit="contain" />
         </div>
 
-        <div className="mt-10">
-          <Image src={'/images/getEst.svg'} width={180} height={110} alt="Pickup" classname='hover:cursor-pointer' onClick={()=>router.push('/estimate')} />
+        <div className="mt-10 hover:cursor-pointer">
+          <Image src={'/images/getEst.svg'} width={180} height={110} alt="Pickup" onClick={()=>router.push('/estimate')} />
         </div>
       </div>
     </div>
@@ -75,30 +75,30 @@ export default function Home() {
       <WhyUs />
     </div>
 
-    <div className="relative flex flex-col content-center items-center mt-20 mb-28">
+    <div className="relative flex flex-col content-center items-center mt-32 mb-32">
       <div className="relative">
-        <Image src={'/images/sticker.svg'} height={800} width={1000} />
-        <div className="absolute bottom-40 right-60 w-20 h-20 transform translate-x-1/2 rotate-0">
-          <Image src={'/images/iconblack.svg'} height={80} width={80} />
+        <Image src={'/images/sticker.svg'} height={850} width={1050} />
+        <div className="absolute bottom-40 right-60 w-20 h-20 transform translate-x-6 -translate-y-4 rotate-0">
+          <Image src={'/images/iconblack.svg'} height={90} width={90} />
         </div>
       </div>
     </div>
 
 
-    <div className="flex flex-col content-center items-center mt-20 mb-28">
+    <div className="flex flex-col content-center items-center mt-20 mb-40">
       <div>
        <span className=" font-filson text-[#000000] text-5xl">Wondering how to </span><span className=" font-filson text-[#9E3CE1] text-5xl">use</span><span className=" font-filson text-[#000000] text-5xl"> it?</span>
       </div>
       <span className="font-generalRegular mb-10 text-2xl mt-5">Don't worry, it's easy ;)</span>
       <Image src={'/images/howtouse.svg'} height={900} width={1100} />
     </div>
-    <>
+    <div className="mt-20 mb-10">
       <Faq/>
-    </>
-    <>
+    </div>
+    <div className="mt-10">
       <Footer />
     
-    </>
+    </div>
     </div>
     
   );

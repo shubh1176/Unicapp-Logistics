@@ -209,10 +209,10 @@ function DashboardPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className="flex flex-col min-h-screen">
       <div className="flex flex-grow">
         <aside className="w-64 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white flex-shrink-0">
-          <div className="flex items-center justify-between p-4 mt-7">
+          <div className="flex items-center justify-between p-4 mt-7 ml-3">
             <Image src={'/images/yellowcaplogo.svg'} height={50} width={150} alt="Logo" onClick={()=>router.replace('/')} className="hover:cursor-pointer"/>
           </div>
           <div className="p-4">
@@ -240,8 +240,8 @@ function DashboardPage() {
           </div>
         </aside>
 
-        <main className="flex-1 overflow-y-auto pt-4">
-          <header className="flex items-center justify-between py-4 px-4 bg-white shadow-lg w-full mb-10">
+        <main className="flex-1 overflow-y-auto">
+          <header className="flex items-center justify-between pt-4 pb-3 px-4 bg-white  w-full mb-10">
             <div className="flex items-center space-x-4">
               <input type="text" placeholder="Search orders" className="px-4 py-2 border rounded-md w-96" />
               <button
@@ -461,12 +461,7 @@ function DashboardPage() {
                 <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-5xl"> {/* Increased max-w to 5xl */}
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-3xl font-semibold text-gray-700">Your Orders</h2>
-                    <button
-                      onClick={() => router.push('/dashboard/booking/location')}
-                      className="px-6 py-2 bg-[#FFDD00] text-black rounded-lg hover:bg-[#ffdd00c9] transition-colors duration-200"
-                    >
-                      + Book a new pickup
-                    </button>
+    
                   </div>
 
                   {individualOrders.length > 0 ? (

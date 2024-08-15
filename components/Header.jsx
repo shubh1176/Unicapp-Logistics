@@ -18,11 +18,11 @@ function Header() {
   const { user } = useUser()
 
   return (
-    <div className="bg-[#8D14CE] flex justify-between items-center p-4">
-      <div>
+    <div className="bg-[#8D14CE] flex justify-between items-center px-4 py-1">
+      <div className='-translate-y-2'>
         <Image src={'/images/yellowonwhite.svg'} width={200} height={50} alt="Logo" />
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 -translate-y-2">
         <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 hover:text-white text-lg">
           Home
         </Button>
@@ -55,12 +55,12 @@ function Header() {
           Contact
         </Button>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center -translate-y-2">
       {user ? (
-          <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
-          <UserButton />
+          <div className="flex items-center space-x-4 border-2 rounded-lg py-2  w-48 h-12 text-sm pl-2 ">
+          <UserButton/>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-white text-lg p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">
+            <DropdownMenuTrigger className="flex items-center gap-1 text-white text-xs p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">
               {user.fullName || 'Guest'} <ChevronDown />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">
