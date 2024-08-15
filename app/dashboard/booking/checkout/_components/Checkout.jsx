@@ -39,14 +39,13 @@ import { eq, and } from 'drizzle-orm';
 import { Button } from '@/components/ui/button';
 import { Check, ChevronLeft } from 'lucide-react';
 import { Label } from "@/components/ui/label";
-import { fetchTravelRouteAndDistance } from '@/utils/distance';
 
 const generateOrderId = () => {
   const randomNum = Math.floor(100000 + Math.random() * 900000); // Generate a random 6-digit number
   return `#UC${randomNum}`;
 };
 
-const formatLocationWithDetails = (location, details, coords) => {
+const formatLocationWithDetails = (location, details) => {
   const { houseNo, floor, landmark } = details;
   let formattedLocation = '';
 
@@ -96,7 +95,7 @@ const Checkout = () => {
   const [razorpayLoaded, setRazorpayLoaded] = useState(false);
   const [useWallet, setUseWallet] = useState(false);
   const [inserted, setInserted] = useState(false);
-  const [distance, setDistance] = useState(0); // State for distance
+  const [distance, setDistance] = useState(0);
 
   const routeOptions = [
     { label: 'By Surface', basePrice: 55, gstRate: 0.18 },
@@ -107,18 +106,16 @@ const Checkout = () => {
     if (!pickupCoords || !dropCoords || !pickupCoords.latitude || !pickupCoords.longitude || !dropCoords.latitude || !dropCoords.longitude) {
       return 0;
     }
-  
+
     const accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
-  
-    // Create an array of all the coordinates: Pickup -> Stops -> Drop
     const coordinates = [
       `${pickupCoords.longitude},${pickupCoords.latitude}`,
       ...stops.map(stop => `${stop.location.longitude},${stop.location.latitude}`),
       `${dropCoords.longitude},${dropCoords.latitude}`,
     ].join(';');
-  
+
     const url = `https://api.mapbox.com/optimized-trips/v1/mapbox/driving/${coordinates}?access_token=${accessToken}&geometries=geojson`;
-  
+
     try {
       const response = await axios.get(url);
       if (response.data.trips && response.data.trips[0] && response.data.trips[0].distance !== undefined) {
@@ -132,7 +129,6 @@ const Checkout = () => {
       return 0;
     }
   };
-  
 
   useEffect(() => {
     const fetchWalletAmount = async () => {
@@ -159,16 +155,16 @@ const Checkout = () => {
     const calculateFare = async () => {
       if (orderType === 'Pickup & Drop') {
         const basePrice = 40;
-        const { distance } = await fetchTravelRouteAndDistance(pickupCoords, dropCoords, stops);
+        const distance = await fetchDistance(pickupCoords, dropCoords, stops);
         setDistance(distance);
         let totalAmount = basePrice;
-  
+
         if (distance > 2 && distance <= 10) {
           totalAmount += (distance - 2) * 16;
         } else if (distance > 10) {
           totalAmount += 8 * 16 + (distance - 10) * 10;
         }
-  
+
         setAmount(parseFloat(totalAmount.toFixed(2))); // Fix to 2 decimal places
       } else if (orderType === 'Courier') {
         const selectedRoute = routeOptions.find(option => option.label === route);
@@ -182,10 +178,10 @@ const Checkout = () => {
         }
       }
     };
-  
+
     calculateFare();
-  }, [pickupCoords, dropCoords, stops, route, orderType, setAmount, length, width, height, weight]); // Add stops to the dependency array
-  
+  }, [pickupCoords, dropCoords, stops, route, orderType, setAmount, length, width, height, weight]);
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://checkout.razorpay.com/v1/checkout.js';
@@ -342,9 +338,9 @@ const Checkout = () => {
       let amountToPay = originalAmount;
 
       // Append detailed addresses to the main addresses
-      const finalPickupLocation = formatLocationWithDetails(pickupLocation, detailedPickupAddress, pickupCoords);
-      const finalDropLocation = formatLocationWithDetails(dropLocation, detailedDropOffAddress, dropCoords);
-      const finalStops = stops.map((stop, index) => formatLocationWithDetails(stop.address, detailedStopsAddress[index] || {}, stop.location));
+      const finalPickupLocation = formatLocationWithDetails(pickupLocation, detailedPickupAddress);
+      const finalDropLocation = formatLocationWithDetails(dropLocation, detailedDropOffAddress);
+      const finalStops = stops.map((stop, index) => formatLocationWithDetails(stop.address, detailedStopsAddress[index] || {}));
 
       if (useWallet) {
         let walletFloat = parseFloat(wallet);
@@ -386,7 +382,8 @@ const Checkout = () => {
         }
       }
 
-      const { data: order } = await axios.post('/api/new-order', { amount: amountToPay });
+      // Ensure the amount is correctly multiplied by 100 to convert to paise
+      const { data: order } = await axios.post('/api/new-order', { amount: parseFloat(amountToPay) });
       const { id: order_id, currency, amount: amountInPaisa } = order;
 
       const options = {
@@ -539,11 +536,11 @@ const Checkout = () => {
                   className={`flex flex-col items-start p-4 mb-4 border ${route === option.label ? 'border-[#461364] border-2' : 'border-gray-300'} rounded-2xl cursor-pointer`}
                   onClick={() => {
                     setRoute(option.label);
-                    setAmount(totalPrice);
+                    setAmount(parseFloat(totalPrice));  // Ensure correct formatting
                   }}
                 >
                   <div className="flex items-center">
-                    <div className={`w-6 h-6 mr-4 ${route === option.label ? 'bg-[]' : 'bg-gray-300'} rounded-sm flex items-center justify-center translate-x-80 -translate-y-8`}>
+                    <div className={`w-6 h-6 mr-4 ${route === option.label ? 'bg-[#8D26CA]' : 'bg-gray-300'} rounded-sm flex items-center justify-center translate-x-80 -translate-y-8`}>
                       {route === option.label && <div className="w-full h-6 bg-[#8D26CA] rounded-sm text-white"><Check size={23} strokeWidth={1.75} /></div>}
                     </div>
                     <div>
@@ -551,7 +548,7 @@ const Checkout = () => {
                       <div className='flex flex-row gap-2 mt-2'>
                       <p className="text-2xl text-black">{`₹${totalPrice}`}</p><p className='text-xs text-black mt-2 text-opacity-50'> including GST charges</p>
                       </div>
-                      <p className="text-base text-gray-500 mt-2">{`Delivery in ${option.delivery}`}</p>
+                      <p className="text-base text-gray-500 mt-2">{`Delivery in 2-3 days`}</p>
                       <p className="text-xs text-black text-opacity-50">Same-day dispatch</p>
                     </div>
                   </div>
