@@ -19,7 +19,7 @@ const AboutUs = () => {
   const { user } = useUser()
   return (
     <div className='bg-[#F1EDEA] pt-1'>
-    <div className="bg-[#470A68] flex justify-between items-center px-4 h-20 rounded-xl m-5">
+    <div className="bg-[#470A68] flex justify-between items-center px-4 h-20 rounded-xl py-1 m-5">
       <div>
         <Image src={'/images/yellowonwhite.svg'} width={200} height={50} alt="Logo" />
       </div>
@@ -61,7 +61,7 @@ const AboutUs = () => {
           <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
           <UserButton />
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-white text-lg p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">
+            <DropdownMenuTrigger className="flex items-center gap-1 text-white text-xs p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">
               {user.fullName || 'Guest'} <ChevronDown />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">
