@@ -20,10 +20,10 @@ function OurServices() {
           <span className='font-generalRegular text-2xl'>A personal <span className='font-generalRegular text-[#9E3CE1] text-2xl'>delivery</span> partner for everyone</span>
         </div>
 
-        <div className='flex flex-row gap-7 mb-8 mt-16 mx-8 px-56 px-10'>
+        <div className='flex flex-row gap-7 mb-8 mt-16 mx-8 px-56'>
           <div className='flex flex-col items-center'>
-            <div className='bg-[#F8EBAB] h-56 w-72 rounded-2xl flex justify-center items-center'>
-                <Image src={'/images/groupimage.svg'} height={250} width={250} alt="Flower" />
+            <div className='bg-[#F8EBAB] h-52 w-52 rounded-2xl flex justify-center items-center'>
+                <Image src={'/images/groupimage.svg'} height={200} width={200} alt="Flower" />
             </div>
             <div className='w-72 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/Pickup-and-drop')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-2'>
@@ -33,7 +33,7 @@ function OurServices() {
             </div>
           </div>
           <div className='flex flex-col items-center'>
-            <div className='bg-[#F8EBAB] h-56 w-72 rounded-2xl flex justify-center items-center'>
+            <div className='bg-[#F8EBAB] h-52 w-52 rounded-2xl flex justify-center items-center'>
               <Image src={'/images/delivery.svg'} height={60} width={150} alt="Delivery" />
             </div>
             <div className='w-72 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/courier')}>
@@ -44,7 +44,7 @@ function OurServices() {
             </div>
           </div>
           <div className='flex flex-col items-center'>
-            <div className='bg-[#F8EBAB] h-56 w-72 rounded-2xl flex justify-center items-center'>
+            <div className='bg-[#F8EBAB] h-52 w-52 rounded-2xl flex justify-center items-center'>
               <Image src={'/images/shmf.svg'} height={110} width={194} alt="API Integration" />
             </div>
             <div className='w-72 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/businesses')}>
@@ -55,7 +55,7 @@ function OurServices() {
             </div>
           </div>
           <div className='flex flex-col items-center'>
-            <div className='bg-[#F8EBAB] h-56 w-72 rounded-2xl flex justify-center items-center'>
+            <div className='bg-[#F8EBAB] h-52 w-52 rounded-2xl flex justify-center items-center'>
               <Image src={'/images/delman.svg'} height={90} width={170} alt="Last-mile Delivery" />
             </div>
             <div className='w-72 mt-0 hover:cursor-pointer' onClick={()=>router.replace('/businesses')}>
