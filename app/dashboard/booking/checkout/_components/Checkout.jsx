@@ -516,8 +516,9 @@ const Checkout = () => {
       ) : (
         <>
           <div className="mb-5">
-            <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 5/5</h2>
+            <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 6/6</h2>
             <div className="flex mt-4 mb-9 -translate-x-1.5">
+              <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
               <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
               <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
               <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
@@ -535,8 +536,10 @@ const Checkout = () => {
                   key={option.label}
                   className={`flex flex-col items-start p-4 mb-4 border ${route === option.label ? 'border-[#461364] border-2' : 'border-gray-300'} rounded-2xl cursor-pointer`}
                   onClick={() => {
-                    setRoute(option.label);
-                    setAmount(parseFloat(totalPrice));  // Ensure correct formatting
+                    if (route !== option.label) { // Prevents re-setting the same route
+                      setRoute(option.label);
+                      setAmount(parseFloat(totalPrice));  // Ensure correct formatting
+                    }
                   }}
                 >
                   <div className="flex items-center">
