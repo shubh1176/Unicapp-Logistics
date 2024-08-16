@@ -25,13 +25,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { ChevronsUpDown, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from 'next/image';
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "@/components/ui/input-otp"
-
 
 const countryCodes = [
   { code: '+1', label: 'United States' },
@@ -53,6 +46,10 @@ function RightDiv4() {
   const [receiverCountryCode, setReceiverCountryCode] = useState(countryCodes[0].code);
   const [openSender, setOpenSender] = useState(false);
   const [openReceiver, setOpenReceiver] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [otpError, setOtpError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [receiverError, setReceiverError] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -83,29 +80,43 @@ function RightDiv4() {
   }, [user]);
 
   const handleSendVerificationCode = async () => {
+    setPhoneError('');
     const formattedPhoneNumber = `${selectedCountryCode}${phoneNumber.replace(/\D/g, '')}`;
+    
+    if (!phoneNumber) {
+      setPhoneError('Phone number is required');
+      return;
+    }
+
     try {
+      setLoading(true);
       const response = await axios.post('/api/sendOtp', { phoneNumber: formattedPhoneNumber });
       setOtpCode(response.data.otpCode);
       setShowOtpDialog(true);
     } catch (error) {
+      setPhoneError('Error sending OTP');
       console.error('Error sending OTP:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleVerifyOtp = async () => {
+    setOtpError('');
     if (otpInput === otpCode) {
       try {
         const email = user.primaryEmailAddress.emailAddress;
+        const formattedPhoneNumber = `${selectedCountryCode}${phoneNumber.replace(/\D/g, '')}`;
+        
         if (existingUser) {
           await db.update(schema.UserData)
-            .set({ verified: true, phoneNumber: `${selectedCountryCode}${phoneNumber.replace(/\D/g, '')}` })
+            .set({ verified: true, phoneNumber: formattedPhoneNumber })
             .where(eq(schema.UserData.email, email))
             .execute();
         } else {
           await db.insert(schema.UserData).values({
             email: email,
-            phoneNumber: `${selectedCountryCode}${phoneNumber.replace(/\D/g, '')}`,
+            phoneNumber: formattedPhoneNumber,
             createdAt: moment().format('YYYY-MM-DD'),
             role: '', // Assuming role will be set later
             onboarded: false,
@@ -116,10 +127,19 @@ function RightDiv4() {
         setUserVerified(true);
         setShowOtpDialog(false);
       } catch (error) {
+        setOtpError('Error updating user data');
         console.error('Error updating user data:', error);
       }
     } else {
-      console.error('Invalid OTP');
+      setOtpError('Invalid OTP');
+    }
+  };
+
+  const handleContinue = () => {
+    if (!receiverName || !receiverNumber) {
+      setReceiverError('Please fill in all receiver details');
+    } else {
+      router.push('/dashboard/booking/checkout');
     }
   };
 
@@ -193,11 +213,16 @@ function RightDiv4() {
               className="w-full px-4 py-2 border border-gray-300 rounded-md"
             />
           </div>
+          {phoneError && <p className="text-red-500">{phoneError}</p>}
         </div>
       )}
       {!userVerified && (
-        <Button onClick={handleSendVerificationCode} className="w-full bg-[#8B14CC] hover:bg-[#8B14CC] text-white py-2 px-4 rounded-md">
-          Send a verification code
+        <Button
+          onClick={handleSendVerificationCode}
+          className="w-full bg-[#8B14CC] hover:bg-[#8B14CC] text-white py-2 px-4 rounded-md"
+          disabled={loading}
+        >
+          {loading ? 'Sending...' : 'Send a verification code'}
         </Button>
       )}
       {userVerified && (
@@ -209,7 +234,10 @@ function RightDiv4() {
                 type="text"
                 placeholder="Name"
                 value={receiverName}
-                onChange={(e) => setReceiverName(e.target.value)}
+                onChange={(e) => {
+                  setReceiverName(e.target.value);
+                  setReceiverError('');
+                }}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-0 focus:ring-0 font-generalRegular"
               />
             </div>
@@ -264,10 +292,14 @@ function RightDiv4() {
                 type="text"
                 placeholder="Enter receiver's phone number"
                 value={receiverNumber}
-                onChange={(e) => setReceiverNumber(e.target.value)}
+                onChange={(e) => {
+                  setReceiverNumber(e.target.value);
+                  setReceiverError('');
+                }}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-0 focus:ring-0 font-generalRegular"
               />
             </div>
+            {receiverError && <p className="text-red-500">{receiverError}</p>}
           </div>
         </>
       )}
@@ -281,7 +313,8 @@ function RightDiv4() {
         </Button>
         <Button
           className='py-6 px-10 w-96 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
-          onClick={() => router.push('/dashboard/booking/checkout')}
+          onClick={handleContinue}
+          disabled={!userVerified || loading}
         >
           Continue
         </Button>
@@ -289,8 +322,8 @@ function RightDiv4() {
       <Dialog open={showOtpDialog} onOpenChange={setShowOtpDialog}>
         <DialogContent className="w-full max-w-3xl h-full max-h-[80vh] p-4">
           <div className="flex flex-col items-center justify-center h-full">
-          <Image src={'/images/eyesdown.svg'} height={50} width={50} className="mb-10" />
-          <h2 className="text-4xl font-generalMedium mb-16">Enter OTP</h2>
+            <Image src={'/images/eyesdown.svg'} height={50} width={50} className="mb-10" />
+            <h2 className="text-4xl font-generalMedium mb-16">Enter OTP</h2>
             <p className="text-gray-500 mb-6 font-generalLight">OTP has been sent to {selectedCountryCode}{phoneNumber}</p>
             <Input
               type="text"
@@ -299,8 +332,13 @@ function RightDiv4() {
               placeholder="Enter OTP"
               className="mb-4 p-2 border rounded w-96 focus:border-none"
             />
-            <Button onClick={handleVerifyOtp} className="px-6 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-96">
-              Verify OTP
+            {otpError && <p className="text-red-500">{otpError}</p>}
+            <Button
+              onClick={handleVerifyOtp}
+              className="px-6 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-96"
+              disabled={loading}
+            >
+              {loading ? 'Verifying...' : 'Verify OTP'}
             </Button>
           </div>
         </DialogContent>

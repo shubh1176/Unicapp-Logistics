@@ -10,9 +10,15 @@ import Image from 'next/image';
 function Page() {
   const [organizationName, setOrganizationName] = useRecoilState(organizationNameState);
   const [inputValue, setInputValue] = useState(organizationName);
+  const [error, setError] = useState('');
   const router = useRouter();
 
   const handleContinue = () => {
+    if (inputValue.trim() === '') {
+      setError('Organization name cannot be empty.');
+      return;
+    }
+
     setOrganizationName(inputValue);
     router.push('/dashboard/onboarding/business/type');
   };
@@ -22,7 +28,7 @@ function Page() {
       <div className="max-w-lg w-full ml-20">
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-black font-filson">
-            Can you tell us bit about your organization?
+            Can you tell us a bit about your organization?
           </h1>
         </div>
         <div className="mb-4">
@@ -31,17 +37,23 @@ function Page() {
           </label>
           <Input
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={(e) => {
+              setInputValue(e.target.value);
+              setError(''); // Clear error when the user starts typing
+            }}
             placeholder="Name"
-            className="mt-2 p-3 border border-gray-300 rounded-lg focus:border-none focus:border-black w-80 font-generalRegular"
+            className={`mt-2 p-3 border rounded-lg w-80 font-generalRegular ${
+              error ? 'border-red-500' : 'border-gray-300'
+            } focus:border-none focus:border-black`}
           />
+          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
         </div>
       </div>
-      
+
       <div className="absolute bottom-0 right-0 mb-8 mr-8 -translate-y-14 translate-x-10">
         <Image src={'/images/84.svg'} width={400} height={400} alt="Ribbon" />
       </div>
-      
+
       <div className="w-full translate-y-72">
         <div className="w-full border-t border-black my-4"></div>
         <div className="flex justify-between items-center">

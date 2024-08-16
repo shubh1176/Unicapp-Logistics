@@ -25,9 +25,9 @@ import { cn } from "@/lib/utils";
 
 
 const countryCodes = [
+  { code: '+91', label: 'India' },
   { code: '+1', label: 'United States' },
   { code: '+44', label: 'United Kingdom' },
-  { code: '+91', label: 'India' },
   // Add more country codes as needed
 ];
 
@@ -43,6 +43,9 @@ const NumberVerificationPage = () => {
   const [showOtpDialog, setShowOtpDialog] = useState(false);
   const [timer, setTimer] = useState(300);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [otpError, setOtpError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -70,40 +73,52 @@ const NumberVerificationPage = () => {
   }, [user, setPhoneNumber, setVerified]);
 
   const handlePhoneNumberSubmit = async () => {
-    if (enteredPhoneNumber) {
-      const formattedPhone = `${selectedCountryCode}${enteredPhoneNumber}`;
-      setPhoneNumber(formattedPhone);
+    setPhoneError('');
+    if (!enteredPhoneNumber) {
+      setPhoneError('Phone number is required');
+      return;
+    }
 
-      try {
-        const response = await fetch('/api/sendOtp', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ phoneNumber: formattedPhone }),
-        });
+    const formattedPhone = `${selectedCountryCode}${enteredPhoneNumber}`;
+    setPhoneNumber(formattedPhone);
 
-        const data = await response.json();
+    setLoading(true);
+    try {
+      const response = await fetch('/api/sendOtp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ phoneNumber: formattedPhone }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
         setGeneratedOtp(data.otpCode); // Save the generated OTP for verification
         console.log('Generated OTP:', data.otpCode); // Log the OTP
         setShowOtpDialog(true);
-      } catch (error) {
-        console.error('Error sending OTP:', error);
+        setTimer(300); // Reset the timer
+        setOtp(''); // Reset OTP input field
+        setOtpError(''); // Clear previous OTP errors
+      } else {
+        setPhoneError(data.error || 'Error sending OTP');
       }
-    } else {
-      console.error('Phone number is required');
+    } catch (error) {
+      setPhoneError('Error sending OTP');
+      console.error('Error sending OTP:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleOtpSubmit = async () => {
-    console.log('Entered OTP:', otp);
-    console.log('Generated OTP:', generatedOtp);
+    setOtpError('');
+    setLoading(true);
 
     if (otp === generatedOtp) {
       setVerified(true);
       setOnboarded(true);
 
-      // Update the user's verified status and phone number in the database
       try {
         const email = user.primaryEmailAddress.emailAddress;
         await db
@@ -112,13 +127,17 @@ const NumberVerificationPage = () => {
           .where(eq(schema.UserData.email, email))
           .execute();
 
+        setShowOtpDialog(false);
         router.push('/dashboard'); // Redirect to dashboard after successful verification
       } catch (error) {
+        setOtpError('Error updating user data');
         console.error('Error updating user data:', error);
       }
     } else {
-      console.error('Invalid OTP');
+      setOtpError('Invalid OTP');
     }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -143,7 +162,7 @@ const NumberVerificationPage = () => {
       {!showOtpDialog ? (
         <div className="">
           <div className="flex flex-col items-center justify-center h-full -translate-y-20">
-            <Image src={'/images/blackonwhitelogo.svg'} height={300} width={300} />
+            <Image src={'/images/blackonwhitelogo.svg'} height={300} width={300} alt="Logo" />
             <h2 className="text-4xl font-generalMedium mb-12">Enter Your Phone Number</h2>
             <div className="flex mb-4 w-96 gap-2">
               <Popover open={open} onOpenChange={setOpen}>
@@ -197,19 +216,27 @@ const NumberVerificationPage = () => {
                 className="p-2 border rounded-r-lg focus:outline-none w-full"
               />
             </div>
+            {phoneError && <p className="text-red-500">{phoneError}</p>}
             <Button
               onClick={handlePhoneNumberSubmit}
               className="px-6 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-96"
+              disabled={loading}
             >
-              Verify Phone
+              {loading ? 'Sending OTP...' : 'Verify Phone'}
             </Button>
           </div>
         </div>
       ) : (
-        <Dialog open={showOtpDialog} onOpenChange={setShowOtpDialog}>
+        <Dialog open={showOtpDialog} onOpenChange={(isOpen) => {
+          if (!isOpen) {
+            setShowOtpDialog(false);
+            setOtp('');
+            setOtpError('');
+          }
+        }}>
           <DialogContent className="w-full max-w-3xl h-full max-h-[80vh] p-4">
             <div className="flex flex-col items-center justify-center h-full">
-            <Image src={'/images/eyesdown.svg'} height={50} width={50} className="mb-10" />
+              <Image src={'/images/eyesdown.svg'} height={50} width={50} className="mb-10" alt="Eyes down" />
               <h2 className="text-4xl font-generalMedium mb-16">Enter OTP</h2>
               <Input
                 type="text"
@@ -218,11 +245,13 @@ const NumberVerificationPage = () => {
                 placeholder="Enter OTP"
                 className="mb-4 p-2 border rounded w-96 focus:border-none"
               />
+              {otpError && <p className="text-red-500">{otpError}</p>}
               <Button
                 onClick={handleOtpSubmit}
                 className="px-6 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-96"
+                disabled={loading}
               >
-                Verify OTP
+                {loading ? 'Verifying...' : 'Verify OTP'}
               </Button>
               <p className="mt-4">Time remaining: {Math.floor(timer / 60)}:{timer % 60 < 10 ? `0${timer % 60}` : timer % 60}</p>
             </div>

@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { weightState, itemDescriptionState, specialInstructionsState, lengthState, widthState, heightState, orderTypeState } from '@/recoil/store';
 import { Input } from '@/components/ui/input';
@@ -18,6 +18,41 @@ const RightDiv3 = () => {
   const [width, setWidth] = useRecoilState(widthState);
   const [height, setHeight] = useRecoilState(heightState);
   const [orderType] = useRecoilState(orderTypeState);
+
+  const [errors, setErrors] = useState({});
+
+  const validateFields = () => {
+    const newErrors = {};
+
+    if (!weight) {
+      newErrors.weight = 'Weight is required';
+    }
+
+    if (orderType === 'Courier') {
+      if (!length) {
+        newErrors.length = 'Length is required';
+      }
+      if (!width) {
+        newErrors.width = 'Width is required';
+      }
+      if (!height) {
+        newErrors.height = 'Height is required';
+      }
+    }
+
+    if (!itemDescription) {
+      newErrors.itemDescription = 'Item description is required';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleContinue = () => {
+    if (validateFields()) {
+      router.push('/dashboard/booking/verification');
+    }
+  };
 
   return (
     <div className="p-10 translate-x-20 translate-y-20">
@@ -42,8 +77,12 @@ const RightDiv3 = () => {
           className="pl-5 w-40 border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0" 
           placeholder="kgs" 
           value={weight} 
-          onChange={(e) => setWeight(e.target.value)} 
+          onChange={(e) => {
+            setWeight(e.target.value);
+            setErrors((prevErrors) => ({ ...prevErrors, weight: '' }));
+          }} 
         />
+        {errors.weight && <p className="text-red-500">{errors.weight}</p>}
       </div>
       {orderType === 'Courier' && (
         <div className="mt-5 flex flex-col">
@@ -53,82 +92,57 @@ const RightDiv3 = () => {
               className="w-20 focus:outline-none focus:ring-0"
               placeholder="Length"
               value={length}
-              onChange={(e) => setLength(e.target.value)}
+              onChange={(e) => {
+                setLength(e.target.value);
+                setErrors((prevErrors) => ({ ...prevErrors, length: '' }));
+              }}
             />
+            {errors.length && <p className="text-red-500">{errors.length}</p>}
             <Input
               className="w-20 focus:outline-none focus:ring-0"
               placeholder="Width"
               value={width}
-              onChange={(e) => setWidth(e.target.value)}
+              onChange={(e) => {
+                setWidth(e.target.value);
+                setErrors((prevErrors) => ({ ...prevErrors, width: '' }));
+              }}
             />
+            {errors.width && <p className="text-red-500">{errors.width}</p>}
             <Input
               className="w-20 focus:outline-none focus:ring-0"
               placeholder="Height"
               value={height}
-              onChange={(e) => setHeight(e.target.value)}
+              onChange={(e) => {
+                setHeight(e.target.value);
+                setErrors((prevErrors) => ({ ...prevErrors, height: '' }));
+              }}
             />
+            {errors.height && <p className="text-red-500">{errors.height}</p>}
           </div>
         </div>
       )}
       <div className="mt-7">
         <p>Which size best describes your item the best?</p>
         <div className="flex flex-wrap mt-3 -translate-x-4">
-          <div
-            className={`flex items-center py-2 px-4 mr-1 mb-3 ${itemDescription === 'Small' ? 'text-purple-600' : 'text-gray-600'} hover:cursor-pointer`}
-            onClick={() => setItemDescription('Small')}
-          >
-            <div className='flex flex-col gap-1'>
-              <div className='flex items-center justify-center content-center rounded-md w-8 h-8 ml-2'>
-                <Image src="/images/small.svg" width={40} height={20} alt="Small" />
+          {['Small', 'Medium', 'Large', 'X-Large', 'Huge'].map((size) => (
+            <div
+              key={size}
+              className={`flex items-center py-2 px-4 mr-1 mb-3 ${itemDescription === size ? 'text-purple-600' : 'text-gray-600'} hover:cursor-pointer`}
+              onClick={() => {
+                setItemDescription(size);
+                setErrors((prevErrors) => ({ ...prevErrors, itemDescription: '' }));
+              }}
+            >
+              <div className='flex flex-col gap-1'>
+                <div className='flex items-center justify-center content-center rounded-md w-8 h-8 ml-2'>
+                  <Image src={`/images/${size.toLowerCase()}.svg`} width={40} height={20} alt={size} />
+                </div>
+                <div>{size}</div>
               </div>
-              <div>Small</div>
             </div>
-          </div>
-          <div
-            className={`flex items-center py-2 px-4 mr-1 mb-3 ${itemDescription === 'Medium' ? 'text-purple-600' : 'text-gray-600'} hover:cursor-pointer`}
-            onClick={() => setItemDescription('Medium')}
-          >
-            <div className='flex flex-col gap-1'>
-              <div className='flex items-center justify-center content-center rounded-md w-8 h-8 ml-2'>
-                <Image src="/images/medium.svg" width={40} height={20} alt="Medium" className='translate-x-1'/>
-              </div>
-              <div>Medium</div>
-            </div>
-          </div>
-          <div
-            className={`flex items-center py-2 px-4 mr-1 mb-3 ${itemDescription === 'Large' ? 'text-purple-600' : 'text-gray-600'} hover:cursor-pointer`}
-            onClick={() => setItemDescription('Large')}
-          >
-            <div className='flex flex-col gap-1'>
-              <div className='flex items-center justify-center content-center rounded-md w-8 h-8 ml-2'>
-                <Image src="/images/large.svg" width={40} height={20} alt="Large" className='-translate-x-1'/>
-              </div>
-              <div>Large</div>
-            </div>
-          </div>
-          <div
-            className={`flex items-center py-2 px-4 mr-1 mb-3 ${itemDescription === 'X-Large' ? 'text-purple-600' : 'text-gray-600'} hover:cursor-pointer`}
-            onClick={() => setItemDescription('X-Large')}
-          >
-            <div className='flex flex-col gap-1'>
-              <div className='flex items-center justify-center content-center rounded-md w-8 h-8 ml-2'>
-                <Image src="/images/x-large.svg" width={40} height={20} alt="X-Large" className='translate-x-1'/>
-              </div>
-              <div>X-Large</div>
-            </div>
-          </div>
-          <div
-            className={`flex items-center py-2 px-4 mr-1 mb-3 ${itemDescription === 'Huge' ? 'text-purple-600' : 'text-gray-600'} hover:cursor-pointer`}
-            onClick={() => setItemDescription('Huge')}
-          >
-            <div className='flex flex-col gap-1'>
-              <div className='flex items-center justify-center content-center rounded-md w-8 h-8 ml-2'>
-                <Image src="/images/huge.svg" width={40} height={20} alt="Huge" className='-translate-x-1'/>
-              </div>
-              <div>Huge</div>
-            </div>
-          </div>
+          ))}
         </div>
+        {errors.itemDescription && <p className="text-red-500">{errors.itemDescription}</p>}
       </div>
       <div className="mt-5">
         <p>Special instructions, if any</p>
@@ -149,7 +163,7 @@ const RightDiv3 = () => {
         </Button>
         <Button
           className='py-6 px-10 w-80 mr-60 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
-          onClick={() => router.push('/dashboard/booking/verification')}
+          onClick={handleContinue}
         >
           Continue
         </Button>

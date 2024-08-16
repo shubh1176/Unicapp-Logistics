@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { useRouter } from 'next/navigation';
 import { ArrowDown, ArrowUp, PlusCircle, MinusCircle, MapPin } from 'lucide-react';
@@ -31,16 +31,37 @@ function RightDiv() {
   const [openStopDialog, setOpenStopDialog] = useRecoilState(openStopDialogState);
   const [orderType, setOrderType] = useRecoilState(orderTypeState);
 
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
   const router = useRouter();
+
+  const validateLocations = () => {
+    const newErrors = {};
+    if (!pickupLocation) {
+      newErrors.pickup = 'Pickup location is required';
+    }
+    if (!dropLocation) {
+      newErrors.drop = 'Drop-off location is required';
+    }
+    stops.forEach((stop, index) => {
+      if (!stop.address) {
+        newErrors[`stop-${index}`] = `Stop ${index + 1} location is required`;
+      }
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handlePickupLocationSelect = (location) => {
     setPickupLocation(location.address);
     setPickupCoords(location.location);
+    setErrors((prevErrors) => ({ ...prevErrors, pickup: '' }));
   };
 
   const handleDropLocationSelect = (location) => {
     setDropLocation(location.address);
     setDropCoords(location.location);
+    setErrors((prevErrors) => ({ ...prevErrors, drop: '' }));
   };
 
   const handleStopLocationSelect = (index, location) => {
@@ -50,6 +71,7 @@ function RightDiv() {
       location: location.location,
     };
     setStops(updatedStops);
+    setErrors((prevErrors) => ({ ...prevErrors, [`stop-${index}`]: '' }));
   };
 
   const addStop = () => {
@@ -63,6 +85,11 @@ function RightDiv() {
   const removeStop = (index) => {
     const updatedStops = stops.filter((_, i) => i !== index);
     setStops(updatedStops);
+    setErrors((prevErrors) => {
+      const newErrors = { ...prevErrors };
+      delete newErrors[`stop-${index}`];
+      return newErrors;
+    });
   };
 
   const handleOnDragEnd = (result) => {
@@ -71,6 +98,14 @@ function RightDiv() {
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
     setStops(items);
+  };
+
+  const handleNextClick = (e) => {
+    e.preventDefault();
+    if (validateLocations()) {
+      setLoading(true);
+      router.push('/dashboard/booking/detail-address');
+    }
   };
 
   return (
@@ -121,6 +156,7 @@ function RightDiv() {
               value={pickupLocation}
               onChange={(e) => setPickupLocation(e.target.value)}
             />
+            {errors.pickup && <p className="text-red-500">{errors.pickup}</p>}
           </div>
         </div>
         <div className='mt-5'>
@@ -139,6 +175,7 @@ function RightDiv() {
               value={dropLocation}
               onChange={(e) => setDropLocation(e.target.value)}
             />
+            {errors.drop && <p className="text-red-500">{errors.drop}</p>}
           </div>
         </div>
         {orderType === 'Pickup & Drop' && (
@@ -182,6 +219,7 @@ function RightDiv() {
                                 className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer translate-x-28'
                                 onClick={() => removeStop(index)}
                               />
+                              {errors[`stop-${index}`] && <p className="text-red-500">{errors[`stop-${index}`]}</p>}
                             </div>
                           </div>
                         )}
@@ -196,12 +234,13 @@ function RightDiv() {
           </>
         )}
         <div>
-        <Button className='mt-7 w-96 bg-[#8B14CC] hover:bg-[#8B14CC] rounded-xl font-generalRegular' onClick={(e) => {
-          e.preventDefault();
-          router.push('/dashboard/booking/detail-address');
-        }}>
-          Next
-        </Button>
+          <Button
+            className='mt-7 w-96 bg-[#8B14CC] hover:bg-[#8B14CC] rounded-xl font-generalRegular'
+            onClick={handleNextClick}
+            disabled={loading}
+          >
+            {loading ? 'Processing...' : 'Next'}
+          </Button>
         </div>
       </form>
       <MapboxDialog
@@ -230,4 +269,3 @@ function RightDiv() {
 }
 
 export default RightDiv;
-

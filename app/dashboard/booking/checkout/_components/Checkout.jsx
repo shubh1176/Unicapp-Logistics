@@ -96,6 +96,8 @@ const Checkout = () => {
   const [useWallet, setUseWallet] = useState(false);
   const [inserted, setInserted] = useState(false);
   const [distance, setDistance] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const routeOptions = [
     { label: 'By Surface', basePrice: 55, gstRate: 0.18 },
@@ -153,29 +155,35 @@ const Checkout = () => {
 
   useEffect(() => {
     const calculateFare = async () => {
-      if (orderType === 'Pickup & Drop') {
-        const basePrice = 40;
-        const distance = await fetchDistance(pickupCoords, dropCoords, stops);
-        setDistance(distance);
-        let totalAmount = basePrice;
+      try {
+        let totalAmount = 0;
 
-        if (distance > 2 && distance <= 10) {
-          totalAmount += (distance - 2) * 16;
-        } else if (distance > 10) {
-          totalAmount += 8 * 16 + (distance - 10) * 10;
+        if (orderType === 'Pickup & Drop') {
+          const basePrice = 40;
+          const distance = await fetchDistance(pickupCoords, dropCoords, stops);
+          setDistance(distance);
+
+          if (distance > 2 && distance <= 10) {
+            totalAmount = basePrice + (distance - 2) * 16;
+          } else if (distance > 10) {
+            totalAmount = basePrice + 8 * 16 + (distance - 10) * 10;
+          } else {
+            totalAmount = basePrice;
+          }
+        } else if (orderType === 'Courier') {
+          const selectedRoute = routeOptions.find(option => option.label === route);
+          if (selectedRoute) {
+            const volumetricWeight = (length * width * height) / 5000;
+            const chargeableWeight = Math.max(weight, volumetricWeight);
+            const baseAmount = chargeableWeight * selectedRoute.basePrice;
+            const gstAmount = baseAmount * selectedRoute.gstRate;
+            totalAmount = baseAmount + gstAmount;
+          }
         }
 
-        setAmount(parseFloat(totalAmount.toFixed(2))); // Fix to 2 decimal places
-      } else if (orderType === 'Courier') {
-        const selectedRoute = routeOptions.find(option => option.label === route);
-        if (selectedRoute) {
-          const volumetricWeight = (length * width * height) / 5000;
-          const chargeableWeight = Math.max(weight, volumetricWeight);
-          const baseAmount = chargeableWeight * selectedRoute.basePrice;
-          const gstAmount = baseAmount * selectedRoute.gstRate;
-          const totalAmount = (baseAmount + gstAmount).toFixed(2);
-          setAmount(parseFloat(totalAmount));
-        }
+        setAmount(parseFloat(totalAmount.toFixed(2))); // Update amount with the calculated value
+      } catch (error) {
+        console.error('Error calculating fare:', error);
       }
     };
 
@@ -327,11 +335,17 @@ const Checkout = () => {
 
   const handlePayment = async () => {
     if (!razorpayLoaded) {
-      alert('Razorpay SDK is not loaded yet. Please try again.');
+      setError('Razorpay SDK is not loaded yet. Please try again.');
+      return;
+    }
+
+    if (!pickupLocation || !dropLocation || !date || !time) {
+      setError('Please ensure all required fields are filled.');
       return;
     }
 
     try {
+      setLoading(true);
       const email = user?.primaryEmailAddress?.emailAddress;
       const generatedOrderId = generateOrderId();
       let originalAmount = parseFloat(amount).toFixed(2); // Store the original amount before deduction and ensure it's fixed to 2 decimal places
@@ -432,7 +446,7 @@ const Checkout = () => {
 
             router.push('/dashboard/booking/confirmation');
           } catch (error) {
-            alert('Payment was successful, but there was an error updating the order status.');
+            setError('Payment was successful, but there was an error updating the order status.');
           }
         },
         prefill: {
@@ -443,6 +457,12 @@ const Checkout = () => {
         theme: {
           color: '#9E3CE1',
         },
+        modal: {
+          ondismiss: () => {
+            setLoading(false);
+            setError('Payment process was canceled.');
+          },
+        },
       };
 
       if (amountToPay > 0) {
@@ -450,7 +470,9 @@ const Checkout = () => {
         rzp.open();
       }
     } catch (error) {
-      alert('Something went wrong with the payment. Please try again.');
+      setError('Something went wrong with the payment. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -459,16 +481,16 @@ const Checkout = () => {
       {orderType === 'Pickup & Drop' ? (
         <>
           <div className='mb-5 w-full'>
-          <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 6/6</h2>
-          <div className="flex mt-4 mb-9 -translate-x-1.5">
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+            <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 6/6</h2>
+            <div className="flex mt-4 mb-9 -translate-x-1.5">
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+            </div>
           </div>
-        </div>
           <h2 className='text-5xl font-generalSemiBold'>Pricing</h2>
           <div className='mt-5 flex flex-col w-96 gap-3'>
             <div className=' flex flex-row justify-between'>
@@ -530,7 +552,7 @@ const Checkout = () => {
           <div className="mt-5 w-96 rounded-2xl">
             {routeOptions.map((option) => {
               const gst = option.basePrice * option.gstRate;
-              const totalPrice = (option.basePrice + gst).toFixed(2);
+              const totalPrice = parseFloat((option.basePrice + gst).toFixed(2)); // Update total price with the calculated value
               return (
                 <div
                   key={option.label}
@@ -538,7 +560,7 @@ const Checkout = () => {
                   onClick={() => {
                     if (route !== option.label) { // Prevents re-setting the same route
                       setRoute(option.label);
-                      setAmount(parseFloat(totalPrice));  // Ensure correct formatting
+                      setAmount(totalPrice);  // Ensure correct formatting
                     }
                   }}
                 >
@@ -549,7 +571,8 @@ const Checkout = () => {
                     <div>
                       <h3 className="text-sm font-generalMedium">{option.label}</h3>
                       <div className='flex flex-row gap-2 mt-2'>
-                      <p className="text-2xl text-black">{`₹${totalPrice}`}</p><p className='text-xs text-black mt-2 text-opacity-50'> including GST charges</p>
+                        <p className="text-2xl text-black">{`₹${totalPrice}`}</p>
+                        <p className='text-xs text-black mt-2 text-opacity-50'> including GST charges</p>
                       </div>
                       <p className="text-base text-gray-500 mt-2">{`Delivery in 2-3 days`}</p>
                       <p className="text-xs text-black text-opacity-50">Same-day dispatch</p>
@@ -589,6 +612,7 @@ const Checkout = () => {
           </div>
         </>
       )}
+      {error && <p className="text-red-500 mt-4">{error}</p>}
       <div className='mt-10 flex justify-start gap-3'>
         <Button
           className='py-6 px-4 rounded-xl border border-gray-300 bg-white text-black hover:bg-white hover:text-black'
@@ -599,8 +623,9 @@ const Checkout = () => {
         <Button
           className='py-6 px-10 w-80 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
           onClick={handlePayment}
+          disabled={loading}
         >
-          Pay Now
+          {loading ? 'Processing...' : 'Pay Now'}
         </Button>
       </div>
     </div>
