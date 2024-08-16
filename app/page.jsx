@@ -14,7 +14,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col gap-4 justify-center bg-[#F1EDEA] mb-0">
+    <div className="flex flex-col gap-4 justify-center bg-[#F1EDEA]">
       <div className="relative">
         <Header />
         <div className="text-center bg-gradient-to-b h-5/6 from-[#8D14CE] to-[#470A68] text-white pb-24 pt-8 rounded-br-3xl rounded-bl-3xl flex flex-col justify-center items-center">
@@ -38,31 +38,31 @@ export default function Home() {
             <Image src={'/images/flower.svg'} alt="Flower Bouquet" fill objectFit="contain" priority />
           </div>
           <div className="absolute bottom-9 right-96 w-16 h-16 transform translate-x-1/2 rotate-12">
-            <Image src={'/images/lunchbox.svg'} alt="Lunch Box" fill objectFit="contain" loading="lazy" />
+            <Image src={'/images/lunchbox.svg'} alt="Lunch Box" fill objectFit="contain" priority />
           </div>
           <div className="absolute bottom-44 left-32 w-20 h-20 transform -translate-x-1/2 rotate-12">
-            <Image src={'/images/book.svg'} alt="Book" fill objectFit="contain" loading="lazy" />
+            <Image src={'/images/book.svg'} alt="Book" fill objectFit="contain" priority />
           </div>
           <div className="absolute bottom-10 left-96 w-28 h-28 transform -translate-x-1/2 rotate-12">
-            <Image src={'/images/charger.svg'} alt="Book" fill objectFit="contain" loading="lazy" />
+            <Image src={'/images/charger.svg'} alt="Book" fill objectFit="contain" priority />
           </div>
           <div className="absolute bottom-24 left-56 w-24 h-24 transform -translate-x-1/2 rotate-0">
-            <Image src={'/images/drink.svg'} alt="Coffee Cup" fill objectFit="contain" loading="lazy" />
+            <Image src={'/images/drink.svg'} alt="Coffee Cup" fill objectFit="contain"priority />
           </div>
           <div className="absolute bottom-44 left-80 w-20 h-20 transform -translate-x-1/2 rotate-0">
-            <Image src={'/images/Medicines1.svg'} alt="Medicines" fill objectFit="contain" loading="lazy" />
+            <Image src={'/images/Medicines1.svg'} alt="Medicines" fill objectFit="contain" priority />
           </div>
           <div className="absolute top-48 right-64 w-28 h-28 transform translate-x-1/2 rotate-04">
-            <Image src={'/images/dress.svg'} alt="Dress" fill objectFit="contain" loading="lazy" />
+            <Image src={'/images/dress.svg'} alt="Dress" fill objectFit="contain" priority />
           </div>
           <div className="absolute top-60 right-32 w-24 h-24 transform translate-x-1/2 rotate-0">
-            <Image src={'/images/key.svg'} alt="Key" fill objectFit="contain" loading="lazy" />
+            <Image src={'/images/key.svg'} alt="Key" fill objectFit="contain" priority />
           </div>
           <div className="absolute bottom-28 right-80 w-24 h-24 transform translate-x-1/2 rotate-0">
-            <Image src={'/images/grocery.svg'} alt="Grocery Basket" fill objectFit="contain" loading="lazy" />
+            <Image src={'/images/grocery.svg'} alt="Grocery Basket" fill objectFit="contain" priority />
           </div>
           <div className="absolute top-96 right-24 w-16 h-16 transform translate-x-1/2 rotate-0">
-            <Image src={'/images/envelop.svg'} alt="Envelope" fill objectFit="contain" loading="lazy" />
+            <Image src={'/images/envelop.svg'} alt="Envelope" fill objectFit="contain" priority />
           </div>
 
           <div className="mt-10 hover:cursor-pointer">
