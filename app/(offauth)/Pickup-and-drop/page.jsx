@@ -181,7 +181,7 @@ export default function Page() {
           >
             {items.map((item, index) => (
               <div key={index} className="flex-none w-full p-1">
-                <div className="p-1 bg-[#F6EFF9] rounded-3xl h-64 w-60 transform transition-transform duration-300 hover:scale-105">
+                <div className="p-1 bg-[#F6EFF9] rounded-3xl h-52 w-52 transform transition-transform duration-300 hover:scale-105">
                   <div className="flex flex-col items-center p-3 gap-3">
                     <Image src={item.src} height={item.height} width={item.width} alt={item.label} className="pt-5"/>
                     <span className='pt-8 text-2xl font-generalRegular'>{item.label}</span>
