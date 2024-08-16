@@ -26,16 +26,16 @@ export default function Page() {
   const carouselRef = useRef(null);
 
   const items = [
-    { src: "/images/envelop.svg", label: "Documents", height: 120, width: 120},
-    { src: "/images/charger.svg", label: "Charger",  height: 120, width: 120},
-    { src: "/images/Medicines1.svg", label: "Medicines", height: 120, width: 120 },
-    { src: "/images/flowerrr8.svg", label: "Flowers", height: 120, width: 120 },
-    { src: "/images/20.svg", label: "Courier", height: 120, width: 120 },
-    { src: "/images/key.svg", label: "Keys", height: 120, width: 120 },
-    { src: "/images/dress.svg", label: "Clothes", height: 120, width: 120 },
-    { src: "/images/lunchbox.svg", label: "Tiffin", height: 120, width: 120 },
-    { src: "/images/book.svg", label: "Books", height: 120, width: 120 },
-    { src: "/images/grocery.svg", label: "Store Pickups", height: 120, width: 120 },
+    { src: "/images/envelop.svg", label: "Documents", height: 80, width: 80},
+    { src: "/images/charger.svg", label: "Charger",  height: 80, width: 80},
+    { src: "/images/Medicines1.svg", label: "Medicines", height: 80, width: 80 },
+    { src: "/images/flowerrr8.svg", label: "Flowers", height: 80, width: 80 },
+    { src: "/images/20.svg", label: "Courier", height: 80, width: 80 },
+    { src: "/images/key.svg", label: "Keys", height: 80, width: 80 },
+    { src: "/images/dress.svg", label: "Clothes", height: 80, width: 80 },
+    { src: "/images/lunchbox.svg", label: "Tiffin", height: 80, width: 80 },
+    { src: "/images/book.svg", label: "Books", height: 80, width: 80 },
+    { src: "/images/grocery.svg", label: "Store Pickups", height: 80, width: 80 },
   ];
 
   const responsive = {
@@ -184,7 +184,7 @@ export default function Page() {
                 <div className="p-1 bg-[#F6EFF9] rounded-3xl h-52 w-52 transform transition-transform duration-300 hover:scale-105">
                   <div className="flex flex-col items-center p-3 gap-3">
                     <Image src={item.src} height={item.height} width={item.width} alt={item.label} className="pt-5"/>
-                    <span className='pt-8 text-2xl font-generalRegular'>{item.label}</span>
+                    <span className='pt-8 text-xl font-generalRegular'>{item.label}</span>
                   </div>
                 </div>
               </div>
