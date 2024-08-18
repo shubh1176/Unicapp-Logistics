@@ -90,7 +90,7 @@ function OrganizationAddressPage() {
   };
 
   return (
-    <div className="flex flex-col items-start justify-center min-h-screen bg-white px-4">
+    <div className="flex flex-col items-start justify-center min-h-screen bg-[#F1EDEA] px-4">
       <div className='max-w-lg w-full ml-20'>
         <div className="mb-6">
           <span className="text-5xl font-filson">

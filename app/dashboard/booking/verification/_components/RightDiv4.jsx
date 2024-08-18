@@ -50,6 +50,7 @@ function RightDiv4() {
   const [otpError, setOtpError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [receiverError, setReceiverError] = useState('');
+  const [otpTimeout, setOtpTimeout] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -79,12 +80,17 @@ function RightDiv4() {
     fetchUserData();
   }, [user]);
 
+  const validatePhoneNumber = (number) => {
+    const regex = /^[0-9]{10}$/; // Basic validation, can be customized
+    return regex.test(number);
+  };
+
   const handleSendVerificationCode = async () => {
     setPhoneError('');
     const formattedPhoneNumber = `${selectedCountryCode}${phoneNumber.replace(/\D/g, '')}`;
     
-    if (!phoneNumber) {
-      setPhoneError('Phone number is required');
+    if (!phoneNumber || !validatePhoneNumber(phoneNumber)) {
+      setPhoneError('Valid phone number is required');
       return;
     }
 
@@ -93,8 +99,16 @@ function RightDiv4() {
       const response = await axios.post('/api/sendOtp', { phoneNumber: formattedPhoneNumber });
       setOtpCode(response.data.otpCode);
       setShowOtpDialog(true);
+
+      // Set a timeout for OTP validity
+      setOtpTimeout(setTimeout(() => {
+        setOtpCode(null);
+        setOtpError('OTP has expired. Please request a new one.');
+        setShowOtpDialog(false);
+      }, 300000)); // 5 minutes
+
     } catch (error) {
-      setPhoneError('Error sending OTP');
+      setPhoneError('Error sending OTP. Please try again.');
       console.error('Error sending OTP:', error);
     } finally {
       setLoading(false);
@@ -103,35 +117,41 @@ function RightDiv4() {
 
   const handleVerifyOtp = async () => {
     setOtpError('');
-    if (otpInput === otpCode) {
-      try {
-        const email = user.primaryEmailAddress.emailAddress;
-        const formattedPhoneNumber = `${selectedCountryCode}${phoneNumber.replace(/\D/g, '')}`;
-        
-        if (existingUser) {
-          await db.update(schema.UserData)
-            .set({ verified: true, phoneNumber: formattedPhoneNumber })
-            .where(eq(schema.UserData.email, email))
-            .execute();
-        } else {
-          await db.insert(schema.UserData).values({
-            email: email,
-            phoneNumber: formattedPhoneNumber,
-            createdAt: moment().format('YYYY-MM-DD'),
-            role: '', // Assuming role will be set later
-            onboarded: false,
-            verified: true,
-          }).execute();
-        }
-
-        setUserVerified(true);
-        setShowOtpDialog(false);
-      } catch (error) {
-        setOtpError('Error updating user data');
-        console.error('Error updating user data:', error);
-      }
-    } else {
+    if (!otpInput) {
+      setOtpError('OTP is required');
+      return;
+    }
+    if (otpInput !== otpCode) {
       setOtpError('Invalid OTP');
+      return;
+    }
+    
+    try {
+      const email = user.primaryEmailAddress.emailAddress;
+      const formattedPhoneNumber = `${selectedCountryCode}${phoneNumber.replace(/\D/g, '')}`;
+      
+      if (existingUser) {
+        await db.update(schema.UserData)
+          .set({ verified: true, phoneNumber: formattedPhoneNumber })
+          .where(eq(schema.UserData.email, email))
+          .execute();
+      } else {
+        await db.insert(schema.UserData).values({
+          email: email,
+          phoneNumber: formattedPhoneNumber,
+          createdAt: moment().format('YYYY-MM-DD'),
+          role: '', // Assuming role will be set later
+          onboarded: false,
+          verified: true,
+        }).execute();
+      }
+
+      setUserVerified(true);
+      setShowOtpDialog(false);
+      clearTimeout(otpTimeout);
+    } catch (error) {
+      setOtpError('Error updating user data');
+      console.error('Error updating user data:', error);
     }
   };
 
