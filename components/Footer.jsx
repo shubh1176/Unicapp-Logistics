@@ -5,7 +5,7 @@ import React from 'react'
 function Footer() {
   const router = useRouter()
   return (
-    <div className="bg-[#202020] rounded-2xl mx-5 mb-5 content p-10 text-white relative mt-10">
+    <div className="bg-[#202020] rounded-2xl mx-5 content p-10 text-white relative mt-10">
       <div className="flex flex-col justify-between mb-10">
         <div className="flex flex-row gap-8 pl-4 translate-y-3">
           <Image src={'/images/yellowcaplogo.svg'} alt="Unicapp Logo" width={200} height={200} />

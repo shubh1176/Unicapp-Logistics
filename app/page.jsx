@@ -103,9 +103,8 @@ export default function Home() {
         <Faq />
       </div>
 
-      <div className="mt-10">
-        <Footer />
-      </div>
+    <Footer />
+    
     </div>
   );
 }
