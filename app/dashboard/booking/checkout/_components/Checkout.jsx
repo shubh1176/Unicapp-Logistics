@@ -190,19 +190,17 @@ const Checkout = () => {
     calculateFare();
   }, [pickupCoords, dropCoords, stops, route, orderType, setAmount, length, width, height, weight]);
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.onload = () => {
-      setRazorpayLoaded(true);
-    };
-    script.onerror = () => console.error('Razorpay SDK could not be loaded.');
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  const loadRazorpay = () => {
+    if (!razorpayLoaded) {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => {
+        setRazorpayLoaded(true);
+      };
+      script.onerror = () => console.error('Razorpay SDK could not be loaded.');
+      document.body.appendChild(script);
+    }
+  };
 
   const updateUserWallet = async (email, newWalletAmount) => {
     try {
@@ -334,6 +332,8 @@ const Checkout = () => {
   };
 
   const handlePayment = async () => {
+    loadRazorpay();
+
     if (!razorpayLoaded) {
       setError('Razorpay SDK is not loaded yet. Please try again.');
       return;
