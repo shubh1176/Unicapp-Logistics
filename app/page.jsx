@@ -35,7 +35,7 @@ export default function Home() {
           </div>
 
           {/* Responsive Image Loading and Positioning */}
-          <div className="absolute top-24 sm:top-32 md:top-44 left-24 sm:left-32 md:left-64 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-0">
+          <div className="absolute top-24 sm:top-56 md:top-44 left-24 sm:left-20 md:left-64 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-0">
             <Image src={'/images/flower.svg'} alt="Flower Bouquet" fill objectFit="contain" priority />
           </div>
           <div className="absolute bottom-4 sm:bottom-6 md:bottom-9 right-32 sm:right-48 md:right-96 w-8 sm:w-10 md:w-12 lg:w-16 h-8 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-12">
