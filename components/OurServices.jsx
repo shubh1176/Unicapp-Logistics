@@ -55,7 +55,7 @@ function OurServices() {
             </div>
             <div className='w-36 md:w-60 mt-1 hover:cursor-pointer transition-all duration-300 ease-in-out' onClick={() => router.replace('/courier')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-1'>
-                <span className='font-generalRegular text-white py-2 px-2 space-x-1 text-sm'>
+                <span className='font-generalRegular text-white py-2 px-2 space-x-1 text-xs'>
                   Intercity Courier
                 </span>
                 <Button className="rounded-full bg-[#9E3CE1] border-spacing-1 p-1 hover:bg-[#9E3CE1] transition-all duration-300 ease-in-out" onClick={() => router.replace('/courier')}>
