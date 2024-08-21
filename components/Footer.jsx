@@ -5,7 +5,7 @@ import React from 'react'
 function Footer() {
   const router = useRouter()
   return (
-    <div className="bg-[#202020] rounded-2xl mx-4 md:mx-5 content p-5 md:p-10 text-white relative mt-10">
+    <div className="bg-[#202020] rounded-2xl sm:mx-0 sm:mb-0 md:mx-5 content p-5 md:p-10 text-white relative mt-10">
       <div className="flex flex-col justify-between mb-5 md:mb-10">
         <div className="flex flex-row gap-4 md:gap-8 pl-2 md:pl-4 translate-y-3">
           <Image src={'/images/yellowcaplogo.svg'} alt="Unicapp Logo" width={150} height={150} className='w-[100px] md:w-[150px]' />
@@ -43,8 +43,8 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="absolute top-24 md:top-32 right-20 md:right-36 w-40 md:w-80 h-40 md:h-80 transform translate-x-20 md:translate-x-36 -translate-y-0.5 rotate-0">
-        <Image src={'/images/ribbon84.svg'} alt="Ribbon" layout="fill" objectFit="contain" />
+      <div className="absolute -bottom-7 md:top-32 right-20 md:right-36 w-40 md:w-80 h-40 md:h-80 transform translate-x-20 md:translate-x-36 -translate-y-0.5 rotate-0">
+        <Image src={'/images/84.svg'} alt="Ribbon" layout="fill" objectFit="contain" />
       </div>
       <div className="pt-4 text-start text-gray-400 text-xs md:text-sm translate-x-1 md:translate-x-3">
         © 2023 Unicapp Logistics Pvt Ltd | CIN: U52219DL2023PTC416502

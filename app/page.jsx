@@ -181,9 +181,9 @@ export default function Home() {
             <Image 
               src={'/images/iconblack.svg'} 
               layout="responsive"
-              width={90} 
-              height={90} 
-              className="h-auto w-full" 
+              width={70} 
+              height={70} 
+              className="h-auto w-full sm:-translate-x-9 sm:-translate-y-6 xs:-translate-x-9" 
               priority={true} 
               alt="Icon"
               sizes="(max-width: 640px) 30px, (max-width: 768px) 45px, (max-width: 1024px) 70px, 90px"
