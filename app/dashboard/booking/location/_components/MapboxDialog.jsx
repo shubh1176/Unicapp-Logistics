@@ -64,7 +64,7 @@ function MapboxDialog({ isOpen, onClose, onSelectLocation, defaultLocation }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="p-4 md:p-6 lg:p-8 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+      <DialogContent className="p-4 md:p-6 lg:p-8 max-w-xs sm:max-w-md md:max-w-md lg:max-w-lg">
         <DialogHeader>
           <DialogTitle className="text-lg md:text-xl">Select Location</DialogTitle>
         </DialogHeader>

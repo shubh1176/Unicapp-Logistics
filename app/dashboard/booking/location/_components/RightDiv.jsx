@@ -18,6 +18,7 @@ import {
   orderTypeState,
 } from '@/recoil/store';
 import Image from 'next/image';
+import { MinusCircle } from 'lucide-react';
 
 function RightDiv() {
   const [pickupLocation, setPickupLocation] = useRecoilState(pickupLocationState);
@@ -203,7 +204,7 @@ function RightDiv() {
                               />
                               <Input
                                 placeholder={`Enter address...`}
-                                className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0'
+                                className='pl-10 pr-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0'
                                 value={stop.address}
                                 onChange={(e) => {
                                   const updatedStops = [...stops];
