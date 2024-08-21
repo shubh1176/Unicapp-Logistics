@@ -108,7 +108,7 @@ function RightDiv() {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center h-full p-4 md:p-10 bg-white'>
+    <div className='flex flex-col justify-center items-center h-full p-4 md:p-10 bg-white pb-10'>
       <div className='mb-5 w-full max-w-md'>
         <div className="mb-5">
           <h2 className="text-sm md:text-base font-generalMedium text-[#8B14CC]">STEP 1/6</h2>
