@@ -11,15 +11,14 @@ import Image from 'next/image';
 
 function WhyUs() {
   return (
-    <div className="relative bg-[#202020] flex flex-col items-center gap-6 sm:gap-8 md:gap-9 mb-7 pb-10 pt-14 sm:pt-20 md:pt-28">
+    <div className="relative bg-[#202020] flex flex-col items-center gap-4 sm:gap-6 md:gap-8 mb-7 pb-10 pt-14 sm:pt-20 md:pt-28">
       {/* Responsive Ribbon Background */}
-      <div className="absolute inset-0 z-0 transform w-full h-20 sm:h-32 md:h-40 lg:h-60 xl:h-80 pt-14 sm:pt-20 md:pt-28">
+      <div className="absolute inset-0 z-0 transform w-full h-20 sm:h-32 md:h-40 lg:h-60 xl:h-80 translate-y-20 md:translate-y-36 lg:translate-y-48">
         <Image 
           src={'/images/vecribbon.svg'} 
           layout="fill" 
           objectFit="cover" 
           alt="Ribbon Background" 
-          className='translate-y-20 md:translate-y-36 lg:translate-y-60'
         />
       </div>
 
@@ -42,13 +41,13 @@ function WhyUs() {
       </div>
 
       {/* Responsive Grid Layout for Cards */}
-      <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-6 xl:gap-8 mx-4 sm:mx-8 md:mx-24 lg:mx-16 xl:mx-24 mb-8 z-10'>
-        <Card className="rounded-xl sm:rounded-2xl xl:rounded-2xl content-center items-center p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5">
+      <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-6 xl:gap-8 mx-4 sm:mx-8 md:mx-24 lg:mx-16 xl:mx-24 mb-8 z-10'>
+        <Card className="rounded-lg sm:rounded-xl xl:rounded-2xl content-center items-center p-2 sm:p-3 md:p-4 lg:p-4 xl:p-5">
           <CardHeader>
-            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-sm sm:text-base md:text-lg xl:text-base'>
+            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-xs sm:text-sm md:text-lg xl:text-base'>
               <Calendar className='-translate-y-0.5' /> Need for Speed
             </CardDescription>
-            <CardTitle className='mt-3 sm:mt-4 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-base sm:text-lg md:text-xl xl:text-lg'>
+            <CardTitle className='mt-2 sm:mt-3 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-sm sm:text-base md:text-xl xl:text-lg'>
               Same day delivery
             </CardTitle>
           </CardHeader>
@@ -59,12 +58,12 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-xl sm:rounded-2xl xl:rounded-2xl content-center items-center p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5">
+        <Card className="rounded-lg sm:rounded-xl xl:rounded-2xl content-center items-center p-2 sm:p-3 md:p-4 lg:p-4 xl:p-5">
           <CardHeader>
-            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-sm sm:text-base md:text-lg xl:text-base'>
+            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-xs sm:text-sm md:text-lg xl:text-base'>
               <IndianRupee className='-translate-y-0.5' /> Affordable
             </CardDescription>
-            <CardTitle className='mt-3 sm:mt-4 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-base sm:text-lg md:text-xl xl:text-lg'>
+            <CardTitle className='mt-2 sm:mt-3 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-sm sm:text-base md:text-xl xl:text-lg'>
               Value for money
             </CardTitle>
           </CardHeader>
@@ -75,12 +74,12 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-xl sm:rounded-2xl xl:rounded-2xl content-center items-center p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5">
+        <Card className="rounded-lg sm:rounded-xl xl:rounded-2xl content-center items-center p-2 sm:p-3 md:p-4 lg:p-4 xl:p-5">
           <CardHeader>
-            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-sm sm:text-base md:text-lg xl:text-base'>
+            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-xs sm:text-sm md:text-lg xl:text-base'>
               <Headset className='-translate-y-0.5' /> Flexibility
             </CardDescription>
-            <CardTitle className='mt-3 sm:mt-4 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-base sm:text-lg md:text-xl xl:text-lg'>
+            <CardTitle className='mt-2 sm:mt-3 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-sm sm:text-base md:text-xl xl:text-lg'>
               24/7 Customer Support
             </CardTitle>
           </CardHeader>
@@ -91,12 +90,12 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-xl sm:rounded-2xl xl:rounded-2xl content-center items-center p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5">
+        <Card className="rounded-lg sm:rounded-xl xl:rounded-2xl content-center items-center p-2 sm:p-3 md:p-4 lg:p-4 xl:p-5">
           <CardHeader>
-            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-sm sm:text-base md:text-lg xl:text-base'>
+            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-xs sm:text-sm md:text-lg xl:text-base'>
               <Route className='-translate-y-0.5' /> Ease
             </CardDescription>
-            <CardTitle className='mt-3 sm:mt-4 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-base sm:text-lg md:text-xl xl:text-lg'>
+            <CardTitle className='mt-2 sm:mt-3 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-sm sm:text-base md:text-xl xl:text-lg'>
               Multiple drop-off points
             </CardTitle>
           </CardHeader>
@@ -107,12 +106,12 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-xl sm:rounded-2xl xl:rounded-2xl content-center items-center p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5">
+        <Card className="rounded-lg sm:rounded-xl xl:rounded-2xl content-center items-center p-2 sm:p-3 md:p-4 lg:p-4 xl:p-5">
           <CardHeader>
-            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-sm sm:text-base md:text-lg xl:text-base'>
+            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-xs sm:text-sm md:text-lg xl:text-base'>
               <Navigation className='-translate-y-0.5' /> Track
             </CardDescription>
-            <CardTitle className='mt-3 sm:mt-4 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-base sm:text-lg md:text-xl xl:text-lg'>
+            <CardTitle className='mt-2 sm:mt-3 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-sm sm:text-base md:text-xl xl:text-lg'>
               Live tracking
             </CardTitle>
           </CardHeader>
@@ -123,12 +122,12 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-xl sm:rounded-2xl xl:rounded-2xl content-center items-center p-3 sm:p-4 md:p-5 lg:p-4 xl:p-5">
+        <Card className="rounded-lg sm:rounded-xl xl:rounded-2xl content-center items-center p-2 sm:p-3 md:p-4 lg:p-4 xl:p-5">
           <CardHeader>
-            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-sm sm:text-base md:text-lg xl:text-base'>
+            <CardDescription className='flex flex-row gap-2 mb-1 sm:mb-2 text-xs sm:text-sm md:text-lg xl:text-base'>
               <BadgeCheck className='-translate-y-0.5' /> Trusted
             </CardDescription>
-            <CardTitle className='mt-3 sm:mt-4 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-base sm:text-lg md:text-xl xl:text-lg'>
+            <CardTitle className='mt-2 sm:mt-3 md:mt-5 lg:mt-4 xl:mt-5 font-generalMedium text-sm sm:text-base md:text-xl xl:text-lg'>
               Verified Capptains
             </CardTitle>
           </CardHeader>
