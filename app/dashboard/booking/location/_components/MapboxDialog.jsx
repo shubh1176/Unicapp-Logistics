@@ -64,12 +64,12 @@ function MapboxDialog({ isOpen, onClose, onSelectLocation, defaultLocation }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent className="p-4 md:p-6 lg:p-8">
         <DialogHeader>
-          <DialogTitle>Select Location</DialogTitle>
+          <DialogTitle className="text-lg md:text-xl">Select Location</DialogTitle>
         </DialogHeader>
         <div className="mapbox-dialog">
-          <div ref={geocoderContainerRef} className="geocoder-container" style={{ marginBottom: '10px' }} />
+          <div ref={geocoderContainerRef} className="geocoder-container mb-4" />
           <Map
             ref={mapRef}
             initialViewState={{
@@ -77,7 +77,7 @@ function MapboxDialog({ isOpen, onClose, onSelectLocation, defaultLocation }) {
               latitude: defaultLocation?.latitude || 28.6139,
               zoom: 12,
             }}
-            style={{ width: '100%', height: 400 }}
+            style={{ width: '100%', height: '300px', minHeight: '200px', borderRadius: '8px' }}
             mapStyle="mapbox://styles/mapbox/streets-v11"
             mapboxAccessToken={MAPBOX_TOKEN}
             onClick={handleMapClick}
@@ -89,13 +89,13 @@ function MapboxDialog({ isOpen, onClose, onSelectLocation, defaultLocation }) {
             )}
           </Map>
         </div>
-        <div>
-          <p>Selected Address: {address}</p>
+        <div className="mt-4">
+          <p className="text-sm md:text-base">Selected Address: {address}</p>
         </div>
-        <DialogFooter>
-          <Button onClick={handleConfirm}>Confirm Location</Button>
+        <DialogFooter className="flex flex-col md:flex-row gap-2 mt-4">
+          <Button onClick={handleConfirm} className="w-full md:w-auto">Confirm Location</Button>
           <DialogClose asChild>
-            <Button variant="ghost">Cancel</Button>
+            <Button variant="ghost" className="w-full md:w-auto">Cancel</Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>
