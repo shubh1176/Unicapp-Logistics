@@ -158,26 +158,28 @@ export default function Home() {
         <WhyUs />
       </div>
 
-      <div className="relative flex flex-col content-center items-center mt-10 mx-7 md:mt-20 lg:mt-32 mb-10 md:mb-20 lg:mb-32">
-        <div className="relative">
+      <div className="relative flex flex-col items-center mt-10 mx-4 sm:mx-7 md:mt-20 lg:mt-32 mb-10 md:mb-20 lg:mb-32">
+        <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl">
           {/* Responsive Image for the sticker */}
           <Image 
             src={'/images/sticker.svg'} 
-            height={300} 
-            width={350} 
-            className="h-auto w-auto sm:h-[400px] sm:w-[450px] md:h-[600px] md:w-[650px] lg:h-[850px] lg:w-[1050px]" 
+            layout="responsive"
+            width={1050} 
+            height={850} 
+            className="h-auto w-full" 
             priority={true} 
             alt="Sticker"
             sizes="(max-width: 640px) 300px, (max-width: 768px) 450px, (max-width: 1024px) 650px, 1050px"
           />
           
           {/* Responsive positioning for the icon */}
-          <div className="absolute bottom-10 sm:bottom-20 md:bottom-30 lg:bottom-40 right-10 sm:right-20 md:right-40 lg:right-60 w-8 sm:w-10 md:w-14 lg:w-20 h-8 sm:h-10 md:h-14 lg:h-20 transform translate-x-4 sm:translate-x-6 -translate-y-2 sm:-translate-y-4 rotate-0">
+          <div className="absolute bottom-[10%] sm:bottom-[15%] md:bottom-[20%] lg:bottom-[25%] right-[5%] sm:right-[10%] md:right-[15%] lg:right-[20%] w-8 sm:w-10 md:w-14 lg:w-20 h-8 sm:h-10 md:h-14 lg:h-20 transform translate-x-[5%] sm:translate-x-[10%] -translate-y-1 sm:-translate-y-2 md:-translate-y-4 lg:-translate-y-6 rotate-0">
             <Image 
               src={'/images/iconblack.svg'} 
-              height={30} 
-              width={30} 
-              className="h-auto w-auto sm:h-[40px] sm:w-[45px] md:h-[60px] md:w-[70px] lg:h-[90px] lg:w-[90px]" 
+              layout="responsive"
+              width={90} 
+              height={90} 
+              className="h-auto w-full" 
               priority={true} 
               alt="Icon"
               sizes="(max-width: 640px) 30px, (max-width: 768px) 45px, (max-width: 1024px) 70px, 90px"
@@ -185,6 +187,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
 
 
       <div className="flex flex-col content-center items-center mt-10 md:mt-20 mb-10"> {/* Adjusted bottom margin */}
