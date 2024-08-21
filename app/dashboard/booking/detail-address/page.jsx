@@ -1,18 +1,18 @@
-import React from 'react'
-import LeftDivAdd from './_components/LeftDivAdd'
-import RightDivAdd from './_components/RightDivAdd'
+import React from 'react';
+import LeftDivAdd from './_components/LeftDivAdd';
+import RightDivAdd from './_components/RightDivAdd';
 
-function page({params}) {
+function page({ params }) {
   return (
-    <div className='flex'>
-      <div className='w-1/2  bg-gray-100 p-10'>
+    <div className="flex flex-col lg:flex-row h-auto lg:h-screen">
+      <div className="lg:w-1/2 w-full p-10 sm:-translate-y-11 bg-white">
         <LeftDivAdd />
       </div>
-      <div className='w-1/2'>
+      <div className="lg:w-1/2 w-full bg-white">
         <RightDivAdd />
       </div>
     </div>
   );
 }
 
-export default page
+export default page;
