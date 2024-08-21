@@ -203,8 +203,8 @@ export default function Home() {
         <span className="font-generalRegular mb-5 md:mb-10 text-lg md:text-2xl mt-2 md:mt-5">Don't worry, it's easy ;)</span>
         <Image 
           src={'/images/howtouse.svg'} 
-          height={450} 
-          width={500} 
+          height={800} 
+          width={800} 
           className="md:h-[900px] md:w-[1100px]" 
           loading="lazy" 
           sizes="(max-width: 640px) 450px, (max-width: 1024px) 900px, 1100px"
