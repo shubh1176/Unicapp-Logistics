@@ -68,7 +68,7 @@ function RightDivAdd() {
   };
 
   return (
-    <div className="flex flex-col justify-center bg-white items-start h-full p-10 translate-x-14">
+    <div className="flex flex-col justify-center bg-white items-start h-full p-10 translate-x-14 lg:pt-28">
       <div className="mb-5 w-full">
         <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 2/6</h2>
         <div className="flex mt-4 mb-9 -translate-x-1.5">
