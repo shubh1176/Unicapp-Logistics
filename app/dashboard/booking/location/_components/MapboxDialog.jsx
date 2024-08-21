@@ -64,7 +64,7 @@ function MapboxDialog({ isOpen, onClose, onSelectLocation, defaultLocation }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="p-4 md:p-6 lg:p-8">
+      <DialogContent className="p-4 md:p-6 lg:p-8 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
         <DialogHeader>
           <DialogTitle className="text-lg md:text-xl">Select Location</DialogTitle>
         </DialogHeader>
@@ -77,7 +77,7 @@ function MapboxDialog({ isOpen, onClose, onSelectLocation, defaultLocation }) {
               latitude: defaultLocation?.latitude || 28.6139,
               zoom: 12,
             }}
-            style={{ width: '100%', height: '300px', minHeight: '200px', borderRadius: '8px' }}
+            style={{ width: '100%', height: '400px', minHeight: '300px', borderRadius: '8px' }}
             mapStyle="mapbox://styles/mapbox/streets-v11"
             mapboxAccessToken={MAPBOX_TOKEN}
             onClick={handleMapClick}
