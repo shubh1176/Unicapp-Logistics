@@ -18,7 +18,7 @@ export default function Home() {
     <div className="flex flex-col gap-4 justify-center bg-[#F1EDEA]">
       <div className="relative">
         <Header />
-        <div className="text-center bg-gradient-to-b h-auto md:h-[90vh] from-[#8D14CE] to-[#470A68] text-white pb-16 md:pb-24 pt-8 rounded-br-3xl rounded-bl-3xl flex flex-col justify-center items-center">
+        <div className="text-center bg-gradient-to-b h-auto md:h-[80vh] lg:h-[60vh] from-[#8D14CE] to-[#470A68] text-white pb-16 md:pb-24 pt-8 rounded-br-3xl rounded-bl-3xl flex flex-col justify-center items-center">
           <div className="flex flex-col items-center space-y-3">
             <div className="flex flex-col gap-2 mb-3">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-filson">
@@ -27,7 +27,9 @@ export default function Home() {
                 </span>{" "}
                 any item, any time
               </h1>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-filson">with just a few clicks!</h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-filson">
+                with just a few clicks!
+              </h1>
             </div>
             <p className="mt-4 sm:mt-6 text-md sm:text-lg md:text-xl lg:text-2xl font-generalLight">
               No need to step out, ship with ease using our <br className="hidden md:block" /> doorstep pickup and delivery service.
@@ -139,7 +141,8 @@ export default function Home() {
           <div className="mt-6 md:mt-10 hover:cursor-pointer">
             <Image 
               src={'/images/getEst.svg'} 
-              width={90} height={60} 
+              width={90} 
+              height={60} 
               className="w-24 h-16 md:w-48 md:h-28" 
               alt="Pickup" 
               onClick={() => router.push('/estimate')} 
@@ -147,6 +150,7 @@ export default function Home() {
             />
           </div>
         </div>
+
       </div>
       
       {/* Eliminate unnecessary space */}
