@@ -88,7 +88,7 @@ function RightDivAdd() {
           <label className="block mb-2 font-generalRegular">Pickup details</label>
           <Input
             placeholder="House no."
-            className="mb-3 w-72 h-12 rounded-xl"
+            className="mb-3 w-96 h-12 rounded-xl"
             value={detailedPickupAddress.houseNo}
             onChange={(e) => {
               setDetailedPickupAddress({ ...detailedPickupAddress, houseNo: e.target.value });
@@ -98,13 +98,13 @@ function RightDivAdd() {
           {errors.pickupHouseNo && <p className="text-red-500">{errors.pickupHouseNo}</p>}
           <Input
             placeholder="Floor"
-            className="mb-3 w-72 h-12 rounded-xl"
+            className="mb-3 w-96 h-12 rounded-xl"
             value={detailedPickupAddress.floor}
             onChange={(e) => setDetailedPickupAddress({ ...detailedPickupAddress, floor: e.target.value })}
           />
           <Input
             placeholder="Nearby landmark (optional)"
-            className="w-72 h-12 rounded-xl"
+            className="w-96 h-12 rounded-xl"
             value={detailedPickupAddress.landmark}
             onChange={(e) => setDetailedPickupAddress({ ...detailedPickupAddress, landmark: e.target.value })}
           />
@@ -115,20 +115,20 @@ function RightDivAdd() {
             <label className="block mb-2 font-generalRegular">{`Delivery Point ${index + 1} details`}</label>
             <Input
               placeholder="House no."
-              className="mb-3 w-72 h-12 rounded-xl"
+              className="mb-3 w-96 h-12 rounded-xl"
               value={detailedStopsAddress[index]?.houseNo || ''}
               onChange={(e) => handleStopDetailsChange(index, 'houseNo', e.target.value)}
             />
             {errors[`stopHouseNo-${index}`] && <p className="text-red-500">{errors[`stopHouseNo-${index}`]}</p>}
             <Input
               placeholder="Floor"
-              className="mb-3 w-72 h-12 rounded-xl"
+              className="mb-3 w-96 h-12 rounded-xl"
               value={detailedStopsAddress[index]?.floor || ''}
               onChange={(e) => handleStopDetailsChange(index, 'floor', e.target.value)}
             />
             <Input
               placeholder="Nearby landmark (optional)"
-              className="w-72 h-12 rounded-xl"
+              className="w-96 h-12 rounded-xl"
               value={detailedStopsAddress[index]?.landmark || ''}
               onChange={(e) => handleStopDetailsChange(index, 'landmark', e.target.value)}
             />
@@ -140,7 +140,7 @@ function RightDivAdd() {
         <label className="block mb-2 font-generalRegular">Drop-off details</label>
         <Input
           placeholder="House no."
-          className="mb-3 w-72 h-12 rounded-xl"
+          className="mb-3 w-96 h-12 rounded-xl"
           value={detailedDropOffAddress.houseNo}
           onChange={(e) => {
             setDetailedDropOffAddress({ ...detailedDropOffAddress, houseNo: e.target.value });
@@ -150,13 +150,13 @@ function RightDivAdd() {
         {errors.dropOffHouseNo && <p className="text-red-500">{errors.dropOffHouseNo}</p>}
         <Input
           placeholder="Floor"
-          className="mb-3 w-72 h-12 rounded-xl"
+          className="mb-3 w-96 h-12 rounded-xl"
           value={detailedDropOffAddress.floor}
           onChange={(e) => setDetailedDropOffAddress({ ...detailedDropOffAddress, floor: e.target.value })}
         />
         <Input
           placeholder="Nearby landmark (optional)"
-          className="w-72 h-12 rounded-xl"
+          className="w-96 h-12 rounded-xl"
           value={detailedDropOffAddress.landmark}
           onChange={(e) => setDetailedDropOffAddress({ ...detailedDropOffAddress, landmark: e.target.value })}
         />
@@ -174,7 +174,7 @@ function RightDivAdd() {
           <span className="text-2xl rounded-2xl"><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className="py-6 px-10 w-80 sm:w-52 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
+          className="py-6 px-10 lg:w-80 sm:w-80 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
           onClick={(e) => {
             e.preventDefault();
             handleContinue();
