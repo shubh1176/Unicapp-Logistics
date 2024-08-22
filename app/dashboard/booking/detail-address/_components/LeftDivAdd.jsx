@@ -139,8 +139,8 @@ const LeftDivAdd = () => {
   }, [pickupCoords, dropCoords, stops, pickupLocation, dropLocation]);
 
   return (
-    <div className={`flex flex-col items-center mt-10 ${isSmallScreen ? 'lg:-translate-y-20' : 'lg:-translate-y-32'}`}>
-      <div className={`items-start ${isSmallScreen ? 'ml-0' : 'ml-32'}`}>
+    <div className="bg-white flex flex-col items-center mt-10 lg:-translate-y-28 p-4 sm:p-8 lg:p-10 w-full sm:translate-x-4">
+      <div className="items-start ml-0 lg:ml-32">
         {!isSmallScreen && (
           <div className="flex justify-between items-center mb-4 lg:mb-0 lg:-translate-x-5 lg:translate-y-8 h-44 w-44">
             <img src='/images/blackonwhitelogo.svg' alt='unicapp' />
@@ -149,7 +149,7 @@ const LeftDivAdd = () => {
         <div className="text-center lg:text-left">
           <h2 className="text-2xl font-bold mb-5 lg:mb-3 lg:translate-x-2 lg:-translate-y-4">Your Package</h2>
           <div id="map" className="w-full lg:w-96 h-36 border-2 rounded-xl lg:translate-x-3 lg:-translate-y-4 mb-4"></div>
-          <div className={`lg:p-10 lg:text-left text-center grid grid-cols-1 sm:grid-cols-2 gap-4 ${isSmallScreen ? 'grid-cols-2' : 'lg:flex lg:flex-col lg:items-start lg:translate-x-0 lg:translate-y-0'}`}>
+          <div className={`grid gap-4 ${isSmallScreen ? 'grid-cols-2' : 'lg:flex lg:flex-col lg:items-start'}`}>
             <div className="flex items-center mb-6">
               <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                 <ArrowUp size={20} />
