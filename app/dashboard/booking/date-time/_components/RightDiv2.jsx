@@ -118,21 +118,23 @@ const RightDiv2 = () => {
           ))}
         </div>
       </div>
-      <div className="mt-8 sm:mt-10 flex flex-col sm:flex-col justify-start gap-3 sm:gap-1">
+      <div className="mt-8 sm:mt-10 flex justify-start gap-2 sm:gap-3">
         <Button
           variant="outline"
-          className="py-4 px-3 sm:px-4 rounded-lg sm:rounded-xl border border-gray-300 text-gray-600 w-full sm:w-auto"
+          className="py-4 px-3 sm:px-4 rounded-lg sm:rounded-xl border border-gray-300 text-gray-600 w-16 sm:w-20"
           onClick={() => router.push('/dashboard/booking/detail-address')}
         >
           <span className="text-xl sm:text-2xl rounded-2xl"><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className="py-4 px-6 w-full sm:w-auto rounded-lg sm:rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
+          className="py-4 px-6 rounded-lg sm:rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white w-56 sm:w-2/3"
           onClick={() => router.push('/dashboard/booking/details')}
         >
           Continue
         </Button>
       </div>
+
+
     </div>
   );
 };
