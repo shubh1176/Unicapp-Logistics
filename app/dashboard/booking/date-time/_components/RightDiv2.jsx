@@ -57,43 +57,43 @@ const RightDiv2 = () => {
   const today = startOfToday();
 
   return (
-    <div className='p-10 translate-x-20 translate-y-20'>
-      <div className='mb-5 w-full'>
-          <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 3/6</h2>
-          <div className="flex mt-4 mb-9 -translate-x-1.5">
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
-            <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
-            <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
-          </div>
+    <div className="p-5 sm:p-10 translate-x-0 sm:translate-x-20 translate-y-0 sm:translate-y-20">
+      <div className="mb-5 w-full">
+        <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 3/6</h2>
+        <div className="flex mt-4 mb-9 -translate-x-1.5">
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+          <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
+          <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
+          <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
         </div>
-      <h2 className='text-3xl font-generalSemiBold'>Date & Time</h2>
-      <p className='mt-2 w-96 mb-5'>Choose a time you'd like us to arrive at your pickup location</p>
-      <div className='mt-7'>
-        <h3 className='text-lg font-semibold'>Select day</h3>
-        <div className='flex space-x-4 mt-3'>
+      </div>
+      <h2 className="text-3xl font-generalSemiBold">Date & Time</h2>
+      <p className="mt-2 w-full sm:w-96 mb-5">Choose a time you'd like us to arrive at your pickup location</p>
+      <div className="mt-7">
+        <h3 className="text-lg font-semibold">Select day</h3>
+        <div className="flex space-x-4 mt-3">
           {dates.map((day, index) => (
             <button
               key={index}
-              className={`py-2 px-4 w-20 h-20 rounded-xl border ${date.toDateString() === day.toDateString() ? 'bg-purple-600 text-white border-transparent' : 'bg-white border-gray-300 text-gray-600'}  hover:bg-white hover:text-black hover:border-[#8D26CA]`}
+              className={`py-2 px-4 w-20 h-20 rounded-xl border ${date.toDateString() === day.toDateString() ? 'bg-purple-600 text-white border-transparent' : 'bg-white border-gray-300 text-gray-600'} hover:bg-white hover:text-black hover:border-[#8D26CA]`}
               onClick={() => handleDateChange(day)}
             >
-              <span className='block text-sm font-semibold'>{index === 0 ? 'Today' : format(day, 'eee')}</span>
-              <span className='block text-xl font-bold'>{format(day, 'd')}</span>
+              <span className="block text-sm font-semibold">{index === 0 ? 'Today' : format(day, 'eee')}</span>
+              <span className="block text-xl font-bold">{format(day, 'd')}</span>
             </button>
           ))}
           <Popover>
             <PopoverTrigger asChild>
               <button
-                className='py-2 px-4 w-20 h-20 border bg-white border-gray-300 text-gray-600 rounded-xl'
+                className="py-2 px-4 w-20 h-20 border bg-white border-gray-300 text-gray-600 rounded-xl"
               >
-                <span className='block text-sm font-semibold'>More</span>
-                <span className='block text-xl font-bold'>⌄</span>
+                <span className="block text-sm font-semibold">More</span>
+                <span className="block text-xl font-bold">⌄</span>
               </button>
             </PopoverTrigger>
-            <PopoverContent className='p-5 rounded-xl'>
+            <PopoverContent className="p-5 rounded-xl">
               <Calendar
                 mode="single"
                 selected={date}
@@ -104,13 +104,13 @@ const RightDiv2 = () => {
           </Popover>
         </div>
       </div>
-      <div className='mt-5 mr-52'>
-        <h3 className='text-lg font-semibold'>Select time</h3>
-        <div className='grid grid-cols-2 mt-3 gap-x-0 gap-y-2'>
+      <div className="mt-5 sm:mr-52">
+        <h3 className="text-lg font-semibold">Select time</h3>
+        <div className="grid grid-cols-2 mt-3 gap-x-4 gap-y-4">
           {timeSlots.map((timeOption, index) => (
             <Button
               key={index}
-              className={`py-2 px-24 -mr-2 mb-2 w-40 rounded-xl border ${time === timeOption ? 'bg-[#8B14CC] text-white border-transparent' : 'bg-white border-gray-300 text-black'} hover:bg-white hover:text-black hover:border-[#8D26CA]`}
+              className={`py-2 px-24 -mr-2 mb-2 w-full sm:w-40 rounded-xl border ${time === timeOption ? 'bg-[#8B14CC] text-white border-transparent' : 'bg-white border-gray-300 text-black'} hover:bg-white hover:text-black hover:border-[#8D26CA]`}
               onClick={() => handleTimeChange(timeOption)}
             >
               {timeOption}
@@ -118,16 +118,16 @@ const RightDiv2 = () => {
           ))}
         </div>
       </div>
-      <div className='mt-10 flex justify-start gap-3'>
+      <div className="mt-10 flex justify-start gap-3">
         <Button
           variant="outline"
-          className='py-6 px-4 rounded-xl border border-gray-300 text-gray-600'
+          className="py-6 px-4 rounded-xl border border-gray-300 text-gray-600"
           onClick={() => router.push('/dashboard/booking/detail-address')}
         >
-          <span className='text-2xl rounded-2xl'><ChevronLeft size={20} /></span>
+          <span className="text-2xl rounded-2xl"><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className='py-6 px-10 w-full mr-60 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
+          className="py-6 px-10 lg:w-96 sm:w-full rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
           onClick={() => router.push('/dashboard/booking/details')}
         >
           Continue
@@ -135,6 +135,6 @@ const RightDiv2 = () => {
       </div>
     </div>
   );
-}
+};
 
 export default RightDiv2;
