@@ -139,7 +139,7 @@ const LeftDivAdd = () => {
   }, [pickupCoords, dropCoords, stops, pickupLocation, dropLocation]);
 
   return (
-    <div className="bg-white flex flex-col items-center mt-10 lg:-translate-y-28 p-4 sm:p-8 lg:p-10 w-full sm:translate-x-4">
+    <div className="bg-white flex flex-col items-center mt-10 lg:-translate-y-28 p-4 sm:p-8 lg:p-10 w-full sm:translate-x-">
       <div className="items-start ml-0 lg:ml-32">
         {!isSmallScreen && (
           <div className="flex justify-between items-center mb-4 lg:mb-0 lg:-translate-x-5 lg:translate-y-8 h-44 w-44">
