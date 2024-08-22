@@ -57,7 +57,7 @@ const RightDiv2 = () => {
   const today = startOfToday();
 
   return (
-    <div className="p-4 sm:p-8 md:p-10 translate-x-0 sm:translate-x-10 translate-y-0 sm:translate-y-10 bg-white rounded-lg shadow-md max-w-full">
+    <div className="p-4 sm:p-8 md:p-10 translate-x-0 sm:translate-x-10 translate-y-0 sm:translate-y-10 bg-white rounded-lg max-w-full">
       <div className="mb-4 sm:mb-5 w-full">
         <h2 className="text-sm sm:text-base font-generalMedium text-[#8B14CC]">STEP 3/6</h2>
         <div className="flex mt-3 sm:mt-4 mb-6 sm:mb-8 -translate-x-1.5">
@@ -118,7 +118,7 @@ const RightDiv2 = () => {
           ))}
         </div>
       </div>
-      <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-start gap-3 sm:gap-4">
+      <div className="mt-8 sm:mt-10 flex flex-col sm:flex-col justify-start gap-3 sm:gap-1">
         <Button
           variant="outline"
           className="py-4 px-3 sm:px-4 rounded-lg sm:rounded-xl border border-gray-300 text-gray-600 w-full sm:w-auto"
