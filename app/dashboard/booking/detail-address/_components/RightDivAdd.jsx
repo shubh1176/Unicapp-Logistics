@@ -174,7 +174,7 @@ function RightDivAdd() {
           <span className="text-2xl rounded-2xl"><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className="py-6 px-10 w-80 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
+          className="py-6 px-10 w-80 sm:w-52 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
           onClick={(e) => {
             e.preventDefault();
             handleContinue();
