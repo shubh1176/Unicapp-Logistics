@@ -68,7 +68,7 @@ function RightDivAdd() {
   };
 
   return (
-    <div className="flex flex-col justify-center bg-white items-start h-full p-10 translate-x-14 lg:pt-28">
+    <div className="flex flex-col justify-center bg-white items-start h-full p-10 translate-x-5 lg:translate-x-14 lg:pt-28 w-full sm:max-w-xl lg:max-w-full">
       <div className="mb-5 w-full">
         <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 2/6</h2>
         <div className="flex mt-4 mb-9 -translate-x-1.5">
@@ -88,7 +88,7 @@ function RightDivAdd() {
           <label className="block mb-2 font-generalRegular">Pickup details</label>
           <Input
             placeholder="House no."
-            className="mb-3 w-96 h-12 rounded-xl"
+            className="mb-3 w-full h-12 rounded-xl"
             value={detailedPickupAddress.houseNo}
             onChange={(e) => {
               setDetailedPickupAddress({ ...detailedPickupAddress, houseNo: e.target.value });
@@ -98,13 +98,13 @@ function RightDivAdd() {
           {errors.pickupHouseNo && <p className="text-red-500">{errors.pickupHouseNo}</p>}
           <Input
             placeholder="Floor"
-            className="mb-3 w-96 h-12 rounded-xl"
+            className="mb-3 w-full h-12 rounded-xl"
             value={detailedPickupAddress.floor}
             onChange={(e) => setDetailedPickupAddress({ ...detailedPickupAddress, floor: e.target.value })}
           />
           <Input
             placeholder="Nearby landmark (optional)"
-            className="w-96 h-12 rounded-xl"
+            className="w-full h-12 rounded-xl"
             value={detailedPickupAddress.landmark}
             onChange={(e) => setDetailedPickupAddress({ ...detailedPickupAddress, landmark: e.target.value })}
           />
@@ -115,20 +115,20 @@ function RightDivAdd() {
             <label className="block mb-2 font-generalRegular">{`Delivery Point ${index + 1} details`}</label>
             <Input
               placeholder="House no."
-              className="mb-3 w-96 h-12 rounded-xl"
+              className="mb-3 w-full h-12 rounded-xl"
               value={detailedStopsAddress[index]?.houseNo || ''}
               onChange={(e) => handleStopDetailsChange(index, 'houseNo', e.target.value)}
             />
             {errors[`stopHouseNo-${index}`] && <p className="text-red-500">{errors[`stopHouseNo-${index}`]}</p>}
             <Input
               placeholder="Floor"
-              className="mb-3 w-96 h-12 rounded-xl"
+              className="mb-3 w-full h-12 rounded-xl"
               value={detailedStopsAddress[index]?.floor || ''}
               onChange={(e) => handleStopDetailsChange(index, 'floor', e.target.value)}
             />
             <Input
               placeholder="Nearby landmark (optional)"
-              className="w-96 h-12 rounded-xl"
+              className="w-full h-12 rounded-xl"
               value={detailedStopsAddress[index]?.landmark || ''}
               onChange={(e) => handleStopDetailsChange(index, 'landmark', e.target.value)}
             />
@@ -140,7 +140,7 @@ function RightDivAdd() {
         <label className="block mb-2 font-generalRegular">Drop-off details</label>
         <Input
           placeholder="House no."
-          className="mb-3 w-96 h-12 rounded-xl"
+          className="mb-3 w-full h-12 rounded-xl"
           value={detailedDropOffAddress.houseNo}
           onChange={(e) => {
             setDetailedDropOffAddress({ ...detailedDropOffAddress, houseNo: e.target.value });
@@ -150,13 +150,13 @@ function RightDivAdd() {
         {errors.dropOffHouseNo && <p className="text-red-500">{errors.dropOffHouseNo}</p>}
         <Input
           placeholder="Floor"
-          className="mb-3 w-96 h-12 rounded-xl"
+          className="mb-3 w-full h-12 rounded-xl"
           value={detailedDropOffAddress.floor}
           onChange={(e) => setDetailedDropOffAddress({ ...detailedDropOffAddress, floor: e.target.value })}
         />
         <Input
           placeholder="Nearby landmark (optional)"
-          className="w-96 h-12 rounded-xl"
+          className="w-full h-12 rounded-xl"
           value={detailedDropOffAddress.landmark}
           onChange={(e) => setDetailedDropOffAddress({ ...detailedDropOffAddress, landmark: e.target.value })}
         />
