@@ -68,8 +68,8 @@ function RightDivAdd() {
   };
 
   return (
-    <div className="flex flex-col justify-center bg-white items-start h-full p-5 sm:p-8 lg:p-10 w-full max-w-3xl mx-auto lg:-translate-y-48">
-      <div className="mb-5 w-full">
+    <div className="flex flex-col justify-center bg-white items-start h-full p-6 sm:p-8 lg:p-12 w-full max-w-3xl mx-auto lg:translate-y-0">
+      <div className="mb-6 w-full">
         <h2 className="text-base font-generalMedium text-[#8B14CC]">STEP 2/6</h2>
         <div className="flex mt-4 mb-6">
           <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
@@ -174,7 +174,7 @@ function RightDivAdd() {
           <ChevronLeft size={20} />
         </Button>
         <Button
-          className="py-4 px-6 rounded-xl w-96 bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
+          className="py-4 px-6 rounded-xl w-full sm:w-96 bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
           onClick={(e) => {
             e.preventDefault();
             handleContinue();
