@@ -9,7 +9,7 @@ function RightDiv5() {
     const router = useRouter()
   return (
     <div>
-      <div className='flex flex-col gap-7 mt-52 ml-28'>
+      <div className='flex flex-col gap-7 lg:mt-52 lg:ml-28 sm:mt-7 sm:ml-8'>
         <div className='flex flex-row gap-4'>
             <Image src={'/images/Approval.svg'} width={100} height={100} />
             <h2 className='font-generalSemiBold mt-8 text-4xl'>Order Confirmed!</h2>
