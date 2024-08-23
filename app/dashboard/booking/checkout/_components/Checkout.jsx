@@ -399,7 +399,7 @@ const Checkout = () => {
       }
 
       // Ensure the amount is correctly multiplied by 100 to convert to paise
-      const { data: order } = await axios.post('/api/new-order', { amount: Math.round(parseFloat(amountToPay) * 100) });
+      const { data: order } = await axios.post('/api/new-order', { amount: Math.round(parseFloat(amountToPay) * 100) }); // Ensure amount is in paise
       const { id: order_id, currency, amount: amountInPaisa } = order;
 
       const options = {
@@ -479,7 +479,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className='px-6 py-6 sm:px-8 lg:p-10 max-w-xl mx-auto lg:translate-y-20'>
+    <div className='max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-xl mx-auto lg:translate-y-20'>
       {orderType === 'Pickup & Drop' ? (
         <>
           <div className='mb-5 w-full'>
