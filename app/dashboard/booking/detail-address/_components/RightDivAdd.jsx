@@ -68,10 +68,10 @@ function RightDivAdd() {
   };
 
   return (
-    <div className="flex flex-col justify-center bg-white items-center h-full p-4 sm:p-6 lg:p-10 w-full max-w-3xl mx-auto lg:translate-y-0">
+    <div className="flex flex-col justify-center bg-white items-center h-full p-4 sm:p-6 lg:p-10 w-full max-w-2xl mx-auto lg:-translate-y-32 lg:pt-16">
       <div className="mb-6 w-full">
-        <h2 className="text-base font-generalMedium text-[#8B14CC]">STEP 2/6</h2>
-        <div className="flex mt-4 mb-6">
+        <h2 className="text-base font-generalMedium text-[#8B14CC] text-center sm:text-left">STEP 2/6</h2>
+        <div className="flex mt-4 mb-6 justify-center sm:justify-start">
           <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
           <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
           <div className="w-14 h-1 bg-gray-300 rounded mx-1"></div>
@@ -83,7 +83,7 @@ function RightDivAdd() {
         <p className="mt-2 text-lg font-generalRegular text-center sm:text-left">Enter house number, floor, etc.</p>
       </div>
 
-      <div className="w-full mt-4 grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-4 sm:gap-x-8 sm:gap-y-6">
+      <div className="w-full mt-4 space-y-4">
         <div>
           <label className="block mb-2 font-generalRegular">Pickup details</label>
           <Input
@@ -137,7 +137,7 @@ function RightDivAdd() {
         </div>
 
         {stops.map((_, index) => (
-          <div className="col-span-2" key={index}>
+          <div key={index}>
             <label className="block mb-2 font-generalRegular">{`Delivery Point ${index + 1} details`}</label>
             <Input
               placeholder="House no."
@@ -162,7 +162,7 @@ function RightDivAdd() {
         ))}
       </div>
 
-      <div className="flex justify-start mt-10 gap-3 w-full">
+      <div className="flex justify-start mt-8 gap-3 w-full">
         <Button
           variant="outline"
           className="py-4 px-4 rounded-xl border border-gray-300 text-gray-600 w-16 sm:w-20"
