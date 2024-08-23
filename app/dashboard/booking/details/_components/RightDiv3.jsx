@@ -87,9 +87,9 @@ const RightDiv3 = () => {
       {orderType === 'Courier' && (
         <div className="mt-5 flex flex-col">
           <p className="mb-3">Dimensions (cm)</p>
-          <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+          <div className="flex space-x-4">
             <Input
-              className="w-full sm:w-20 focus:outline-none focus:ring-0"
+              className="w-24 focus:outline-none focus:ring-0"
               placeholder="Length"
               value={length}
               onChange={(e) => {
@@ -98,7 +98,7 @@ const RightDiv3 = () => {
               }}
             />
             <Input
-              className="w-full sm:w-20 focus:outline-none focus:ring-0"
+              className="w-24 focus:outline-none focus:ring-0"
               placeholder="Width"
               value={width}
               onChange={(e) => {
@@ -107,7 +107,7 @@ const RightDiv3 = () => {
               }}
             />
             <Input
-              className="w-full sm:w-20 focus:outline-none focus:ring-0"
+              className="w-24 focus:outline-none focus:ring-0"
               placeholder="Height"
               value={height}
               onChange={(e) => {
