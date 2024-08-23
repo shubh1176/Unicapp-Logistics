@@ -11,7 +11,7 @@ function Page() {
       </div>
       {/* RightDiv5 takes full width on small screens and half width on large screens */}
       <div className="lg:w-1/2 w-full h-screen flex items-center justify-center px-6 lg:px-10 bg-white">
-        <div className="mt-[-52px] lg:mt-0"> {/* Move RightDiv5 slightly up on small screens */}
+        <div className="mt-[-96px] lg:mt-0"> {/* Move RightDiv5 slightly up on small screens */}
           <RightDiv5 />
         </div>
       </div>
