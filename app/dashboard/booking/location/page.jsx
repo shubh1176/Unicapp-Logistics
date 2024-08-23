@@ -8,7 +8,7 @@ export default function page() {
       <div className='w-full md:w-1/2 pl-8'>
         <LeftDiv />
       </div>
-      <div className='w-full md:w-1/2'>
+      <div className='w-full md:w-1/2 pb-10'>
         <RightDiv />
       </div>
     </div>
