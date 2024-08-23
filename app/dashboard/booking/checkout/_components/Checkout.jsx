@@ -477,22 +477,22 @@ const Checkout = () => {
   };
 
   return (
-    <div className='p-10 translate-x-20 translate-y-20'>
+    <div className='px-4 py-6 sm:px-6 lg:p-10 max-w-xl mx-auto'>
       {orderType === 'Pickup & Drop' ? (
         <>
           <div className='mb-5 w-full'>
             <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 6/6</h2>
-            <div className="flex mt-4 mb-9 -translate-x-1.5">
-              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+            <div className="flex mt-4 mb-9">
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
             </div>
           </div>
-          <h2 className='text-5xl font-generalSemiBold'>Pricing</h2>
-          <div className='mt-5 flex flex-col w-96 gap-3'>
+          <h2 className='text-3xl sm:text-5xl font-generalSemiBold'>Pricing</h2>
+          <div className='mt-5 flex flex-col gap-3'>
             <div className=' flex flex-row justify-between'>
               <p>Trip Fare ({distance.toFixed(1)} kms)</p>
               <p> ₹{amount}</p> {/* Amount is already fixed to 2 decimal places */}
@@ -539,17 +539,17 @@ const Checkout = () => {
         <>
           <div className="mb-5">
             <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 6/6</h2>
-            <div className="flex mt-4 mb-9 -translate-x-1.5">
-              <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
-              <div className="w-16 h-1 bg-[#8B14CC] rounded mx-2"></div>
+            <div className="flex mt-4 mb-9">
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+              <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
             </div>
           </div>
-          <h2 className='text-5xl font-generalSemiBold'>Pricing</h2>
-          <div className="mt-5 w-96 rounded-2xl">
+          <h2 className='text-3xl sm:text-5xl font-generalSemiBold'>Pricing</h2>
+          <div className="mt-5 w-full rounded-2xl">
             {routeOptions.map((option) => {
               const gst = option.basePrice * option.gstRate;
               const totalPrice = parseFloat((option.basePrice + gst).toFixed(2)); // Update total price with the calculated value
@@ -565,7 +565,7 @@ const Checkout = () => {
                   }}
                 >
                   <div className="flex items-center">
-                    <div className={`w-6 h-6 mr-4 ${route === option.label ? 'bg-[#8D26CA]' : 'bg-gray-300'} rounded-sm flex items-center justify-center translate-x-80 -translate-y-8`}>
+                    <div className={`w-6 h-6 mr-4 ${route === option.label ? 'bg-[#8D26CA]' : 'bg-gray-300'} rounded-sm flex items-center justify-center`}>
                       {route === option.label && <div className="w-full h-6 bg-[#8D26CA] rounded-sm text-white"><Check size={23} strokeWidth={1.75} /></div>}
                     </div>
                     <div>
