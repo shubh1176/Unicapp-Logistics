@@ -164,22 +164,22 @@ function RightDiv4() {
   };
 
   return (
-    <div className='max-w-md mx-auto mt-10 p-6 -translate-x-20 translate-y-20'>
+    <div className='max-w-md mx-auto mt-10 p-6 sm:p-8 lg:p-10'>
       <div className='mb-5 w-full'>
-          <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 5/6</h2>
-          <div className="flex mt-4 mb-9 -translate-x-1.5">
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
-          </div>
+        <h2 className="text-base font-generalMedium text-[#8B14CC]">STEP 5/6</h2>
+        <div className="flex mt-4 mb-9">
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
+          <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
         </div>
-      <h3 className="text-3xl font-generalSemiBold mt-5 mb-1">Personal details</h3>
+      </div>
+      <h3 className="text-3xl font-generalSemiBold mb-1">Personal details</h3>
       <p className="text-black mb-4 font-generalMedium">We'll use this information to contact you <br /> during your pickup & delivery.</p>
       {!userVerified && (
-        <div className="mb-4 mt-20">
+        <div className="mb-4">
           <label className="block text-gray-700">Sender's Number</label>
           <div className="flex mb-4 gap-2">
             <Popover open={openSender} onOpenChange={setOpenSender}>
@@ -247,7 +247,7 @@ function RightDiv4() {
       )}
       {userVerified && (
         <>
-          <div className="mb-4 mt-9">
+          <div className="mb-4">
             <label className="block text-black font-generalMedium mb-3">Receiver’s Details</label>
             <div className="relative mt-1">
               <Input
@@ -262,7 +262,7 @@ function RightDiv4() {
               />
             </div>
           </div>
-          <div className="mb-4 mt-4">
+          <div className="mb-4">
             <label className="block text-black font-generalMedium mb-3">Receiver's Phone Number</label>
             <div className="flex mb-4 gap-2">
               <Popover open={openReceiver} onOpenChange={setOpenReceiver}>
@@ -326,13 +326,13 @@ function RightDiv4() {
       <div className='mt-10 flex justify-start gap-3'>
         <Button
           variant="outline"
-          className='py-6 px-4 rounded-xl border border-gray-300 text-gray-600'
+          className='py-6 px-4 rounded-xl border border-gray-300 text-gray-600 w-full sm:w-auto'
           onClick={() => router.push('/dashboard/booking/details')}
         >
           <span className='text-2xl rounded-2xl'><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className='py-6 px-10 w-96 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
+          className='py-6 px-10 w-full sm:w-auto rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
           onClick={handleContinue}
           disabled={!userVerified || loading}
         >
@@ -350,12 +350,12 @@ function RightDiv4() {
               value={otpInput}
               onChange={(e) => setOtpInput(e.target.value)}
               placeholder="Enter OTP"
-              className="mb-4 p-2 border rounded w-96 focus:border-none"
+              className="mb-4 p-2 border rounded w-full sm:w-96 focus:border-none"
             />
             {otpError && <p className="text-red-500">{otpError}</p>}
             <Button
               onClick={handleVerifyOtp}
-              className="px-6 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-96"
+              className="px-6 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-full sm:w-96"
               disabled={loading}
             >
               {loading ? 'Verifying...' : 'Verify OTP'}
