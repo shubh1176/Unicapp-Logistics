@@ -477,7 +477,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className='px-4 py-6 sm:px-6 lg:p-10 max-w-xl mx-auto'>
+    <div className='px-6 py-6 sm:px-8 lg:p-10 max-w-xl mx-auto'>
       {orderType === 'Pickup & Drop' ? (
         <>
           <div className='mb-5 w-full'>
