@@ -190,8 +190,9 @@ const Checkout = () => {
     calculateFare();
   }, [pickupCoords, dropCoords, stops, route, orderType, setAmount, length, width, height, weight]);
 
-  const loadRazorpay = () => {
-    if (!razorpayLoaded) {
+  useEffect(() => {
+    // Load Razorpay SDK as soon as the component mounts
+    const loadRazorpay = () => {
       const script = document.createElement('script');
       script.src = 'https://checkout.razorpay.com/v1/checkout.js';
       script.onload = () => {
@@ -199,8 +200,10 @@ const Checkout = () => {
       };
       script.onerror = () => console.error('Razorpay SDK could not be loaded.');
       document.body.appendChild(script);
-    }
-  };
+    };
+
+    loadRazorpay();
+  }, []);
 
   const updateUserWallet = async (email, newWalletAmount) => {
     try {
@@ -332,10 +335,9 @@ const Checkout = () => {
   };
 
   const handlePayment = async () => {
-    loadRazorpay();
-
     if (!razorpayLoaded) {
-      setError('Razorpay SDK is not loaded yet. Please try again.');
+      // Prevent running the payment flow if SDK is not loaded
+      setError('Razorpay SDK is not loaded yet. Please wait a moment and try again.');
       return;
     }
 
@@ -477,7 +479,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className='px-6 py-6 sm:px-8 lg:p-10 max-w-xl mx-auto'>
+    <div className='px-6 py-6 sm:px-8 lg:p-10 max-w-xl mx-auto lg:translate-y-20'>
       {orderType === 'Pickup & Drop' ? (
         <>
           <div className='mb-5 w-full'>
