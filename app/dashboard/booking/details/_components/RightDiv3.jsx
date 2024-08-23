@@ -55,7 +55,7 @@ const RightDiv3 = () => {
   };
 
   return (
-    <div className="p-4 sm:px-6 lg:p-10 max-w-3xl mx-auto sm:py-6">
+    <div className="px-4 py-6 sm:px-6 lg:p-10 max-w-3xl mx-auto">
       <div className='mb-5 w-full'>
         <h2 className="text-base font-generalMedium text-[#8B14CC]">STEP 4/6</h2>
         <div className="flex mt-4 mb-9">
