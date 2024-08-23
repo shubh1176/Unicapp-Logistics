@@ -55,18 +55,18 @@ const RightDiv3 = () => {
   };
 
   return (
-    <div className="p-10 translate-x-20 translate-y-20">
+    <div className="p-4 sm:p-6 lg:p-10 max-w-3xl mx-auto">
       <div className='mb-5 w-full'>
-          <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 4/6</h2>
-          <div className="flex mt-4 mb-9 -translate-x-1.5">
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-[#8B14CC] rounded mx-2"></div>
-            <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
-            <div className="w-14 h-1 bg-gray-300 rounded mx-2"></div>
-          </div>
+        <h2 className="text-base font-generalMedium text-[#8B14CC]">STEP 4/6</h2>
+        <div className="flex mt-4 mb-9">
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-14 h-1 bg-gray-300 rounded mx-1"></div>
+          <div className="w-14 h-1 bg-gray-300 rounded mx-1"></div>
         </div>
+      </div>
       <div className="mb-5">
         <h2 className="text-2xl font-bold">What are you sending?</h2>
         <p>Add description of your item(s).</p>
@@ -74,7 +74,7 @@ const RightDiv3 = () => {
       <div className="flex flex-col mt-6">
         <p className="mb-3">Weight of the item (Approx.)</p>
         <Input 
-          className="pl-5 w-40 border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0" 
+          className="pl-5 w-full sm:w-40 border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0" 
           placeholder="kgs" 
           value={weight} 
           onChange={(e) => {
@@ -87,9 +87,9 @@ const RightDiv3 = () => {
       {orderType === 'Courier' && (
         <div className="mt-5 flex flex-col">
           <p className="mb-3">Dimensions (cm)</p>
-          <div className="flex space-x-4">
+          <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <Input
-              className="w-20 focus:outline-none focus:ring-0"
+              className="w-full sm:w-20 focus:outline-none focus:ring-0"
               placeholder="Length"
               value={length}
               onChange={(e) => {
@@ -97,9 +97,8 @@ const RightDiv3 = () => {
                 setErrors((prevErrors) => ({ ...prevErrors, length: '' }));
               }}
             />
-            {errors.length && <p className="text-red-500">{errors.length}</p>}
             <Input
-              className="w-20 focus:outline-none focus:ring-0"
+              className="w-full sm:w-20 focus:outline-none focus:ring-0"
               placeholder="Width"
               value={width}
               onChange={(e) => {
@@ -107,9 +106,8 @@ const RightDiv3 = () => {
                 setErrors((prevErrors) => ({ ...prevErrors, width: '' }));
               }}
             />
-            {errors.width && <p className="text-red-500">{errors.width}</p>}
             <Input
-              className="w-20 focus:outline-none focus:ring-0"
+              className="w-full sm:w-20 focus:outline-none focus:ring-0"
               placeholder="Height"
               value={height}
               onChange={(e) => {
@@ -117,13 +115,15 @@ const RightDiv3 = () => {
                 setErrors((prevErrors) => ({ ...prevErrors, height: '' }));
               }}
             />
-            {errors.height && <p className="text-red-500">{errors.height}</p>}
           </div>
+          {errors.length && <p className="text-red-500">{errors.length}</p>}
+          {errors.width && <p className="text-red-500">{errors.width}</p>}
+          {errors.height && <p className="text-red-500">{errors.height}</p>}
         </div>
       )}
       <div className="mt-7">
         <p>Which size best describes your item the best?</p>
-        <div className="flex flex-wrap mt-3 -translate-x-4">
+        <div className="flex flex-wrap mt-3">
           {['Small', 'Medium', 'Large', 'X-Large', 'Huge'].map((size) => (
             <div
               key={size}
@@ -133,8 +133,8 @@ const RightDiv3 = () => {
                 setErrors((prevErrors) => ({ ...prevErrors, itemDescription: '' }));
               }}
             >
-              <div className='flex flex-col gap-1'>
-                <div className='flex items-center justify-center content-center rounded-md w-8 h-8 ml-2'>
+              <div className='flex flex-col gap-1 items-center'>
+                <div className='flex items-center justify-center content-center rounded-md w-8 h-8'>
                   <Image src={`/images/${size.toLowerCase()}.svg`} width={40} height={20} alt={size} />
                 </div>
                 <div>{size}</div>
@@ -147,7 +147,7 @@ const RightDiv3 = () => {
       <div className="mt-5">
         <p>Special instructions, if any</p>
         <Textarea
-          className="pl-5 w-96 border-2 border-black border-opacity-25 h-12 rounded-xl mt-3 focus:border-0 focus:ring-0" 
+          className="pl-5 w-full sm:w-96 border-2 border-black border-opacity-25 h-28 rounded-xl mt-3 focus:border-0 focus:ring-0" 
           placeholder="Add your text here..." 
           value={specialInstructions} 
           onChange={(e) => setSpecialInstructions(e.target.value)}
@@ -156,13 +156,13 @@ const RightDiv3 = () => {
       <div className='mt-10 flex justify-start gap-3'>
         <Button
           variant="outline"
-          className='py-6 px-4 rounded-xl border border-gray-300 text-gray-600'
+          className='py-4 sm:py-6 px-4 sm:px-4 rounded-xl border border-gray-300 text-gray-600 w-20 sm:w-24'
           onClick={() => router.push('/dashboard/booking/date-time')}
         >
-          <span className='text-2xl rounded-2xl'><ChevronLeft size={20} /></span>
+          <ChevronLeft size={20} />
         </Button>
         <Button
-          className='py-6 px-10 w-80 mr-60 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
+          className='py-4 sm:py-6 px-6 w-full sm:w-2/3 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
           onClick={handleContinue}
         >
           Continue
