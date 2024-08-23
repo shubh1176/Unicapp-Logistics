@@ -334,9 +334,10 @@ const Checkout = () => {
     }
   };
 
+  // Inside the handlePayment function
+
   const handlePayment = async () => {
     if (!razorpayLoaded) {
-      // Prevent running the payment flow if SDK is not loaded
       setError('Razorpay SDK is not loaded yet. Please wait a moment and try again.');
       return;
     }
@@ -350,8 +351,10 @@ const Checkout = () => {
       setLoading(true);
       const email = user?.primaryEmailAddress?.emailAddress;
       const generatedOrderId = generateOrderId();
-      let originalAmount = parseFloat(amount).toFixed(2); // Store the original amount before deduction and ensure it's fixed to 2 decimal places
-      let amountToPay = originalAmount;
+      
+      // Ensure amount is correctly formatted as a float with two decimal places
+      let originalAmount = parseFloat(amount).toFixed(2); 
+      let amountToPay = parseFloat(originalAmount); // Convert it back to a float
 
       // Append detailed addresses to the main addresses
       const finalPickupLocation = formatLocationWithDetails(pickupLocation, detailedPickupAddress);
@@ -399,7 +402,7 @@ const Checkout = () => {
       }
 
       // Ensure the amount is correctly multiplied by 100 to convert to paise
-      const { data: order } = await axios.post('/api/new-order', { amount: Math.round(parseFloat(amountToPay) * 100) }); // Ensure amount is in paise
+      const { data: order } = await axios.post('/api/new-order', { amount: amountToPay }); // Send the exact amount in rupees
       const { id: order_id, currency, amount: amountInPaisa } = order;
 
       const options = {

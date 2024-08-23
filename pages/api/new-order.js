@@ -1,3 +1,5 @@
+// Inside your Razorpay API route handler
+
 import Razorpay from 'razorpay';
 
 const razorpay = new Razorpay({
@@ -14,7 +16,7 @@ export default async function handler(req, res) {
     }
 
     // Convert amount from INR to paisa (smallest currency unit)
-    const amountInPaisa = Math.round(amount * 100); // convert to paisa
+    const amountInPaisa = Math.round(amount * 100); // Convert to paise correctly
 
     // Validate the conversion to ensure it's correct
     if (amountInPaisa <= 0) {
