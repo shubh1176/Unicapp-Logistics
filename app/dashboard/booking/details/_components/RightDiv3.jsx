@@ -55,26 +55,26 @@ const RightDiv3 = () => {
   };
 
   return (
-    <div className="px-4 py-6 sm:px-6 lg:p-10 max-w-xl mx-auto">
+    <div className="px-4 py-4 sm:px-5 lg:p-6 max-w-lg mx-auto bg-white rounded-xl shadow-lg">
       <div className='mb-5 w-full'>
-        <h2 className="text-base font-generalMedium text-[#8B14CC]">STEP 4/6</h2>
-        <div className="flex mt-4 mb-9">
-          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
-          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
-          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
-          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
-          <div className="w-14 h-1 bg-gray-300 rounded mx-1"></div>
-          <div className="w-14 h-1 bg-gray-300 rounded mx-1"></div>
+        <h2 className="text-sm font-generalMedium text-[#8B14CC]">STEP 4/6</h2>
+        <div className="flex mt-3 mb-7">
+          <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-12 h-1 bg-gray-300 rounded mx-1"></div>
+          <div className="w-12 h-1 bg-gray-300 rounded mx-1"></div>
         </div>
       </div>
       <div className="mb-5">
         <h2 className="text-2xl font-bold">What are you sending?</h2>
-        <p>Add description of your item(s).</p>
+        <p className="text-sm">Add description of your item(s).</p>
       </div>
-      <div className="flex flex-col mt-6">
-        <p className="mb-3">Weight of the item (Approx.)</p>
+      <div className="flex flex-col mt-4">
+        <p className="mb-2 text-sm">Weight of the item (Approx.)</p>
         <Input 
-          className="pl-5 w-full sm:w-40 border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0" 
+          className="pl-4 w-full sm:w-44 border-2 border-black border-opacity-25 h-10 rounded-lg focus:border-0 focus:ring-0" 
           placeholder="kgs" 
           value={weight} 
           onChange={(e) => {
@@ -82,14 +82,14 @@ const RightDiv3 = () => {
             setErrors((prevErrors) => ({ ...prevErrors, weight: '' }));
           }} 
         />
-        {errors.weight && <p className="text-red-500">{errors.weight}</p>}
+        {errors.weight && <p className="text-red-500 text-sm">{errors.weight}</p>}
       </div>
       {orderType === 'Courier' && (
         <div className="mt-5 flex flex-col">
-          <p className="mb-3">Dimensions (cm)</p>
+          <p className="mb-3 text-sm">Dimensions (cm)</p>
           <div className="flex space-x-4">
             <Input
-              className="w-24 focus:outline-none focus:ring-0"
+              className="w-28 focus:outline-none focus:ring-0"
               placeholder="Length"
               value={length}
               onChange={(e) => {
@@ -98,7 +98,7 @@ const RightDiv3 = () => {
               }}
             />
             <Input
-              className="w-24 focus:outline-none focus:ring-0"
+              className="w-28 focus:outline-none focus:ring-0"
               placeholder="Width"
               value={width}
               onChange={(e) => {
@@ -107,7 +107,7 @@ const RightDiv3 = () => {
               }}
             />
             <Input
-              className="w-24 focus:outline-none focus:ring-0"
+              className="w-28 focus:outline-none focus:ring-0"
               placeholder="Height"
               value={height}
               onChange={(e) => {
@@ -116,18 +116,18 @@ const RightDiv3 = () => {
               }}
             />
           </div>
-          {errors.length && <p className="text-red-500">{errors.length}</p>}
-          {errors.width && <p className="text-red-500">{errors.width}</p>}
-          {errors.height && <p className="text-red-500">{errors.height}</p>}
+          {errors.length && <p className="text-red-500 text-sm">{errors.length}</p>}
+          {errors.width && <p className="text-red-500 text-sm">{errors.width}</p>}
+          {errors.height && <p className="text-red-500 text-sm">{errors.height}</p>}
         </div>
       )}
-      <div className="mt-7">
-        <p>Which size best describes your item the best?</p>
+      <div className="mt-6">
+        <p className="text-sm">Which size best describes your item the best?</p>
         <div className="flex flex-wrap mt-3">
           {['Small', 'Medium', 'Large', 'X-Large', 'Huge'].map((size) => (
             <div
               key={size}
-              className={`flex items-center py-2 px-4 mr-1 mb-3 ${itemDescription === size ? 'text-purple-600' : 'text-gray-600'} hover:cursor-pointer`}
+              className={`flex items-center py-2 px-3 mr-1 mb-2 ${itemDescription === size ? 'text-purple-600' : 'text-gray-600'} hover:cursor-pointer`}
               onClick={() => {
                 setItemDescription(size);
                 setErrors((prevErrors) => ({ ...prevErrors, itemDescription: '' }));
@@ -135,34 +135,34 @@ const RightDiv3 = () => {
             >
               <div className='flex flex-col gap-1 items-center'>
                 <div className='flex items-center justify-center content-center rounded-md w-8 h-8'>
-                  <Image src={`/images/${size.toLowerCase()}.svg`} width={40} height={20} alt={size} />
+                  <Image src={`/images/${size.toLowerCase()}.svg`} width={32} height={16} alt={size} />
                 </div>
-                <div>{size}</div>
+                <div className="text-sm">{size}</div>
               </div>
             </div>
           ))}
         </div>
-        {errors.itemDescription && <p className="text-red-500">{errors.itemDescription}</p>}
+        {errors.itemDescription && <p className="text-red-500 text-sm">{errors.itemDescription}</p>}
       </div>
       <div className="mt-5">
-        <p>Special instructions, if any</p>
+        <p className="text-sm">Special instructions, if any</p>
         <Textarea
-          className="pl-5 w-full sm:w-96 border-2 border-black border-opacity-25 h-28 rounded-xl mt-3 focus:border-0 focus:ring-0" 
+          className="pl-4 w-full sm:w-96 border-2 border-black border-opacity-25 h-24 rounded-lg mt-3 focus:border-0 focus:ring-0" 
           placeholder="Add your text here..." 
           value={specialInstructions} 
           onChange={(e) => setSpecialInstructions(e.target.value)}
         />
       </div>
-      <div className='mt-10 flex justify-start gap-3'>
+      <div className='mt-8 flex justify-start gap-3'>
         <Button
           variant="outline"
-          className='py-4 sm:py-6 px-4 sm:px-4 rounded-xl border border-gray-300 text-gray-600 w-20 sm:w-24'
+          className='py-3 sm:py-4 px-4 sm:px-4 rounded-lg border border-gray-300 text-gray-600 w-16 sm:w-20'
           onClick={() => router.push('/dashboard/booking/date-time')}
         >
           <ChevronLeft size={20} />
         </Button>
         <Button
-          className='py-4 sm:py-6 px-6 w-full sm:w-2/3 rounded-xl bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
+          className='py-3 sm:py-4 px-4 w-full sm:w-2/3 rounded-lg bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
           onClick={handleContinue}
         >
           Continue
