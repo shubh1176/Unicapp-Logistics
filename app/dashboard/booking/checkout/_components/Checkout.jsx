@@ -482,7 +482,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className='max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-xl mx-auto lg:translate-y-20'>
+    <div className='max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-xl mx-auto lg:translate-y-20 bg-white rounded-lg shadow-lg p-8'>
       {orderType === 'Pickup & Drop' ? (
         <>
           <div className='mb-5 w-full'>
