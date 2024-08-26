@@ -81,7 +81,6 @@ const LeftDivAdd = () => {
         .then(response => {
           const route = response.data.routes[0].geometry.coordinates;
 
-          // Add the route to the map
           map.on('load', () => {
             map.addSource('route', {
               type: 'geojson',
@@ -109,7 +108,6 @@ const LeftDivAdd = () => {
               },
             });
 
-            // Add markers for each waypoint
             new mapboxgl.Marker({ color: 'green' })
               .setLngLat([pickupCoords.longitude, pickupCoords.latitude])
               .setPopup(new mapboxgl.Popup().setHTML(`<h3>Pickup: ${pickupLocation}</h3>`))
@@ -139,7 +137,7 @@ const LeftDivAdd = () => {
   }, [pickupCoords, dropCoords, stops, pickupLocation, dropLocation]);
 
   return (
-    <div className="bg-white flex flex-col items-center mt-10 lg:-translate-y-28 p-4 sm:p-8 lg:p-10 w-full sm:translate-x-">
+    <div className={`flex flex-col items-center ${isSmallScreen ? 'h-80 w-full bg-gradient-to-b from-[#8D14CE] to-[#470A68] rounded-b-2xl p-4' : 'lg:h-full lg:w-full mt-10 lg:-translate-y-28 p-8 lg:p-10'}`}>
       <div className="items-start ml-0 lg:ml-32">
         {!isSmallScreen && (
           <div className="flex justify-between items-center mb-4 lg:mb-0 lg:-translate-x-5 lg:translate-y-8 h-44 w-44">
@@ -147,16 +145,18 @@ const LeftDivAdd = () => {
           </div>
         )}
         <div className="text-center lg:text-left">
-          <h2 className="text-2xl font-bold mb-5 lg:mb-3 lg:translate-x-2 lg:-translate-y-4">Your Package</h2>
-          <div id="map" className="w-full lg:w-96 h-36 border-2 rounded-xl lg:translate-x-3 lg:-translate-y-4 mb-4"></div>
+          <h2 className="text-2xl font-bold mb-5 lg:mb-3 lg:translate-x-2 lg:-translate-y-4 text-white lg:text-black">Your Package</h2>
+          {!isSmallScreen && (
+            <div id="map" className="w-full lg:w-96 h-36 border-2 rounded-xl lg:translate-x-3 lg:-translate-y-4 mb-4"></div>
+          )}
           <div className={`grid gap-4 ${isSmallScreen ? 'grid-cols-2' : 'lg:flex lg:flex-col lg:items-start'}`}>
             <div className="flex items-center mb-6">
               <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                 <ArrowUp size={20} />
               </div>
               <div className="ml-3 w-full lg:w-80">
-                <p className="text-sm font-generalRegular opacity-50">Pickup</p>
-                <p className="text-sm text-gray-500">{pickupLocation ? formatAddress(pickupLocation) : '--'}</p>
+                <p className="text-sm font-generalRegular opacity-50 text-white lg:text-black">Pickup</p>
+                <p className="text-sm text-gray-200 lg:text-gray-500">{pickupLocation ? formatAddress(pickupLocation) : '--'}</p>
               </div>
             </div>
             <div className="flex items-center mb-6">
@@ -164,30 +164,8 @@ const LeftDivAdd = () => {
                 <ArrowDown size={20} />
               </div>
               <div className="ml-3 w-full lg:w-80">
-                <p className="text-sm font-generalRegular opacity-50">Drop Off Point</p>
-                <p className="text-sm text-gray-500">{dropLocation ? formatAddress(dropLocation) : '--'}</p>
-              </div>
-            </div>
-            {/* Stops are hidden on small screens */}
-            {stops.length > 0 && stops.map((stop, index) => (
-              <div key={index} className="flex items-center mb-6 sm:hidden lg:flex">
-                <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                  <ArrowDown size={20} />
-                </div>
-                <div className="ml-3 w-full lg:w-80">
-                  <p className="text-sm font-generalRegular opacity-50">Delivery Point {index + 2}</p>
-                  <p className="text-sm text-gray-500">{formatAddress(stop.address)}</p>
-                </div>
-              </div>
-            ))}
-            <div className="flex items-center mb-6">
-              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                <Calendar size={16} />
-              </div>
-              <div className="ml-3 w-full lg:w-80">
-                <p className="text-sm font-generalRegular opacity-50">Date & Time</p>
-                <p className="text-sm text-gray-500">{date ? date.toDateString() : '--'}</p>
-                <p className="text-sm text-gray-500">{time || '--'}</p>
+                <p className="text-sm font-generalRegular opacity-50 text-white lg:text-black">Drop Off Point</p>
+                <p className="text-sm text-gray-200 lg:text-gray-500">{dropLocation ? formatAddress(dropLocation) : '--'}</p>
               </div>
             </div>
             <div className="flex items-center mb-6">
@@ -195,8 +173,8 @@ const LeftDivAdd = () => {
                 <Box size={16} />
               </div>
               <div className="ml-3 w-full lg:w-80">
-                <p className="text-sm font-generalRegular opacity-50">What you're moving</p>
-                <p className="text-sm text-gray-500">{itemDescription || '--'}</p>
+                <p className="text-sm font-generalRegular opacity-50 text-white lg:text-black">What you're moving</p>
+                <p className="text-sm text-gray-200 lg:text-gray-500">{itemDescription || '--'}</p>
               </div>
             </div>
             <div className="flex items-center mb-6">
@@ -204,10 +182,37 @@ const LeftDivAdd = () => {
                 <IndianRupee size={16} />
               </div>
               <div className="ml-3 w-full lg:w-80">
-                <p className="text-sm font-generalRegular opacity-50">Price</p>
-                <p className="text-sm text-gray-500">{amount ? `₹${amount}` : '--'}</p>
+                <p className="text-sm font-generalRegular opacity-50 text-white lg:text-black">Price</p>
+                <p className="text-sm text-gray-200 lg:text-gray-500">{amount ? `₹${amount}` : '--'}</p>
               </div>
             </div>
+            {!isSmallScreen && (
+              <>
+                {/* Stops */}
+                {stops.length > 0 && stops.map((stop, index) => (
+                  <div key={index} className="flex items-center mb-6 lg:flex">
+                    <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                      <ArrowDown size={20} />
+                    </div>
+                    <div className="ml-3 w-full lg:w-80">
+                      <p className="text-sm font-generalRegular opacity-50">Delivery Point {index + 2}</p>
+                      <p className="text-sm text-gray-500">{formatAddress(stop.address)}</p>
+                    </div>
+                  </div>
+                ))}
+                {/* Date & Time */}
+                <div className="flex items-center mb-6">
+                  <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                    <Calendar size={16} />
+                  </div>
+                  <div className="ml-3 w-full lg:w-80">
+                    <p className="text-sm font-generalRegular opacity-50">Date & Time</p>
+                    <p className="text-sm text-gray-500">{date ? date.toDateString() : '--'}</p>
+                    <p className="text-sm text-gray-500">{time || '--'}</p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

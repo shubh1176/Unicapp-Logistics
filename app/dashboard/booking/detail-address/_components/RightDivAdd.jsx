@@ -68,69 +68,69 @@ function RightDivAdd() {
   };
 
   return (
-    <div className="flex flex-col justify-center bg-white items-center h-full p-4 sm:p-6 lg:p-10 w-full max-w-2xl mx-auto lg:-translate-y-32 lg:pt-16">
-      <div className="mb-6 w-full">
+    <div className="flex flex-col justify-center items-center p-4 sm:px-8 lg:px-10 lg:py-6 w-full max-w-md mx-auto bg-white rounded-xl shadow-lg">
+      <div className="w-full">
         <h2 className="text-base font-generalMedium text-[#8B14CC] text-center sm:text-left">STEP 2/6</h2>
-        <div className="flex mt-4 mb-6 justify-center sm:justify-start">
-          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
-          <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
-          <div className="w-14 h-1 bg-gray-300 rounded mx-1"></div>
-          <div className="w-14 h-1 bg-gray-300 rounded mx-1"></div>
-          <div className="w-14 h-1 bg-gray-300 rounded mx-1"></div>
-          <div className="w-14 h-1 bg-gray-300 rounded mx-1"></div>
+        <div className="flex mt-2 mb-4 justify-center sm:justify-start">
+          <div className="w-10 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-10 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-10 h-1 bg-gray-300 rounded mx-1"></div>
+          <div className="w-10 h-1 bg-gray-300 rounded mx-1"></div>
+          <div className="w-10 h-1 bg-gray-300 rounded mx-1"></div>
+          <div className="w-10 h-1 bg-gray-300 rounded mx-1"></div>
         </div>
-        <h1 className="text-3xl font-bold text-center sm:text-left">Add more address details</h1>
-        <p className="mt-2 text-lg font-generalRegular text-center sm:text-left">Enter house number, floor, etc.</p>
+        <h1 className="text-2xl font-bold text-center sm:text-left">Add more address details</h1>
+        <p className="mt-1 text-lg font-generalRegular text-center sm:text-left">Enter house number, floor, etc.</p>
       </div>
 
       <div className="w-full mt-4 space-y-4">
         <div>
-          <label className="block mb-2 font-generalRegular">Pickup details</label>
+          <label className="block mb-1 font-generalRegular">Pickup details</label>
           <Input
             placeholder="House no."
-            className="mb-3 w-full h-12 rounded-xl"
+            className="mb-2 w-full h-10 rounded-xl"
             value={detailedPickupAddress.houseNo}
             onChange={(e) => {
               setDetailedPickupAddress({ ...detailedPickupAddress, houseNo: e.target.value });
               setErrors((prevErrors) => ({ ...prevErrors, pickupHouseNo: '' }));
             }}
           />
-          {errors.pickupHouseNo && <p className="text-red-500">{errors.pickupHouseNo}</p>}
+          {errors.pickupHouseNo && <p className="text-red-500 text-sm">{errors.pickupHouseNo}</p>}
           <Input
             placeholder="Floor"
-            className="mb-3 w-full h-12 rounded-xl"
+            className="mb-2 w-full h-10 rounded-xl"
             value={detailedPickupAddress.floor}
             onChange={(e) => setDetailedPickupAddress({ ...detailedPickupAddress, floor: e.target.value })}
           />
           <Input
             placeholder="Nearby landmark (optional)"
-            className="w-full h-12 rounded-xl"
+            className="w-full h-10 rounded-xl"
             value={detailedPickupAddress.landmark}
             onChange={(e) => setDetailedPickupAddress({ ...detailedPickupAddress, landmark: e.target.value })}
           />
         </div>
 
         <div>
-          <label className="block mb-2 font-generalRegular">Drop-off details</label>
+          <label className="block mb-1 font-generalRegular">Drop-off details</label>
           <Input
             placeholder="House no."
-            className="mb-3 w-full h-12 rounded-xl"
+            className="mb-2 w-full h-10 rounded-xl"
             value={detailedDropOffAddress.houseNo}
             onChange={(e) => {
               setDetailedDropOffAddress({ ...detailedDropOffAddress, houseNo: e.target.value });
               setErrors((prevErrors) => ({ ...prevErrors, dropOffHouseNo: '' }));
             }}
           />
-          {errors.dropOffHouseNo && <p className="text-red-500">{errors.dropOffHouseNo}</p>}
+          {errors.dropOffHouseNo && <p className="text-red-500 text-sm">{errors.dropOffHouseNo}</p>}
           <Input
             placeholder="Floor"
-            className="mb-3 w-full h-12 rounded-xl"
+            className="mb-2 w-full h-10 rounded-xl"
             value={detailedDropOffAddress.floor}
             onChange={(e) => setDetailedDropOffAddress({ ...detailedDropOffAddress, floor: e.target.value })}
           />
           <Input
             placeholder="Nearby landmark (optional)"
-            className="w-full h-12 rounded-xl"
+            className="w-full h-10 rounded-xl"
             value={detailedDropOffAddress.landmark}
             onChange={(e) => setDetailedDropOffAddress({ ...detailedDropOffAddress, landmark: e.target.value })}
           />
@@ -138,23 +138,23 @@ function RightDivAdd() {
 
         {stops.map((_, index) => (
           <div key={index}>
-            <label className="block mb-2 font-generalRegular">{`Delivery Point ${index + 1} details`}</label>
+            <label className="block mb-1 font-generalRegular">{`Delivery Point ${index + 1} details`}</label>
             <Input
               placeholder="House no."
-              className="mb-3 w-full h-12 rounded-xl"
+              className="mb-2 w-full h-10 rounded-xl"
               value={detailedStopsAddress[index]?.houseNo || ''}
               onChange={(e) => handleStopDetailsChange(index, 'houseNo', e.target.value)}
             />
-            {errors[`stopHouseNo-${index}`] && <p className="text-red-500">{errors[`stopHouseNo-${index}`]}</p>}
+            {errors[`stopHouseNo-${index}`] && <p className="text-red-500 text-sm">{errors[`stopHouseNo-${index}`]}</p>}
             <Input
               placeholder="Floor"
-              className="mb-3 w-full h-12 rounded-xl"
+              className="mb-2 w-full h-10 rounded-xl"
               value={detailedStopsAddress[index]?.floor || ''}
               onChange={(e) => handleStopDetailsChange(index, 'floor', e.target.value)}
             />
             <Input
               placeholder="Nearby landmark (optional)"
-              className="w-full h-12 rounded-xl"
+              className="w-full h-10 rounded-xl"
               value={detailedStopsAddress[index]?.landmark || ''}
               onChange={(e) => handleStopDetailsChange(index, 'landmark', e.target.value)}
             />
@@ -162,10 +162,10 @@ function RightDivAdd() {
         ))}
       </div>
 
-      <div className="flex justify-start mt-8 gap-3 w-full">
+      <div className="flex justify-start mt-6 gap-3 w-full">
         <Button
           variant="outline"
-          className="py-4 px-4 rounded-xl border border-gray-300 text-gray-600 w-16 sm:w-20"
+          className="py-3 px-4 rounded-xl border border-gray-300 text-gray-600 w-16 sm:w-20"
           onClick={(e) => {
             e.preventDefault();
             router.push('/dashboard/booking/location');
@@ -174,7 +174,7 @@ function RightDivAdd() {
           <ChevronLeft size={20} />
         </Button>
         <Button
-          className="py-4 px-6 rounded-xl w-full sm:w-2/3 bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
+          className="py-3 px-6 rounded-xl w-full sm:w-2/3 bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
           onClick={(e) => {
             e.preventDefault();
             handleContinue();
