@@ -57,10 +57,10 @@ const RightDiv2 = () => {
   const today = startOfToday();
 
   return (
-    <div className="p-4 sm:p-8 md:p-10 translate-x-0 sm:translate-x-10 translate-y-0 sm:translate-y-10 bg-white rounded-lg max-w-full">
-      <div className="mb-4 sm:mb-5 w-full">
+    <div className="p-4 sm:p-6 bg-white rounded-lg shadow-lg max-w-full sm:max-w-md md:max-w-lg">
+      <div className="mb-5 w-full">
         <h2 className="text-sm sm:text-base font-generalMedium text-[#8B14CC]">STEP 3/6</h2>
-        <div className="flex mt-3 sm:mt-4 mb-6 sm:mb-8 -translate-x-1.5">
+        <div className="flex mt-4 mb-5 -translate-x-1.5">
           <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
           <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
           <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
@@ -69,15 +69,15 @@ const RightDiv2 = () => {
           <div className="w-12 h-1 bg-gray-300 rounded mx-1"></div>
         </div>
       </div>
-      <h2 className="text-2xl sm:text-3xl font-generalSemiBold">Date & Time</h2>
-      <p className="mt-2 w-full sm:w-96 mb-4 sm:mb-5 text-xs sm:text-sm">Choose a time you'd like us to arrive at your pickup location</p>
-      <div className="mt-5 sm:mt-7">
-        <h3 className="text-base sm:text-lg font-semibold">Select day</h3>
-        <div className="flex flex-wrap gap-2 sm:gap-3 mt-3">
+      <h2 className="text-xl sm:text-2xl font-generalSemiBold mb-6">Date & Time</h2>
+      <p className="mt-2 w-full sm:w-80 mb-6 text-xs sm:text-sm">Choose a time you'd like us to arrive at your pickup location</p>
+      <div className="mt-6">
+        <h3 className="text-sm sm:text-base font-semibold mb-4">Select day</h3>
+        <div className="flex flex-wrap gap-3 sm:gap-4">
           {dates.map((day, index) => (
             <button
               key={index}
-              className={`py-2 px-3 w-16 h-16 sm:w-20 sm:h-20 rounded-lg sm:rounded-xl border ${date.toDateString() === day.toDateString() ? 'bg-purple-600 text-white border-transparent' : 'bg-white border-gray-300 text-gray-600'} hover:bg-white hover:text-black hover:border-[#8D26CA]`}
+              className={`py-2 px-3 w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl border ${date.toDateString() === day.toDateString() ? 'bg-purple-600 text-white border-transparent' : 'bg-white border-gray-300 text-gray-600'} hover:bg-white hover:text-black hover:border-[#8D26CA]`}
               onClick={() => handleDateChange(day)}
             >
               <span className="block text-xs sm:text-sm font-semibold">{index === 0 ? 'Today' : format(day, 'eee')}</span>
@@ -87,7 +87,7 @@ const RightDiv2 = () => {
           <Popover>
             <PopoverTrigger asChild>
               <button
-                className="py-2 px-3 w-16 h-16 sm:w-20 sm:h-20 border bg-white border-gray-300 text-gray-600 rounded-lg sm:rounded-xl"
+                className="py-2 px-3 w-14 h-14 sm:w-16 sm:h-16 border bg-white border-gray-300 text-gray-600 rounded-lg sm:rounded-xl"
               >
                 <span className="block text-xs sm:text-sm font-semibold">More</span>
                 <span className="block text-lg sm:text-xl font-bold">⌄</span>
@@ -104,13 +104,13 @@ const RightDiv2 = () => {
           </Popover>
         </div>
       </div>
-      <div className="mt-5 sm:mt-7 sm:mr-40">
-        <h3 className="text-base sm:text-lg font-semibold">Select time</h3>
-        <div className="grid grid-cols-2 gap-x-3 sm:gap-x-4 gap-y-3 sm:gap-y-4 mt-3">
+      <div className="mt-6">
+        <h3 className="text-sm sm:text-base font-semibold mb-4">Select time</h3>
+        <div className="grid grid-cols-2 gap-x-4 sm:gap-x-5 gap-y-4 sm:gap-y-5">
           {timeSlots.map((timeOption, index) => (
             <Button
               key={index}
-              className={`py-2 px-4 w-full sm:w-36 sm:px-24 rounded-lg sm:rounded-xl border ${time === timeOption ? 'bg-[#8B14CC] text-white border-transparent' : 'bg-white border-gray-300 text-black'} hover:bg-white hover:text-black hover:border-[#8D26CA]`}
+              className={`py-2 px-4 w-full sm:w-32 rounded-lg sm:rounded-xl border ${time === timeOption ? 'bg-[#8B14CC] text-white border-transparent' : 'bg-white border-gray-300 text-black'} hover:bg-white hover:text-black hover:border-[#8D26CA]`}
               onClick={() => handleTimeChange(timeOption)}
             >
               {timeOption}
@@ -118,23 +118,21 @@ const RightDiv2 = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-start mt-10 gap-3 w-full">
+      <div className="flex justify-start mt-8 gap-4 w-full pb-4">
         <Button
           variant="outline"
-          className="py-4 px-4 rounded-xl border border-gray-300 text-gray-600 w-16 sm:w-20"
+          className="py-3 px-3 rounded-lg sm:rounded-xl border border-gray-300 text-gray-600 w-14 sm:w-16"
           onClick={() => router.push('/dashboard/booking/detail-address')}
         >
-          <span className="text-xl sm:text-2xl rounded-2xl"><ChevronLeft size={20} /></span>
+          <span className="text-lg sm:text-xl rounded-xl"><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className="py-4 px-6 rounded-xl w-full sm:w-2/3 bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
+          className="py-3 px-4 rounded-lg sm:rounded-xl w-full sm:w-2/3 bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white"
           onClick={() => router.push('/dashboard/booking/details')}
         >
           Continue
         </Button>
       </div>
-
-
     </div>
   );
 };

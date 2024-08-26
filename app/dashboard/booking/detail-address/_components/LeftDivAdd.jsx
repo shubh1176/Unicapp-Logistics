@@ -60,7 +60,7 @@ const LeftDivAdd = () => {
   };
 
   useEffect(() => {
-    if (pickupCoords && dropCoords) {
+    if (!isSmallScreen && pickupCoords && dropCoords) {
       const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
@@ -134,10 +134,10 @@ const LeftDivAdd = () => {
 
       return () => map.remove();
     }
-  }, [pickupCoords, dropCoords, stops, pickupLocation, dropLocation]);
+  }, [pickupCoords, dropCoords, stops, pickupLocation, dropLocation, isSmallScreen]);
 
   return (
-    <div className={`flex flex-col items-center ${isSmallScreen ? 'h-80 w-full bg-gradient-to-b from-[#8D14CE] to-[#470A68] rounded-b-2xl p-4' : 'lg:h-full lg:w-full mt-10 lg:-translate-y-28 p-8 lg:p-10'}`}>
+    <div className={`flex flex-col items-center ${isSmallScreen ? 'h-auto w-full bg-gradient-to-b from-[#8D14CE] to-[#470A68] rounded-b-2xl p-4' : 'lg:h-full lg:w-full mt-10 lg:-translate-y-28 p-8 lg:p-10'}`}>
       <div className="items-start ml-0 lg:ml-32">
         {!isSmallScreen && (
           <div className="flex justify-between items-center mb-4 lg:mb-0 lg:-translate-x-5 lg:translate-y-8 h-44 w-44">
@@ -149,26 +149,26 @@ const LeftDivAdd = () => {
           {!isSmallScreen && (
             <div id="map" className="w-full lg:w-96 h-36 border-2 rounded-xl lg:translate-x-3 lg:-translate-y-4 mb-4"></div>
           )}
-          <div className={`grid gap-4 ${isSmallScreen ? 'grid-cols-2' : 'lg:flex lg:flex-col lg:items-start'}`}>
-            <div className="flex items-center mb-6">
-              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+          <div className={`grid gap-4 ${isSmallScreen ? 'grid-cols-1' : 'lg:flex lg:flex-col lg:items-start'}`}>
+            <div className="flex items-center mb-6 sm:justify-center sm:space-x-2">
+              <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
                 <ArrowUp size={20} />
               </div>
-              <div className="ml-3 w-full lg:w-80">
+              <div className="ml-1 w-full lg:w-80 text-center sm:text-left">
                 <p className="text-sm font-generalRegular opacity-50 text-white lg:text-black">Pickup</p>
                 <p className="text-sm text-gray-200 lg:text-gray-500">{pickupLocation ? formatAddress(pickupLocation) : '--'}</p>
               </div>
             </div>
-            <div className="flex items-center mb-6">
-              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+            <div className="flex items-center mb-6 sm:justify-center sm:space-x-2">
+              <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
                 <ArrowDown size={20} />
               </div>
-              <div className="ml-3 w-full lg:w-80">
+              <div className="ml-1 w-full lg:w-80 text-center sm:text-left">
                 <p className="text-sm font-generalRegular opacity-50 text-white lg:text-black">Drop Off Point</p>
                 <p className="text-sm text-gray-200 lg:text-gray-500">{dropLocation ? formatAddress(dropLocation) : '--'}</p>
               </div>
             </div>
-            <div className="flex items-center mb-6">
+            <div className={`flex items-center mb-6 ${isSmallScreen ? 'hidden' : 'block'}`}>
               <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                 <Box size={16} />
               </div>
@@ -177,7 +177,7 @@ const LeftDivAdd = () => {
                 <p className="text-sm text-gray-200 lg:text-gray-500">{itemDescription || '--'}</p>
               </div>
             </div>
-            <div className="flex items-center mb-6">
+            <div className={`flex items-center mb-6 ${isSmallScreen ? 'hidden' : 'block'}`}>
               <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                 <IndianRupee size={16} />
               </div>
@@ -221,3 +221,4 @@ const LeftDivAdd = () => {
 };
 
 export default LeftDivAdd;
+
