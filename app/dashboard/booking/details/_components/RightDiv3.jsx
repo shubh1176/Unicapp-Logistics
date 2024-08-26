@@ -55,7 +55,7 @@ const RightDiv3 = () => {
   };
 
   return (
-    <div className="px-4 py-4 sm:px-5 lg:p-6 max-w-lg mx-auto bg-white rounded-xl shadow-lg">
+    <div className="px-4 py-4 sm:px-4 sm:py-5 lg:p-6 max-w-sm sm:max-w-md lg:max-w-lg mx-auto bg-white rounded-xl shadow-lg">
       <div className='mb-5 w-full'>
         <h2 className="text-sm font-generalMedium text-[#8B14CC]">STEP 4/6</h2>
         <div className="flex mt-3 mb-7">
@@ -74,7 +74,7 @@ const RightDiv3 = () => {
       <div className="flex flex-col mt-4">
         <p className="mb-2 text-sm">Weight of the item (Approx.)</p>
         <Input 
-          className="pl-4 w-full sm:w-44 border-2 border-black border-opacity-25 h-10 rounded-lg focus:border-0 focus:ring-0" 
+          className="pl-4 w-full sm:w-40 border-2 border-black border-opacity-25 h-10 rounded-lg focus:border-0 focus:ring-0" 
           placeholder="kgs" 
           value={weight} 
           onChange={(e) => {
@@ -89,7 +89,7 @@ const RightDiv3 = () => {
           <p className="mb-3 text-sm">Dimensions (cm)</p>
           <div className="flex space-x-4">
             <Input
-              className="w-28 focus:outline-none focus:ring-0"
+              className="w-24 sm:w-28 focus:outline-none focus:ring-0"
               placeholder="Length"
               value={length}
               onChange={(e) => {
@@ -98,7 +98,7 @@ const RightDiv3 = () => {
               }}
             />
             <Input
-              className="w-28 focus:outline-none focus:ring-0"
+              className="w-24 sm:w-28 focus:outline-none focus:ring-0"
               placeholder="Width"
               value={width}
               onChange={(e) => {
@@ -107,7 +107,7 @@ const RightDiv3 = () => {
               }}
             />
             <Input
-              className="w-28 focus:outline-none focus:ring-0"
+              className="w-24 sm:w-28 focus:outline-none focus:ring-0"
               placeholder="Height"
               value={height}
               onChange={(e) => {
@@ -147,7 +147,7 @@ const RightDiv3 = () => {
       <div className="mt-5">
         <p className="text-sm">Special instructions, if any</p>
         <Textarea
-          className="pl-4 w-full sm:w-96 border-2 border-black border-opacity-25 h-24 rounded-lg mt-3 focus:border-0 focus:ring-0" 
+          className="pl-4 w-full sm:w-80 border-2 border-black border-opacity-25 h-24 rounded-lg mt-3 focus:border-0 focus:ring-0" 
           placeholder="Add your text here..." 
           value={specialInstructions} 
           onChange={(e) => setSpecialInstructions(e.target.value)}
