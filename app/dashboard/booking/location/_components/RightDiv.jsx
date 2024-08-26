@@ -109,9 +109,9 @@ function RightDiv() {
   };
 
   return (
-    <div className='flex flex-col justify-center items-center h-full p-4 md:p-10 bg-white pb-10'>
-      <div className='mb-5 w-full max-w-md'>
-        <div className="mb-5">
+    <div className='flex flex-col justify-center items-start h-full p-4 md:p-10'>
+      <div className='w-full max-w-md bg-white rounded-lg shadow-lg p-5'>
+        <div className='mb-5'>
           <h2 className="text-sm md:text-base font-generalMedium text-[#8B14CC]">STEP 1/6</h2>
           <div className="flex mt-4 mb-9">
             <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
@@ -138,111 +138,112 @@ function RightDiv() {
         </div>
         <h1 className='text-xl md:text-3xl font-bold font-filson mt-5'>{orderType}</h1>
         <p className='mt-2 text-sm md:text-lg font-generalRegular'>Enter your {orderType.toLowerCase()} addresses</p>
-      </div>
-      <form className='w-full max-w-md'>
-        <div className='mb-7'>
-          <label className='block mb-2 font-generalRegular'>Pickup address</label>
-          <div className='relative'>
-            <Image
-              src={'/images/Arrowup.svg'} 
-              width={15}
-              height={18}
-              className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
-              onClick={() => setIsPickupDialogOpen(true)}
-            />
-            <Input
-              placeholder="Enter address..."
-              className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0'
-              value={pickupLocation}
-              onChange={(e) => setPickupLocation(e.target.value)}
-            />
-            {errors.pickup && <p className="text-red-500">{errors.pickup}</p>}
+
+        <form className='w-full'>
+          <div className='mb-7'>
+            <label className='block mb-2 font-generalRegular'>Pickup address</label>
+            <div className='relative'>
+              <Image
+                src={'/images/Arrowup.svg'} 
+                width={15}
+                height={18}
+                className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
+                onClick={() => setIsPickupDialogOpen(true)}
+              />
+              <Input
+                placeholder="Enter address..."
+                className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0'
+                value={pickupLocation}
+                onChange={(e) => setPickupLocation(e.target.value)}
+              />
+              {errors.pickup && <p className="text-red-500">{errors.pickup}</p>}
+            </div>
           </div>
-        </div>
-        <div className='mt-5'>
-          <label className='block mb-2 font-generalRegular'>Drop-off address</label>
-          <div className='relative'>
-            <Image
-              src={'/images/Arrowdown.svg'} 
-              width={15}
-              height={18}
-              className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
-              onClick={() => setIsDropDialogOpen(true)}
-            />
-            <Input
-              placeholder="Enter address..."
-              className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl  focus:border-0 focus:ring-0'
-              value={dropLocation}
-              onChange={(e) => setDropLocation(e.target.value)}
-            />
-            {errors.drop && <p className="text-red-500">{errors.drop}</p>}
+          <div className='mt-5'>
+            <label className='block mb-2 font-generalRegular'>Drop-off address</label>
+            <div className='relative'>
+              <Image
+                src={'/images/Arrowdown.svg'} 
+                width={15}
+                height={18}
+                className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
+                onClick={() => setIsDropDialogOpen(true)}
+              />
+              <Input
+                placeholder="Enter address..."
+                className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl  focus:border-0 focus:ring-0'
+                value={dropLocation}
+                onChange={(e) => setDropLocation(e.target.value)}
+              />
+              {errors.drop && <p className="text-red-500">{errors.drop}</p>}
+            </div>
           </div>
-        </div>
-        {orderType === 'Pickup & Drop' && (
-          <>
-            <DragDropContext onDragEnd={handleOnDragEnd}>
-              <Droppable droppableId="stops">
-                {(provided) => (
-                  <div {...provided.droppableProps} ref={provided.innerRef}>
-                    {stops.map((stop, index) => (
-                      <Draggable key={index} draggableId={`stop-${index}`} index={index}>
-                        {(provided) => (
-                          <div
-                            className='mb-5 mt-6 '
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                          >
-                            <label className='block mb-2 font-generalRegular'>Drop point {index + 2}</label>
-                            <div className='relative'>
-                              <Image
-                                src={'/images/Arrowdown.svg'} 
-                                width={15}
-                                height={18}
-                                className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
-                                onClick={() => setOpenStopDialog(index)}
-                              />
-                              <Input
-                                placeholder={`Enter address...`}
-                                className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0'
-                                value={stop.address}
-                                onChange={(e) => {
-                                  const updatedStops = [...stops];
-                                  updatedStops[index] = {
-                                    ...updatedStops[index],
-                                    address: e.target.value,
-                                  };
-                                  setStops(updatedStops);
-                                }}
-                              />
-                              <MinusCircle
-                                className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
-                                onClick={() => removeStop(index)}
-                              />
-                              {errors[`stop-${index}`] && <p className="text-red-500">{errors[`stop-${index}`]}</p>}
+          {orderType === 'Pickup & Drop' && (
+            <>
+              <DragDropContext onDragEnd={handleOnDragEnd}>
+                <Droppable droppableId="stops">
+                  {(provided) => (
+                    <div {...provided.droppableProps} ref={provided.innerRef}>
+                      {stops.map((stop, index) => (
+                        <Draggable key={index} draggableId={`stop-${index}`} index={index}>
+                          {(provided) => (
+                            <div
+                              className='mb-5 mt-6 '
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                            >
+                              <label className='block mb-2 font-generalRegular'>Drop point {index + 2}</label>
+                              <div className='relative'>
+                                <Image
+                                  src={'/images/Arrowdown.svg'} 
+                                  width={15}
+                                  height={18}
+                                  className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
+                                  onClick={() => setOpenStopDialog(index)}
+                                />
+                                <Input
+                                  placeholder={`Enter address...`}
+                                  className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0'
+                                  value={stop.address}
+                                  onChange={(e) => {
+                                    const updatedStops = [...stops];
+                                    updatedStops[index] = {
+                                      ...updatedStops[index],
+                                      address: e.target.value,
+                                    };
+                                    setStops(updatedStops);
+                                  }}
+                                />
+                                <MinusCircle
+                                  className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
+                                  onClick={() => removeStop(index)}
+                                />
+                                {errors[`stop-${index}`] && <p className="text-red-500">{errors[`stop-${index}`]}</p>}
+                              </div>
                             </div>
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
-            <Button variant="ghost" type="button" className="mt-5 font-generalRegular hover:bg-white hover:text-[#0094B2]" onClick={addStop}> + Add Stop</Button>
-          </>
-        )}
-        <div>
-          <Button
-            className='mt-7 w-full bg-[#8B14CC] hover:bg-[#8B14CC] rounded-xl font-generalRegular'
-            onClick={handleNextClick}
-            disabled={loading}
-          >
-            {loading ? 'Processing...' : 'Next'}
-          </Button>
-        </div>
-      </form>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DragDropContext>
+              <Button variant="ghost" type="button" className="mt-5 font-generalRegular hover:bg-white hover:text-[#0094B2]" onClick={addStop}> + Add Stop</Button>
+            </>
+          )}
+          <div>
+            <Button
+              className='mt-7 w-full bg-[#8B14CC] hover:bg-[#8B14CC] rounded-xl font-generalRegular'
+              onClick={handleNextClick}
+              disabled={loading}
+            >
+              {loading ? 'Processing...' : 'Next'}
+            </Button>
+          </div>
+        </form>
+      </div>
       <MapboxDialog
         isOpen={isPickupDialogOpen}
         onClose={() => setIsPickupDialogOpen(false)}
