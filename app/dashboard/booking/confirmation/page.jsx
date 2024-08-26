@@ -8,7 +8,7 @@ function Page() {
       <div className="lg:w-1/2 w-full lg:h-full pt-2 sm:pb-28 px-6 lg:pt-0 lg:mr-8 -mt-2">
         <LeftDiv5 />
       </div>
-      <div className="lg:w-1/2 w-full flex justify-center lg:justify-start px-6 lg:px-12 pb-10 lg:pb-0 lg:items-center lg:-translate-y-40 lg:translate-x-20 lg:ml-8">
+      <div className="lg:w-1/2 w-full flex justify-center lg:justify-start px-6 lg:px-12 pb-10 lg:pb-0 lg:items-center lg:-translate-y-60 lg:translate-x-12 lg:ml-8">
         <RightDiv5 />
       </div>
     </div>
