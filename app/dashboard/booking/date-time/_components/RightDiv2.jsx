@@ -57,7 +57,7 @@ const RightDiv2 = () => {
   const today = startOfToday();
 
   return (
-    <div className="p-4 sm:p-6 bg-white rounded-lg shadow-lg max-w-full sm:max-w-md md:max-w-lg">
+    <div className="p-4 sm:p-6 bg-white rounded-xl shadow-lg max-w-full sm:max-w-md md:max-w-lg">
       <div className="mb-5 w-full">
         <h2 className="text-sm sm:text-base font-generalMedium text-[#8B14CC]">STEP 3/6</h2>
         <div className="flex mt-4 mb-5 -translate-x-1.5">
