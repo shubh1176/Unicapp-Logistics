@@ -63,6 +63,7 @@ function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [expandedOrderId, setExpandedOrderId] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false); // Sidebar state
+  const [activeTab, setActiveTab] = useState('pickupDrop'); // Active tab state
 
   useEffect(() => {
     if (user) {
@@ -205,6 +206,10 @@ function DashboardPage() {
 
   const orderCount = (status) => orders.filter(order => order.status === status).length;
 
+  const filteredIndividualOrders = activeTab === 'pickupDrop'
+    ? individualOrders.filter(order => order.order_type === 'Pickup & Drop')
+    : individualOrders.filter(order => order.order_type === 'Courier');
+
   if (loading) {
     return <LoadingComponent />;
   }
@@ -254,7 +259,8 @@ function DashboardPage() {
 
       {/* Main Content */}
       <div className="flex flex-col flex-grow">
-        <header className="flex items-center justify-between pt-4 pb-3 px-4 bg-white w-full mb-10">
+        {/* Header for Large Screens */}
+        <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4 bg-white w-full mb-10">
           <div className="flex items-center space-x-4 lg:justify-between w-full">
             <button className="lg:hidden" onClick={() => setSidebarOpen(!sidebarOpen)}>
               <Menu size={24} />
@@ -285,6 +291,18 @@ function DashboardPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </header>
+
+        {/* Header for Small Screens */}
+        <header className="lg:hidden bg-gradient-to-b from-[#8D14CE] to-[#470A68] text-white rounded-b-xl py-4 px-4">
+          <div className="flex items-center justify-start">
+            <button onClick={() => setSidebarOpen(!sidebarOpen)}>
+              <Menu size={24} className="text-white" />
+            </button>
+          </div>
+          <div className='mt-16'>
+            <h1 className="text-3xl font-generalMedium">Welcome {user?.firstName} 👋</h1>
           </div>
         </header>
 
@@ -468,7 +486,7 @@ function DashboardPage() {
           </div>
         ) : (
           <div className="flex flex-col h-full w-full p-6 bg-gray-50">
-            <h1 className="text-4xl font-extrabold text-gray-800 mb-6">Welcome {user?.firstName} 👋</h1>
+            <h1 className="text-4xl font-extrabold text-gray-800 mb-6 hidden sm:block">Welcome {user?.firstName} 👋</h1>
 
             <div className="flex flex-col items-center w-full space-y-8">
               {/* Orders Section */}
@@ -477,8 +495,68 @@ function DashboardPage() {
                   <h2 className="text-3xl font-semibold text-gray-700">Your Orders</h2>
                 </div>
 
-                {individualOrders.length > 0 ? (
-                  <div className="overflow-x-auto">
+                <div className="lg:hidden mb-6">
+                  <div className="flex justify-center mb-4">
+                    <button
+                      onClick={() => setActiveTab('pickupDrop')}
+                      className={`text-lg px-4 py-2 focus:outline-none ${activeTab === 'pickupDrop' ? 'bg-white text-[#0094B2]' : 'bg-white text-black'}`}
+                    >
+                      Pickup & Drop
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('courier')}
+                      className={`text-lg px-4 py-2 rounded-r-full focus:outline-none ${activeTab === 'courier' ? 'bg-white text-[#0094B2]' : 'bg-white text-black'}`}
+                    >
+                      Courier
+                    </button>
+                  </div>
+
+                  <div className="space-y-4">
+                    {filteredIndividualOrders.slice(0, 4).map((order) => (
+                      <div
+                        key={order.order_id}
+                        className={`bg-black bg-opacity-5 rounded-lg p-4 cursor-pointer ${expandedOrderId === order.order_id ? 'bg-black bg-opacity-5' : ''}`}
+                        onClick={() => setExpandedOrderId(order.order_id === expandedOrderId ? null : order.order_id)}
+                      >
+                        <div className="flex justify-between">
+                          <div>
+                            <div className="flex items-center mb-2">
+                              <Image src={'/images/arrowupgreen.svg'} height={25} width={25} alt="Pickup Location" />
+                              <p className="text-lg ml-2 font-generalMedium overflow-hidden whitespace-nowrap text-ellipsis max-w-xs">
+                                {order.pickupLocation || 'N/A'}
+                              </p>
+                            </div>
+                            <div className="flex items-center mb-2">
+                              <Image src={'/images/arrowdownred.svg'} height={25} width={25} alt="Drop Location" />
+                              <p className="text-lg ml-2 font-generalMedium overflow-hidden whitespace-nowrap text-ellipsis max-w-xs">
+                                {order.dropLocation || 'N/A'}
+                              </p>
+                            </div>
+                            <div className="border-t border-dashed w-96 border-black mb-7"></div>
+                          </div>
+                        </div>
+                        <div className='flex flex-row justify-between'>
+                          <p className="text-gray-600 text-xs mt-2">{moment(order.date).format('LL')}</p>
+                          <p className={`px-3 py-1 rounded-full ${getStatusStyle(order.status)}`}>
+                            {order.status || 'N/A'}
+                          </p>
+                        </div>
+                        {expandedOrderId === order.order_id && (
+                          <div className="mt-4">
+                            <p className="text-sm"><strong>Order ID:</strong> {order.order_id}</p>
+                            <p className="text-sm"><strong>Weight/Dimension:</strong> {order.weight || 'N/A'} kg ({order.length}cm x {order.width}cm x {order.height}cm)</p>
+                            <p className="text-sm"><strong>Delivery Fees:</strong> ₹{order.amount}</p>
+                            <p className="text-sm"><strong>Special Instructions:</strong> {order.specialInstructions || 'N/A'}</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Table for Large Screens */}
+                {individualOrders.length > 0 && (
+                  <div className="hidden lg:block overflow-x-auto">
                     <Table className="w-full">
                       <TableHeader className="bg-gray-100">
                         <TableRow>
@@ -508,15 +586,11 @@ function DashboardPage() {
                       </TableBody>
                     </Table>
                   </div>
-                ) : (
-                  <div className="text-center py-10">
-                    <p className="text-gray-600 text-lg">No past orders found</p>
-                  </div>
                 )}
               </div>
 
               {/* Saved Addresses Section */}
-              <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
+              <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl hidden lg:block">
                 <h2 className="text-3xl font-semibold text-gray-700 mb-4">Saved Addresses</h2>
                 <p className="text-gray-600 mb-6">No saved addresses found</p>
                 <button
@@ -535,3 +609,4 @@ function DashboardPage() {
 }
 
 export default DashboardPage;
+
