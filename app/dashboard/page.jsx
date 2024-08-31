@@ -532,7 +532,7 @@ function DashboardPage() {
                               {order.dropLocation || 'N/A'}
                             </p>
                           </div>
-                          <div className="border-t border-dashed w-96 border-black mb-7"></div>
+                          <div className="border-t border-dashed w-full border-black mb-7"></div> {/* Adjusted width to w-full */}
                         </div>
                       </div>
                       <div className='flex flex-row justify-between'>
@@ -608,4 +608,3 @@ function DashboardPage() {
 }
 
 export default DashboardPage;
-
