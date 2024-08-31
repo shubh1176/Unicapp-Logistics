@@ -519,16 +519,16 @@ function DashboardPage() {
                       onClick={() => setExpandedOrderId(order.order_id === expandedOrderId ? null : order.order_id)}
                     >
                       <div className="flex justify-between">
-                        <div>
+                        <div className="w-full">
                           <div className="flex items-center mb-2">
                             <Image src={'/images/arrowupgreen.svg'} height={25} width={25} alt="Pickup Location" />
-                            <p className="text-lg ml-2 font-generalMedium overflow-hidden truncate max-w-xs sm:max-w-full sm:whitespace-nowrap sm:overflow-hidden sm:truncate">
+                            <p className="text-lg ml-2 font-generalMedium overflow-hidden truncate max-w-full">
                               {order.pickupLocation || 'N/A'}
                             </p>
                           </div>
                           <div className="flex items-center mb-2">
                             <Image src={'/images/arrowdownred.svg'} height={25} width={25} alt="Drop Location" />
-                            <p className="text-lg ml-2 font-generalMedium overflow-hidden truncate max-w-xs sm:max-w-full sm:whitespace-nowrap sm:overflow-hidden sm:truncate">
+                            <p className="text-lg ml-2 font-generalMedium overflow-hidden truncate max-w-full">
                               {order.dropLocation || 'N/A'}
                             </p>
                           </div>
