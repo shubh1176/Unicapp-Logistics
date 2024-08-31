@@ -511,49 +511,48 @@ function DashboardPage() {
                     </button>
                   </div>
 
-                  <div className="space-y-4">
-                    {filteredIndividualOrders.slice(0, 4).map((order) => (
-                      <div
-                        key={order.order_id}
-                        className={`bg-black bg-opacity-5 rounded-lg p-4 cursor-pointer ${expandedOrderId === order.order_id ? 'bg-black bg-opacity-5' : ''}`}
-                        onClick={() => setExpandedOrderId(order.order_id === expandedOrderId ? null : order.order_id)}
-                      >
-                        <div className="flex justify-between">
-                          <div>
-                            <div className="flex items-center mb-2">
-                              <Image src={'/images/arrowupgreen.svg'} height={25} width={25} alt="Pickup Location" />
-                              <p className="text-lg ml-2 font-generalMedium overflow-hidden whitespace-nowrap text-ellipsis max-w-xs">
-                                {order.pickupLocation || 'N/A'}
-                              </p>
-                            </div>
-                            <div className="flex items-center mb-2">
-                              <Image src={'/images/arrowdownred.svg'} height={25} width={25} alt="Drop Location" />
-                              <p className="text-lg ml-2 font-generalMedium overflow-hidden whitespace-nowrap text-ellipsis max-w-xs">
-                                {order.dropLocation || 'N/A'}
-                              </p>
-                            </div>
-                            <div className="border-t border-dashed w-96 border-black mb-7"></div>
+                <div className="space-y-4">
+                  {filteredIndividualOrders.slice(0, 4).map((order) => (
+                    <div
+                      key={order.order_id}
+                      className={`bg-black bg-opacity-5 rounded-lg p-4 cursor-pointer ${expandedOrderId === order.order_id ? 'bg-black bg-opacity-5' : ''}`}
+                      onClick={() => setExpandedOrderId(order.order_id === expandedOrderId ? null : order.order_id)}
+                    >
+                      <div className="flex justify-between">
+                        <div>
+                          <div className="flex items-center mb-2">
+                            <Image src={'/images/arrowupgreen.svg'} height={25} width={25} alt="Pickup Location" />
+                            <p className="text-lg ml-2 font-generalMedium overflow-hidden text-ellipsis max-w-xs sm:max-w-full sm:whitespace-normal sm:break-words">
+                              {order.pickupLocation || 'N/A'}
+                            </p>
                           </div>
-                        </div>
-                        <div className='flex flex-row justify-between'>
-                          <p className="text-gray-600 text-xs mt-2">{moment(order.date).format('LL')}</p>
-                          <p className={`px-3 py-1 rounded-full ${getStatusStyle(order.status)}`}>
-                            {order.status || 'N/A'}
-                          </p>
-                        </div>
-                        {expandedOrderId === order.order_id && (
-                          <div className="mt-4">
-                            <p className="text-sm"><strong>Order ID:</strong> {order.order_id}</p>
-                            <p className="text-sm"><strong>Weight/Dimension:</strong> {order.weight || 'N/A'} kg ({order.length}cm x {order.width}cm x {order.height}cm)</p>
-                            <p className="text-sm"><strong>Delivery Fees:</strong> ₹{order.amount}</p>
-                            <p className="text-sm"><strong>Special Instructions:</strong> {order.specialInstructions || 'N/A'}</p>
+                          <div className="flex items-center mb-2">
+                            <Image src={'/images/arrowdownred.svg'} height={25} width={25} alt="Drop Location" />
+                            <p className="text-lg ml-2 font-generalMedium overflow-hidden text-ellipsis max-w-xs sm:max-w-full sm:whitespace-normal sm:break-words">
+                              {order.dropLocation || 'N/A'}
+                            </p>
                           </div>
-                        )}
+                          <div className="border-t border-dashed w-96 border-black mb-7"></div>
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                      <div className='flex flex-row justify-between'>
+                        <p className="text-gray-600 text-xs mt-2">{moment(order.date).format('LL')}</p>
+                        <p className={`px-3 py-1 rounded-full ${getStatusStyle(order.status)}`}>
+                          {order.status || 'N/A'}
+                        </p>
+                      </div>
+                      {expandedOrderId === order.order_id && (
+                        <div className="mt-4">
+                          <p className="text-sm"><strong>Order ID:</strong> {order.order_id}</p>
+                          <p className="text-sm"><strong>Weight/Dimension:</strong> {order.weight || 'N/A'} kg ({order.length}cm x {order.width}cm x {order.height}cm)</p>
+                          <p className="text-sm"><strong>Delivery Fees:</strong> ₹{order.amount}</p>
+                          <p className="text-sm"><strong>Special Instructions:</strong> {order.specialInstructions || 'N/A'}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
-
+                </div>
                 {/* Table for Large Screens */}
                 {individualOrders.length > 0 && (
                   <div className="hidden lg:block overflow-x-auto">
