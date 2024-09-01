@@ -27,7 +27,7 @@ function Page() {
     <div className="flex flex-col items-start justify-start min-h-screen mt-52 bg-[#F1EDEA] px-4">
       <div className="max-w-lg w-full ml-20">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-black font-filson">
+          <h1 className="text-2xl sm:text-3xl font-bold text-black font-filson">
             Can you tell us a bit about your organization?
           </h1>
         </div>
