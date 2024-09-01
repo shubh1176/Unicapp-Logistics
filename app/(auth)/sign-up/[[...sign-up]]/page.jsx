@@ -23,7 +23,7 @@ export default function Page() {
           </span>
         </div>
       </div>
-      <div className="mt-12 lg:mt-24 lg:mr-52 w-full max-w-md">
+      <div className="mt-12 lg:mt-24 lg:mr-52 w-full mb-14 max-w-md">
         <SignUp />
       </div>
     </div>

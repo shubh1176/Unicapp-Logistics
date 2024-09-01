@@ -82,23 +82,23 @@ const RoleSelectionPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="-translate-y-20">
+    <div className="flex flex-col items-center justify-center h-screen px-4 sm:px-8 md:px-16 lg:px-24">
+      <div className="-translate-y-20 w-full max-w-md">
         <div className="flex flex-col items-center justify-center h-full">
           <Image src="/images/blackonwhitelogo.svg" alt="Logo" width={300} height={30} className="translate-y-3 hover:cursor-pointer" onClick={() =>{router.push('/')}}/>
-          <h2 className="text-4xl font-generalMedium mb-4 -translate-y-3">How can we define you better?</h2>
-          <p className="text-black mb-6 font-generalRegular w-full text-center text-lg -translate-y-3">We'll fit your experience to your needs. Don't worry, you can change it later.</p>
-          <div className="flex mb-6 gap-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-generalMedium mb-4 -translate-y-3 text-center">How can we define you better?</h2>
+          <p className="text-black mb-6 font-generalRegular w-full text-center text-base sm:text-lg md:text-xl -translate-y-3">We'll fit your experience to your needs. Don't worry, you can change it later.</p>
+          <div className="flex flex-col sm:flex-row mb-6 gap-4 w-full justify-center">
             <button
               onClick={() => setSelectedRole('Individual')}
-              className={`w-72 h-44 border rounded-xl flex flex-col items-center justify-center gap-4 ${selectedRole === 'Individual' ? 'bg-[#0094B2] bg-opacity-10 border-[#0094B2]' : 'bg-white'}`}
+              className={`w-full sm:w-72 h-44 border rounded-xl flex flex-col items-center justify-center gap-4 ${selectedRole === 'Individual' ? 'bg-[#0094B2] bg-opacity-10 border-[#0094B2]' : 'bg-white'}`}
             >
               <Image src="/images/Customer.svg" alt="Individual" width={60} height={60} />
               <span className='text-lg'>Individual</span>
             </button>
             <button
               onClick={() => setSelectedRole('Business')}
-              className={`w-72 h-44 border rounded-xl flex flex-col items-center justify-center gap-4 ${selectedRole === 'Business' ? 'bg-[#0094B2] bg-opacity-10 border-[#0094B2]' : 'bg-white'}`}
+              className={`w-full sm:w-72 h-44 border rounded-xl flex flex-col items-center justify-center gap-4 ${selectedRole === 'Business' ? 'bg-[#0094B2] bg-opacity-10 border-[#0094B2]' : 'bg-white'}`}
             >
               <Image src="/images/office.svg" alt="Business" width={60} height={60} />
               <span className='text-lg'>Business</span>
@@ -106,7 +106,7 @@ const RoleSelectionPage = () => {
           </div>
           <button
             onClick={handleSelect}
-            className="px-1 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-full mx-24"
+            className="w-full px-1 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] sm:mx-24"
           >
             Unicapp it!
           </button>
