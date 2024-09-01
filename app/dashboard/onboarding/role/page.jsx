@@ -82,7 +82,7 @@ const RoleSelectionPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen px-2 sm:px-4 md:px-8 lg:px-16 translate-y-2 sm:translate-y-6">
+    <div className="flex flex-col items-center justify-center h-screen px-2 sm:px-4 md:px-8 lg:px-16 translate-y-2">
       <div className="-translate-y-10 sm:-translate-y-20 w-full max-w-xs sm:max-w-md">
         <div className="flex flex-col items-center justify-center h-full">
           <Image src="/images/blackonwhitelogo.svg" alt="Logo" width={200} height={20} className="translate-y-2 sm:translate-y-3 hover:cursor-pointer" onClick={() =>{router.push('/')}}/>
