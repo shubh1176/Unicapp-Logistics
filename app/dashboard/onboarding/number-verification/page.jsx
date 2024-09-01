@@ -23,7 +23,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { ChevronsUpDown, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-
 const countryCodes = [
   { code: '+91', label: 'India' },
   { code: '+1', label: 'United States' },
@@ -158,73 +157,71 @@ const NumberVerificationPage = () => {
   }, [showOtpDialog]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen px-4 sm:px-8">
       {!showOtpDialog ? (
-        <div className="">
-          <div className="flex flex-col items-center justify-center h-full -translate-y-20">
-            <Image src={'/images/blackonwhitelogo.svg'} height={300} width={300} alt="Logo" />
-            <h2 className="text-4xl font-generalMedium mb-12">Enter Your Phone Number</h2>
-            <div className="flex mb-4 w-96 gap-2">
-              <Popover open={open} onOpenChange={setOpen}>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    role="combobox"
-                    aria-expanded={open}
-                    className="w-[150px] justify-between"
-                  >
-                    {selectedCountryCode
-                      ? countryCodes.find((code) => code.code === selectedCountryCode)?.label
-                      : "Select country..."}
-                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-[150px] p-0">
-                  <Command>
-                    <CommandInput placeholder="Search country..." />
-                    <CommandList>
-                      <CommandEmpty>No country found.</CommandEmpty>
-                      <CommandGroup>
-                        {countryCodes.map((code) => (
-                          <CommandItem
-                            key={code.code}
-                            value={code.code}
-                            onSelect={(currentValue) => {
-                              setSelectedCountryCode(currentValue === selectedCountryCode ? "" : currentValue);
-                              setOpen(false);
-                            }}
-                          >
-                            <Check
-                              className={cn(
-                                "mr-2 h-4 w-4",
-                                selectedCountryCode === code.code ? "opacity-100" : "opacity-0"
-                              )}
-                            />
-                            {code.label}
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    </CommandList>
-                  </Command>
-                </PopoverContent>
-              </Popover>
-              <Input
-                type="text"
-                value={enteredPhoneNumber}
-                onChange={(e) => setEnteredPhoneNumber(e.target.value)}
-                placeholder="Phone Number"
-                className="p-2 border rounded-r-lg focus:outline-none w-full"
-              />
-            </div>
-            {phoneError && <p className="text-red-500">{phoneError}</p>}
-            <Button
-              onClick={handlePhoneNumberSubmit}
-              className="px-6 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-96"
-              disabled={loading}
-            >
-              {loading ? 'Sending OTP...' : 'Verify Phone'}
-            </Button>
+        <div className="flex flex-col items-center justify-center h-full w-full max-w-sm sm:max-w-md translate-y-[-10%] sm:translate-y-[-20%]">
+          <Image src={'/images/blackonwhitelogo.svg'} height={200} width={200} alt="Logo" className="mb-8 sm:mb-12" />
+          <h2 className="text-2xl sm:text-3xl font-generalMedium mb-8 sm:mb-12 text-center">Enter Your Phone Number</h2>
+          <div className="flex mb-4 sm:mb-6 w-full gap-2">
+            <Popover open={open} onOpenChange={setOpen}>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  role="combobox"
+                  aria-expanded={open}
+                  className="w-[100px] sm:w-[150px] justify-between"
+                >
+                  {selectedCountryCode
+                    ? countryCodes.find((code) => code.code === selectedCountryCode)?.label
+                    : "Select country..."}
+                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-[100px] sm:w-[150px] p-0">
+                <Command>
+                  <CommandInput placeholder="Search country..." />
+                  <CommandList>
+                    <CommandEmpty>No country found.</CommandEmpty>
+                    <CommandGroup>
+                      {countryCodes.map((code) => (
+                        <CommandItem
+                          key={code.code}
+                          value={code.code}
+                          onSelect={(currentValue) => {
+                            setSelectedCountryCode(currentValue === selectedCountryCode ? "" : currentValue);
+                            setOpen(false);
+                          }}
+                        >
+                          <Check
+                            className={cn(
+                              "mr-2 h-4 w-4",
+                              selectedCountryCode === code.code ? "opacity-100" : "opacity-0"
+                            )}
+                          />
+                          {code.label}
+                        </CommandItem>
+                      ))}
+                    </CommandGroup>
+                  </CommandList>
+                </Command>
+              </PopoverContent>
+            </Popover>
+            <Input
+              type="text"
+              value={enteredPhoneNumber}
+              onChange={(e) => setEnteredPhoneNumber(e.target.value)}
+              placeholder="Phone Number"
+              className="p-2 border rounded-r-lg focus:outline-none w-full"
+            />
           </div>
+          {phoneError && <p className="text-red-500 text-sm sm:text-base">{phoneError}</p>}
+          <Button
+            onClick={handlePhoneNumberSubmit}
+            className="px-4 sm:px-6 py-2 sm:py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-full"
+            disabled={loading}
+          >
+            {loading ? 'Sending OTP...' : 'Verify Phone'}
+          </Button>
         </div>
       ) : (
         <Dialog open={showOtpDialog} onOpenChange={(isOpen) => {
@@ -234,26 +231,26 @@ const NumberVerificationPage = () => {
             setOtpError('');
           }
         }}>
-          <DialogContent className="w-full max-w-3xl h-full max-h-[80vh] p-4">
+          <DialogContent className="w-full max-w-xs sm:max-w-md h-full max-h-[70vh] p-4 sm:p-6">
             <div className="flex flex-col items-center justify-center h-full">
-              <Image src={'/images/eyesdown.svg'} height={50} width={50} className="mb-10" alt="Eyes down" />
-              <h2 className="text-4xl font-generalMedium mb-16">Enter OTP</h2>
+              <Image src={'/images/eyesdown.svg'} height={40} width={40} className="mb-6 sm:mb-10" alt="Eyes down" />
+              <h2 className="text-2xl sm:text-3xl font-generalMedium mb-8 sm:mb-16 text-center">Enter OTP</h2>
               <Input
                 type="text"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="Enter OTP"
-                className="mb-4 p-2 border rounded w-96 focus:border-none"
+                className="mb-4 sm:mb-6 p-2 sm:p-3 border rounded w-full"
               />
-              {otpError && <p className="text-red-500">{otpError}</p>}
+              {otpError && <p className="text-red-500 text-sm sm:text-base">{otpError}</p>}
               <Button
                 onClick={handleOtpSubmit}
-                className="px-6 py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-96"
+                className="px-4 sm:px-6 py-2 sm:py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-full"
                 disabled={loading}
               >
                 {loading ? 'Verifying...' : 'Verify OTP'}
               </Button>
-              <p className="mt-4">Time remaining: {Math.floor(timer / 60)}:{timer % 60 < 10 ? `0${timer % 60}` : timer % 60}</p>
+              <p className="mt-4 text-sm sm:text-base text-center">Time remaining: {Math.floor(timer / 60)}:{timer % 60 < 10 ? `0${timer % 60}` : timer % 60}</p>
             </div>
           </DialogContent>
         </Dialog>
