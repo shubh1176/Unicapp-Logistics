@@ -157,11 +157,11 @@ const NumberVerificationPage = () => {
   }, [showOtpDialog]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen px-4 sm:px-8">
+    <div className="flex flex-col items-center justify-center h-screen px-6 sm:px-10">
       {!showOtpDialog ? (
-        <div className="flex flex-col items-center justify-center h-full w-full max-w-sm sm:max-w-md translate-y-[-10%] sm:translate-y-[-20%]">
-          <Image src={'/images/blackonwhitelogo.svg'} height={200} width={200} alt="Logo" className="mb-8 sm:mb-12" />
-          <h2 className="text-2xl sm:text-3xl font-generalMedium mb-8 sm:mb-12 text-center">Enter Your Phone Number</h2>
+        <div className="flex flex-col items-center justify-center h-full w-full max-w-xs sm:max-w-sm translate-y-[-10%] sm:translate-y-[-20%]">
+          <Image src={'/images/blackonwhitelogo.svg'} height={150} width={150} alt="Logo" className="mb-6 sm:mb-8" />
+          <h2 className="text-xl sm:text-2xl font-generalMedium mb-6 sm:mb-8 text-center">Enter Your Phone Number</h2>
           <div className="flex mb-4 sm:mb-6 w-full gap-2">
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
@@ -169,7 +169,7 @@ const NumberVerificationPage = () => {
                   variant="outline"
                   role="combobox"
                   aria-expanded={open}
-                  className="w-[100px] sm:w-[150px] justify-between"
+                  className="w-[90px] sm:w-[130px] justify-between"
                 >
                   {selectedCountryCode
                     ? countryCodes.find((code) => code.code === selectedCountryCode)?.label
@@ -177,7 +177,7 @@ const NumberVerificationPage = () => {
                   <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-[100px] sm:w-[150px] p-0">
+              <PopoverContent className="w-[90px] sm:w-[130px] p-0">
                 <Command>
                   <CommandInput placeholder="Search country..." />
                   <CommandList>
@@ -217,7 +217,7 @@ const NumberVerificationPage = () => {
           {phoneError && <p className="text-red-500 text-sm sm:text-base">{phoneError}</p>}
           <Button
             onClick={handlePhoneNumberSubmit}
-            className="px-4 sm:px-6 py-2 sm:py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-full"
+            className="px-3 sm:px-5 py-2 sm:py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-full"
             disabled={loading}
           >
             {loading ? 'Sending OTP...' : 'Verify Phone'}
@@ -231,10 +231,10 @@ const NumberVerificationPage = () => {
             setOtpError('');
           }
         }}>
-          <DialogContent className="w-full max-w-xs sm:max-w-md h-full max-h-[70vh] p-4 sm:p-6">
+          <DialogContent className="w-full max-w-xs sm:max-w-sm h-full max-h-[70vh] p-4 sm:p-6">
             <div className="flex flex-col items-center justify-center h-full">
-              <Image src={'/images/eyesdown.svg'} height={40} width={40} className="mb-6 sm:mb-10" alt="Eyes down" />
-              <h2 className="text-2xl sm:text-3xl font-generalMedium mb-8 sm:mb-16 text-center">Enter OTP</h2>
+              <Image src={'/images/eyesdown.svg'} height={30} width={30} className="mb-4 sm:mb-6" alt="Eyes down" />
+              <h2 className="text-xl sm:text-2xl font-generalMedium mb-6 sm:mb-8 text-center">Enter OTP</h2>
               <Input
                 type="text"
                 value={otp}
@@ -245,7 +245,7 @@ const NumberVerificationPage = () => {
               {otpError && <p className="text-red-500 text-sm sm:text-base">{otpError}</p>}
               <Button
                 onClick={handleOtpSubmit}
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-full"
+                className="px-3 sm:px-5 py-2 sm:py-3 bg-[#FDDA04] text-black rounded-xl hover:bg-[#FDDA04] w-full"
                 disabled={loading}
               >
                 {loading ? 'Verifying...' : 'Verify OTP'}
