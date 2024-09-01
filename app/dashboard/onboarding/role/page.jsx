@@ -100,7 +100,7 @@ const RoleSelectionPage = () => {
               onClick={() => setSelectedRole('Business')}
               className={`w-36 sm:w-72 h-32 sm:h-44 border rounded-xl flex flex-col items-center justify-center gap-2 sm:gap-4 ${selectedRole === 'Business' ? 'bg-[#0094B2] bg-opacity-10 border-[#0094B2]' : 'bg-white'}`}
             >
-              <Image src="/images/office.svg" alt="Business" width={40} height={40} />
+              <Image src="/images/Office.svg" alt="Business" width={40} height={40} />
               <span className='text-sm sm:text-lg'>Business</span>
             </button>
           </div>
