@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { UserButton, useUser, useClerk } from '@clerk/clerk-react';
+import { useUser, useClerk } from '@clerk/clerk-react';
 import { useRouter } from 'next/navigation';
 import { db } from '@/utils/db';
 import * as schema from '@/utils/schema';
@@ -8,15 +8,14 @@ import { eq } from 'drizzle-orm';
 import moment from 'moment';
 import Image from 'next/image';
 import DepositDialog from './_components/DepositDialog';
-import { CircleArrowUp, CircleUserRound, ShieldCheck, WalletMinimal, LogOut, Menu, X } from 'lucide-react';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { CircleArrowUp, CircleUserRound, WalletMinimal, ShieldCheck, LogOut, Menu, X } from 'lucide-react';
 
 const svgArray = [
   '/images/loading1.svg',
   '/images/loading2.svg',
   '/images/loading3.svg',
   '/images/loading4.svg',
-  '/images/loading5.svg'
+  '/images/loading5.svg',
 ];
 
 const LoadingComponent = () => {
@@ -25,7 +24,7 @@ const LoadingComponent = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSvgIndex((prevIndex) => (prevIndex + 1) % svgArray.length);
-    }, 200); 
+    }, 200);
 
     return () => clearInterval(interval);
   }, []);
@@ -33,10 +32,10 @@ const LoadingComponent = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="mb-4">
-        <Image src={svgArray[currentSvgIndex]} alt="Loading animation" width={40} height={40} /> {/* Reduced size */}
+        <Image src={svgArray[currentSvgIndex]} alt="Loading animation" width={40} height={40} />
       </div>
       <div>
-        <span className="text-base font-medium">Loading</span> {/* Smaller text size */}
+        <span className="text-base font-medium">Loading</span>
       </div>
     </div>
   );
@@ -49,7 +48,7 @@ function WalletPage() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showDepositDialog, setShowDepositDialog] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // For responsive drawer
 
   useEffect(() => {
     if (user) {
@@ -62,18 +61,18 @@ function WalletPage() {
             .from(schema.UserData)
             .leftJoin(schema.TransactionData, eq(schema.TransactionData.userEmail, schema.UserData.email))
             .where(eq(schema.UserData.email, email))
-            .then(result => {
+            .then((result) => {
               if (!result || !result.length) return null;
               const userData = {
                 ...result[0].UserData,
                 transactions: result
-                  .filter(row => row.TransactionData !== null)
-                  .map(row => ({
+                  .filter((row) => row.TransactionData !== null)
+                  .map((row) => ({
                     transaction_id: row.TransactionData.transaction_id,
                     amount: row.TransactionData.amount,
                     date: row.TransactionData.date,
                     description: row.TransactionData.description,
-                  }))
+                  })),
               };
               return userData;
             });
@@ -113,42 +112,41 @@ function WalletPage() {
         name: 'Unicapp Logistics',
         description: 'Deposit to wallet',
         order_id: order.id,
-        handler: async (response) => {
+        handler: async () => {
           try {
             const newBalance = parseFloat(userData.wallet) + amount;
 
-            await db.update(schema.UserData)
+            await db
+              .update(schema.UserData)
               .set({ wallet: newBalance })
               .where(eq(schema.UserData.email, user.primaryEmailAddress.emailAddress))
               .execute();
 
-            await db.insert(schema.TransactionData)
-              .values({
-                transaction_id: generateTransactionId(),
-                userEmail: user.primaryEmailAddress.emailAddress,
-                amount,
-                date: new Date().toISOString(),
-                description: 'Wallet Deposit',
-              })
-              .execute();
+            await db.insert(schema.TransactionData).values({
+              transaction_id: generateTransactionId(),
+              userEmail: user.primaryEmailAddress.emailAddress,
+              amount,
+              date: new Date().toISOString(),
+              description: 'Wallet Deposit',
+            });
 
             const updatedUserData = await db
               .select()
               .from(schema.UserData)
               .leftJoin(schema.TransactionData, eq(schema.TransactionData.userEmail, schema.UserData.email))
               .where(eq(schema.UserData.email, user.primaryEmailAddress.emailAddress))
-              .then(result => {
+              .then((result) => {
                 if (!result || !result.length) return null;
                 const userData = {
                   ...result[0].UserData,
                   transactions: result
-                    .filter(row => row.TransactionData !== null)
-                    .map(row => ({
+                    .filter((row) => row.TransactionData !== null)
+                    .map((row) => ({
                       transaction_id: row.TransactionData.transaction_id,
                       amount: row.TransactionData.amount,
                       date: row.TransactionData.date,
                       description: row.TransactionData.description,
-                    }))
+                    })),
                 };
                 return userData;
               });
@@ -179,111 +177,130 @@ function WalletPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {showDepositDialog && (
-        <DepositDialog
-          onClose={() => setShowDepositDialog(false)}
-          onDeposit={handleDeposit}
-        />
-      )}
+    <div className="flex flex-col lg:flex-row min-h-screen">
+      {/* Sidebar */}
+      <aside className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-64 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:relative lg:translate-x-0`}>
+        <div className="flex items-center justify-between p-4 mt-7 ml-3">
+          <Image
+            src={'/images/yellowcaplogo.svg'}
+            height={50}
+            width={150}
+            alt="Logo"
+            onClick={() => router.replace('/')}
+            className="hover:cursor-pointer"
+          />
+          <button className="lg:hidden" onClick={() => setSidebarOpen(false)}>
+            <X size={24} />
+          </button>
+        </div>
+        <div className="p-4">
+          <nav className="mt-4">
+            <ul>
+              <li>
+                <a href="/dashboard" className="flex py-2 px-4 rounded items-center gap-2 mb-2 hover:bg-[#c964cf]">
+                  <CircleUserRound /> Account
+                </a>
+              </li>
+              <li>
+                <a href="/dashboard/wallet" className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]">
+                  <WalletMinimal /> Wallet
+                </a>
+              </li>
+              {userData?.isAdmin && (
+                <li>
+                  <a href="/dashboard/admin-panel" className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]">
+                    <ShieldCheck /> Admin Panel
+                  </a>
+                </li>
+              )}
+              <li className="">
+                <button
+                  onClick={signOut}
+                  className="flex items-center gap-2 py-2 px-4 text-left w-full hover:bg-[#c964cf]"
+                >
+                  <LogOut size={20} /> Sign Out
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
 
-      <div className="flex flex-grow">
-        {/* Sidebar */}
-        <aside className={`lg:relative fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-48 md:w-64 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:translate-x-0`}> {/* Reduced sidebar width for small screens */}
-          <div className="flex items-center justify-between p-4 mt-7">
-            <Image src={'/images/yellowcaplogo.svg'} height={40} width={120} alt="Logo" onClick={() => router.replace('/')} className="hover:cursor-pointer" /> {/* Reduced logo size */}
-            <button className="lg:hidden" onClick={() => setSidebarOpen(false)}>
-              <X size={20} />
+      {/* Main Content */}
+      <div className="flex flex-col flex-grow px-6 md:px-12 lg:px-16">
+        {/* Header for Small Screens */}
+        <header className="lg:hidden bg-gradient-to-b from-[#8D14CE] to-[#470A68] text-white rounded-b-xl py-4 px-4">
+          <div className="flex items-center justify-between">
+            <button onClick={() => setSidebarOpen(!sidebarOpen)}>
+              <Menu size={24} className="text-white" />
             </button>
           </div>
-          <div className="p-4">
-            <nav className="mt-4">
-              <ul>
-                <li>
-                  <a href="/dashboard" className="flex py-2 px-4 rounded items-center gap-2 mb-2 hover:bg-[#c964cf]">
-                    <CircleUserRound /> Account
-                  </a>
-                </li>
-                <li>
-                  <a href="/dashboard/wallet" className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]">
-                    <WalletMinimal /> Wallet
-                  </a>
-                </li>
-                {userData?.isAdmin && (
-                  <li>
-                    <a href="/dashboard/admin-panel" className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]">
-                      <ShieldCheck /> Admin Panel
-                    </a>
-                  </li>
-                )}
-                <li>
-                  <button
-                    onClick={signOut}
-                    className="flex items-center gap-2 py-2 px-4 text-left w-full hover:bg-[#c964cf]"
-                  >
-                    <LogOut size={20} /> Sign Out
-                  </button>
-                </li>
-              </ul>
-            </nav>
+          <div className="mt-16">
+            <h1 className="text-3xl font-generalMedium">Wallet</h1>
           </div>
-        </aside>
+        </header>
 
-        {/* Main Content */}
-        <main className="flex-1 p-4 md:p-6"> {/* Reduced padding for small screens */}
-          <header className="flex items-center justify-between p-4 bg-white shadow-lg w-full mb-4"> {/* Adjusted header spacing */}
-            <div className="flex items-center space-x-4">
-              <button onClick={() => setSidebarOpen(!sidebarOpen)} className="lg:hidden">
-                <Menu size={20} />
-              </button>
-              <button
-                onClick={() => router.push('/dashboard/booking/location')}
-                className="px-3 py-2 bg-[#FFDD00] font-filson text-black rounded-xl hover:bg-[#ffdd00c9]"
-              >
-                + Book a new pickup
-              </button>
-            </div>
-          </header>
+        {/* Header for Large Screens */}
+        <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4 bg-white w-full mb-10">
+          <button className="lg:hidden" onClick={() => setSidebarOpen(!sidebarOpen)}>
+            <Menu size={24} />
+          </button>
+          <button
+            onClick={() => router.push('/dashboard/booking/location')}
+            className="px-4 py-2 bg-[#FFDD00] font-filson text-black rounded-xl hover:bg-[#ffdd00c9]"
+          >
+            + Book a new pickup
+          </button>
+        </header>
 
-          <h2 className="text-xl md:text-2xl font-bold mb-4">Wallet</h2> {/* Adjusted text size for small screens */}
-          <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full md:w-96"> {/* Responsive width */}
+        {/* Main Wallet Section */}
+        <div className="flex-1">
+          <h2 className="text-2xl font-bold mb-4 hidden lg:block">Wallet</h2>
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full lg:w-96">
             <div className="flex flex-col mb-4 gap-6">
               <div className="text-gray-500">CURRENT BALANCE</div>
-              <div className="text-4xl md:text-5xl font-bold">₹ {userData?.wallet || '0'}</div> {/* Adjusted font size */}
+              <div className="text-4xl md:text-5xl font-bold">₹ {userData?.wallet || '0'}</div>
             </div>
-            <div className="flex flex-row justify-start mt-10 gap-4"> {/* Reduced gap for small screens */}
-              <button className="px-4 py-2 bg-purple-600 text-white rounded-md flex flex-row gap-3" onClick={() => setShowDepositDialog(true)}>
+            <div className="flex flex-row justify-start mt-10 gap-4">
+              <button
+                className="px-4 py-2 bg-purple-600 text-white rounded-md flex flex-row gap-3"
+                onClick={() => setShowDepositDialog(true)}
+              >
                 Deposit <CircleArrowUp />
               </button>
             </div>
           </div>
 
           <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg mt-6">
-            <h3 className="text-lg md:text-xl font-bold mb-4">Transaction History</h3> {/* Adjusted font size */}
+            <h3 className="text-lg md:text-xl font-bold mb-4">Transaction History</h3>
             {userData?.transactions?.length > 0 ? (
-              <table className="min-w-full bg-white border border-gray-200 rounded-lg">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="py-2 px-4 border-b text-left">Date</th>
-                    <th className="py-2 px-4 border-b text-left">Amount</th>
-                    <th className="py-2 px-4 border-b text-left">Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {userData.transactions.map((transaction, index) => (
-                    <tr key={transaction.transaction_id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                      <td className="py-2 px-4 border-b">{moment(transaction.date).format('MMMM Do YYYY, h:mm:ss a')}</td>
-                      <td className="py-2 px-4 border-b">₹ {transaction.amount}</td>
-                      <td className="py-2 px-4 border-b">{transaction.description}</td>
+              <div className="overflow-x-auto">
+                <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="py-2 px-4 border-b text-left">Date</th>
+                      <th className="py-2 px-4 border-b text-left">Amount</th>
+                      <th className="py-2 px-4 border-b text-left">Description</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {userData.transactions.map((transaction, index) => (
+                      <tr key={transaction.transaction_id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                        <td className="py-2 px-4 border-b">
+                          {moment(transaction.date).format('MMMM Do YYYY, h:mm:ss a')}
+                        </td>
+                        <td className="py-2 px-4 border-b">₹ {transaction.amount}</td>
+                        <td className="py-2 px-4 border-b">{transaction.description}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             ) : (
               <div className="text-gray-700">No transactions found.</div>
             )}
           </div>
-        </main>
+        </div>
       </div>
     </div>
   );
