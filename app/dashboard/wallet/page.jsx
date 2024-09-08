@@ -241,7 +241,7 @@ function WalletPage() {
         </header>
 
         {/* Header for Large Screens */}
-        <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4 bg-white w-full mb-10">
+        <header className="hidden lg:flex items-center justify-between pt-14 pb-3 px-4 bg-white w-full mb-10">
           <button className="lg:hidden" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <Menu size={24} />
           </button>
@@ -252,7 +252,7 @@ function WalletPage() {
             + Book a new pickup
           </button>
         </header>
-
+        <div className='px-6 mt-7'>
         {/* Main Wallet Section */}
         <div className="flex-1">
           <h2 className="text-2xl font-bold mb-4 hidden lg:block">Wallet</h2>
@@ -301,6 +301,7 @@ function WalletPage() {
             )}
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
