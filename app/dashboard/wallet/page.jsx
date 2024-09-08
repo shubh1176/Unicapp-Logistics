@@ -33,10 +33,10 @@ const LoadingComponent = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="mb-4">
-        <Image src={svgArray[currentSvgIndex]} alt="Loading animation" width={50} height={50} />
+        <Image src={svgArray[currentSvgIndex]} alt="Loading animation" width={40} height={40} /> {/* Reduced size */}
       </div>
       <div>
-        <span className="text-lg font-medium">Loading</span>
+        <span className="text-base font-medium">Loading</span> {/* Smaller text size */}
       </div>
     </div>
   );
@@ -49,7 +49,7 @@ function WalletPage() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showDepositDialog, setShowDepositDialog] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false); // For responsive drawer
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -188,12 +188,12 @@ function WalletPage() {
       )}
 
       <div className="flex flex-grow">
-        {/* Sidebar as Drawer */}
-        <aside className={`lg:relative fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-64 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:translate-x-0`}>
+        {/* Sidebar */}
+        <aside className={`lg:relative fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-48 md:w-64 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:translate-x-0`}> {/* Reduced sidebar width for small screens */}
           <div className="flex items-center justify-between p-4 mt-7">
-            <Image src={'/images/yellowcaplogo.svg'} height={50} width={150} alt="Logo" onClick={() => router.replace('/')} className="hover:cursor-pointer" />
+            <Image src={'/images/yellowcaplogo.svg'} height={40} width={120} alt="Logo" onClick={() => router.replace('/')} className="hover:cursor-pointer" /> {/* Reduced logo size */}
             <button className="lg:hidden" onClick={() => setSidebarOpen(false)}>
-              <X size={24} />
+              <X size={20} />
             </button>
           </div>
           <div className="p-4">
@@ -230,43 +230,36 @@ function WalletPage() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6">
-          {/* Header with dropdown for account, wallet, and sign out */}
-          <header className="flex items-center justify-between p-4 bg-white shadow-lg w-full mb-10 lg:mb-4">
+        <main className="flex-1 p-4 md:p-6"> {/* Reduced padding for small screens */}
+          <header className="flex items-center justify-between p-4 bg-white shadow-lg w-full mb-4"> {/* Adjusted header spacing */}
             <div className="flex items-center space-x-4">
-              <button
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="lg:hidden"
-              >
-                <Menu size={24} />
+              <button onClick={() => setSidebarOpen(!sidebarOpen)} className="lg:hidden">
+                <Menu size={20} />
               </button>
               <button
                 onClick={() => router.push('/dashboard/booking/location')}
-                className="px-4 py-2 bg-[#FFDD00] font-filson text-black rounded-xl hover:bg-[#ffdd00c9]"
+                className="px-3 py-2 bg-[#FFDD00] font-filson text-black rounded-xl hover:bg-[#ffdd00c9]"
               >
                 + Book a new pickup
               </button>
             </div>
           </header>
 
-          <h2 className="text-2xl font-bold mb-4">Wallet</h2>
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full lg:w-96">
+          <h2 className="text-xl md:text-2xl font-bold mb-4">Wallet</h2> {/* Adjusted text size for small screens */}
+          <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full md:w-96"> {/* Responsive width */}
             <div className="flex flex-col mb-4 gap-6">
               <div className="text-gray-500">CURRENT BALANCE</div>
-              <div className="text-5xl font-bold">₹ {userData?.wallet || '0'}</div>
+              <div className="text-4xl md:text-5xl font-bold">₹ {userData?.wallet || '0'}</div> {/* Adjusted font size */}
             </div>
-            <div className="flex flex-row justify-start mt-16 gap-5">
-              <button
-                className="px-4 py-2 bg-purple-600 text-white rounded-md flex flex-row gap-3"
-                onClick={() => setShowDepositDialog(true)}
-              >
+            <div className="flex flex-row justify-start mt-10 gap-4"> {/* Reduced gap for small screens */}
+              <button className="px-4 py-2 bg-purple-600 text-white rounded-md flex flex-row gap-3" onClick={() => setShowDepositDialog(true)}>
                 Deposit <CircleArrowUp />
               </button>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-lg mt-6">
-            <h3 className="text-xl font-bold mb-4">Transaction History</h3>
+          <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg mt-6">
+            <h3 className="text-lg md:text-xl font-bold mb-4">Transaction History</h3> {/* Adjusted font size */}
             {userData?.transactions?.length > 0 ? (
               <table className="min-w-full bg-white border border-gray-200 rounded-lg">
                 <thead>
