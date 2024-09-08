@@ -227,7 +227,7 @@ function WalletPage() {
       </aside>
 
       {/* Main Content */}
-      <div className="flex flex-col flex-grow px-6 md:px-12 lg:px-16">
+      <div className="flex flex-col flex-grow md:px-12 lg:px-16">
         {/* Header for Small Screens */}
         <header className="lg:hidden bg-gradient-to-b from-[#8D14CE] to-[#470A68] text-white rounded-b-xl py-4 px-4">
           <div className="flex items-center justify-between">
