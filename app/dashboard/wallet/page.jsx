@@ -9,16 +9,17 @@ import moment from 'moment';
 import Image from 'next/image';
 import DepositDialog from './_components/DepositDialog';
 import { CircleArrowUp, CircleUserRound, WalletMinimal, ShieldCheck, LogOut, Menu, X } from 'lucide-react';
-
-const svgArray = [
-  '/images/loading1.svg',
-  '/images/loading2.svg',
-  '/images/loading3.svg',
-  '/images/loading4.svg',
-  '/images/loading5.svg',
-];
+import { DropdownMenu, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 const LoadingComponent = () => {
+  const svgArray = [
+    '/images/loading1.svg',
+    '/images/loading2.svg',
+    '/images/loading3.svg',
+    '/images/loading4.svg',
+    '/images/loading5.svg',
+  ];
+
   const [currentSvgIndex, setCurrentSvgIndex] = useState(0);
 
   useEffect(() => {
@@ -48,14 +49,13 @@ function WalletPage() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showDepositDialog, setShowDepositDialog] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false); // For responsive drawer
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (user) {
       const loadUserData = async () => {
         try {
           const email = user.primaryEmailAddress.emailAddress;
-
           const fetchedUserData = await db
             .select()
             .from(schema.UserData)
@@ -252,57 +252,62 @@ function WalletPage() {
             + Book a new pickup
           </button>
         </header>
-        <div className='px-6 mt-7'>
-        {/* Main Wallet Section */}
-        <div className="flex-1">
-          <h2 className="text-2xl font-bold mb-4 hidden lg:block">Wallet</h2>
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full lg:w-96">
-            <div className="flex flex-col mb-4 gap-6">
-              <div className="text-gray-500">CURRENT BALANCE</div>
-              <div className="text-4xl md:text-5xl font-bold">₹ {userData?.wallet || '0'}</div>
-            </div>
-            <div className="flex flex-row justify-start mt-10 gap-4">
-              <button
-                className="px-4 py-2 bg-purple-600 text-white rounded-md flex flex-row gap-3"
-                onClick={() => setShowDepositDialog(true)}
-              >
-                Deposit <CircleArrowUp />
-              </button>
-            </div>
-          </div>
 
-          <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg mt-6">
-            <h3 className="text-lg md:text-xl font-bold mb-4">Transaction History</h3>
-            {userData?.transactions?.length > 0 ? (
-              <div className="overflow-x-auto">
-                <table className="min-w-full bg-white border border-gray-200 rounded-lg">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="py-2 px-4 border-b text-left">Date</th>
-                      <th className="py-2 px-4 border-b text-left">Amount</th>
-                      <th className="py-2 px-4 border-b text-left">Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {userData.transactions.map((transaction, index) => (
-                      <tr key={transaction.transaction_id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                        <td className="py-2 px-4 border-b">
-                          {moment(transaction.date).format('MMMM Do YYYY, h:mm:ss a')}
-                        </td>
-                        <td className="py-2 px-4 border-b">₹ {transaction.amount}</td>
-                        <td className="py-2 px-4 border-b">{transaction.description}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+        <div className="px-6 mt-7">
+          {/* Main Wallet Section */}
+          <div className="flex-1">
+            <h2 className="text-2xl font-bold mb-4 hidden lg:block">Wallet</h2>
+            <div className="bg-white p-6 rounded-lg shadow-lg w-full lg:w-96">
+              <div className="flex flex-col mb-4 gap-6">
+                <div className="text-gray-500">CURRENT BALANCE</div>
+                <div className="text-4xl md:text-5xl font-bold">₹ {userData?.wallet || '0'}</div>
               </div>
-            ) : (
-              <div className="text-gray-700">No transactions found.</div>
-            )}
+              <div className="flex flex-row justify-start mt-10 gap-4">
+                <button
+                  className="px-4 py-2 bg-purple-600 text-white rounded-md flex flex-row gap-3"
+                  onClick={() => setShowDepositDialog(true)}
+                >
+                  Deposit <CircleArrowUp />
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg mt-6">
+              <h3 className="text-lg md:text-xl font-bold mb-4">Transaction History</h3>
+              {userData?.transactions?.length > 0 ? (
+                <div className="overflow-x-auto">
+                  <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="py-2 px-4 border-b text-left">Date</th>
+                        <th className="py-2 px-4 border-b text-left">Amount</th>
+                        <th className="py-2 px-4 border-b text-left">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {userData.transactions.map((transaction, index) => (
+                        <tr key={transaction.transaction_id} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                          <td className="py-2 px-4 border-b">
+                            {moment(transaction.date).format('MMMM Do YYYY, h:mm:ss a')}
+                          </td>
+                          <td className="py-2 px-4 border-b">₹ {transaction.amount}</td>
+                          <td className="py-2 px-4 border-b">{transaction.description}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="text-gray-700">No transactions found.</div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-      </div>
+
+      {showDepositDialog && (
+        <DepositDialog onClose={() => setShowDepositDialog(false)} onDeposit={handleDeposit} />
+      )}
     </div>
   );
 }
