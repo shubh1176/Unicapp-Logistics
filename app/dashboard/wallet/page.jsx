@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { UserButton, useUser } from '@clerk/clerk-react';
+import { UserButton, useUser, useClerk } from '@clerk/clerk-react';
 import { useRouter } from 'next/navigation';
 import { db } from '@/utils/db';
 import * as schema from '@/utils/schema';
@@ -8,8 +8,8 @@ import { eq } from 'drizzle-orm';
 import moment from 'moment';
 import Image from 'next/image';
 import DepositDialog from './_components/DepositDialog';
-import { CircleArrowUp, CircleUserRound, House, ShieldCheck, WalletMinimal } from 'lucide-react';
-
+import { CircleArrowUp, CircleUserRound, ShieldCheck, WalletMinimal, LogOut, Menu, X } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 const svgArray = [
   '/images/loading1.svg',
@@ -25,7 +25,7 @@ const LoadingComponent = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSvgIndex((prevIndex) => (prevIndex + 1) % svgArray.length);
-    }, 200); // Change SVG every 200ms
+    }, 200); 
 
     return () => clearInterval(interval);
   }, []);
@@ -44,10 +44,12 @@ const LoadingComponent = () => {
 
 function WalletPage() {
   const { user } = useUser();
+  const { signOut } = useClerk();
   const router = useRouter();
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showDepositDialog, setShowDepositDialog] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false); // For responsive drawer
 
   useEffect(() => {
     if (user) {
@@ -55,7 +57,6 @@ function WalletPage() {
         try {
           const email = user.primaryEmailAddress.emailAddress;
 
-          // Fetch user data including wallet balance and transactions
           const fetchedUserData = await db
             .select()
             .from(schema.UserData)
@@ -66,7 +67,7 @@ function WalletPage() {
               const userData = {
                 ...result[0].UserData,
                 transactions: result
-                  .filter(row => row.TransactionData !== null) // Ensure TransactionData is not null
+                  .filter(row => row.TransactionData !== null)
                   .map(row => ({
                     transaction_id: row.TransactionData.transaction_id,
                     amount: row.TransactionData.amount,
@@ -116,13 +117,11 @@ function WalletPage() {
           try {
             const newBalance = parseFloat(userData.wallet) + amount;
 
-            // Update wallet balance in the database
             await db.update(schema.UserData)
               .set({ wallet: newBalance })
               .where(eq(schema.UserData.email, user.primaryEmailAddress.emailAddress))
               .execute();
 
-            // Create a transaction record
             await db.insert(schema.TransactionData)
               .values({
                 transaction_id: generateTransactionId(),
@@ -133,7 +132,6 @@ function WalletPage() {
               })
               .execute();
 
-            // Fetch updated user data
             const updatedUserData = await db
               .select()
               .from(schema.UserData)
@@ -144,7 +142,7 @@ function WalletPage() {
                 const userData = {
                   ...result[0].UserData,
                   transactions: result
-                    .filter(row => row.TransactionData !== null) // Ensure TransactionData is not null
+                    .filter(row => row.TransactionData !== null)
                     .map(row => ({
                       transaction_id: row.TransactionData.transaction_id,
                       amount: row.TransactionData.amount,
@@ -190,38 +188,58 @@ function WalletPage() {
       )}
 
       <div className="flex flex-grow">
-        <aside className="w-64 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white flex-shrink-0">
+        {/* Sidebar as Drawer */}
+        <aside className={`lg:relative fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-64 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:translate-x-0`}>
           <div className="flex items-center justify-between p-4 mt-7">
-            <Image src={'/images/yellowcaplogo.svg'} height={50} width={150} alt="Logo" onClick={()=>router.replace('/')} className="hover:cursor-pointer"/>
+            <Image src={'/images/yellowcaplogo.svg'} height={50} width={150} alt="Logo" onClick={() => router.replace('/')} className="hover:cursor-pointer" />
+            <button className="lg:hidden" onClick={() => setSidebarOpen(false)}>
+              <X size={24} />
+            </button>
           </div>
           <div className="p-4">
             <nav className="mt-4">
               <ul>
                 <li>
                   <a href="/dashboard" className="flex py-2 px-4 rounded items-center gap-2 mb-2 hover:bg-[#c964cf]">
-                  <CircleUserRound /> Account
+                    <CircleUserRound /> Account
                   </a>
                 </li>
                 <li>
-                  <a href="/dashboard/wallet" className=" py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]">
+                  <a href="/dashboard/wallet" className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]">
                     <WalletMinimal /> Wallet
                   </a>
                 </li>
                 {userData?.isAdmin && (
                   <li>
-                    <a href="/dashboard/admin-panel" className=" py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]">
+                    <a href="/dashboard/admin-panel" className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]">
                       <ShieldCheck /> Admin Panel
                     </a>
                   </li>
                 )}
+                <li>
+                  <button
+                    onClick={signOut}
+                    className="flex items-center gap-2 py-2 px-4 text-left w-full hover:bg-[#c964cf]"
+                  >
+                    <LogOut size={20} /> Sign Out
+                  </button>
+                </li>
               </ul>
             </nav>
           </div>
         </aside>
 
+        {/* Main Content */}
         <main className="flex-1 p-6">
-          <header className="flex items-center justify-between p-4 bg-white shadow-lg w-full mb-10">
+          {/* Header with dropdown for account, wallet, and sign out */}
+          <header className="flex items-center justify-between p-4 bg-white shadow-lg w-full mb-10 lg:mb-4">
             <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="lg:hidden"
+              >
+                <Menu size={24} />
+              </button>
               <button
                 onClick={() => router.push('/dashboard/booking/location')}
                 className="px-4 py-2 bg-[#FFDD00] font-filson text-black rounded-xl hover:bg-[#ffdd00c9]"
@@ -229,15 +247,10 @@ function WalletPage() {
                 + Book a new pickup
               </button>
             </div>
-            <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
-              <UserButton />
-              <div>
-                <p className="text-lg font-semibold">{user?.fullName || 'Guest'}</p>
-              </div>
-            </div>
           </header>
+
           <h2 className="text-2xl font-bold mb-4">Wallet</h2>
-          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full lg:w-96">
             <div className="flex flex-col mb-4 gap-6">
               <div className="text-gray-500">CURRENT BALANCE</div>
               <div className="text-5xl font-bold">₹ {userData?.wallet || '0'}</div>

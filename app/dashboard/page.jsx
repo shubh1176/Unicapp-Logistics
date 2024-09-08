@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { UserButton, useUser } from '@clerk/clerk-react';
+import { UserButton, useUser, useClerk } from '@clerk/clerk-react';
 import { useRouter } from 'next/navigation';
 import { db } from '@/utils/db';
 import * as schema from '@/utils/schema';
@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/table';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, CircleUserRound, ShieldCheck, Truck, UserRound, WalletMinimal, ChevronUp, Menu, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleUserRound, ShieldCheck, Truck, WalletMinimal, ChevronUp, Menu, X, LogOut, ChevronDown } from 'lucide-react';
 import { Switch } from "@/components/ui/switch";
 
 const svgArray = [
@@ -52,6 +52,7 @@ const LoadingComponent = () => {
 
 function DashboardPage() {
   const { user } = useUser();
+  const { signOut } = useClerk(); // Add signOut from Clerk
   const router = useRouter();
   const [userData, setUserData] = useState(null);
   const [orders, setOrders] = useState([]);
@@ -244,13 +245,14 @@ function DashboardPage() {
                   </a>
                 </li>
               )}
-              <li className="lg:hidden">
-                <div className="flex items-center border-2 rounded-lg py-2 px-3">
-                  <UserButton />
-                  <div>
-                    <p className="text-lg font-semibold">{user?.fullName || 'Guest'}</p>
-                  </div>
-                </div>
+              <li className="">
+                {/* Sign Out Button for small screens */}
+                <button
+                  onClick={signOut}
+                  className="flex items-center gap-2 py-2 px-4 text-left w-full hover:bg-[#c964cf]"
+                >
+                  <LogOut size={20} /> Sign Out
+                </button>
               </li>
             </ul>
           </nav>
@@ -285,10 +287,12 @@ function DashboardPage() {
                 </div>
               )}
               <div className="hidden lg:flex items-center border-2 rounded-lg py-2 px-3">
-                <UserButton />
-                <div>
-                  <p className="text-lg font-semibold">{user?.fullName || 'Guest'}</p>
-                </div>
+                {/* Combined Dropdown for account, wallet, and sign out */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="flex items-center gap-1 text-lg">
+                    {user?.fullName || 'Guest'}
+                  </DropdownMenuTrigger>
+                </DropdownMenu>
               </div>
             </div>
           </div>
