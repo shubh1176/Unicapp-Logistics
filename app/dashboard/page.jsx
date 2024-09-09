@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/table';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, CircleUserRound, ShieldCheck, Truck, WalletMinimal, ChevronUp, Menu, X, LogOut, ChevronDown } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CircleUserRound, ShieldCheck, Truck, WalletMinimal, ChevronUp, Menu, X, LogOut, ChevronDown, UserRound } from 'lucide-react';
 import { Switch } from "@/components/ui/switch";
 
 const svgArray = [
