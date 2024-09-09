@@ -35,7 +35,7 @@ function OurServices() {
         <div className='grid grid-cols-2 gap-3 md:hidden mb-6 mt-6 mx-2 md:mx-8 md:px-12 lg:px-56 transition-all duration-300 ease-in-out'>
           <div className='flex flex-col items-center transition-all duration-300 ease-in-out'>
             <div className='bg-[#F8EBAB] h-36 w-36 md:h-60 md:w-60 rounded-2xl flex justify-center items-center transition-all duration-300 ease-in-out'>
-              <Image src={'/images/groupimage.svg'} height={140} width={140} alt="Pickup & Drop" />
+              <Image src={'/images/groupimage.png'} height={140} width={140} alt="Pickup & Drop" />
             </div>
             <div className='w-36 md:w-60 mt-1 hover:cursor-pointer transition-all duration-300 ease-in-out' onClick={() => router.replace('/Pickup-and-drop')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-1'>
@@ -51,7 +51,7 @@ function OurServices() {
           
           <div className='flex flex-col items-center transition-all duration-300 ease-in-out'>
             <div className='bg-[#F8EBAB] h-36 w-36 md:h-60 md:w-60 rounded-2xl flex justify-center items-center transition-all duration-300 ease-in-out'>
-              <Image src={'/images/delivery.svg'} height={48} width={120} alt="Intercity Courier" />
+              <Image src={'/images/delivery.png'} height={48} width={120} alt="Intercity Courier" />
             </div>
             <div className='w-36 md:w-60 mt-1 hover:cursor-pointer transition-all duration-300 ease-in-out' onClick={() => router.replace('/courier')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-1'>
@@ -70,7 +70,7 @@ function OurServices() {
         <div className='hidden md:flex flex-col md:flex-row gap-7 mb-8 mt-8 mx-4 md:mx-8 md:px-12 lg:px-56 transition-all duration-300 ease-in-out'>
           <div className='flex flex-col items-center transition-all duration-300 ease-in-out'>
             <div className='bg-[#F8EBAB] h-40 w-40 md:h-60 md:w-60 rounded-2xl flex justify-center items-center transition-all duration-300 ease-in-out'>
-              <Image src={'/images/groupimage.svg'} height={200} width={200} alt="Pickup & Drop" />
+              <Image src={'/images/groupimage.png'} height={200} width={200} alt="Pickup & Drop" />
             </div>
             <div className='w-40 md:w-60 mt-0 hover:cursor-pointer transition-all duration-300 ease-in-out' onClick={() => router.replace('/Pickup-and-drop')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-2'>
@@ -85,7 +85,7 @@ function OurServices() {
           </div>
           <div className='flex flex-col items-center transition-all duration-300 ease-in-out'>
             <div className='bg-[#F8EBAB] h-40 w-40 md:h-60 md:w-60 rounded-2xl flex justify-center items-center transition-all duration-300 ease-in-out'>
-              <Image src={'/images/delivery.svg'} height={60} width={150} alt="Intercity Courier" />
+              <Image src={'/images/delivery.png'} height={60} width={150} alt="Intercity Courier" />
             </div>
             <div className='w-40 md:w-60 mt-0 hover:cursor-pointer transition-all duration-300 ease-in-out' onClick={() => router.replace('/courier')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-2'>
@@ -100,7 +100,7 @@ function OurServices() {
           </div>
           <div className='flex flex-col items-center transition-all duration-300 ease-in-out'>
             <div className='bg-[#F8EBAB] h-40 w-40 md:h-60 md:w-60 rounded-2xl flex justify-center items-center transition-all duration-300 ease-in-out'>
-              <Image src={'/images/shmf.svg'} height={110} width={194} alt="API Integration" />
+              <Image src={'/images/shmf.png'} height={110} width={194} alt="API Integration" />
             </div>
             <div className='w-40 md:w-60 mt-0 hover:cursor-pointer transition-all duration-300 ease-in-out' onClick={() => router.replace('/businesses')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-2'>
@@ -115,7 +115,7 @@ function OurServices() {
           </div>
           <div className='flex flex-col items-center transition-all duration-300 ease-in-out'>
             <div className='bg-[#F8EBAB] h-40 w-40 md:h-60 md:w-60 rounded-2xl flex justify-center items-center transition-all duration-300 ease-in-out'>
-              <Image src={'/images/delman.svg'} height={90} width={170} alt="Last-mile Delivery" />
+              <Image src={'/images/delman.png'} height={90} width={170} alt="Last-mile Delivery" />
             </div>
             <div className='w-40 md:w-60 mt-0 hover:cursor-pointer transition-all duration-300 ease-in-out' onClick={() => router.replace('/businesses')}>
               <span className='flex flex-row justify-between bg-black rounded-2xl p-2'>

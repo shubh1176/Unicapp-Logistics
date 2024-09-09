@@ -39,7 +39,7 @@ export default function Home() {
           {/* Responsive Image Loading and Positioning */}
           <div className="absolute top-24 sm:top-56 md:top-44 left-24 sm:left-20 md:left-64 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-0">
             <Image 
-              src={'/images/flower.svg'} 
+              src={'/images/flower.png'} 
               alt="Flower Bouquet" 
               fill 
               objectFit="contain" 
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-4 sm:bottom-6 md:bottom-9 right-32 sm:right-48 md:right-96 w-8 sm:w-10 md:w-12 lg:w-16 h-8 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-12">
             <Image 
-              src={'/images/lunchbox.svg'} 
+              src={'/images/lunchbox.png'} 
               alt="Lunch Box" 
               fill 
               objectFit="contain" 
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-16 sm:bottom-24 md:bottom-44 left-16 sm:left-20 md:left-32 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-12">
             <Image 
-              src={'/images/book.svg'} 
+              src={'/images/book.png'} 
               alt="Book" 
               fill 
               objectFit="contain" 
@@ -69,7 +69,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-48 sm:left-64 md:left-96 w-12 sm:w-16 md:w-20 lg:w-28 h-12 sm:h-16 md:h-20 lg:h-28 transform -translate-x-1/2 rotate-12">
             <Image 
-              src={'/images/charger.svg'} 
+              src={'/images/charger.png'} 
               alt="Charger" 
               fill 
               objectFit="contain" 
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-24 sm:left-32 md:left-56 w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform -translate-x-1/2 rotate-0">
             <Image 
-              src={'/images/drink.svg'} 
+              src={'/images/drink.png'} 
               alt="Coffee Cup" 
               fill 
               objectFit="contain" 
@@ -89,7 +89,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-20 sm:bottom-28 md:bottom-44 left-28 sm:left-40 md:left-80 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-0">
             <Image 
-              src={'/images/Medicines1.svg'} 
+              src={'/images/Medicines1.png'} 
               alt="Medicines" 
               fill 
               objectFit="contain" 
@@ -99,7 +99,7 @@ export default function Home() {
           </div>
           <div className="absolute top-20 sm:top-24 md:top-48 right-24 sm:right-32 md:right-64 w-10 sm:w-16 md:w-20 lg:w-28 h-10 sm:h-16 md:h-20 lg:h-28 transform translate-x-1/2 rotate-4">
             <Image 
-              src={'/images/dress.svg'} 
+              src={'/images/dress.png'} 
               alt="Dress" 
               fill 
               objectFit="contain" 
@@ -109,7 +109,7 @@ export default function Home() {
           </div>
           <div className="absolute top-32 sm:top-40 md:top-60 right-16 sm:right-20 md:right-32 w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform translate-x-1/2 rotate-0">
             <Image 
-              src={'/images/key.svg'} 
+              src={'/images/key.png'} 
               alt="Key" 
               fill 
               objectFit="contain" 
@@ -119,7 +119,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-16 sm:bottom-20 md:bottom-28 right-24 sm:right-32 md:right-80 w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform translate-x-1/2 rotate-0">
             <Image 
-              src={'/images/grocery.svg'} 
+              src={'/images/grocery.png'} 
               alt="Grocery Basket" 
               fill 
               objectFit="contain" 
@@ -129,7 +129,7 @@ export default function Home() {
           </div>
           <div className="absolute top-60 sm:top-80 md:top-96 right-8 sm:right-12 md:right-24 w-8 sm:w-10 md:w-12 lg:w-16 h-8 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-0">
             <Image 
-              src={'/images/envelop.svg'} 
+              src={'/images/envelop.png'} 
               alt="Envelope" 
               fill 
               objectFit="contain" 
