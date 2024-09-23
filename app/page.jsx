@@ -37,7 +37,7 @@ export default function Home() {
           </div>
 
           {/* Responsive Image Loading and Positioning */}
-          <div className="absolute top-24 sm:top-56 md:top-44 left-24 sm:left-20 md:left-64 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-0">
+          <div className="absolute top-24 sm:top-96 md:top-44 left-10 sm:left-20 md:left-14 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-0">
             <Image 
               src={'/images/flower.png'} 
               alt="Flower Bouquet" 
@@ -97,7 +97,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute top-20 sm:top-24 md:top-48 right-24 sm:right-32 md:right-64 w-10 sm:w-16 md:w-20 lg:w-28 h-10 sm:h-16 md:h-20 lg:h-28 transform translate-x-1/2 rotate-4">
+          <div className="absolute top-20 sm:top-48 md:top-48 right-24 sm:right-4 md:right-64 w-10 sm:w-16 md:w-20 lg:w-28 h-10 sm:h-16 md:h-20 lg:h-28 transform translate-x-1/2 sm:translate-x-7 rotate-4">
             <Image 
               src={'/images/dress.png'} 
               alt="Dress" 
@@ -162,31 +162,25 @@ export default function Home() {
         <WhyUs />
       </div>
 
-      <div className="relative flex flex-col items-center mt-10 mx-4 sm:mx-7 md:mt-20 lg:mt-32 mb-10 md:mb-20 lg:mb-32">
-        <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl">
-          {/* Responsive Image for the sticker */}
+
+      <div className="relative flex flex-col content-center items-center mt-10 mb-20">
+        <div className="relative">
+          {/* Responsive Image with max-width and max-height */}
           <Image 
             src={'/images/sticker.svg'} 
-            layout="responsive"
-            width={1050} 
-            height={850} 
-            className="h-auto w-full" 
-            priority={true} 
+            height={1000} 
+            width={1200} 
+            className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl" 
+            loading="lazy" 
             alt="Sticker"
-            sizes="(max-width: 640px) 300px, (max-width: 768px) 450px, (max-width: 1024px) 650px, 1050px"
           />
-          
-          {/* Responsive positioning for the icon */}
-          <div className="absolute bottom-[10%] sm:bottom-[15%] md:bottom-[20%] lg:bottom-[25%] right-[5%] sm:right-[10%] md:right-[15%] lg:right-[20%] w-8 sm:w-10 md:w-14 lg:w-20 h-8 sm:h-10 md:h-14 lg:h-20 transform translate-x-[5%] sm:translate-x-[10%] -translate-y-1 sm:-translate-y-2 md:-translate-y-4 lg:-translate-y-6 rotate-0">
+          <div className="absolute bottom-10 sm:bottom-12 md:bottom-20 right-0 sm:right-16 md:right-24 lg:right-20">
             <Image 
               src={'/images/iconblack.svg'} 
-              layout="responsive"
-              width={70} 
-              height={70} 
-              className="h-auto w-full sm:-translate-x-9 sm:-translate-y-8" 
-              priority={true} 
-              alt="Icon"
-              sizes="(max-width: 640px) 30px, (max-width: 768px) 45px, (max-width: 1024px) 70px, 90px"
+              width={40}  // Explicitly defining the width
+              height={40} // Explicitly defining the height
+              className="w-full h-full" 
+              alt="Black Icon"
             />
           </div>
         </div>
