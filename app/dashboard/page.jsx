@@ -325,10 +325,13 @@ function DashboardPage() {
         } transition-transform duration-300 lg:relative lg:translate-x-0`}
       >
         <div className="flex items-center justify-between p-4 mt-7 ml-3">
-          <h1
+          <Image
+            height={200}
+            width={200}
+            src={"/images/yellowwhiteonpurple.svg"}
             onClick={() => router.replace("/")}
-            className="hover:cursor-pointer text-4xl"
-          >OnePost</h1>
+            className="hover:cursor-pointer"
+          ></Image>
           <button className="lg:hidden" onClick={() => setSidebarOpen(false)}>
             <X size={24} />
           </button>
