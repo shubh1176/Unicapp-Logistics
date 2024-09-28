@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Page() {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between mt-20 lg:pl-32 px-4 lg:px-0 bg-[#F1EDEA]">
+    <div className="h-screen flex flex-col lg:flex-row items-center justify-between lg:pl-32 px-4 lg:px-0 bg-[#F1EDEA]">
       <div className="flex flex-col gap-1 items-center text-center lg:text-left">
         <Image src={'/images/blackonwhitelogo.svg'} height={200} width={200} className='-translate-y-4 lg:h-300 lg:w-300' />
         <h1 className="font-generalMedium text-3xl lg:text-5xl -translate-y-4">Welcome Back</h1>
