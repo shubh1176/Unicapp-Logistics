@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Header from "../components/Header";
+import { FaArrowUp, FaArrowUpLong } from "react-icons/fa6";
 
 // Load non-essential components lazily to improve loading performance
 const Faq = dynamic(() => import("@/components/Faq"));
@@ -18,7 +19,7 @@ export default function Home() {
     <div className="max-w-screen flex flex-col overflow-hidden  gap-4 justify-center bg-[#F1EDEA]">
       <div className="relative">
         <Header />
-        <div className="text-center bg-gradient-to-b h-auto md:h-[80vh] lg:h-[60vh] from-[#8D14CE] to-[#470A68] text-white pb-16 md:pb-24  rounded-br-[36px] rounded-bl-[36px] flex flex-col justify-center items-center">
+        <div className="md:py-20 text-center bg-gradient-to-b h-auto md:h-[80vh] lg:h-[70vh] from-[#8D14CE] to-[#470A68] text-white pb-16 md:pb-24  rounded-br-[36px] rounded-bl-[36px] flex flex-col justify-center items-center">
           <div className="flex flex-col items-center space-y-3">
             <div className="flex flex-col px-4  mb-1">
               <h1 className="text-[29px] leading-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-filson">
@@ -38,28 +39,37 @@ export default function Home() {
             </p>
           </div>
           {/* Input Fields and Get Estimate Button */}
-        <div className="w-full px-20 max-w-md md:max-w-lg lg:max-w-xl mt-8 flex flex-col md:flex-row justify-between gap-1">
-          <input
-            type="text"
-            placeholder="Pickup Location"
-            className="w-full p-3 py-2 rounded-lg bg-[#FFFFFF80] placeholder:text-[#FFFFFF] text-[#FFFFFF] text-md focus:outline-none focus:ring-2 focus:ring-[#F5E27B]"
-          />
-          <input
-            type="text"
-            placeholder="Dropout Location"
-            className="w-full p-3 py-2 rounded-lg bg-[#FFFFFF80] placeholder:text-[#FFFFFF] text-[#FFFFFF]  text-md focus:outline-none focus:ring-2 focus:ring-[#F5E27B]"
-          />
-          <button
-            className="w-full md:w-auto bg-[#F5E27B] hover:bg-[#e8d06c] text-[#202020] font-semibold px-6 py-2 rounded-lg transition-all duration-300"
-            onClick={() => router.push("/estimate")}
-          >
-            Get an Estimate
-          </button>
-        </div>
-      
-
+          <div className="w-full px-20 max-w-md md:max-w-lg lg:max-w-xl mt-8 flex flex-col md:flex-row justify-between gap-1 font-montserrat">
+            <div className="flex flex-col gap-1">
+            <div className="relative w-full">
+              {/* FaArrowUp Icon positioned inside the input */}
+              <FaArrowUpLong  className="absolute left-3 top-3  text-white" />
+              <input
+                type="text"
+                placeholder="Pickup Location"
+                className="w-full p-3 pl-10 py-2 rounded-lg bg-[#FFFFFF80] placeholder:text-[#FFFFFF] placeholder:text-sm text-[#FFFFFF] text-md focus:outline-none focus:ring-2 focus:ring-[#F5E27B]"
+              />
+            </div>
+            <div className="relative w-full">
+              {/* FaArrowUp Icon positioned inside the input */}
+              <FaArrowUpLong className="absolute left-3 top-3 text-white" />
+              <input
+                type="text"
+                placeholder="Dropout Location"
+                className="w-full p-3 pl-10 py-2 rounded-lg bg-[#FFFFFF80] placeholder:text-[#FFFFFF] placeholder:text-sm text-[#FFFFFF] text-md focus:outline-none focus:ring-2 focus:ring-[#F5E27B]"
+              />
+            </div>
+            </div>
+           
+            <button
+              className="w-full md:w-auto bg-[#F5E27B] hover:bg-[#e8d06c] text-[#202020] text-sm md:text-auto font-semibold px-6 py-2 md:h-16 md:px-8 md:my-auto md:ml-2  rounded-lg transition-all duration-300"
+              onClick={() => router.push("/estimate")}
+            >
+              Get an estimate
+            </button>
+          </div>
           {/* Responsive Image Loading and Positioning */}
-          <div className="absolute top-40   sm:top-96 md:top-44 left-8 sm:left-20 md:left-14 w-12 sm:w-12 md:w-16 lg:w-20 h-12 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-0">
+          <div className="absolute top-40   sm:top-96 md:top-40 lg:top-32 left-8 sm:left-20 md:left-14 lg:left-52 w-12 sm:w-12 md:w-16 lg:w-24 h-12 sm:h-12 md:h-16 lg:h-24 transform -translate-x-1/2 rotate-0">
             <Image
               src={"/images/flower.png"}
               alt="Flower Bouquet"
@@ -69,7 +79,7 @@ export default function Home() {
               sizes="(max-width: 640px) 50px, (max-width: 768px) 75px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute bottom-4 sm:bottom-6 md:bottom-9 right-32 sm:right-48 md:right-96 w-8 sm:w-10 md:w-12 lg:w-16 h-8 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-12">
+          <div className="absolute top-56  sm:bottom-6 md:bottom-9 lg:top-[430px] left-6 sm:right-48 md:right-96 lg:left-[900px] w-8 sm:w-10 md:w-12 lg:w-16 h-8 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-12">
             <Image
               src={"/images/lunchbox.png"}
               alt="Lunch Box"
@@ -79,7 +89,7 @@ export default function Home() {
               sizes="(max-width: 640px) 50px, (max-width: 768px) 75px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute bottom-16 sm:bottom-24 md:bottom-44 left-16 sm:left-20 md:left-32 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-12">
+          <div className="absolute bottom-14 sm:bottom-24 md:bottom-44 lg:bottom-52 lg:left-28 left-12 sm:left-20 md:left-32 w-8 sm:w-12 md:w-16 lg:w-16 h-8 sm:h-12 md:h-16 lg:h-16 transform -translate-x-1/2 rotate-12">
             <Image
               src={"/images/book.png"}
               alt="Book"
@@ -89,7 +99,7 @@ export default function Home() {
               sizes="(max-width: 640px) 50px, (max-width: 768px) 75px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-48 sm:left-64 md:left-96 w-12 sm:w-16 md:w-20 lg:w-28 h-12 sm:h-16 md:h-20 lg:h-28 transform -translate-x-1/2 rotate-12">
+          <div className="absolute bottom-14 sm:bottom-8 md:bottom-10 right-0 sm:left-64 md:left-96 w-12 sm:w-16 md:w-20 lg:w-28 h-12 sm:h-16 md:h-20 lg:h-28 transform -translate-x-1/2 rotate-12">
             <Image
               src={"/images/charger.png"}
               alt="Charger"
@@ -99,7 +109,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-24 sm:left-32 md:left-56 w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform -translate-x-1/2 rotate-0">
+          <div className="absolute top-52 sm:bottom-20 md:bottom-24 lg:top-[340px] right-6 sm:left-32 md:left-56 w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform -translate-x-1/2 rotate-0">
             <Image
               src={"/images/drink.png"}
               alt="Coffee Cup"
@@ -109,7 +119,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute bottom-20 sm:bottom-28 md:bottom-44 left-28 sm:left-40 md:left-80 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-0">
+          <div className="absolute top-40 sm:bottom-28 md:bottom-44 lg:top-60 right-0 sm:left-40 md:left-64 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform -translate-x-1/2 rotate-0">
             <Image
               src={"/images/Medicines1.png"}
               alt="Medicines"
@@ -119,7 +129,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute top-20 sm:top-48 md:top-48 right-24 sm:right-4 md:right-64 w-10 sm:w-16 md:w-20 lg:w-28 h-10 sm:h-16 md:h-20 lg:h-28 transform translate-x-1/2 sm:translate-x-7 rotate-4">
+          <div className="hidden md:block absolute top-20 sm:top-48 md:top-48 lg:top-36 right-24 sm:right-4 md:right-64 lg:right-44 w-10 sm:w-16 md:w-20 lg:w-28 h-10 sm:h-16 md:h-20 lg:h-28 transform translate-x-1/2 sm:translate-x-7 rotate-4">
             <Image
               src={"/images/dress.png"}
               alt="Dress"
@@ -129,7 +139,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 100px, (max-width: 1024px) 150px, 200px"
             />
           </div>
-          <div className="absolute top-32 sm:top-40 md:top-60 right-16 sm:right-20 md:right-32 w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform translate-x-1/2 rotate-0">
+          <div className="hidden md:block absolute top-32 sm:top-40 md:top-60 lg:top-64 right-16 sm:right-20 md:right-32 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 transform translate-x-1/2 rotate-0">
             <Image
               src={"/images/key.png"}
               alt="Key"
@@ -139,7 +149,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute bottom-16 sm:bottom-20 md:bottom-28 right-24 sm:right-32 md:right-80 w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform translate-x-1/2 rotate-0">
+          <div className="absolute top-[300px] sm:bottom-20 md:bottom-28 left-[-10px] sm:right-32  lg:left-[980px] w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform translate-x-1/2 rotate-0">
             <Image
               src={"/images/grocery.png"}
               alt="Grocery Basket"
@@ -149,10 +159,10 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute top-60 sm:top-80 md:top-96 right-8 sm:right-12 md:right-24 w-8 sm:w-10 md:w-12 lg:w-16 h-8 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-0">
+          <div className="absolute md:hidden top-72 sm:top-80 md:top-96 right-8 sm:right-12 md:right-24 w-12 sm:w-10 md:w-12 lg:w-16 h-12 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-0">
             <Image
-              src={"/images/envelop.png"}
-              alt="Envelope"
+              src={"/images/box.png"}
+              alt="Box"
               fill
               objectFit="contain"
               priority
@@ -160,6 +170,16 @@ export default function Home() {
             />
           </div>
 
+          <div className="hidden md:block absolute  sm:bottom-8 md:bottom-8 lg:bottom-11 right-8 sm:right-12 md:right-24 lg:right-40 w-12 sm:w-10 md:w-12 lg:w-16 h-12 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-0">
+            <Image
+              src={"/images/envelop.png"}
+              alt="Box"
+              fill
+              objectFit="contain"
+              priority
+              sizes="(max-width: 640px) 50px, (max-width: 768px) 60px, (max-width: 1024px) 80px, 100px"
+            />
+          </div>
           {/* <div className="mt-6 md:mt-10 hover:cursor-pointer">
             <Image
               src={"/images/getEst.svg"}
