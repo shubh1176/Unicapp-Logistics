@@ -197,3 +197,31 @@ body {
   color: rgba(255, 255, 255, 1);
   opacity: 1;
 }
+
+
+
+@keyframes scrollLeftToRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes scrollRightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll-left-to-right {
+  animation: scrollLeftToRight 35s linear infinite;
+}
+
+.animate-scroll-right-to-left {
+  animation: scrollRightToLeft 35s linear infinite;
+}

@@ -11,6 +11,15 @@ const Faq = dynamic(() => import("@/components/Faq"));
 const Footer = dynamic(() => import("@/components/Footer"));
 const OurServices = dynamic(() => import("@/components/OurServices"));
 const WhyUs = dynamic(() => import("@/components/WhyUs"));
+const TestimonialSection = dynamic(() => import("@/components/TestimonialSection"));
+const MissionSection = dynamic(() => import("@/components/MissionSection"));
+
+
+
+
+
+
+
 
 export default function Home() {
   const router = useRouter();
@@ -203,28 +212,42 @@ export default function Home() {
         <WhyUs />
       </div>
 
-      <div className="relative flex flex-col content-center items-center mt-10 mb-20">
-        <div className="relative">
-          {/* Responsive Image with max-width and max-height */}
-          <Image
-            src={"/images/sticker.svg"}
-            height={1000}
-            width={1200}
+            <MissionSection />
+      {/* <div className="relative w-full gap-4 flex flex-col md:flex-row justify-center content-center items-center mt-10 mb-20">
+        <div>
+        <Image
+            src={"/images/ourmission.png"}
+            height={360}
+            width={380}
             className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
             loading="lazy"
             alt="Sticker"
           />
-          <div className="absolute bottom-10 sm:bottom-12 md:bottom-20 right-0 sm:right-16 md:right-24 lg:right-20">
+        </div>
+        <div className="relative">
+          <Image
+            src={"/images/yellowCard.png"}
+            height={350}
+            width={380}
+            className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
+            loading="lazy"
+            alt="Sticker"
+          />
+          <div className="absolute bottom-[58px] sm:bottom-12 md:bottom-24 right-16 sm:right-16 md:right-24 lg:right-28 h-5 w-5 md:h-12 md:w-12">
             <Image
               src={"/images/iconblack.svg"}
-              width={40} // Explicitly defining the width
-              height={40} // Explicitly defining the height
+              width={40} 
+              height={40} 
               className="w-full h-full"
               alt="Black Icon"
             />
           </div>
         </div>
-      </div>
+      </div> */}
+
+      {/* <MissionSection /> */}
+      <TestimonialSection />
+
 
       <div className="flex flex-col content-center items-center mt-10 md:mt-20 mb-10">
         {" "}
