@@ -245,7 +245,7 @@ export default function Home() {
       {/* <MissionSection /> */}
       <TestimonialSection />
 
-      <div className="flex flex-col content-center items-center mt-10 md:mt-20 mb-10">
+      <div className="flex flex-col content-center items-center mt-10 xl:mt-20  xl:mb-40 mb-10">
         {" "}
         {/* Adjusted bottom margin */}
         <div>
@@ -264,10 +264,10 @@ export default function Home() {
           Don't worry, it's easy ;)
         </span>
         <Image
-          src={"/images/howtouse.svg"}
+          src={"/images/howtouse.png"}
           height={800}
           width={800}
-          className="hidden lg:block lg:h-[900px] lg:w-[1100px]"
+          className="hidden lg:block  lg:w-[1100px]"
           loading="lazy"
           sizes="(max-width: 640px) 450px, (max-width: 1024px) 900px, 1100px"
         />
