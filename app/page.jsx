@@ -5,21 +5,18 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Header from "../components/Header";
 import { FaArrowUp, FaArrowUpLong } from "react-icons/fa6";
+import { FaLongArrowAltRight } from "react-icons/fa";
+
 
 // Load non-essential components lazily to improve loading performance
 const Faq = dynamic(() => import("@/components/Faq"));
 const Footer = dynamic(() => import("@/components/Footer"));
 const OurServices = dynamic(() => import("@/components/OurServices"));
 const WhyUs = dynamic(() => import("@/components/WhyUs"));
-const TestimonialSection = dynamic(() => import("@/components/TestimonialSection"));
+const TestimonialSection = dynamic(() =>
+  import("@/components/TestimonialSection")
+);
 const MissionSection = dynamic(() => import("@/components/MissionSection"));
-
-
-
-
-
-
-
 
 export default function Home() {
   const router = useRouter();
@@ -50,26 +47,26 @@ export default function Home() {
           {/* Input Fields and Get Estimate Button */}
           <div className="w-full px-20 max-w-md md:max-w-lg lg:max-w-xl mt-8 flex flex-col md:flex-row justify-between gap-1 font-montserrat">
             <div className="flex flex-col gap-1">
-            <div className="relative w-full">
-              {/* FaArrowUp Icon positioned inside the input */}
-              <FaArrowUpLong  className="absolute left-3 top-3  text-white" />
-              <input
-                type="text"
-                placeholder="Pickup Location"
-                className="w-full p-3 pl-10 py-2 rounded-lg bg-[#FFFFFF80] placeholder:text-[#FFFFFF] placeholder:text-sm text-[#FFFFFF] text-md focus:outline-none focus:ring-2 focus:ring-[#F5E27B]"
-              />
+              <div className="relative w-full">
+                {/* FaArrowUp Icon positioned inside the input */}
+                <FaArrowUpLong className="absolute left-3 top-3  text-white" />
+                <input
+                  type="text"
+                  placeholder="Pickup Location"
+                  className="w-full p-3 pl-10 py-2 rounded-lg bg-[#FFFFFF80] placeholder:text-[#FFFFFF] placeholder:text-sm text-[#FFFFFF] text-md focus:outline-none focus:ring-2 focus:ring-[#F5E27B]"
+                />
+              </div>
+              <div className="relative w-full">
+                {/* FaArrowUp Icon positioned inside the input */}
+                <FaArrowUpLong className="absolute left-3 top-3 text-white" />
+                <input
+                  type="text"
+                  placeholder="Dropout Location"
+                  className="w-full p-3 pl-10 py-2 rounded-lg bg-[#FFFFFF80] placeholder:text-[#FFFFFF] placeholder:text-sm text-[#FFFFFF] text-md focus:outline-none focus:ring-2 focus:ring-[#F5E27B]"
+                />
+              </div>
             </div>
-            <div className="relative w-full">
-              {/* FaArrowUp Icon positioned inside the input */}
-              <FaArrowUpLong className="absolute left-3 top-3 text-white" />
-              <input
-                type="text"
-                placeholder="Dropout Location"
-                className="w-full p-3 pl-10 py-2 rounded-lg bg-[#FFFFFF80] placeholder:text-[#FFFFFF] placeholder:text-sm text-[#FFFFFF] text-md focus:outline-none focus:ring-2 focus:ring-[#F5E27B]"
-              />
-            </div>
-            </div>
-           
+
             <button
               className="w-full md:w-auto bg-[#F5E27B] hover:bg-[#e8d06c] text-[#202020] text-sm md:text-auto font-semibold px-6 py-2 md:h-16 md:px-8 md:my-auto md:ml-2  rounded-lg transition-all duration-300"
               onClick={() => router.push("/estimate")}
@@ -212,7 +209,7 @@ export default function Home() {
         <WhyUs />
       </div>
 
-            <MissionSection />
+      <MissionSection />
       {/* <div className="relative w-full gap-4 flex flex-col md:flex-row justify-center content-center items-center mt-10 mb-20">
         <div>
         <Image
@@ -248,7 +245,6 @@ export default function Home() {
       {/* <MissionSection /> */}
       <TestimonialSection />
 
-
       <div className="flex flex-col content-center items-center mt-10 md:mt-20 mb-10">
         {" "}
         {/* Adjusted bottom margin */}
@@ -271,11 +267,37 @@ export default function Home() {
           src={"/images/howtouse.svg"}
           height={800}
           width={800}
-          className="md:h-[900px] md:w-[1100px]"
+          className="hidden lg:block lg:h-[900px] lg:w-[1100px]"
+          loading="lazy"
+          sizes="(max-width: 640px) 450px, (max-width: 1024px) 900px, 1100px"
+        />
+        <Image
+          src={"/images/howtouse2.png"}
+          height={800}
+          width={800}
+          className=" lg:hidden my-10 w-80  md:w-[28rem]  "
           loading="lazy"
           sizes="(max-width: 640px) 450px, (max-width: 1024px) 900px, 1100px"
         />
       </div>
+
+      <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] rounded-lg flex justify-between items-center p-4 px-6 w-[90%]  max-w-5xl mx-auto">
+
+      {/* Text Section */}
+      <div>
+        <h3 className="text-white text-base md:text-xl lg:text-2xl font-bold mb-1">Get an estimate</h3>
+        <p className="text-purple-200 text-[8px] md:text-xs lg:text-sm">
+          Enter your pickup & drop locations to check prices for delivery
+        </p>
+      </div>
+
+      {/* Button Section */}
+      <button className="bg-[#F3E545] text-black flex gap-3 items-center font-semibold py-2 px-4 xl:px-48 rounded-lg text-[8px] md:text-xs lg:text-sm hover:bg-yellow-300 transition-all">
+        See prices {" "} <FaLongArrowAltRight className="hidden xl:block" size={15}/>
+      </button>
+    </div>
+  
+
 
       <div className="mt-10 md:mt-20 mb-10">
         <Faq />

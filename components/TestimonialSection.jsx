@@ -27,7 +27,7 @@ const TestimonialCard = ({ name, service, review, image }) => {
 
 const TestimonialTabs = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="flex ml-20 space-x-0 mb-8">
+    <div className="flex ml-20 justify-center lg:justify-start space-x-0 mb-8">
       {/* Individuals Tab */}
       <button
         onClick={() => setActiveTab("individual")}
@@ -119,7 +119,7 @@ const TestimonialSection = () => {
   return (
     <div className="py-12">
       {/* Section Heading */}
-      <h2 className="text-3xl font-bold text-black ml-20 mb-8">
+      <h2 className="text-3xl text-center lg:text-start font-bold text-black lg:ml-20 mb-8">
         See what others are sending
       </h2>
 
