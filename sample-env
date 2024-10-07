@@ -1,0 +1,27 @@
+# Clerk API Keys
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_example_publishable_key
+CLERK_SECRET_KEY=sk_test_example_secret_key
+
+# Clerk URLs
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+# Drizzle Database URL
+NEXT_PUBLIC_DRIZZLE_DATABASE_URL=postgresql://user:password@hostname/dbname?sslmode=require
+
+# Mapbox Access Token
+NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN=pk.example_mapbox_access_token
+
+# Razorpay API Keys
+RAZORPAY_KEY_ID=rzp_test_example_key_id
+RAZORPAY_KEY_SECRET=example_key_secret
+NEXT_PUBLIC_RAZORPAY_KEY_ID=rzp_test_example_key_id
+
+# Twilio API Keys
+TWILIO_ACCOUNT_SID=AC_example_account_sid
+TWILIO_AUTH_TOKEN=example_auth_token
+TWILIO_PHONE_NUMBER=+1234567890
+
+# Email Credentials
+EMAIL_USER=contact@example.com
+EMAIL_PASS=your-email-password
