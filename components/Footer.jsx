@@ -47,7 +47,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="absolute -bottom-7 md:top-32 right-20 md:right-36 w-40 md:w-80 h-40 md:h-80 transform translate-x-20 md:translate-x-36 -translate-y-0.5 rotate-0">
+      <div className="absolute -bottom-7 md:top-36 right-20 md:right-36 w-40 md:w-80 h-40 md:h-80 transform translate-x-20 md:translate-x-36 -translate-y-0.5 rotate-0">
         <Image src={'/images/84.svg'} alt="Ribbon" layout="fill" objectFit="contain" />
       </div>
       <div className="pt-4 text-start space-y-2 text-gray-400 text-xs md:text-sm translate-x-1 md:translate-x-3">
