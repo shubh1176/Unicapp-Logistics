@@ -48,9 +48,9 @@ function WhyUs() {
       </div>
 
       {/* Responsive Grid Layout for Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-4 xl:gap-8 mx-4 sm:mx-8 md:mx-24 lg:mx-16 xl:mx-32 mb-8 md:m-00 z-10">
-        <Card className="rounded-lg h-24 md:h-40  sm:rounded-xl xl:rounded-2xl content-center items-center p-0 sm:py-1 sm:px-3">
-          <CardHeader className="space-y-0 py-2 px-3 md:p-0">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-4 xl:gap-8 mx-4 sm:mx-6 md:mx-24 lg:mx-16 xl:mx-32 mb-8 md:m-00 z-10">
+        <Card className="rounded-lg h-24 md:h-40  sm:rounded-xl xl:rounded-2xl content-center items-center p-3  sm:p-5">
+          <CardHeader className="space-y-0 p-0">
             <CardDescription className="flex flex-row gap-2 mb-1  text-[6px] sm:text-sm md:text-lg xl:text-sm">
               <Calendar className="-translate-y-0.5  w-3 h-3 lg:w-5 lg:h-5 " />{" "}
               Need for Speed
@@ -59,7 +59,7 @@ function WhyUs() {
               Same day delivery
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-3 pt-0 md:p-0">
+          <CardContent className="p-0 mt-1 ">
             <p className="text-[#777777] font-generalLight text-[8px]   sm:text-sm md:text-base xl:text-sm">
               For businesses, we provide same day intracity deliveries, so that
               you can make your customers even happier!
@@ -67,8 +67,8 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-0 sm:py-1 sm:px-3">
-          <CardHeader className="space-y-0 py-2 px-3 md:p-0 ">
+        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-3 sm:p-5">
+          <CardHeader className="space-y-0 p-0 ">
             <CardDescription className="flex flex-row gap-2 mb-1 text-[6px] sm:text-sm md:text-lg xl:text-sm ">
               <IndianRupee className="-translate-y-0.5 w-3 h-3 lg:w-5 lg:h-5" />{" "}
               Affordable
@@ -77,7 +77,7 @@ function WhyUs() {
               Value for money
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-3 pt-0 md:p-0">
+          <CardContent className="p-0 mt-1 ">
             <p className="text-[#777777] font-generalLight text-[8px] sm:text-sm md:text-base xl:text-sm xl:mb-4">
               We may not be the cheapest, but our prices are still lower than
               what's currently on the market.
@@ -85,8 +85,8 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-0 sm:py-1 sm:px-3">
-          <CardHeader className="space-y-0 py-2 px-3 md:p-0">
+        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-3 sm:p-5">
+          <CardHeader className="space-y-0 p-0">
             <CardDescription className="flex flex-row gap-2 mb-1 text-[6px] sm:text-sm md:text-lg xl:text-sm">
               <Headset className="-translate-y-0.5 w-3 h-3 lg:w-5 lg:h-5" />{" "}
               Flexibility
@@ -95,7 +95,7 @@ function WhyUs() {
               24/7 Customer Support
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-3 pt-0 md:p-0">
+          <CardContent className="p-0 mt-1 ">
             <p className="text-[#777777] font-generalLight text-[8px] sm:text-sm md:text-base xl:text-sm">
               We’re here 24/7 to resolve any shipment issues. If you’re a
               business, your customers can also reach out to us directly for
@@ -104,8 +104,8 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-0 sm:py-1 sm:px-3">
-          <CardHeader className="space-y-0 py-2 px-3 md:p-0">
+        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-3 sm:p-5">
+          <CardHeader className="space-y-0 p-0">
             <CardDescription className="flex flex-row gap-2 mb-1 text-[6px] sm:text-sm md:text-lg xl:text-sm">
               <Route className="-translate-y-0.5 w-3 h-3 lg:w-5 lg:h-5" /> Ease
             </CardDescription>
@@ -113,7 +113,7 @@ function WhyUs() {
               Multiple drop-off points
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-3 pt-0 md:p-0">
+          <CardContent className="p-0  mt-1 ">
             <p className="text-[#777777] font-generalLight text-[8px] sm:text-sm md:text-base xl:text-sm">
               We value your time, so we provide multiple drop-off points,
               eliminating the need to book each shipment separately.
@@ -121,7 +121,7 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-0 sm:py-1 sm:px-3 hidden lg:block">
+        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-0 sm:p-5 hidden lg:block">
           <CardHeader className="space-y-0 py-2 px-3 md:p-0">
             <CardDescription className="flex flex-row gap-2 mb-1 text-[6px] sm:text-sm md:text-lg xl:text-sm">
               <Navigation className="-translate-y-0.5 w-3 h-3 lg:w-5 lg:h-5" />{" "}
@@ -131,7 +131,7 @@ function WhyUs() {
               Live tracking
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-3 pt-0 md:p-0">
+          <CardContent className="p-3 pt-0 mt-1 md:p-0">
             <p className="text-[#777777] font-generalLight text-[8px] sm:text-sm md:text-base xl:text-sm">
               Get a tracking link for your own updates and easily share it with
               your customers for their peace of mind.
@@ -139,7 +139,7 @@ function WhyUs() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-0 sm:py-1 sm:px-3 hidden lg:block">
+        <Card className="rounded-lg h-24 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-0 sm:p-5 hidden lg:block">
           <CardHeader className="space-y-0 py-2 px-3 md:p-0">
             <CardDescription className="flex flex-row gap-2 mb-1 text-[6px] sm:text-sm md:text-lg xl:text-sm">
               <BadgeCheck className="-translate-y-0.5 w-3 h-3 lg:w-5 lg:h-5" />{" "}
@@ -149,7 +149,7 @@ function WhyUs() {
               Verified Capptains
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-3 pt-0 md:p-0">
+          <CardContent className="p-3 pt-0 mt-1 md:p-0">
             <p className="text-[#777777] font-generalLight text-[8px] sm:text-sm md:text-base xl:text-sm">
               All our delivery executives, known as Capptains, undergo a
               thorough identity verification process to ensure your package is

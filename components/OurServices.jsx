@@ -38,7 +38,7 @@ function OurServices() {
               <Image src={'/images/groupimage.png'} height={140} width={140} alt="Pickup & Drop" />
             </div>
             <div className='relative bottom-2 flex items-center bg-black rounded-lg p-1 border border-black w-36 md:w-60 mt-1 hover:cursor-pointer transition-all duration-300 ease-in-out' onClick={() => router.replace('/Pickup-and-drop')}>
-              <span className='flex flex-row justify-between gap-2 items-center'>
+              <span className='flex flex-row justify-between gap-3 items-center'>
                 <span className='font-generalRegular text-white py-2 px-2 space-x-1 text-xs'>
                   Pickup & Drop
                 </span>
@@ -77,7 +77,7 @@ function OurServices() {
                 <span className='font-generalRegular text-white py-2 px-2 space-x-1 text-base md:text-lg sm:text-xs'>
                   Pickup & Drop
                 </span>
-                <Button className="rounded-full bg-[#9E3CE1] border-spacing-1 p-2 hover:bg-[#9E3CE1] transition-all duration-300 ease-in-out">
+                <Button className="rounded-full bg-[#9E3CE1] border border-white border-spacing-1 p-2 hover:bg-[#9E3CE1] transition-all duration-300 ease-in-out">
                   <LucideArrowUpRight />
                 </Button>
               </span>
@@ -92,7 +92,7 @@ function OurServices() {
                 <span className='font-generalRegular text-white py-2 px-2 space-x-1 text-base md:text-lg'>
                   Intercity Courier
                 </span>
-                <Button className="rounded-full bg-[#9E3CE1] border-spacing-1 p-2 hover:bg-[#9E3CE1] transition-all duration-300 ease-in-out" onClick={() => router.replace('/courier')}>
+                <Button className="rounded-full bg-[#9E3CE1] border border-white border-spacing-1 p-2 hover:bg-[#9E3CE1] transition-all duration-300 ease-in-out" onClick={() => router.replace('/courier')}>
                   <LucideArrowUpRight />
                 </Button>
               </span>
@@ -107,7 +107,7 @@ function OurServices() {
                 <span className='font-generalRegular text-white py-2 px-2 space-x-1 text-base md:text-lg'>
                   API Integration
                 </span>
-                <Button className="rounded-full bg-[#9E3CE1] border-spacing-1 p-2 hover:bg-[#9E3CE1] transition-all duration-300 ease-in-out">
+                <Button className="rounded-full bg-[#9E3CE1] border border-white border-spacing-1 p-2 hover:bg-[#9E3CE1] transition-all duration-300 ease-in-out">
                   <LucideArrowUpRight />
                 </Button>
               </span>
@@ -122,7 +122,7 @@ function OurServices() {
                 <span className='font-generalRegular text-white py-2 px-2 space-x-1 text-base md:text-lg'>
                   Last-mile Delivery
                 </span>
-                <Button className="rounded-full bg-[#9E3CE1] border-spacing-1 p-2 hover:bg-[#9E3CE1] transition-all duration-300 ease-in-out" onClick={() => router.replace('/businesses')}>
+                <Button className="rounded-full bg-[#9E3CE1] border border-white border-spacing-1 p-2 hover:bg-[#9E3CE1] transition-all duration-300 ease-in-out" onClick={() => router.replace('/businesses')}>
                   <LucideArrowUpRight />
                 </Button>
               </span>

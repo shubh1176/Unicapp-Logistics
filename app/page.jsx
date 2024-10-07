@@ -22,14 +22,14 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="max-w-screen flex flex-col overflow-hidden  gap-4 justify-center bg-[#F1EDEA]">
+    <div className="max-w-screen flex flex-col overflow-hidden xl:pb-6  gap-4 justify-center bg-[#F1EDEA]">
       <div className="relative">
         <Header />
         <div className="md:py-20 text-center bg-gradient-to-b h-auto md:h-[80vh] lg:h-[70vh] from-[#8D14CE] to-[#470A68] text-white pb-16 md:pb-24  rounded-br-[36px] rounded-bl-[36px] flex flex-col justify-center items-center">
           <div className="flex flex-col items-center space-y-3">
             <div className="flex flex-col px-4  mb-1">
               <h1 className="text-[29px] leading-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-filson">
-                <span className="bg-[#F5E27B] text-center pt-1 px-2 sm:pt-2 sm:px-3 lg:pt-3 lg:px-4 font-filson inline-flex rounded-2xl text-[#202020]">
+                <span className="bg-[#F5E27B] text-center pt-1 px-2 sm:pt-2 sm:px-3 lg:pt-3 lg:px-4 font-filson inline-flex rounded-lg lg:rounded-2xl text-[#202020]">
                   Deliver
                 </span>{" "}
                 any item, any time
@@ -45,7 +45,20 @@ export default function Home() {
             </p>
           </div>
           {/* Input Fields and Get Estimate Button */}
-          <div className="w-full px-20 max-w-md md:max-w-lg lg:max-w-xl mt-8 flex flex-col md:flex-row justify-between gap-1 font-montserrat">
+
+
+          <div className="hidden md:block   hover:cursor-pointer">
+            <Image 
+              src={'/images/getEst.svg'} 
+              width={90} 
+              height={60} 
+              className="w-24 h-16 md:w-48 md:h-28" 
+              alt="Pickup" 
+              onClick={() => router.push('/estimate')} 
+              priority 
+            />
+          </div>
+          <div className="md:hidden w-full px-20 max-w-md md:max-w-lg lg:max-w-xl mt-8 flex flex-col md:flex-row justify-between gap-1 font-montserrat">
             <div className="flex flex-col gap-1">
               <div className="relative w-full">
                 {/* FaArrowUp Icon positioned inside the input */}
