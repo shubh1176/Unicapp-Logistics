@@ -219,9 +219,9 @@ body {
 }
 
 .animate-scroll-left-to-right {
-  animation: scrollLeftToRight 80s linear infinite;
+  animation: scrollLeftToRight 60s linear infinite;
 }
 
 .animate-scroll-right-to-left {
-  animation: scrollRightToLeft 80s linear infinite;
+  animation: scrollRightToLeft 60s linear infinite;
 }

@@ -4,7 +4,7 @@ import { FaStar, FaUser, FaBuilding } from "react-icons/fa"; // Import icons
 // TestimonialCard component for individual cards
 const TestimonialCard = ({ name, service, review, image }) => {
   return (
-    <div className="bg-purple-100 flex items-center rounded-2xl shadow-md p-4  border border-purple-500 hover:border-purple-600 transition-all duration-300">
+    <div className="bg-purple-100 w-72 md:w-auto flex items-center rounded-2xl shadow-md p-4  border border-purple-500 hover:border-purple-600 transition-all duration-300">
       <img
         className="w-14 h-14 rounded-full"
         src={image} // Replace with actual image
@@ -27,11 +27,11 @@ const TestimonialCard = ({ name, service, review, image }) => {
 
 const TestimonialTabs = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="flex ml-20 justify-center lg:justify-start space-x-0 mb-8">
+    <div className="flex ml-20  lg:justify-start space-x-0 mb-8">
       {/* Individuals Tab */}
       <button
         onClick={() => setActiveTab("individual")}
-        className={`flex items-center pl-2 pr-4 py-2 text-lg font-semibold border-b-4 transition-all duration-300 ${
+        className={`flex items-center pl-2 pr-4 py-2 text-sm lg:text-lg font-semibold border-b-2 transition-all duration-300 outline-none ${
           activeTab === "individual"
             ? "border-black text-black font-bold"
             : "border-gray-300 text-gray-600"
@@ -44,7 +44,7 @@ const TestimonialTabs = ({ activeTab, setActiveTab }) => {
       {/* Businesses Tab */}
       <button
         onClick={() => setActiveTab("business")}
-        className={`flex items-center px-6 py-2 text-lg font-semibold border-b-4 transition-all duration-300 ${
+        className={`flex items-center px-6 py-2 text-sm lg:text-lg font-semibold border-b-2 transition-all duration-300 outline-none  ${
           activeTab === "business"
             ? "border-black text-black font-bold"
             : "border-gray-300 text-gray-600"
@@ -119,7 +119,7 @@ const TestimonialSection = () => {
   return (
     <div className="py-12">
       {/* Section Heading */}
-      <h2 className="text-3xl text-center lg:text-start font-bold text-black lg:ml-20 mb-8">
+      <h2 className="text-2xl lg:text-3xl text-center lg:text-start font-bold text-black lg:ml-20 mb-8">
         See what others are sending
       </h2>
 
@@ -127,8 +127,19 @@ const TestimonialSection = () => {
       <TestimonialTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Grid Layout for 2 Rows with 4 Cards per Row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
-        {testimonials.slice(0, 8).map((testimonial, index) => (
+      <div className="grid animate-scroll-right-to-left mb-4 grid-cols-4 gap-80 lg:gap-6 px-4">
+        {testimonials.slice(0, 4).map((testimonial, index) => (
+          <TestimonialCard
+            key={index}
+            name={testimonial.name}
+            service={testimonial.service}
+            review={testimonial.review}
+            image={testimonial.image}
+          />
+        ))}
+      </div>
+      <div className="grid animate-scroll-left-to-right grid-cols-4  gap-80 lg:gap-6 px-4">
+        {testimonials.slice(4, 8).map((testimonial, index) => (
           <TestimonialCard
             key={index}
             name={testimonial.name}
