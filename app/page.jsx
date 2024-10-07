@@ -22,7 +22,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="max-w-screen flex flex-col overflow-hidden xl:pb-6  gap-4 justify-center bg-[#F1EDEA]">
+    <div className="max-w-screen  flex flex-col overflow-hidden xl:pb-6  gap-4 justify-center bg-[#F1EDEA]">
       <div className="relative">
         <Header />
         <div className="md:py-20 text-center bg-gradient-to-b h-auto md:h-[80vh] lg:h-[70vh] from-[#8D14CE] to-[#470A68] text-white pb-16 md:pb-24  rounded-br-[36px] rounded-bl-[36px] flex flex-col justify-center items-center">
