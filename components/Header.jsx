@@ -104,7 +104,7 @@ function Header() {
     )}
   
         <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center text-white">
+          <DropdownMenuTrigger className="flex items-center text-white focus:outline-none">
             <EllipsisVertical size={24} />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-white text-black  mt-0 rounded-md shadow-lg w-48 p-2 mr-7">
