@@ -15,12 +15,18 @@ import Faq from '@/components/Faq';
 import Footer from '@/components/Footer';
 import EstimateComponent from '@/components/Estimate';
 import { UserButton, useUser } from '@clerk/clerk-react'
+import Header from '@/components/Header';
+import { IoShieldCheckmark } from "react-icons/io5";
+import { RiMoneyRupeeCircleFill } from "react-icons/ri";
+import { FaPhone } from "react-icons/fa6";
+
 
 export default function page() {
   const router = useRouter();
   const { user } = useUser()
   return (
     <div className='bg-[#F1EDEA] pt-1'>
+      {/* <Header /> */}
       <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl mt-5 py-1">
         <div>
           <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" />
@@ -89,6 +95,102 @@ export default function page() {
         </div>
       </div>
 
+      <div className="min-h-screen flex items-center  justify-evenly rounded-3xl bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mx-16 px-14 py-16">
+        
+        {/* Left side - Text and Features */}
+        <div className="text-white space-y-6 w-[60%]">
+          <h1 className="text-4xl md:text-5xl font-bold font-filson  md:leading-[60px]">
+            Need a shipping partner? <br />
+            <span className="bg-yellow-400 px-2 py-3 md:leading-[60px] text-black rounded-xl">Unicapp</span> to the rescue!
+          </h1>
+          <p className="text-lg">
+            Enable your store or business to get anything delivered on-demand or nationwide. We promise a 5-star last-mile delivery experience for your customers. Trusted by leading companies for delivery service.
+          </p>
+          <ul className="space-y-4 font-montserrat">
+            {/* Feature 1 */}
+            <li className="flex items-start space-x-4 w-[55%]">
+              <span className="text-2xl mt-1"><IoShieldCheckmark /></span>
+              <div>
+                <h3 className="font-bold text-xl">Pocket-friendly</h3>
+                <p className='text-[14px]'>We may not be the cheapest, but our prices are still lower than what's currently on the market.</p>
+              </div>
+            </li>
+            {/* Feature 2 */}
+            <li className="flex items-start space-x-4 w-[60%]">
+              <span className="text-2xl mt-1"><RiMoneyRupeeCircleFill/></span>
+              <div>
+                <h3 className="font-bold text-xl">Secured</h3>
+                <p className='text-[14px]'>We ship exclusively with trusted courier partners, ensuring your package is always secure.</p>
+              </div>
+            </li>
+            {/* Feature 3 */}
+            <li className="flex items-start space-x-4 w-[55%]">
+              <span className="text-2xl mt-1"><FaPhone/> </span>
+              <div>
+                <h3 className="font-bold text-xl">24/7 Assistance</h3>
+                <p className='text-[14px]'>We're here for you 24/7 to address any issues you may have with your shipments.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        {/* Right side - Form */}
+        <div className="bg-white p-8 text-sm rounded-lg shadow-lg  max-w-lg">
+          <form className='space-y-5'>
+          <div>
+              <input
+                type="text"
+                placeholder="+91 Phone Number *"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Name"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="Email ID *"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Type of business *"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+
+            {/* Terms & Conditions */}
+            <div className="flex items-start space-x-2">
+              <input type="checkbox" id="terms" className="mt-1"/>
+              <label htmlFor="terms" className="text-gray-500 text-sm">
+                I accept the <span className="underline">Terms of Use & Privacy Policy</span>.
+              </label>
+            </div>
+
+            {/* Sign Up Button */}
+            <button
+              type="submit"
+              className="w-full bg-[#FFD966] text-[#470A68] font-semibold py-3 rounded-lg hover:bg-yellow-500 transition-all"
+            >
+              Sign up
+            </button>
+          </form>
+        </div>
+    </div>
 
       <div className='flex flex-col items-center justify-center text-center'>
         <div className='flex flex-row gap-1.5'>
