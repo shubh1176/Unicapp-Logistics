@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ChevronDown, CircleUserRound, WalletMinimal, LogOut, Menu, X } from 'lucide-react';
+import { ChevronDown, CircleUserRound, WalletMinimal, LogOut, EllipsisVertical, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useUser, useClerk } from '@clerk/clerk-react';
 
@@ -95,15 +95,53 @@ function Header() {
         )}
       </div>
 
+   {/* Mobile Dropdown Menu */}
+   <div className="md:hidden flex">
+    {!user && (
+       <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20  " onClick={() => router.replace('/dashboard')}>
+       Sign In
+     </Button>
+    )}
+  
+        <DropdownMenu>
+          <DropdownMenuTrigger className="flex items-center text-white">
+            <EllipsisVertical size={24} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="bg-white text-black  mt-0 rounded-md shadow-lg w-48 p-2 mr-7">
+            <DropdownMenuItem
+              className="py-2 w-full border-b border-gray-300  cursor-pointer text-lg"
+              onClick={() => router.push("/businesses")}
+            >
+              For Business
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="py-2 w-full border-b border-gray-300 cursor-pointer  text-lg"
+              onClick={() => router.push("/about")}
+            >
+              About Us
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="py-2 w-full cursor-pointer text-lg"
+              onClick={() => router.push("/contact")}
+            >
+              Contact
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+    </div>
+  );
+}
+
       {/* Mobile Menu */}
-      <div className="flex md:hidden items-center space-x-2">
+      {/* <div className="flex md:hidden items-center space-x-2">
         <button onClick={toggleDrawer} className="text-white focus:outline-none">
           {drawerOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-      </div>
+      </div> */}
 
       {/* Mobile Drawer */}
-      {drawerOpen && (
+      {/* {drawerOpen && (
         <div className="absolute top-0 right-0 w-3/4 h-screen bg-[#8D14CE] z-50 flex flex-col items-start p-4 transition-transform duration-300 transform translate-x-0">
           <div className="flex justify-between w-full mb-8">
             <button onClick={toggleDrawer} className="text-white focus:outline-none">
@@ -112,7 +150,7 @@ function Header() {
           </div>
 
           {/* User Menu in Drawer */}
-          <div className="w-full mb-8">
+          {/* <div className="w-full mb-8">
             {user ? (
               <div className="flex flex-col space-y-4 w-full">
                 <Button variant="ghost" className="text-white text-left hover:bg-white hover:bg-opacity-20 text-lg" onClick={() => { router.push('/dashboard'); toggleDrawer(); }}>
@@ -126,10 +164,10 @@ function Header() {
                 </Button>
               </div>
             ) : null}
-          </div>
+          </div> */}
 
           {/* Navigation Links */}
-          <nav className="flex flex-col gap-4 w-full text-left">
+          {/* <nav className="flex flex-col gap-4 w-full text-left">
             <Button variant="ghost" className="text-white text-left w-full hover:bg-white hover:bg-opacity-20 text-lg" onClick={() => { router.push('/'); toggleDrawer(); }}>
               Home
             </Button>
@@ -151,9 +189,8 @@ function Header() {
           </nav>
         </div>
       )}
-    </div>
-  );
-}
+    </div> */}
+  {/* );
+}  */}
 
 export default Header;
-
