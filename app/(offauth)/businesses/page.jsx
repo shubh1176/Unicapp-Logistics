@@ -1,33 +1,131 @@
 "use client";
-import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import React from 'react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { ChevronDown, CircleUserRound, WalletMinimal } from 'lucide-react';
+
 import { useRouter } from 'next/navigation';
-import { Input } from '@/components/ui/input';
 import Faq from '@/components/Faq';
 import Footer from '@/components/Footer';
-import EstimateComponent from '@/components/Estimate';
-import { UserButton, useUser } from '@clerk/clerk-react'
-import Header from '@/components/Header';
+import {  useUser } from '@clerk/clerk-react'
 import { IoShieldCheckmark } from "react-icons/io5";
 import { RiMoneyRupeeCircleFill } from "react-icons/ri";
 import { FaPhone } from "react-icons/fa6";
+import TestimonialSection from '@/components/TestimonialSection';
+import Header2 from '@/components/Header2';
+import GetEstimate from '@/components/GetEstimate';
 
 
 export default function page() {
   const router = useRouter();
   const { user } = useUser()
   return (
-    <div className='bg-[#F1EDEA] pt-1'>
-      {/* <Header /> */}
-      <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl mt-5 py-1">
+    <div className='bg-[#F1EDEA]  max-w-screen overflow-hidden '>
+      
+      <Header2 />
+
+      <div className="h-[450px]  md:min-h-screen rounded-t-none rounded-b-3xl md:mb-32 flex flex-col md:flex-row items-center  justify-evenly md:rounded-3xl bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-64 md:mx-16 md:px-14 md:py-16">
+        
+        {/* Left side - Text and Features */}
+        <div className="text-white space-y-6 w-full md:w-[60%]">
+          <h1 className="text-[27px] md:text-5xl text-center md:text-start font-bold font-filson leading-[50px] md:leading-[60px] mb-6 md:mb-0">
+            Need a shipping partner? <br />
+            <span className="bg-yellow-400 px-2 py-3 md:leading-[60px] text-black rounded-xl">Unicapp</span> to the rescue!
+          </h1>
+          <p className="text-lg hidden md:block">
+            Enable your store or business to get anything delivered on-demand or nationwide. We promise a 5-star last-mile delivery experience for your customers. Trusted by leading companies for delivery service.
+          </p>
+
+          <div className='flex items-center justify-around px-8'>
+            <div className='flex items-center'><RiMoneyRupeeCircleFill /><span className='ml-1 font-bold text-xs'>Pocket-friendly</span></div>
+            <div className='flex items-center'><IoShieldCheckmark /><span className='ml-1 font-bold text-xs'>Secured</span></div>
+            <div className='flex items-center'><FaPhone /><span className='ml-1 font-bold text-xs'>24/7 Assistance</span></div>
+          </div>
+          <ul className="space-y-4 font-montserrat hidden md:block">
+            {/* Feature 1 */}
+            <li className="flex items-start space-x-4 w-[55%]">
+              <span className="text-2xl mt-1"><RiMoneyRupeeCircleFill /></span>
+              <div>
+                <h3 className="font-bold text-xl">Pocket-friendly</h3>
+                <p className='text-[14px]'>We may not be the cheapest, but our prices are still lower than what's currently on the market.</p>
+              </div>
+            </li>
+            {/* Feature 2 */}
+            <li className="flex items-start space-x-4 w-[60%]">
+              <span className="text-2xl mt-1"><IoShieldCheckmark/></span>
+              <div>
+                <h3 className="font-bold text-xl">Secured</h3>
+                <p className='text-[14px]'>We ship exclusively with trusted courier partners, ensuring your package is always secure.</p>
+              </div>
+            </li>
+            {/* Feature 3 */}
+            <li className="flex items-start space-x-4 w-[55%]">
+              <span className="text-2xl mt-1"><FaPhone/> </span>
+              <div>
+                <h3 className="font-bold text-xl">24/7 Assistance</h3>
+                <p className='text-[14px]'>We're here for you 24/7 to address any issues you may have with your shipments.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        {/* Right side - Form */}
+        <div className="bg-white p-8 text-sm rounded-lg shadow-lg  max-w-lg relative top-10 md:top-0">
+          <form className='space-y-5'>
+          <div>
+              <input
+                type="text"
+                placeholder="+91 Phone Number *"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Name"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="Email ID *"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Type of business *"
+                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
+              />
+            </div>
+
+            {/* Terms & Conditions */}
+            <div className="flex items-start space-x-2">
+              <input type="checkbox" id="terms" className="mt-1"/>
+              <label htmlFor="terms" className="text-gray-500 text-sm">
+                I accept the <span className="underline">Terms of Use & Privacy Policy</span>.
+              </label>
+            </div>
+
+            {/* Sign Up Button */}
+            <button
+              type="submit"
+              className="w-full bg-[#FFD966] text-[#470A68] font-semibold py-3 rounded-lg hover:bg-yellow-500 transition-all"
+            >
+              Sign up
+            </button>
+          </form>
+        </div>
+   
+      </div>
+      {/* <div className="bg-gradient-to-r flex justify-between items-center md:px-4 rounded-xl mt-5 py-1">
         <div>
           <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" />
         </div>
@@ -93,135 +191,46 @@ export default function page() {
           </div>
         )}
         </div>
-      </div>
+      </div> */}
 
-      <div className="min-h-screen flex items-center  justify-evenly rounded-3xl bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mx-16 px-14 py-16">
-        
-        {/* Left side - Text and Features */}
-        <div className="text-white space-y-6 w-[60%]">
-          <h1 className="text-4xl md:text-5xl font-bold font-filson  md:leading-[60px]">
-            Need a shipping partner? <br />
-            <span className="bg-yellow-400 px-2 py-3 md:leading-[60px] text-black rounded-xl">Unicapp</span> to the rescue!
-          </h1>
-          <p className="text-lg">
-            Enable your store or business to get anything delivered on-demand or nationwide. We promise a 5-star last-mile delivery experience for your customers. Trusted by leading companies for delivery service.
-          </p>
-          <ul className="space-y-4 font-montserrat">
-            {/* Feature 1 */}
-            <li className="flex items-start space-x-4 w-[55%]">
-              <span className="text-2xl mt-1"><IoShieldCheckmark /></span>
-              <div>
-                <h3 className="font-bold text-xl">Pocket-friendly</h3>
-                <p className='text-[14px]'>We may not be the cheapest, but our prices are still lower than what's currently on the market.</p>
-              </div>
-            </li>
-            {/* Feature 2 */}
-            <li className="flex items-start space-x-4 w-[60%]">
-              <span className="text-2xl mt-1"><RiMoneyRupeeCircleFill/></span>
-              <div>
-                <h3 className="font-bold text-xl">Secured</h3>
-                <p className='text-[14px]'>We ship exclusively with trusted courier partners, ensuring your package is always secure.</p>
-              </div>
-            </li>
-            {/* Feature 3 */}
-            <li className="flex items-start space-x-4 w-[55%]">
-              <span className="text-2xl mt-1"><FaPhone/> </span>
-              <div>
-                <h3 className="font-bold text-xl">24/7 Assistance</h3>
-                <p className='text-[14px]'>We're here for you 24/7 to address any issues you may have with your shipments.</p>
-              </div>
-            </li>
-          </ul>
+     
+
+      <div className='w-full flex flex-col items-center justify-center text-center   md:mb-32 '>
+     
+        <div className='flex flex-row gap-1.5 text-[18px]  md:text-3xl'>
+          <h2 className='font-generalSemiBold  '>SHIP WITH THE</h2>
+          <h2 className='font-generalSemiBold text-[#9E3CE0] '>BEST</h2>
+          <h2 className='font-generalSemiBold '>IN THE BUSINESS</h2>
         </div>
-        
-        {/* Right side - Form */}
-        <div className="bg-white p-8 text-sm rounded-lg shadow-lg  max-w-lg">
-          <form className='space-y-5'>
-          <div>
-              <input
-                type="text"
-                placeholder="+91 Phone Number *"
-                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Name"
-                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
-              />
-            </div>
-            <div>
-              <input
-                type="email"
-                placeholder="Email ID *"
-                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Type of business *"
-                className="w-full border border-gray-300 p-3 rounded-lg text-gray-700"
-              />
-            </div>
-
-            {/* Terms & Conditions */}
-            <div className="flex items-start space-x-2">
-              <input type="checkbox" id="terms" className="mt-1"/>
-              <label htmlFor="terms" className="text-gray-500 text-sm">
-                I accept the <span className="underline">Terms of Use & Privacy Policy</span>.
-              </label>
-            </div>
-
-            {/* Sign Up Button */}
-            <button
-              type="submit"
-              className="w-full bg-[#FFD966] text-[#470A68] font-semibold py-3 rounded-lg hover:bg-yellow-500 transition-all"
-            >
-              Sign up
-            </button>
-          </form>
-        </div>
-    </div>
-
-      <div className='flex flex-col items-center justify-center text-center'>
-        <div className='flex flex-row gap-1.5'>
-          <h2 className='font-generalSemiBold text-3xl '>SHIP WITH THE</h2>
-          <h2 className='font-generalSemiBold text-[#9E3CE0] text-3xl'>BEST</h2>
-          <h2 className='font-generalSemiBold text-3xl'>IN THE BUSINESS</h2>
-        </div>
-        <div className='bg-[#F8F6F5] rounded-2xl mx-9 mt-8'>
-        <div className='flex flex-row gap-36 p-12 mx-16 justify-center'>
-          <div className='flex flex-col items-center text-center'>
-            <Image src={'/images/stopwatch.svg'} height={150} width={150} alt="Same Day" />
-            <h2 className='font-generalSemiBold mt-4 text-xl'>Same Day</h2>
-            <span>We provide same day intracity <br /> deliveries, so that you can make <br /> your customers even happier!</span>
+        <div className='bg-[#F8F6F5] rounded-3xl md:rounded-2xl px-10 md:px-0  mx-40  md:mx-10 mt-8 w-[90%] md:w-auto'>
+        <div className='w-full flex flex-row gap-12 justify-around md:gap-36 py-10 md:p-12  md:justify-center'>
+          <div className='flex flex-col items-center text-sm text-center'>
+            <Image src={'/images/stopwatch.svg'} height={150} width={150} alt="Same Day"  className='w-14 h-10 md:w-36 md:h-36'/>
+            <h2 className='font-generalSemiBold mt-4 md:mt-4 text-xs md:text-xl'>Same Day</h2>
+            <span className='hidden md:block'>We provide same day intracity <br /> deliveries, so that you can make <br /> your customers even happier!</span>
           </div>
-          <div className='flex flex-col items-center text-center'>
-            <Image src={'/images/calendar.svg'} height={150} width={150} alt="Scheduled" />
-            <h2 className='font-generalSemiBold mt-6 text-xl'>Scheduled</h2>
-            <span>Plan and schedule your <br /> pickups to ensure you never <br /> miss a delivery</span>
+          <div className='flex flex-col items-center text-sm text-center'>
+            <Image src={'/images/calendar.svg'} height={150} width={150} alt="Scheduled" className='w-14 h-10  md:w-36 md:h-36' />
+            <h2 className='font-generalSemiBold mt-4 md:mt-6 text-xs md:text-xl'>Scheduled</h2>
+            <span className='hidden md:block'>Plan and schedule your <br /> pickups to ensure you never <br /> miss a delivery</span>
           </div>
-          <div className='flex flex-col items-center text-center'>
-            <Image src={'/images/8.svg'} height={150} width={150} alt="Multiple drop-off points" />
-            <h2 className='font-generalSemiBold mt-4 text-xl'>Multiple drop-off points</h2>
-            <span>We value your time, so we provide <br /> multiple drop-off points, eliminating the <br /> need to book each shipment separately.</span>
+          <div className='flex flex-col items-center text-sm text-center'>
+            <Image src={'/images/8.svg'} height={150} width={150} alt="Multiple drop-off points" className='w-14 h-10  md:w-36 md:h-36' />
+            <h2 className='font-generalSemiBold mt-4 md:mt-4 text-xs md:text-xl'>Multiple drop-<br/>off points</h2>
+            <span className='hidden md:block'>We value your time, so we provide <br /> multiple drop-off points, eliminating the <br /> need to book each shipment separately.</span>
           </div>
         </div>
         </div>
       </div>
 
 
-      <div className=' flex flex-col items-center justify-center text-center mt-14 mb-11'>
-        <div>
+    
+
+      <div className='z-10 hidden  md:flex flex-col items-center justify-center text-center mt-14 mb-11'>
+      <div className='hidden md:block absolute z-0 inset-0 top-[1920px]'>
+          <Image src={'/images/ribbonDesktopBusiness.png'} className='w-[1900px] h-[950px] z-0 ' width={2000} height={100} alt="Logo" />
+        </div>
+        <div className='z-10'>
           <h2 className='text-5xl font-generalSemiBold mb-4'>Deliveries Made Easy</h2>
           <span className=''>You amplify sales, we simplify deliveries</span>
         </div>
@@ -229,7 +238,7 @@ export default function page() {
         <div className="absolute w-full h-full transform -z-10">
           <Image src={'/images/YellowRibbon.svg'} layout="fill" objectFit="cover" alt="Ribbon Background" />
         </div>
-        <div className='grid grid-cols-2 gap-y-16 gap-x-96 mt-28 relative'>
+        <div className='grid grid-cols-2 gap-y-20 gap-x-64 mt-28 mx-40 relative'>
           <div>
             <Image src={'/images/tree.svg'} height={356} width={356} alt="Tree" />
           </div>
@@ -254,14 +263,32 @@ export default function page() {
         </div>
       </div>
       </div>
-      
-      <div className='flex justify-center items-center mt-36 mb-28'>
+     
+      <div className='block  md:hidden mt-28 '>
+        <Image src={'/images/deliverymadeeasy.png'} className='w-[1900px] z-0 ' width={2000} height={100} objectFit="cover" alt="Ribbon Background" />
+        </div>
+
+      <div className='hidden md:flex justify-center items-center mt-56 mb-28'>
         <Image src={'/images/businessgrouppage.svg'} height={544} width={1306} alt="Business Group" />
       </div>
-      <div>
+     
+<div className='block  md:hidden mt-28 px-8'>
+        <Image src={'/images/businessgrouppage2.png'} className=' z-0 ' width={2000} height={100} objectFit="cover" alt="Ribbon Background" />
+        </div>
+      <div className='max-w-screen overflow-hidden my-36'>
+        <TestimonialSection/>
+      </div>
+      <div className='w-full mb-20'>
+      <GetEstimate  />
+
+      </div>
+      <div className='mb-20'>
         <Faq />
       </div>
+          
       <Footer />
+
+   
     </div>
   )
 }
