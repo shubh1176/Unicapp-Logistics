@@ -3,7 +3,7 @@ import { FaLongArrowAltRight } from 'react-icons/fa'
 
 const GetEstimate = () => {
   return (
-    <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] rounded-lg flex justify-between items-center p-3 px-6 w-[90%]  max-w-5xl mx-auto">
+    <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] rounded-lg flex justify-between items-center p-4 px-6 w-[90%]  max-w-5xl mx-auto">
 
     {/* Text Section */}
     <div>

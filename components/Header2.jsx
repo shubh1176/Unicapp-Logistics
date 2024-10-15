@@ -8,14 +8,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ChevronDown, EllipsisVertical } from 'lucide-react';
+import { ChevronDown, CircleUserRound, EllipsisVertical, WalletMinimal } from 'lucide-react';
 import { UserButton, useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 const Header2 = () => {
     const router = useRouter();
     const { user } = useUser()
     return (
-        <div className=" bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] md:bg-none flex justify-between items-center md:px-4  md:mt-5 py-1">
+        <div className=" bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] md:bg-none flex justify-between items-center px-4  md:mt-0 py-1 md:py-0">
         <div>
         <Image src={'/images/yellowonwhite.svg'} width={150} height={40} alt="Logo" className='block md:hidden' />
           <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" className='hidden md:block' />

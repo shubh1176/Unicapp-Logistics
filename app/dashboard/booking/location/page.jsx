@@ -4,7 +4,7 @@ import RightDiv from './_components/RightDiv';
 
 export default function Page() {
   return (
-    <div className='h-screen flex flex-col md:flex-row bg-[#F1EDEA]'>
+    <div className='h-screen flex flex-col md:flex-row bg-[#F1EDEA] md:overflow-hidden'>
       <div className='w-full md:w-1/2 px-4 md:px-8'>
         <LeftDiv />
       </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Marquee from "react-fast-marquee";
 import { FaStar, FaUser, FaBuilding } from "react-icons/fa"; // Import icons
 
 // TestimonialCard component for individual cards
@@ -27,7 +28,7 @@ const TestimonialCard = ({ name, service, review, image }) => {
 
 const TestimonialTabs = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="flex ml-20  lg:justify-start space-x-0 mb-8">
+    <div className="flex ml-12 md:ml-20  lg:justify-start space-x-0 mb-8">
       {/* Individuals Tab */}
       <button
         onClick={() => setActiveTab("individual")}
@@ -127,7 +128,14 @@ const TestimonialSection = () => {
       <TestimonialTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Grid Layout for 2 Rows with 4 Cards per Row */}
-      <div className="grid animate-scroll-right-to-left mb-4 grid-cols-4 gap-80 lg:gap-6 px-4">
+      <Marquee
+        gradient={false}
+        speed={50}
+        direction="left"
+        style={{marginBottom:"15px"}}
+       
+      >
+        <div className="grid  md:grid-cols-4 grid-cols-4  gap-8 lg:gap-6 px-4 md:w-screen">
         {testimonials.slice(0, 4).map((testimonial, index) => (
           <TestimonialCard
             key={index}
@@ -137,8 +145,16 @@ const TestimonialSection = () => {
             image={testimonial.image}
           />
         ))}
-      </div>
-      <div className="grid animate-scroll-left-to-right grid-cols-4  gap-80 lg:gap-6 px-4">
+        </div>
+      
+      </Marquee>
+      <Marquee
+        gradient={false}
+        speed={50}
+        direction="right"
+       
+      >
+        <div className="grid  grid-cols-4  gap-8 lg:gap-6 px-4 md:w-screen">
         {testimonials.slice(4, 8).map((testimonial, index) => (
           <TestimonialCard
             key={index}
@@ -148,7 +164,9 @@ const TestimonialSection = () => {
             image={testimonial.image}
           />
         ))}
-      </div>
+        </div>
+       
+      </Marquee>
     </div>
   );
 };
