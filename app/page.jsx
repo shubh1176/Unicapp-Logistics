@@ -29,13 +29,13 @@ export default function Home() {
         <div className="md:py-20 text-center bg-gradient-to-b h-auto md:h-[80vh] lg:h-[70vh] from-[#8D14CE] to-[#470A68] text-white pb-16 md:pb-24  rounded-br-[36px] rounded-bl-[36px] flex flex-col justify-center items-center">
           <div className="flex flex-col items-center space-y-3">
             <div className="flex flex-col px-4  mb-1">
-              <h1 className="text-[29px] leading-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-filson">
-                <span className="bg-[#F5E27B] text-center pt-1 px-2 sm:pt-2 sm:px-3 lg:pt-3 lg:px-4 font-filson inline-flex rounded-lg lg:rounded-2xl text-[#202020]">
+              <h1 className="text-[29px] leading-[32px] sm:text-4xl md:text-5xl lg:text-6xl  font-filson">
+                <span className="bg-[#F5E27B] text-center pt-1 px-2 sm:pt-2 sm:px-3 lg:pt-2 lg:px-4 font-filson inline-flex rounded-lg lg:rounded-2xl text-[#202020]">
                   Deliver
                 </span>{" "}
                 any item, any time
               </h1>
-              <h1 className="text-[29px] leading-[32px]  sm:text-4xl md:text-5xl lg:text-6xl font-filson">
+              <h1 className="text-[29px] leading-[32px]  sm:text-4xl md:text-5xl lg:text-6xl font-filson mt-1 md:mt-2 lg:mt-3">
                 with just a few clicks!
               </h1>
             </div>
