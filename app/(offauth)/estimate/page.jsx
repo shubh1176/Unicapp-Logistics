@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,8 +11,6 @@ import {
 import {
   ArrowDown,
   ArrowUp,
-  ArrowUpAZ,
-  ArrowUpCircle,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -43,9 +41,38 @@ export default function Page() {
   const { user } = useUser();
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef(null);
-  const pickupAdressValue  = useRecoilValue(pickupLocationState)
-  const dropAdressValue  = useRecoilValue(dropLocationState)
+  const pickupAdressValue = useRecoilValue(pickupLocationState);
+  const dropAdressValue = useRecoilValue(dropLocationState);
+  const [userName, setUserName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [verified, setVerified] = useState(false);
+  const [weight, setWeight] = useState(0);
+  console.log(user);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (user) {
+        try {
+          const email = user.primaryEmailAddress.emailAddress;
+          const fetchedUser = await db
+            .select()
+            .from(schema.UserData)
+            .where(eq(schema.UserData.email, email))
+            .then((result) => result[0]);
+
+          if (fetchedUser) {
+            setPhoneNumber(fetchedUser.phoneNumber);
+            setVerified(fetchedUser.verified);
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      }
+    };
+    setUserName(user?.fullName || "");
+
+    fetchUserData();
+  }, [user, setPhoneNumber, setVerified]);
 
   const items = [
     { src: "/images/envelop.svg", label: "Documents", height: 80, width: 80 },
@@ -307,33 +334,95 @@ export default function Page() {
           <Footer />
         </div>
       </div>
-      <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden py-0 my-0">
-        <Header2/>
-        <div className="h-[300px] gap-6 pb-6  rounded-t-none  rounded-b-3xl  flex flex-col  items-center  justify-evenly  bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-64 ">
-          <Image src={"/images/mapSmall.png"} width={380} height={120} alt="Logo" className='' />
+      {/* <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden py-0 my-0">
+        <Header2 />
+        <div className="h-[300px] gap-6 pb-6  rounded-t-none  rounded-b-3xl  flex flex-col  items-center  justify-evenly  bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-10 ">
+          <Image
+            src={"/images/mapSmall.png"}
+            width={380}
+            height={120}
+            alt="Logo"
+            className=""
+          />
           <div className="flex gap-2 w-full px-10">
             <div className="flex flex-col gap-4 w-[15%]">
-              <div className="bg-white text-black text-sm rounded-full w-10 h-10 flex items-center justify-center font-bold z-10"><ArrowUp  size={30} /></div>
+              <div className="bg-white text-black text-sm rounded-full w-10 h-10 flex items-center justify-center font-bold z-10">
+                <ArrowUp size={30} />
+              </div>
               <hr className="border-white border-2 border-dashed trasnform rotate-90 w-16 relative m-0 right-3 z-0" />
-              <div className="bg-white text-black text-sm rounded-full w-10 h-10 flex items-center justify-center font-bold z-10"><ArrowDown  size={30} /></div>
-
+              <div className="bg-white text-black text-sm rounded-full w-10 h-10 flex items-center justify-center font-bold z-10">
+                <ArrowDown size={30} />
+              </div>
             </div>
             <div className="w-[80%] flex flex-col gap-6">
-                  <div className="space-y-1">
-                    <p className="text-sm text-gray-100 text-opacity-50">Pickup</p>
-                    <p className="text-[#FFFFFF] font-medium">{(pickupAdressValue.substring(0,30) + "...") || "N/A"}</p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm text-gray-100 text-opacity-50">Delivery</p>
-                    <p className="text-[#FFFFFF] font-medium">{(dropAdressValue.substring(0,30) + "...") || "N/A"}</p>
-                  </div>
+              <div className="space-y-1">
+                <p className="text-sm text-gray-100 text-opacity-50">Pickup</p>
+                <p className="text-[#FFFFFF] font-medium">
+                  {pickupAdressValue.substring(0, 30) + "..." || "N/A"}
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-sm text-gray-100 text-opacity-50">
+                  Delivery
+                </p>
+                <p className="text-[#FFFFFF] font-medium">
+                  {dropAdressValue.substring(0, 30) + "..." || "N/A"}
+                </p>
+              </div>
             </div>
-
           </div>
         </div>
+        <div className="px-5">
+          <div className="bg-white rounded-3xl mx-auto p-6">
+            <input
+              type="text"
+              placeholder="Name*"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              required
+              className="w-full h-14 px-4 py-2  text-sm  text-gray-500 rounded-xl border border-gary-300"
+            />
+            <input
+              type="number"
+              placeholder=" Phone Number*"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+              className="w-full h-14 px-4 py-2 mt-5 text-sm text-gray-500  rounded-xl border border-gary-300"
+            />
+            <div>
+              <input
+                type="number"
+                placeholder="Enter weight of the item in kg*"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+                required
+                className="w-full h-14 px-4 py-2 mt-5 text-sm text-gray-500  rounded-xl border border-gary-300"
+              />
+            </div>
 
-        
-      </div>
+            <div className="mt-5">
+              <hr className="mb-4" />
+              <div>
+                <h3 className="text-xl font-bold text-black  ">
+                  {" "}
+                  Our prices start from
+                </h3>
+                <div className="flex flex-row justify-between mt-2 ">
+                  <p>Trip Fare (4.1kms)</p>
+                  <p className="text-2xl font-bold">&#8377;61</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button className="w-full h-12 px-4 py-2 mt-5 text-sm text-black bg-[#F3E545] rounded-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-white">
+            Get Prices
+          </button>
+        </div>
+      </div> */}
+
+      {/* // here we optimized Estimate for mobile also */}
+      <EstimateComponent />
     </>
   );
 }
