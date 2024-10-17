@@ -17,7 +17,7 @@ const Header2 = () => {
     return (
         <div className=" bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] md:bg-none flex justify-between items-center px-4  md:mt-0 py-1 md:py-0">
         <div>
-        <Image src={'/images/yellowonwhite.svg'} width={150} height={40} alt="Logo" className='block md:hidden' />
+        <Image src={'/images/yellowonwhite.svg'} width={180} height={60} alt="Logo" className='block md:hidden relative right-3' />
           <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" className='hidden md:block' />
         </div>
         <div className="md:flex items-center gap-4 hidden ">
