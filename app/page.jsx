@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import { FaArrowUp, FaArrowUpLong } from "react-icons/fa6";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import GetEstimate from "@/components/GetEstimate";
+import LocationSelectorMobile from "@/components/LocationSelectorMobile";
 
 
 // Load non-essential components lazily to improve loading performance
@@ -59,10 +60,11 @@ export default function Home() {
               priority 
             />
           </div>
-          <div className="md:hidden w-full px-20 max-w-md md:max-w-lg lg:max-w-xl mt-8 flex flex-col md:flex-row justify-between gap-1 font-montserrat">
+          <LocationSelectorMobile />
+          {/* <div className="md:hidden w-full px-20 max-w-md md:max-w-lg lg:max-w-xl mt-8 flex flex-col md:flex-row justify-between gap-1 font-montserrat">
             <div className="flex flex-col gap-1">
               <div className="relative w-full">
-                {/* FaArrowUp Icon positioned inside the input */}
+                
                 <FaArrowUpLong className="absolute left-3 top-3  text-white" />
                 <input
                   type="text"
@@ -71,7 +73,7 @@ export default function Home() {
                 />
               </div>
               <div className="relative w-full">
-                {/* FaArrowUp Icon positioned inside the input */}
+               
                 <FaArrowUpLong className="absolute left-3 top-3 text-white" />
                 <input
                   type="text"
@@ -87,7 +89,7 @@ export default function Home() {
             >
               Get an estimate
             </button>
-          </div>
+          </div> */}
           {/* Responsive Image Loading and Positioning */}
           <div className="absolute top-40   sm:top-96 md:top-40 lg:top-32 left-8 sm:left-20 md:left-14 lg:left-52 w-12 sm:w-12 md:w-16 lg:w-24 h-12 sm:h-12 md:h-16 lg:h-24 transform -translate-x-1/2 rotate-0">
             <Image
