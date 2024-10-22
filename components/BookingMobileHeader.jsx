@@ -11,7 +11,7 @@ const BookingMobileHeader = () => {
   return (
     <div className='block lg:hidden'>
   <Header2 />
-        <div className="h-[300px] gap-6 pb-6  rounded-t-none  rounded-b-3xl  flex flex-col  items-center  justify-evenly  bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-10 ">
+        <div className="h-[300px] gap-4 pb-6  rounded-t-none  rounded-b-3xl  flex flex-col  items-center  justify-evenly  bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-10 ">
           <Image
             src={"/images/mapSmall.png"}
             width={380}
