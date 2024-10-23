@@ -17,7 +17,7 @@ const BookingMobileHeader = () => {
             width={380}
             height={120}
             alt="Logo"
-            className=""
+            className=" w-[90%]"
           />
           <div className="flex gap-2 w-full px-10">
             <div className="flex flex-col gap-4 w-[15%]">

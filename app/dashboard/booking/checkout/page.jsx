@@ -4,7 +4,7 @@ import Details from './_components/Details';
 
 function Page() {
   return (
-    <div className="flex flex-col gap-4 lg:flex-row h-auto lg:h-full bg-[#F1EDEA]">
+    <div className="flex flex-col md:gap-4 lg:flex-row h-auto lg:h-full bg-[#F1EDEA]">
       <div className="lg:w-1/2 w-full lg:h-full pt-2 sm:pb-28 md:px-6 lg:pt-0 lg:mr-8 -mt-2">
         <Details />
       </div>

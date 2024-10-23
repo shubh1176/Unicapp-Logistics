@@ -164,8 +164,8 @@ function RightDiv4() {
   };
 
   return (
-    <div className='max-w-sm mx-auto mt-6 p-5 sm:p-6 lg:p-7 bg-white rounded-xl shadow-lg'>
-      <div className='mb-5 w-full'>
+    <div className='max-w-sm mx-auto md:mt-6 p-6 sm:p-6 lg:p-7 bg-white rounded-xl shadow-lg'>
+      <div className='mb-5 w-full hidden md:block'>
         <h2 className="text-sm font-generalMedium text-[#8B14CC]">STEP 5/6</h2>
         <div className="flex mt-4 mb-7">
           <div className="w-12 h-1 bg-[#8B14CC] rounded mx-2"></div>
@@ -176,8 +176,8 @@ function RightDiv4() {
           <div className="w-12 h-1 bg-gray-300 rounded mx-2"></div>
         </div>
       </div>
-      <h3 className="text-xl font-generalSemiBold mb-1">Personal details</h3>
-      <p className="text-black mb-4 font-generalMedium">We'll use this information to contact you <br /> during your pickup & delivery.</p>
+      <h3 className="text-2xl font-medium md:text-xl md:font-generalSemiBold mb-1">Personal details</h3>
+      <p className="text-black text-sm md:text-base mb-4 md:font-generalMedium">We'll use this information to contact you <br /> during your pickup & delivery.</p>
       {!userVerified && (
         <div className="mb-4">
           <label className="block text-gray-700">Sender's Number</label>
@@ -239,7 +239,7 @@ function RightDiv4() {
       {!userVerified && (
         <Button
           onClick={handleSendVerificationCode}
-          className="w-full bg-[#8B14CC] hover:bg-[#8B14CC] text-white py-2 px-4 rounded-md"
+          className="w-full bg-[#F3E545] hover:bg-[#F3E530] text-black md:bg-[#8B14CC] md:text-white text-center md:hover:bg-[#8D26CA] md:hover:text-white py-2 px-4 rounded-md"
           disabled={loading}
         >
           {loading ? 'Sending...' : 'Send a verification code'}
@@ -326,13 +326,13 @@ function RightDiv4() {
       <div className='mt-8 flex justify-start gap-3'>
         <Button
           variant="outline"
-          className='py-4 sm:py-5 px-4 sm:px-4 rounded-lg border border-gray-300 text-gray-600 w-full sm:w-auto'
+          className='py-4 sm:py-5 px-4 sm:px-4 rounded-lg border border-gray-300 text-gray-600 w-16 sm:w-20'
           onClick={() => router.push('/dashboard/booking/details')}
         >
           <span className='text-2xl rounded-2xl'><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className='py-4 sm:py-5 px-6 w-full sm:w-auto rounded-lg bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
+          className='py-4 sm:py-5 px-6 w-full sm:w-auto rounded-lg bg-[#F3E545] hover:bg-[#F3E530] text-black md:bg-[#8B14CC] md:text-white text-center md:hover:bg-[#8D26CA] md:hover:text-white'
           onClick={handleContinue}
           disabled={!userVerified || loading}
         >

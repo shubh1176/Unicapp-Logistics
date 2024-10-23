@@ -55,8 +55,8 @@ const RightDiv3 = () => {
   };
 
   return (
-    <div className="px-4 py-4 sm:px-4 sm:py-5 lg:p-6 max-w-sm sm:max-w-md lg:max-w-lg mx-auto bg-white rounded-xl shadow-lg">
-      <div className='mb-5 w-full'>
+    <div className="px-6 py-6 sm:px-4 sm:py-5 lg:p-6 max-w-sm sm:max-w-md lg:max-w-lg mx-auto bg-white rounded-3xl md:rounded-xl shadow-lg">
+      <div className='mb-5 w-full hidden md:block'>
         <h2 className="text-sm font-generalMedium text-[#8B14CC]">STEP 4/6</h2>
         <div className="flex mt-3 mb-7">
           <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
@@ -68,7 +68,7 @@ const RightDiv3 = () => {
         </div>
       </div>
       <div className="mb-5">
-        <h2 className="text-2xl font-bold">What are you sending?</h2>
+        <h2 className=" font-medium text-2xl md:font-bold">What are you sending?</h2>
         <p className="text-sm">Add description of your item(s).</p>
       </div>
       <div className="flex flex-col mt-4">
@@ -121,7 +121,7 @@ const RightDiv3 = () => {
           {errors.height && <p className="text-red-500 text-sm">{errors.height}</p>}
         </div>
       )}
-      <div className="mt-6">
+      <div className=" mt-4 md:mt-6">
         <p className="text-sm">Which size best describes your item the best?</p>
         <div className="flex flex-wrap mt-3">
           {['Small', 'Medium', 'Large', 'X-Large', 'Huge'].map((size) => (
@@ -134,20 +134,20 @@ const RightDiv3 = () => {
               }}
             >
               <div className='flex flex-col gap-1 items-center'>
-                <div className='flex items-center justify-center content-center rounded-md w-8 h-8'>
+                <div className='flex items-center justify-center content-center rounded-md  w-5 h-5 md:w-8 md:h-8'>
                   <Image src={`/images/${size.toLowerCase()}.svg`} width={32} height={16} alt={size} />
                 </div>
-                <div className="text-sm">{size}</div>
+                <div className="md:text-sm text-xs">{size}</div>
               </div>
             </div>
           ))}
         </div>
         {errors.itemDescription && <p className="text-red-500 text-sm">{errors.itemDescription}</p>}
       </div>
-      <div className="mt-5">
+      <div className=" mt-3 md:mt-5">
         <p className="text-sm">Special instructions, if any</p>
         <Textarea
-          className="pl-4 w-full sm:w-80 border-2 border-black border-opacity-25 h-24 rounded-lg mt-3 focus:border-0 focus:ring-0" 
+          className="pl-4 w-full md:w-80 border-2 border-black border-opacity-25 md:h-24  h-11  rounded-lg mt-3 focus:border-0 focus:ring-0" 
           placeholder="Add your text here..." 
           value={specialInstructions} 
           onChange={(e) => setSpecialInstructions(e.target.value)}
@@ -162,7 +162,7 @@ const RightDiv3 = () => {
           <ChevronLeft size={20} />
         </Button>
         <Button
-          className='py-3 sm:py-4 px-4 w-full sm:w-2/3 rounded-lg bg-[#8B14CC] text-white text-center hover:bg-[#8D26CA] hover:text-white'
+          className='py-3 sm:py-4 px-4 w-full sm:w-2/3 rounded-lg bg-[#F3E545] hover:bg-[#F3E530] text-black md:bg-[#8B14CC] md:text-white text-center md:hover:bg-[#8D26CA] md:hover:text-white'
           onClick={handleContinue}
         >
           Continue
