@@ -140,7 +140,7 @@ const LeftDiv4 = () => {
   return (
 
     <>
-     <div className={`hidden md:flex flex-col items-center lg:h-full lg:w-full mt-10 lg:-translate-y-28 p-8 lg:p-10`}>
+     <div className={`hidden lg:flex flex-col items-center lg:h-full lg:w-full mt-10 lg:-translate-y-28 p-8 lg:p-10`}>
       <div className="items-start ml-0 lg:ml-32">
         
           <div className="flex justify-between items-center mb-4 lg:mb-0 lg:-translate-x-5 lg:translate-y-8 h-44 w-44">

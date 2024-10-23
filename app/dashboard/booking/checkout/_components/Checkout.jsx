@@ -485,7 +485,7 @@ const Checkout = () => {
     <div className='max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-xl mx-auto lg:translate-y-24 bg-white rounded-3xl md:rounded-xl shadow-lg p-8'>
       {orderType === 'Pickup & Drop' ? (
         <>
-          <div className='mb-5 w-full hidden md:block'>
+          <div className='mb-5 w-full hidden lg:block'>
             <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 6/6</h2>
             <div className="flex mt-4 mb-9">
               <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
@@ -496,7 +496,7 @@ const Checkout = () => {
               <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
             </div>
           </div>
-          <h2 className='text-3xl font-medium sm:text-5xl md:font-generalSemiBold'>Pricing</h2>
+          <h2 className='text-3xl font-medium lg:text-5xl md:font-generalSemiBold'>Pricing</h2>
           <div className='mt-5 flex flex-col gap-3'>
             <div className=' flex flex-row justify-between'>
               <p>Trip Fare ({distance.toFixed(1)} kms)</p>
@@ -542,7 +542,7 @@ const Checkout = () => {
         </>
       ) : (
         <>
-          <div className="mb-5 hidden md:block">
+          <div className="mb-5 hidden lg:block">
             <h2 className="text-base font-generalMedium text-[#8B14CC] translate-x-0.5">STEP 6/6</h2>
             <div className="flex mt-4 mb-9">
               <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
@@ -553,7 +553,7 @@ const Checkout = () => {
               <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
             </div>
           </div>
-          <h2 className='text-3xl font-medium sm:text-5xl md:font-generalSemiBold'>Pricing</h2>
+          <h2 className='text-3xl font-medium lg:text-5xl md:font-generalSemiBold'>Pricing</h2>
           <div className="mt-5 w-full rounded-2xl">
             {routeOptions.map((option) => {
               const gst = option.basePrice * option.gstRate;
@@ -570,8 +570,8 @@ const Checkout = () => {
                   }}
                 >
                   <div className="flex items-center">
-                    <div className={`w-6 h-6 mr-4 ${route === option.label ? 'bg-[#F3E530] md:bg-[#8D26CA]' : 'bg-gray-300'} rounded-sm flex items-center justify-center`}>
-                      {route === option.label && <div className="w-full h-6 bg-[#F3E530] text-black md:bg-[#8D26CA] rounded-sm md:text-white"><Check size={23} strokeWidth={1.75} /></div>}
+                    <div className={`w-6 h-6 mr-4 ${route === option.label ? 'bg-[#F3E530] lg:bg-[#8D26CA]' : 'bg-gray-300'} rounded-sm flex items-center justify-center`}>
+                      {route === option.label && <div className="w-full h-6 bg-[#F3E530] text-black lg:bg-[#8D26CA] rounded-sm lg:text-white"><Check size={23} strokeWidth={1.75} /></div>}
                     </div>
                     <div>
                       <h3 className="text-sm font-generalMedium">{option.label}</h3>
@@ -626,7 +626,7 @@ const Checkout = () => {
           <span className='text-2xl rounded-2xl'><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className='py-6 px-10 w-80 rounded-lg md:rounded-xl bg-[#F3E545] hover:bg-[#F3E530] text-black md:bg-[#8B14CC] md:text-white text-center md:hover:bg-[#8D26CA] md:hover:text-white'
+          className='py-6 px-10 w-80 rounded-lg md:rounded-xl bg-[#F3E545] hover:bg-[#F3E530] text-black lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white'
           onClick={handlePayment}
           disabled={loading}
         >

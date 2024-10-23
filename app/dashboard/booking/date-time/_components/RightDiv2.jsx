@@ -70,7 +70,7 @@ const RightDiv2 = () => {
 
   return (
     <div className="p-6 sm:p-6 bg-white rounded-3xl md:rounded-xl shadow-lg max-w-full sm:max-w-md md:max-w-lg">
-      <div className="mb-5 w-full hidden md:block">
+      <div className="mb-5 w-full hidden lg:block">
         <h2 className="text-sm sm:text-base font-generalMedium text-[#8B14CC]">
           STEP 3/6
         </h2>
@@ -99,7 +99,7 @@ const RightDiv2 = () => {
               key={index}
               className={`py-2 px-3 w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl border ${
                 date.toDateString() === day.toDateString()
-                  ? "md:bg-[#8B14CC] bg-[#0094B2] bg-opacity-20 md:bg-opacity-100 text-black md:text-white md:border-transparent"
+                  ? "lg:bg-[#8B14CC] bg-[#0094B2] bg-opacity-20 lg:bg-opacity-100 text-black lg:text-white md:border-transparent"
                   : "bg-white border-gray-300 text-gray-600 hover:border-[#0094B2] md:hover:border-[#8D26CA] hover:text-black"
               }  `}
               onClick={() => handleDateChange(day)}
@@ -142,8 +142,8 @@ const RightDiv2 = () => {
               key={index}
               className={`py-2 px-4 w-full sm:w-32 rounded-lg sm:rounded-xl border ${
                 time === timeOption
-                  ? "md:bg-[#8B14CC] bg-[#0094B2] md:hover:bg-[#8B14CC] hover:bg-[#0094B2] bg-opacity-20 hover:bg-opacity-30  md:bg-opacity-100 text-black md:text-white md:border-transparent"
-                  : "bg-white hover:bg-white border-gray-300 text-gray-600  hover:text-black hover:border-[#0094B2] md:hover:border-[#8D26CA]"
+                  ? "lg:bg-[#8B14CC] bg-[#0094B2] lg:hover:bg-[#8B14CC] hover:bg-[#0094B2] bg-opacity-20 hover:bg-opacity-30  lg:bg-opacity-100 text-black lg:text-white lg:border-transparent"
+                  : "bg-white hover:bg-white border-gray-300 text-gray-600  hover:text-black hover:border-[#0094B2] lg:hover:border-[#8D26CA]"
               } `}
               onClick={() => handleTimeChange(timeOption)}
             >
@@ -163,7 +163,7 @@ const RightDiv2 = () => {
           </span>
         </Button>
         <Button
-          className="py-3 px-4 rounded-lg sm:rounded-xl w-full sm:w-2/3 md:bg-[#8B14CC] md:text-white text-center md:hover:bg-[#8D26CA] md:hover:text-white bg-[#F3E545] hover:bg-[#F3E530] text-black hover:text-black"
+          className="py-3 px-4 rounded-lg sm:rounded-xl w-full sm:w-2/3 md:w-full   lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white bg-[#F3E545] hover:bg-[#F3E530] text-black hover:text-black"
           onClick={() => router.push("/dashboard/booking/details")}
         >
           Continue

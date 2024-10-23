@@ -68,8 +68,8 @@ function RightDivAdd() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center p-6 sm:px-8 lg:px-10 lg:py-6 w-full max-w-md mx-auto bg-white rounded-3xl  md:rounded-xl shadow-lg">
-      <div className="w-full hidden md:block">
+    <div className="flex flex-col justify-center items-center p-6 sm:px-8 lg:px-10 lg:py-6 w-full max-w-md mx-auto bg-white rounded-3xl  lg:rounded-xl shadow-lg">
+      <div className="w-full hidden lg:block">
         <h2 className="text-sm md:text-base font-generalMedium text-[#8B14CC] text-start sm:text-start">STEP 2/6</h2>
         <div className="flex mt-2 mb-4 justify-center sm:justify-start">
           <div className="w-10 h-1 bg-[#8B14CC] rounded mx-1"></div>
@@ -83,8 +83,8 @@ function RightDivAdd() {
         <p className="mt-1 text-lg font-generalRegular text-center sm:text-left">Enter house number, floor, etc.</p>
       </div>
 
-      <div className="w-full md:mt-4 space-y-4">
-        <div className='mb-6 md:mb-0'>
+      <div className="w-full lg:mt-4 space-y-4">
+        <div className='mb-6 lg:mb-0'>
           <label className="block mb-3 md:mb-1 font-generalRegular font-bold text-xl md:text-base md:font-normal">Pickup details</label>
           <Input
             placeholder="House no."
@@ -174,7 +174,7 @@ function RightDivAdd() {
           <ChevronLeft size={20} />
         </Button>
         <Button
-          className="py-3 px-6 rounded-xl w-full sm:w-2/3 bg-[#F3E545] hover:bg-bg-[#F3E530]  md:bg-[#8B14CC] md:text-white text-center md:hover:bg-[#8D26CA] md:hover:text-white text-black hover:text-black"
+          className="py-3 px-6 rounded-xl w-full sm:w-2/3 bg-[#F3E545] hover:bg-bg-[#F3E530]  lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white text-black hover:text-black"
           onClick={(e) => {
             e.preventDefault();
             handleContinue();

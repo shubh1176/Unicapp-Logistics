@@ -165,7 +165,7 @@ function RightDiv4() {
 
   return (
     <div className='max-w-sm mx-auto md:mt-6 p-6 sm:p-6 lg:p-7 bg-white rounded-xl shadow-lg'>
-      <div className='mb-5 w-full hidden md:block'>
+      <div className='mb-5 w-full hidden lg:block'>
         <h2 className="text-sm font-generalMedium text-[#8B14CC]">STEP 5/6</h2>
         <div className="flex mt-4 mb-7">
           <div className="w-12 h-1 bg-[#8B14CC] rounded mx-2"></div>
@@ -239,7 +239,7 @@ function RightDiv4() {
       {!userVerified && (
         <Button
           onClick={handleSendVerificationCode}
-          className="w-full bg-[#F3E545] hover:bg-[#F3E530] text-black md:bg-[#8B14CC] md:text-white text-center md:hover:bg-[#8D26CA] md:hover:text-white py-2 px-4 rounded-md"
+          className="w-full bg-[#F3E545] hover:bg-[#F3E530] text-black lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white py-2 px-4 rounded-md"
           disabled={loading}
         >
           {loading ? 'Sending...' : 'Send a verification code'}
@@ -332,7 +332,7 @@ function RightDiv4() {
           <span className='text-2xl rounded-2xl'><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className='py-4 sm:py-5 px-6 w-full sm:w-auto rounded-lg bg-[#F3E545] hover:bg-[#F3E530] text-black md:bg-[#8B14CC] md:text-white text-center md:hover:bg-[#8D26CA] md:hover:text-white'
+          className='py-4 sm:py-5 px-6 w-full lg:w-auto rounded-lg bg-[#F3E545] hover:bg-[#F3E530] text-black lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white'
           onClick={handleContinue}
           disabled={!userVerified || loading}
         >

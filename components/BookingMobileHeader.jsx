@@ -11,7 +11,7 @@ const BookingMobileHeader = () => {
   return (
     <div className='block lg:hidden'>
   <Header2 />
-        <div className="h-[300px] gap-4 pb-6  rounded-t-none  rounded-b-3xl  flex flex-col  items-center  justify-evenly  bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-10 ">
+        <div className="h-[300px] md:h-[500px] w-screen gap-4 pb-6  rounded-t-none  rounded-b-3xl  flex flex-col  items-center  justify-evenly  bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-10  ">
           <Image
             src={"/images/mapSmall.png"}
             width={380}
@@ -20,7 +20,7 @@ const BookingMobileHeader = () => {
             className=" w-[90%]"
           />
           <div className="flex gap-2 w-full px-10">
-            <div className="flex flex-col gap-4 w-[15%]">
+            <div className="flex flex-col gap-4 w-[15%] md:w-[8%]">
               <div className="bg-white text-black text-sm rounded-full w-10 h-10 flex items-center justify-center font-bold z-10">
                 <ArrowUp size={30} />
               </div>
@@ -32,16 +32,23 @@ const BookingMobileHeader = () => {
             <div className="w-[80%] flex flex-col gap-6">
               <div className="space-y-1">
                 <p className="text-sm text-gray-100 text-opacity-50">Pickup</p>
-                <p className="text-[#FFFFFF] font-medium">
+                <p className="text-[#FFFFFF] font-medium block md:hidden">
                   {pickupLocation.substring(0, 30) + "..." || "N/A"}
+                </p>
+                <p className="text-[#FFFFFF] font-medium hidden md:block">
+                  {pickupLocation.substring(0, 60) + "..." || "N/A"}
                 </p>
               </div>
               <div className="space-y-1">
                 <p className="text-sm text-gray-100 text-opacity-50">
                   Delivery
                 </p>
-                <p className="text-[#FFFFFF] font-medium">
+                <p className="text-[#FFFFFF] font-medium block md:hidden">
                   {dropLocation.substring(0, 30) + "..." || "N/A"}
+                </p>
+
+                <p className="text-[#FFFFFF] font-medium hidden md:block">
+                  {dropLocation.substring(0, 60) + "..." || "N/A"}
                 </p>
               </div>
             </div>

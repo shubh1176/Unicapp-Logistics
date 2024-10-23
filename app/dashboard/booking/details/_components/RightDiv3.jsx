@@ -55,8 +55,8 @@ const RightDiv3 = () => {
   };
 
   return (
-    <div className="px-6 py-6 sm:px-4 sm:py-5 lg:p-6 max-w-sm sm:max-w-md lg:max-w-lg mx-auto bg-white rounded-3xl md:rounded-xl shadow-lg">
-      <div className='mb-5 w-full hidden md:block'>
+    <div className="p-6 max-w-sm sm:max-w-md lg:max-w-lg mx-auto bg-white rounded-3xl md:rounded-xl shadow-lg">
+      <div className='mb-5 w-full hidden lg:block'>
         <h2 className="text-sm font-generalMedium text-[#8B14CC]">STEP 4/6</h2>
         <div className="flex mt-3 mb-7">
           <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
@@ -74,7 +74,7 @@ const RightDiv3 = () => {
       <div className="flex flex-col mt-4">
         <p className="mb-2 text-sm">Weight of the item (Approx.)</p>
         <Input 
-          className="pl-4 w-full sm:w-40 border-2 border-black border-opacity-25 h-10 rounded-lg focus:border-0 focus:ring-0" 
+          className="pl-4 w-full lg:w-40 border-2 border-black border-opacity-25 h-10 rounded-lg focus:border-0 focus:ring-0" 
           placeholder="kgs" 
           value={weight} 
           onChange={(e) => {
@@ -147,11 +147,11 @@ const RightDiv3 = () => {
       <div className=" mt-3 md:mt-5">
         <p className="text-sm">Special instructions, if any</p>
         <Textarea
-          className="pl-4 w-full md:w-80 border-2 border-black border-opacity-25 md:h-24  h-11  rounded-lg mt-3 focus:border-0 focus:ring-0" 
+          className="pl-4 w-full lg:w-80 border-2 resize-none border-black border-opacity-25 lg:h-24  h-11  rounded-lg mt-3 focus:border-0 focus:ring-0" 
           placeholder="Add your text here..." 
           value={specialInstructions} 
           onChange={(e) => setSpecialInstructions(e.target.value)}
-        />
+        /> 
       </div>
       <div className='mt-8 flex justify-start gap-3'>
         <Button
@@ -162,7 +162,7 @@ const RightDiv3 = () => {
           <ChevronLeft size={20} />
         </Button>
         <Button
-          className='py-3 sm:py-4 px-4 w-full sm:w-2/3 rounded-lg bg-[#F3E545] hover:bg-[#F3E530] text-black md:bg-[#8B14CC] md:text-white text-center md:hover:bg-[#8D26CA] md:hover:text-white'
+          className='py-3 sm:py-4 px-4 w-full sm:w-2/3 rounded-lg bg-[#F3E545] hover:bg-[#F3E530] text-black lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white'
           onClick={handleContinue}
         >
           Continue

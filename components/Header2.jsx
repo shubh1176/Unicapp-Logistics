@@ -15,12 +15,12 @@ const Header2 = () => {
     const router = useRouter();
     const { user } = useUser()
     return (
-        <div className=" bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] md:bg-none flex justify-between items-center px-4  md:mt-0  md:py-0">
+        <div className="w-screen bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] lg:bg-none flex justify-between items-center px-4  lg:mt-0  lg:py-0">
         <div>
-        <Image src={'/images/yellowonwhite.svg'} width={160} height={30} alt="Logo" className='block md:hidden relative right-3' />
-          <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" className='hidden md:block' />
+        <Image src={'/images/yellowonwhite.svg'} width={160} height={30} alt="Logo" className='block lg:hidden relative right-3' />
+          <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" className='hidden lg:block' />
         </div>
-        <div className="md:flex items-center gap-4 hidden ">
+        <div className="lg:flex items-center gap-4 hidden ">
           <Button variant="ghost" className="text-black hover:bg-[#E5D5E6] text-lg hover: rounded-xl" onClick={() => router.push('/')}>
             Home
           </Button>
@@ -53,7 +53,7 @@ const Header2 = () => {
             Contact
           </Button>
         </div>
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
         {user ? (
           <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
           <UserButton />
@@ -84,7 +84,7 @@ const Header2 = () => {
         </div>
 
         {/* Mobile Dropdown Menu */}
-   <div className="md:hidden flex ">
+   <div className="lg:hidden flex ">
     {!user && (
        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20  " onClick={() => router.replace('/dashboard')}>
        Sign In
