@@ -24,7 +24,7 @@ function Header() {
   };
 
   return (
-    <div className="bg-[#8D14CE] flex justify-between items-center px-4 py-2">
+    <div className="bg-[#8D14CE] flex justify-between items-center px-4 py-2 min-w-screen w-screen lg:mt-0  lg:py-0">
       <div>
         <Image src={'/images/yellowonwhite.svg'} width={150} height={40} alt="Logo" />
       </div>

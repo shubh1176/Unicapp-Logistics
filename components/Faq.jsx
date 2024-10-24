@@ -42,7 +42,7 @@ function Faq() {
       </div>
 
       {/* Accordion Section */}
-      <div className="border border-opacity-20 md:border-opacity-50 border-gray-950  rounded-2xl sm:rounded-2xl md:rounded-3xl mx-4 sm:mx-6 md:mx-40 mt-6 md:mt-10 py-4 px-6 sm:px-5 md:px-9">
+      <div className="border border-opacity-20 md:border-opacity-50 border-gray-950  rounded-2xl sm:rounded-2xl md:rounded-3xl mx-4 sm:mx-6 lg:mx-40 mt-6 md:mt-10 py-4 px-6 sm:px-5 md:px-9">
         {/* Single Accordion Component */}
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1" className="">

@@ -30,6 +30,7 @@ import {
   heightState,
   weightState,
 } from "@/recoil/store";
+import BookingMobileHeader from "./BookingMobileHeader";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
@@ -243,7 +244,7 @@ function EstimateComponent() {
   }, [user, setPhoneNumber, setVerified]);
   return (
     <>
-      <div className="hidden md:flex relative  flex-col items-start p-10 mx-14 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg h-full">
+      <div className="hidden lg:flex relative  flex-col items-start p-10 mx-14 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg h-full">
         <div className="w-1/2 pr-4">
           <h1 className="text-6xl font-filson mb-4 translate-x-4">
             Get an <span className="text-[#F3E545] font-filson">Estimate</span>
@@ -505,46 +506,10 @@ function EstimateComponent() {
         />
       </div>
 
-      <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden py-0 my-0 block md:hidden">
-        <Header2 />
-        <div className="h-[300px] gap-6 pb-6  rounded-t-none  rounded-b-3xl  flex flex-col  items-center  justify-evenly  bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-10 ">
-          <Image
-            src={"/images/mapSmall.png"}
-            width={380}
-            height={120}
-            alt="Logo"
-            className=""
-          />
-          <div className="flex gap-2 w-full px-10">
-            <div className="flex flex-col gap-4 w-[15%]">
-              <div className="bg-white text-black text-sm rounded-full w-10 h-10 flex items-center justify-center font-bold z-10">
-                <ArrowUp size={30} />
-              </div>
-              <hr className="border-white border-2 border-dashed trasnform rotate-90 w-16 relative m-0 right-3 z-0" />
-              <div className="bg-white text-black text-sm rounded-full w-10 h-10 flex items-center justify-center font-bold z-10">
-                <ArrowDown size={30} />
-              </div>
-            </div>
-            <div className="w-[80%] flex flex-col gap-6">
-              <div className="space-y-1">
-                <p className="text-sm text-gray-100 text-opacity-50">Pickup</p>
-                <p className="text-[#FFFFFF] font-medium">
-                  {pickupAddress.substring(0, 30) + "..." || "N/A"}
-                </p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-sm text-gray-100 text-opacity-50">
-                  Delivery
-                </p>
-                <p className="text-[#FFFFFF] font-medium">
-                  {dropAddress.substring(0, 30) + "..." || "N/A"}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden py-0 my-0 block lg:hidden">
+       <BookingMobileHeader />
         <div className="px-5">
-          <div className="bg-white rounded-3xl mx-auto p-6">
+          <div className="bg-white max-w-md rounded-3xl mx-auto p-6">
             <input
               type="text"
               placeholder="Name*"
@@ -590,16 +555,19 @@ function EstimateComponent() {
               </div>
             )}
           </div>
+          <div className="flex justify-center">
           <button
             onClick={
               priceCalculated
                 ? () => router.push("/dashboard/booking/detail-address")
                 : calculateFare
             }
-            className="w-full h-12 px-4 py-2 mt-5 text-sm text-black bg-[#F3E545] rounded-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-white"
+            className="w-full max-w-md mx-auto h-12 px-4 py-2 mt-5 text-sm text-black bg-[#F3E545] rounded-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-white"
           >
             {priceCalculated ? "Unicapp it!" : "See prices"}
           </button>
+          </div>
+         
         </div>
       </div>
     </>

@@ -129,7 +129,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="bg-[#F1EDEA] pt-1 hidden md:block">
+      <div className="bg-[#F1EDEA] pt-1 hidden lg:block">
         <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl m-5">
           <div>
             <Image
