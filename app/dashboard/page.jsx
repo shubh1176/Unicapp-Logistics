@@ -1,11 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import {
-  UserButton,
-  useUser,
-  useClerk,
-} from "@clerk/clerk-react";
+import { UserButton, useUser, useClerk } from "@clerk/clerk-react";
 import { useRouter } from "next/navigation";
 import { db } from "@/utils/db";
 import * as schema from "@/utils/schema";
@@ -39,6 +35,7 @@ import {
   LogOut,
   ChevronDown,
   UserRound,
+  Save,
 } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -51,6 +48,8 @@ import {
 } from "@/components/ui/dialog"; // Import Dialog components
 import { Button } from "@/components/ui/button"; // Assuming Button is here
 import { preferredTimeSlotState } from "@/recoil/store"; // Recoil state for preferredTimeSlot
+import SaveAddressComponent from "@/components/SaveAddressComponent";
+import DashboardMobileHeader from "@/components/DashboardMobileHeader";
 
 const svgArray = [
   "/images/loading1.svg",
@@ -107,7 +106,8 @@ function DashboardPage() {
     preferredTimeSlotState
   ); // Time slot state
   const [timeSlotDialogOpen, setTimeSlotDialogOpen] = useState(false); // Added state for Dialog open/close
-
+  
+  
   const timeSlots = [
     "09:00 - 10:00 AM",
     "10:00 - 11:00 AM",
@@ -149,9 +149,7 @@ function DashboardPage() {
           setUserData(userData);
 
           if (!userData.onboarded) {
-            console.log(
-              "User is not onboarded, redirecting to role selection"
-            );
+            console.log("User is not onboarded, redirecting to role selection");
             router.push("/dashboard/onboarding/role");
             return;
           }
@@ -165,7 +163,9 @@ function DashboardPage() {
           }
 
           if (userData.role === "Business" && userData.verified) {
-            console.log("User is a verified business, checking organization data");
+            console.log(
+              "User is a verified business, checking organization data"
+            );
             const orgData = await db
               .select()
               .from(schema.OrganizationData)
@@ -229,7 +229,9 @@ function DashboardPage() {
 
   useEffect(() => {
     if (statusFilter) {
-      setFilteredOrders(orders.filter((order) => order.status === statusFilter));
+      setFilteredOrders(
+        orders.filter((order) => order.status === statusFilter)
+      );
     } else {
       setFilteredOrders(orders);
     }
@@ -378,6 +380,7 @@ function DashboardPage() {
           </nav>
         </div>
       </aside>
+      <DashboardMobileHeader />
 
       {/* Main Content */}
       <div className="flex flex-col flex-grow">
@@ -420,13 +423,20 @@ function DashboardPage() {
                     <ChevronDown />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <Dialog open={timeSlotDialogOpen} onOpenChange={setTimeSlotDialogOpen}>
+                    <Dialog
+                      open={timeSlotDialogOpen}
+                      onOpenChange={setTimeSlotDialogOpen}
+                    >
                       <DialogTrigger asChild>
-                        <DropdownMenuItem>Select Preferred Time Slot</DropdownMenuItem>
+                        <DropdownMenuItem>
+                          Select Preferred Time Slot
+                        </DropdownMenuItem>
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
-                          <DialogTitle>Select Your Preferred Time Slot</DialogTitle>
+                          <DialogTitle>
+                            Select Your Preferred Time Slot
+                          </DialogTitle>
                         </DialogHeader>
                         <select
                           value={preferredTimeSlot}
@@ -594,7 +604,9 @@ function DashboardPage() {
                     <Table>
                       <TableHeader>
                         <TableRow>
-                          <TableHead className="font-filson">Order ID</TableHead>
+                          <TableHead className="font-filson">
+                            Order ID
+                          </TableHead>
                           <TableHead className="font-filson">
                             Delivery Type:
                           </TableHead>
@@ -646,10 +658,7 @@ function DashboardPage() {
                                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-gray-50 rounded-lg shadow-inner">
                                     <div className="flex flex-col border rounded-lg bg-white px-4 py-2 pb-6">
                                       <div className="flex flex-row gap-2 mt-3">
-                                        <Truck
-                                          size={20}
-                                          strokeWidth={1.25}
-                                        />{" "}
+                                        <Truck size={20} strokeWidth={1.25} />{" "}
                                         <h4 className="font-bold mb-4">
                                           {" "}
                                           Order Details
@@ -697,10 +706,7 @@ function DashboardPage() {
                                     </div>
                                     <div className="flex flex-col border rounded-lg bg-white px-4 py-2 pb-6">
                                       <div className="flex flex-row gap-2 mt-3">
-                                        <Truck
-                                          size={20}
-                                          strokeWidth={1.25}
-                                        />
+                                        <Truck size={20} strokeWidth={1.25} />
                                         <h4 className="font-bold mb-4">
                                           {" "}
                                           Delivery Information
@@ -739,7 +745,9 @@ function DashboardPage() {
                             </button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
-                            <DropdownMenuItem onClick={() => setItemsPerPage(5)}>
+                            <DropdownMenuItem
+                              onClick={() => setItemsPerPage(5)}
+                            >
                               5
                             </DropdownMenuItem>
                             <DropdownMenuItem
@@ -775,9 +783,7 @@ function DashboardPage() {
                       <ChevronLeft />
                     </button>
                     <span className="text-gray-700">
-                      {`${
-                        (currentPage - 1) * itemsPerPage + 1
-                      }-${Math.min(
+                      {`${(currentPage - 1) * itemsPerPage + 1}-${Math.min(
                         currentPage * itemsPerPage,
                         filteredOrders.length
                       )} of ${filteredOrders.length} Orders`}
@@ -805,17 +811,17 @@ function DashboardPage() {
               Welcome {user?.firstName} 👋
             </h1>
 
-            <div className="flex flex-col items-center w-full space-y-8">
+            <div className="flex flex-col items-center w-full space-y-8 ">
               {/* Orders Section */}
-              <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-5xl">
+              <div className="bg-white p-8 rounded-3xl shadow-lg w-full max-w-5xl ">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="text-3xl font-semibold text-gray-700">
                     Your Orders
                   </h2>
                 </div>
 
-                <div className="lg:hidden mb-6">
-                  <div className="flex justify-center mb-4">
+                <div className="lg:hidden mb-6 ">
+                  {/* <div className="flex justify-center mb-4 ">
                     <button
                       onClick={() => setActiveTab("pickupDrop")}
                       className={`text-lg px-4 py-2 focus:outline-none ${
@@ -836,7 +842,7 @@ function DashboardPage() {
                     >
                       Courier
                     </button>
-                  </div>
+                  </div> */}
 
                   <div className="space-y-4">
                     {filteredIndividualOrders.slice(0, 4).map((order) => (
@@ -931,8 +937,12 @@ function DashboardPage() {
                           <TableHead className="text-gray-600">
                             Order Type
                           </TableHead>
-                          <TableHead className="text-gray-600">Status</TableHead>
-                          <TableHead className="text-gray-600">Weight</TableHead>
+                          <TableHead className="text-gray-600">
+                            Status
+                          </TableHead>
+                          <TableHead className="text-gray-600">
+                            Weight
+                          </TableHead>
                           <TableHead className="text-gray-600">
                             Special Instructions
                           </TableHead>
@@ -977,7 +987,7 @@ function DashboardPage() {
               </div>
 
               {/* Saved Addresses Section */}
-              <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl hidden lg:block">
+              {/* <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl  lg:block">
                 <h2 className="text-3xl font-semibold text-gray-700 mb-4">
                   Saved Addresses
                 </h2>
@@ -988,7 +998,8 @@ function DashboardPage() {
                 >
                   + Add a new address
                 </button>
-              </div>
+              </div> */}
+             <SaveAddressComponent />
             </div>
           </div>
         )}

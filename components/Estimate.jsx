@@ -526,16 +526,17 @@ function EstimateComponent() {
               required
               className="w-full h-14 px-4 py-2 mt-5 text-sm text-gray-500  rounded-xl border border-gary-300"
             />
-            <div>
-              <input
-                type="number"
-                placeholder="Enter weight of the item in kg*"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                required
-                className="w-full h-14 px-4 py-2 mt-5 text-sm text-gray-500  rounded-xl border border-gary-300"
-              />
-            </div>
+           <div className="flex items-center rounded-xl border border-gray-300 h-14 px-4 py-2 mt-5 focus-within:border-blue-500">
+  <Image src="/images/weightkg.svg" width={25} height={25} alt="Weight" className="relative" />
+  <input
+    type="number"
+    placeholder="Enter weight of the item in kg*"
+    value={weight}
+    onChange={(e) => setWeight(e.target.value)}
+    required
+    className="w-full px-2 py-2 text-sm text-gray-500 focus:outline-none"
+/>
+</div>
 
             {priceCalculated && (
               <div className="mt-5">
