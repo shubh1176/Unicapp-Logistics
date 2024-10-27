@@ -230,7 +230,7 @@ function RightDiv4() {
               placeholder="Enter phone number"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md"
+              className="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-[#0094B2] rounded-md"
             />
           </div>
           {phoneError && <p className="text-red-500">{phoneError}</p>}
@@ -258,7 +258,7 @@ function RightDiv4() {
                   setReceiverName(e.target.value);
                   setReceiverError('');
                 }}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-0 focus:ring-0 font-generalRegular"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md  font-generalRegular"
               />
             </div>
           </div>
@@ -316,7 +316,7 @@ function RightDiv4() {
                   setReceiverNumber(e.target.value);
                   setReceiverError('');
                 }}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:border-0 focus:ring-0 font-generalRegular"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md  font-generalRegular"
               />
             </div>
             {receiverError && <p className="text-red-500">{receiverError}</p>}
@@ -350,7 +350,7 @@ function RightDiv4() {
               value={otpInput}
               onChange={(e) => setOtpInput(e.target.value)}
               placeholder="Enter OTP"
-              className="mb-4 p-2 border rounded w-full focus:border-none"
+              className="mb-4 p-2 border rounded w-full "
             />
             {otpError && <p className="text-red-500">{otpError}</p>}
             <Button

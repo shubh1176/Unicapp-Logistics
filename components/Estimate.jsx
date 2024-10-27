@@ -510,23 +510,24 @@ function EstimateComponent() {
        <BookingMobileHeader />
         <div className="px-5">
           <div className="bg-white max-w-md rounded-3xl mx-auto p-6">
-            <input
-              type="text"
-              placeholder="Name*"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              required
-              className="w-full h-14 px-4 py-2  text-sm  text-gray-500 rounded-xl border border-gary-300"
-            />
+          <input
+  type="text"
+  placeholder="Name*"
+  value={userName}
+  onChange={(e) => setUserName(e.target.value)}
+  required
+  className="w-full h-14 px-4 py-2 text-sm text-gray-500 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0094B2]"
+/>
+
             <input
               type="number"
               placeholder=" Phone Number*"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               required
-              className="w-full h-14 px-4 py-2 mt-5 text-sm text-gray-500  rounded-xl border border-gary-300"
+              className="w-full h-14 px-4 py-2 mt-5 text-sm text-gray-500  rounded-xl border border-gary-300 focus:outline-none focus:border-[#0094B2]"
             />
-           <div className="flex items-center rounded-xl border border-gray-300 h-14 px-4 py-2 mt-5 focus-within:border-blue-500">
+           <div className="flex items-center rounded-xl border border-gray-300 h-14 px-4 py-2 mt-5 focus-within:border-[#0094B2]">
   <Image src="/images/weightkg.svg" width={25} height={25} alt="Weight" className="relative" />
   <input
     type="number"

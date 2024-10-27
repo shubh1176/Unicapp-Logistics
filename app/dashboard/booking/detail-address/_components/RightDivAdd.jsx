@@ -88,7 +88,7 @@ function RightDivAdd() {
           <label className="block mb-3 md:mb-1 font-generalRegular font-bold text-xl md:text-base md:font-normal">Pickup details</label>
           <Input
             placeholder="House no."
-            className="mb-2 w-full h-10 rounded-xl"
+            className="mb-2 w-full h-10 rounded-xl "
             value={detailedPickupAddress.houseNo}
             onChange={(e) => {
               setDetailedPickupAddress({ ...detailedPickupAddress, houseNo: e.target.value });

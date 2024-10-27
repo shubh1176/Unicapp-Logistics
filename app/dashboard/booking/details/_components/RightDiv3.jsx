@@ -74,7 +74,7 @@ const RightDiv3 = () => {
       <div className="flex flex-col mt-4">
         <p className="mb-2 text-sm">Weight of the item (Approx.)</p>
         <Input 
-          className="pl-4 w-full lg:w-40 border-2 border-black border-opacity-25 h-10 rounded-lg focus:border-0 focus:ring-0" 
+          className="pl-4 w-full lg:w-40 border-2 border-black border-opacity-25 h-10 rounded-lg focus:outline-none focus:border-[#0094B2]" 
           placeholder="kgs" 
           value={weight} 
           onChange={(e) => {
@@ -147,7 +147,7 @@ const RightDiv3 = () => {
       <div className=" mt-3 md:mt-5">
         <p className="text-sm">Special instructions, if any</p>
         <Textarea
-          className="pl-4 w-full lg:w-80 border-2 resize-none border-black border-opacity-25 lg:h-24  h-11  rounded-lg mt-3 focus:border-0 focus:ring-0" 
+          className="pl-4 w-full lg:w-80 border-2 resize-none border-black border-opacity-25 lg:h-24  h-11  rounded-lg mt-3 " 
           placeholder="Add your text here..." 
           value={specialInstructions} 
           onChange={(e) => setSpecialInstructions(e.target.value)}
