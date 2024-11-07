@@ -108,6 +108,12 @@ function Header() {
             <EllipsisVertical size={24} />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-white text-black  mt-0 rounded-md shadow-lg w-48 p-2 mr-7">
+          {user && <DropdownMenuItem
+              className="py-2 w-full border-b border-gray-300  cursor-pointer text-lg"
+              onClick={() => router.push("/dashboard")}
+            >
+              Dashboard
+            </DropdownMenuItem>}
             <DropdownMenuItem
               className="py-2 w-full border-b border-gray-300  cursor-pointer text-lg"
               onClick={() => router.push("/businesses")}

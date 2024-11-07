@@ -18,7 +18,7 @@ import Image from "next/image";
 
 function WhyUs() {
   return (
-    <div className="relative bg-[#202020] flex flex-col items-center  sm:gap-6 md:gap-8 mb-7 pb-0  md:pb-5  sm:pt-20 md:pt-10">
+    <div className="relative bg-[#202020] flex flex-col items-center  sm:gap-6 md:gap-8 mb-7 pb-0  md:pb-10  sm:pt-20 md:pt-10">
       {/* Responsive Ribbon Background */}
       <div className="hidden lg:block absolute lg:top-48 inset-0 z-0 transform w-full h-20 sm:h-32 md:h-40 lg:h-60 xl:h-80 translate-y-20 md:translate-y-36 lg:translate-y-48">
         <Image

@@ -47,7 +47,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="absolute -bottom-7 md:top-[7.2rem] right-20 md:right-36 w-40 md:w-80 h-40 md:h-80 transform translate-x-20 md:translate-x-36 -translate-y-0.5 rotate-0">
+      <div className="absolute -bottom-7 md:top-[9.4rem] right-20 md:right-36 w-40 md:w-80 h-40 md:h-auto transform translate-x-20 md:translate-x-36 -translate-y-0.5 rotate-0">
         <Image src={'/images/84.svg'} alt="Ribbon" layout="fill" objectFit="contain" />
       </div>
       <div className="flex flex-col md:flex-row md:items-center md:gap-4 pt-4 text-start space-y-2 md:space-y-0 text-gray-400 text-xs md:text-sm translate-x-1 md:translate-x-3">
