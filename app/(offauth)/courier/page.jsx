@@ -20,17 +20,17 @@ function page() {
     const router = useRouter()
     const { user } = useUser()
   return (
-    <div className='bg-[#F1EDEA] pt-1'>
-      <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl mt-5 py-1">
+    <div className='bg-[#F1EDEA] '>
+      <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl  py-1">
         <div>
           <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" />
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="ghost" className="text-black hover:bg-[#E5D5E6] text-lg hover: rounded-xl" onClick={() => router.push('/')}>
+          <Button variant="ghost" className="text-black hover:bg-[#E5D5E6] text-lg  rounded-xl" onClick={() => router.push('/')}>
             Home
           </Button>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-black text-lg hover:cursor-pointer ">
+            <DropdownMenuTrigger className="flex items-center gap-1   text-black text-lg hover:cursor-pointer ">
               Services <ChevronDown />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">

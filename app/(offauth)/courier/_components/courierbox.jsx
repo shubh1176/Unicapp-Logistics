@@ -52,18 +52,18 @@ const CourierComponent = () => {
 
   return (
     <div className="relative flex flex-col items-center justify-center mx-20 pb-5 h-full pt-32 rounded-2xl mb-20 bg-gradient-to-b from-[#9E3CE1] to-[#56217B]">
-      <h1 className="text-6xl font-filson text-white -translate-y-4">
+      <h1 className="text-5xl font-filson text-white -translate-y-4">
         Send <span className="text-[#F3E545]">courier</span> all over India
       </h1>
-      <p className="text-xl text-white mt-2 mb-6 font-generalRegular -translate-y-4">
+      <p className="text-lg text-white mt-4 mb-6 font-generalRegular -translate-y-4">
         Send courier any where in India with Unicapp, your all in one delivery solution!
       </p>
-      <div className="flex flex-col -translate-y-4">
-        <form className="w-72 mt-7">
-          <div className="flex justify-center gap-10">
-            <div className="mb-7">
+      <div className="flex items-center flex-col translate-y-0">
+        <form className=" flex items-center flex-col  space-y-2 mb-14 mt-0">
+          <div className="flex justify-center gap-6">
+            <div >
               <label className="block mb-2 font-generalLight text-white translate-x-6">Pickup Pincode</label>
-              <div className="relative w-80">
+              <div className="relative w-64">
                 <div 
                   className="absolute left-3 top-1/2 transform -translate-y-1/2 cursor-pointer ml-6"
                   onClick={() => setShowPickupDialog(true)}
@@ -78,18 +78,18 @@ const CourierComponent = () => {
                 <input
                   type="text"
                   placeholder=""
-                  className="pl-10 w-full border-2 border-white border-opacity h-12 rounded-xl focus:border-0 focus:ring-0 bg-opacity-50 bg-[#202020] text-white text-opacity-95 ml-5"
+                  className="pl-10 w-full border-2 border-white border-opacity h-12 rounded-xl   bg-opacity-50 bg-white text-opacity-95 ml-5   bg-[#FFFFFF80] placeholder:text-[#FFFFFF]  text-[#FFFFFF] text-md outline-none"
                   value={pickupLocation}
                   onChange={(e) => setPickupLocation(e.target.value)}
                   style={{ '::placeholder': { color: 'rgba(255, 255, 255, 1)', opacity: 1 } }}
                 />
               </div>
             </div>
-            <div className="mb-7">
+            <div >
               <label className="block mb-2 font-generalLight text-white">Delivery Pincode</label>
-              <div className="relative w-80">
+              <div className="relative w-64">
                 <div 
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 cursor-pointer -translate-x-3 z-10"
+                  className="absolute left-7 top-1/2 transform -translate-y-1/2 cursor-pointer -translate-x-3 z-10"
                   onClick={() => setShowDropDialog(true)}
                 >
                   <Image
@@ -102,7 +102,7 @@ const CourierComponent = () => {
                 <input
                   type="text"
                   placeholder=""
-                  className="pl-10 w-80 border-2 border-white h-12 rounded-xl focus:border-white focus:ring-0 bg-[#202020] bg-opacity-55 text-white -translate-x-3 z-10"
+                  className="pl-10 w-full border-2 border-white border-opacity h-12 rounded-xl   bg-opacity-50 bg-white text-opacity-95   bg-[#FFFFFF80] placeholder:text-[#FFFFFF]  text-[#FFFFFF] text-md outline-none   "
                   value={dropLocation}
                   onChange={(e) => setDropLocation(e.target.value)}
                 />
@@ -110,7 +110,7 @@ const CourierComponent = () => {
             </div>
           </div>
           <Button
-            className="bg-[#F3E545] text-black w-500px h-12 px-72 rounded-xl -translate-x-44 -translate-y-8 hover:bg-[#F3E545] mt-4"
+            className="bg-[#F3E545] ml-5 text-black  h-12 px-56  rounded-xl  hover:bg-[#F3E545] mt-0 mb-4"
             onClick={handleUnicappIt}
           >
             Unicapp it!
@@ -136,11 +136,11 @@ const CourierComponent = () => {
       <div className="text-white mt-4 mb-2 flex justify-between gap-20 px-10">
         <Image src={'/images/bottomtext.svg'} height={30} width={525} alt="Bottom Text" />
       </div>
-      <Image src="/images/7.svg" width={150} height={150} className="absolute top-16 left-10" alt="Flower" />
-      <Image src="/images/6.svg" width={180} height={180} className="absolute bottom-20 left-32" alt="Book" />
-      <Image src="/images/5.svg" width={150} height={150} className="absolute top-12 right-8" alt="Shirt" />
-      <Image src="/images/25.svg" width={150} height={150} className="absolute bottom-20 right-20" alt="Medicine" />
-      <Image src="/images/4.svg" width={120} height={120} className="absolute -top-0.5 left-96 ml-80" alt="Medicine" />
+      <Image src="/images/7.svg" width={150} height={150} className="absolute top-16 left-6" alt="Flower" />
+      <Image src="/images/6.svg" width={180} height={180} className="absolute bottom-16 left-28" alt="Book" />
+      <Image src="/images/5.svg" width={150} height={150} className="absolute top-12 right-12" alt="Shirt" />
+      <Image src="/images/25.svg" width={150} height={150} className="absolute bottom-2 right-10" alt="Medicine" />
+      <Image src="/images/4.svg" width={120} height={120} className="absolute -top-0.5 left-96 ml-44" alt="Medicine" />
     </div>
   );
 };
