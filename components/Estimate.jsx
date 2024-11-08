@@ -244,7 +244,18 @@ function EstimateComponent() {
   }, [user, setPhoneNumber, setVerified]);
   return (
     <>
-      <div className="hidden lg:flex relative  flex-col items-start p-10 mx-14 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg h-full">
+      <div
+  className={`hidden lg:flex relative flex-col items-start py-10 px-6 mx-10 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg max-h-[110vh] ${
+    showPriceDetails
+      ? serviceType === "Courier"
+        ? "h-[110vh]"
+        : serviceType === "Pickup & Drop"
+        ? "h-[95vh]"
+        : "h-auto"
+      : "h-auto"
+  }`}
+>
+        {" "}
         <div className="w-1/2 pr-4">
           <h1 className="text-6xl font-filson mb-4 translate-x-4">
             Get an <span className="text-[#F3E545] font-filson">Estimate</span>
@@ -286,8 +297,9 @@ function EstimateComponent() {
             </p>
           </div>
         </div>
-
-        <div className="absolute right-0 transform -translate-x-5 translate-y-6 bg-white bg-opacity-25 rounded-xl min-h-28 max-w-full">
+        <div
+          className={`absolute right-0 transform -translate-x-5  bg-white bg-opacity-25 rounded-xl min-h-28 max-w-full ml-5 `}
+        >
           <div className="bg-black bg-opacity-25 w-full h-full rounded-xl py-6 px-4 border-black border-2 border-opacity-5">
             <div className="flex flex-row gap-3 mb-4 w-auto mr-5">
               <div
@@ -490,7 +502,6 @@ function EstimateComponent() {
             </Button>
           </div>
         </div>
-
         {/* Mapbox Dialog Components */}
         <MapboxDialog
           isOpen={isPickupDialogOpen}
@@ -507,17 +518,17 @@ function EstimateComponent() {
       </div>
 
       <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden py-0 my-0 block lg:hidden">
-       <BookingMobileHeader />
+        <BookingMobileHeader />
         <div className="px-5">
           <div className="bg-white max-w-md rounded-3xl mx-auto p-6">
-          <input
-  type="text"
-  placeholder="Name*"
-  value={userName}
-  onChange={(e) => setUserName(e.target.value)}
-  required
-  className="w-full h-14 px-4 py-2 text-sm text-gray-500 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0094B2]"
-/>
+            <input
+              type="text"
+              placeholder="Name*"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              required
+              className="w-full h-14 px-4 py-2 text-sm text-gray-500 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0094B2]"
+            />
 
             <input
               type="number"
@@ -527,17 +538,23 @@ function EstimateComponent() {
               required
               className="w-full h-14 px-4 py-2 mt-5 text-sm text-gray-500  rounded-xl border border-gary-300 focus:outline-none focus:border-[#0094B2]"
             />
-           <div className="flex items-center rounded-xl border border-gray-300 h-14 px-4 py-2 mt-5 focus-within:border-[#0094B2]">
-  <Image src="/images/weightkg.svg" width={25} height={25} alt="Weight" className="relative" />
-  <input
-    type="number"
-    placeholder="Enter weight of the item in kg*"
-    value={weight}
-    onChange={(e) => setWeight(e.target.value)}
-    required
-    className="w-full px-2 py-2 text-sm text-gray-500 focus:outline-none"
-/>
-</div>
+            <div className="flex items-center rounded-xl border border-gray-300 h-14 px-4 py-2 mt-5 focus-within:border-[#0094B2]">
+              <Image
+                src="/images/weightkg.svg"
+                width={25}
+                height={25}
+                alt="Weight"
+                className="relative"
+              />
+              <input
+                type="number"
+                placeholder="Enter weight of the item in kg*"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+                required
+                className="w-full px-2 py-2 text-sm text-gray-500 focus:outline-none"
+              />
+            </div>
 
             {priceCalculated && (
               <div className="mt-5">
@@ -558,18 +575,17 @@ function EstimateComponent() {
             )}
           </div>
           <div className="flex justify-center">
-          <button
-            onClick={
-              priceCalculated
-                ? () => router.push("/dashboard/booking/detail-address")
-                : calculateFare
-            }
-            className="w-full max-w-md mx-auto h-12 px-4 py-2 mt-5 text-sm text-black bg-[#F3E545] rounded-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-white"
-          >
-            {priceCalculated ? "Unicapp it!" : "See prices"}
-          </button>
+            <button
+              onClick={
+                priceCalculated
+                  ? () => router.push("/dashboard/booking/detail-address")
+                  : calculateFare
+              }
+              className="w-full max-w-md mx-auto h-12 px-4 py-2 mt-5 text-sm text-black bg-[#F3E545] rounded-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-white"
+            >
+              {priceCalculated ? "Unicapp it!" : "See prices"}
+            </button>
           </div>
-         
         </div>
       </div>
     </>
