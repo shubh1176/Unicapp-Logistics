@@ -3,7 +3,7 @@ import React from 'react';
 
 function LeftDiv() {
   return (
-    <div className='flex flex-col justify-start items-start h-full pt-24 md:pt-12 px-6 md:px-16 gap-3 bg-gradient-to-b from-[#8D14CE] to-[#470A68] rounded-b-2xl w-full md:bg-none md:relative md:left-20 md:top-20'>
+    <div className='flex flex-col justify-start items-start h-full pt-24 md:pt-0 px-6 md:px-16 gap-3 bg-gradient-to-b from-[#8D14CE] to-[#470A68] rounded-b-2xl w-full md:bg-none md:relative md:left-20 md:top-0'>
       <div className='-translate-y-10 md:translate-y-0 md:translate-x-1'>
         {/* Conditionally render the logo for small screens */}
         <div className='block md:hidden mb-5 -ml-9 -mt-12'>
