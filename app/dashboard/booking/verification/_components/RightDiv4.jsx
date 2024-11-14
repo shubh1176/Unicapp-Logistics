@@ -164,7 +164,7 @@ function RightDiv4() {
   };
 
   return (
-    <div className='max-w-sm mx-auto md:mt-6 p-6 sm:p-6 lg:p-7 bg-white rounded-xl shadow-lg'>
+    <div className='max-w-sm mx-auto md:mx-0 md:mt-6 p-6 sm:p-6 lg:p-7 bg-white rounded-xl shadow-lg lg:shadow-none lg:rounded-none lg:bg-[#F8F8F880] '>
       <div className='mb-5 w-full hidden lg:block'>
         <h2 className="text-sm font-generalMedium text-[#8B14CC]">STEP 5/6</h2>
         <div className="flex mt-4 mb-7">
