@@ -55,7 +55,7 @@ const RightDiv3 = () => {
   };
 
   return (
-    <div className="p-6 max-w-sm sm:max-w-md lg:max-w-lg mx-auto bg-white rounded-3xl md:rounded-xl shadow-lg">
+    <div className="p-6 max-w-sm sm:max-w-md mx-auto lg:mx-0 lg:max-w-lg  bg-white rounded-3xl md:rounded-xl shadow-lg lg:shadow-none lg:rounded-none lg:bg-[#F8F8F880]">
       <div className='mb-5 w-full hidden lg:block'>
         <h2 className="text-sm font-generalMedium text-[#8B14CC]">STEP 4/6</h2>
         <div className="flex mt-3 mb-7">
