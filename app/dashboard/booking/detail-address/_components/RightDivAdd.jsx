@@ -68,7 +68,7 @@ function RightDivAdd() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center p-6 sm:px-8 lg:px-10 lg:py-6 w-full max-w-md mx-auto bg-white rounded-3xl  lg:rounded-xl shadow-lg">
+    <div className=" p-6 sm:px-8 lg:px-10 lg:py-6  lg:-translate-x-16 w-full max-w-md mx-auto bg-white lg:bg-[#F8F8F8] rounded-3xl  lg:rounded-none shadow-lg lg:shadow-none">
       <div className="w-full hidden lg:block">
         <h2 className="text-sm md:text-base font-generalMedium text-[#8B14CC] text-start sm:text-start">STEP 2/6</h2>
         <div className="flex mt-2 mb-4 justify-center sm:justify-start">
@@ -80,7 +80,7 @@ function RightDivAdd() {
           <div className="w-10 h-1 bg-gray-300 rounded mx-1"></div>
         </div>
         <h1 className="text-2xl font-bold text-center sm:text-left">Add more address details</h1>
-        <p className="mt-1 text-lg font-generalRegular text-center sm:text-left">Enter house number, floor, etc.</p>
+        <p className="mt-1 text-base font-generalRegular text-center sm:text-left">Enter house number, floor, etc.</p>
       </div>
 
       <div className="w-full lg:mt-4 space-y-4">

@@ -21,7 +21,7 @@ import BookingMobileHeader from '@/components/BookingMobileHeader';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
-const LeftDivAdd = () => {
+const BookingLeftDiv = () => {
   const pickupLocation = useRecoilValue(pickupLocationState);
   const dropLocation = useRecoilValue(dropLocationState);
   const stops = useRecoilValue(stopsState);
@@ -230,5 +230,5 @@ const LeftDivAdd = () => {
 
 };
 
-export default LeftDivAdd;
+export default BookingLeftDiv;
 
