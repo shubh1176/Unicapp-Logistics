@@ -482,7 +482,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className='max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-xl mx-auto lg:translate-y-24 bg-white rounded-3xl md:rounded-xl shadow-lg p-8'>
+    <div className='max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-xl mx-auto lg:mx-0  bg-white rounded-3xl md:rounded-xl shadow-lg p-8 lg:shadow-none lg:rounded-none lg:bg-[#F8F8F880] '>
       {orderType === 'Pickup & Drop' ? (
         <>
           <div className='mb-5 w-full hidden lg:block'>
@@ -496,7 +496,7 @@ const Checkout = () => {
               <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
             </div>
           </div>
-          <h2 className='text-3xl font-medium lg:text-5xl md:font-generalSemiBold'>Pricing</h2>
+          <h2 className='text-3xl font-medium lg:text-4xl md:font-generalSemiBold'>Pricing</h2>
           <div className='mt-5 flex flex-col gap-3'>
             <div className=' flex flex-row justify-between'>
               <p>Trip Fare ({distance.toFixed(1)} kms)</p>
@@ -553,7 +553,7 @@ const Checkout = () => {
               <div className="w-14 h-1 bg-[#8B14CC] rounded mx-1"></div>
             </div>
           </div>
-          <h2 className='text-3xl font-medium lg:text-5xl md:font-generalSemiBold'>Pricing</h2>
+          <h2 className='text-3xl font-medium lg:text-4xl md:font-generalSemiBold'>Pricing</h2>
           <div className="mt-5 w-full rounded-2xl">
             {routeOptions.map((option) => {
               const gst = option.basePrice * option.gstRate;
