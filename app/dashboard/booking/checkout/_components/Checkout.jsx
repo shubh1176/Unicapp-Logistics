@@ -148,6 +148,7 @@ const Checkout = () => {
   };
 
   useEffect(() => {
+   
     if (!isSmallScreen && pickupCoords && dropCoords) {
       const map = new mapboxgl.Map({
         container: 'map',

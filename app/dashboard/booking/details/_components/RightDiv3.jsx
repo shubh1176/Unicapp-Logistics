@@ -86,11 +86,11 @@ const RightDiv3 = () => {
         {errors.weight && <p className="text-red-500 text-xs">{errors.weight}</p>}
       </div>
       {orderType === 'Courier' && (
-        <div className="mt-5 flex flex-col">
+        <div className="mt-5 flex flex-col ">
           <p className="mb-3 text-sm">Dimensions (cm)</p>
           <div className="flex space-x-4">
             <Input
-              className="w-24 sm:w-28 lg:h-8 lg:text-xs focus:outline-none focus:ring-0"
+              className="w-24  lg:h-8 lg:text-xs focus:outline-none focus:ring-0"
               placeholder="Length"
               value={length}
               onChange={(e) => {
@@ -99,7 +99,7 @@ const RightDiv3 = () => {
               }}
             />
             <Input
-              className="w-24 sm:w-28 lg:h-8 lg:text-xs focus:outline-none focus:ring-0"
+              className="w-24  lg:h-8 lg:text-xs focus:outline-none focus:ring-0"
               placeholder="Width"
               value={width}
               onChange={(e) => {
@@ -108,7 +108,7 @@ const RightDiv3 = () => {
               }}
             />
             <Input
-              className="w-24 sm:w-28 lg:h-8 lg:text-xs focus:outline-none focus:ring-0"
+              className="w-24  lg:h-8 lg:text-xs focus:outline-none focus:ring-0"
               placeholder="Height"
               value={height}
               onChange={(e) => {

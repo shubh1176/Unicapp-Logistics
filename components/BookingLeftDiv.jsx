@@ -176,13 +176,12 @@ const BookingLeftDiv = () => {
               Your Package
             </h2>
 
-            {pathname !== "/dashboard/booking/checkout" && (
+          
               <div
                 id="map"
-                className="w-full lg:w-96 h-28 border-2 rounded-xl lg:translate-x-3  mb-4"
+                className={`  ${pathname === "/dashboard/booking/checkout" ?"hidden":"block"} w-full lg:w-96 h-28 border-2 rounded-xl lg:translate-x-3  mb-4`}
               ></div>
-            )}
-
+          
             <div className={`grid gap-4 lg:flex lg:flex-col lg:items-start`}>
               <div className="flex   sm:justify-center sm:space-x-2">
                 <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center z-10 ">
