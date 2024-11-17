@@ -197,11 +197,9 @@ const BookingLeftDiv = () => {
                 </div>
               </div>
               <div
-                className={` ${
-                  pathname === "/dashboard/booking/checkout"
-                    ? " bottom-0 "
-                    : " bottom-6 "
-                }  border border-[#D9D9D9] rotate-90 relative right-12 w-32 `}
+                className={` 
+                   bottom-6 
+                }  border-b-2 border-[#D9D9D9]  relative rotate-90 right-10 w-28 h-0 `}
               />
               <div className="flex   sm:justify-center sm:space-x-2">
                 <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center  justify-center z-10">

@@ -38,7 +38,7 @@ import * as schema from '@/utils/schema';
 import moment from 'moment';
 import { eq, and } from 'drizzle-orm';
 import { Button } from '@/components/ui/button';
-import { Check, ChevronLeft } from 'lucide-react';
+import { Check, ChevronDown, ChevronLeft, ChevronUp } from 'lucide-react';
 import { Label } from "@/components/ui/label";
 
 const generateOrderId = () => {
@@ -99,6 +99,8 @@ const Checkout = () => {
   const [distance, setDistance] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showPriceDetails, setShowPriceDetails] = useState(false);
+
 
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -114,6 +116,8 @@ const Checkout = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+
   const routeOptions = [
     { label: 'By Surface', basePrice: 55, gstRate: 0.18 },
     { label: 'By Air', basePrice: 120, gstRate: 0.18 },
@@ -659,7 +663,7 @@ const Checkout = () => {
               return (
                 <div
                   key={option.label}
-                  className={`flex flex-col items-start p-4 mb-4 border ${route === option.label ? 'border-[#461364] border-2' : 'border-gray-300'} rounded-2xl cursor-pointer`}
+                  className={`flex flex-col  items-start p-4 lg:p-6 mb-4 border ${route === option.label ? 'border-[#8B14CC] border-2' : 'border-gray-300'} rounded-2xl cursor-pointer`}
                   onClick={() => {
                     if (route !== option.label) { // Prevents re-setting the same route
                       setRoute(option.label);
@@ -667,34 +671,36 @@ const Checkout = () => {
                     }
                   }}
                 >
-                  <div className="flex items-center">
-                    <div className={`w-6 h-6 mr-4 ${route === option.label ? 'bg-[#F3E530] lg:bg-[#8D26CA]' : 'bg-gray-300'} rounded-sm flex items-center justify-center`}>
-                      {route === option.label && <div className="w-full h-6 bg-[#F3E530] text-black lg:bg-[#8D26CA] rounded-sm lg:text-white"><Check size={23} strokeWidth={1.75} /></div>}
-                    </div>
+                  <div className="flex items-start">
+                   
                     <div>
                       <h3 className="text-sm font-generalMedium">{option.label}</h3>
                       <div className='flex flex-row gap-2 mt-2'>
                         <p className="text-2xl text-black">{`₹${totalPrice}`}</p>
                         <p className='text-xs text-black mt-2 text-opacity-50'> including GST charges</p>
                       </div>
-                      <p className="text-base text-gray-500 mt-2">{`Delivery in 2-3 days`}</p>
+                      <p className="text-base font-semibold text-gray-500 mt-2">{`Delivery in 2-3 days`}</p>
                       <p className="text-xs text-black text-opacity-50">Same-day dispatch</p>
                     </div>
+                    <div className={`w-6 h-6 ml-10 ${route === option.label ? 'bg-[#F3E530] lg:bg-[#8D26CA]' : 'bg-gray-300'} rounded-sm flex items-center justify-center`}>
+                      {route === option.label && <div className="w-full h-6 bg-[#F3E530] text-black lg:bg-[#8D26CA] rounded-sm lg:text-white "><Check size={23} strokeWidth={1.75} /></div>}
+                    </div>
                   </div>
-                  {route === option.label && (
-                    <div className="mt-2 ml-10">
-                      <div className="text-sm text-black text-opacity-75 mt-2 flex flex-col gap-3">
-                        <div className='flex flex-row justify-between gap-10'>
+                  <button onClick={() => setShowPriceDetails(!showPriceDetails)} className='flex gap-1 items-center font-semibold mt-2'>See details{showPriceDetails ? <ChevronUp size={16} /> : <ChevronDown size={16} />}</button>
+                  {(showPriceDetails && route === option.label)  && (
+                    <div className="w-full mt-2 ">
+                      <div className="w-full text-sm text-black text-opacity-75 mt-2 flex flex-col gap-3">
+                        <div className='w-full flex flex-row justify-between '>
                           <span>Courier charges:</span>
-                          <span>₹{option.basePrice.toFixed(2)}</span>
+                          <span className='text-black'>₹{option.basePrice.toFixed(2)}</span>
                         </div>
-                        <div className='flex flex-row justify between gap-24'>
+                        <div className='w-full flex flex-row justify-between '>
                           <span>GST Charges:</span>
-                          <span>{option.gstRate * 100}%</span>
+                          <span className='text-black'>{option.gstRate * 100}%</span>
                         </div>
-                        <div className='flex flex-row justify between gap-32'>
+                        <div className='w-full flex flex-row justify-between '>
                           <span>Total:</span>
-                          <span>₹{totalPrice}</span>
+                          <span className='text-black'>₹{totalPrice}</span>
                         </div>
                       </div>
                     </div>
