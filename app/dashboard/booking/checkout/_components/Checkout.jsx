@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useUser } from '@clerk/clerk-react';
 import axios from 'axios';
+import mapboxgl from 'mapbox-gl';
 import {
   pickupLocationState,
   dropLocationState,
@@ -99,6 +100,20 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const handleResize = () => {
+    setIsSmallScreen(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const routeOptions = [
     { label: 'By Surface', basePrice: 55, gstRate: 0.18 },
     { label: 'By Air', basePrice: 120, gstRate: 0.18 },
@@ -131,6 +146,84 @@ const Checkout = () => {
       return 0;
     }
   };
+
+  useEffect(() => {
+    if (!isSmallScreen && pickupCoords && dropCoords) {
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [pickupCoords.longitude, pickupCoords.latitude],
+        zoom: 11,
+        interactive: false,
+      });
+
+      const waypoints = [
+        [pickupCoords.longitude, pickupCoords.latitude],
+        ...stops.map((stop) => [stop.location.longitude, stop.location.latitude]),
+        [dropCoords.longitude, dropCoords.latitude],
+      ];
+
+      const coordinates = waypoints.map(coord => coord.join(',')).join(';');
+      const directionsUrl = `https://api.mapbox.com/directions/v5/mapbox/driving/${coordinates}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+
+      axios.get(directionsUrl)
+        .then(response => {
+          const route = response.data.routes[0].geometry.coordinates;
+
+          map.on('load', () => {
+            map.addSource('route', {
+              type: 'geojson',
+              data: {
+                type: 'Feature',
+                properties: {},
+                geometry: {
+                  type: 'LineString',
+                  coordinates: route,
+                },
+              },
+            });
+
+            map.addLayer({
+              id: 'route',
+              type: 'line',
+              source: 'route',
+              layout: {
+                'line-join': 'round',
+                'line-cap': 'round',
+              },
+              paint: {
+                'line-color': '#9E3CE1',
+                'line-width': 3,
+              },
+            });
+
+            new mapboxgl.Marker({ color: 'green' })
+              .setLngLat([pickupCoords.longitude, pickupCoords.latitude])
+              .setPopup(new mapboxgl.Popup().setHTML(`<h3>Pickup: ${pickupLocation}</h3>`))
+              .addTo(map);
+
+            stops.forEach((stop, index) => {
+              if (stop.location) {
+                new mapboxgl.Marker({ color: 'blue' })
+                  .setLngLat([stop.location.longitude, stop.location.latitude])
+                  .setPopup(new mapboxgl.Popup().setHTML(`<h3>Stop ${index + 1}: ${stop.address}</h3>`))
+                  .addTo(map);
+              }
+            });
+
+            new mapboxgl.Marker({ color: 'red' })
+              .setLngLat([dropCoords.longitude, dropCoords.latitude])
+              .setPopup(new mapboxgl.Popup().setHTML(`<h3>Drop: ${dropLocation}</h3>`))
+              .addTo(map);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching directions from Mapbox:', error);
+        });
+
+      return () => map.remove();
+    }
+  }, [pickupCoords, dropCoords, stops, pickupLocation, dropLocation,isSmallScreen]);
 
   useEffect(() => {
     const fetchWalletAmount = async () => {
@@ -482,7 +575,7 @@ const Checkout = () => {
   };
 
   return (
-    <div className='max-w-[95%] sm:max-w-[90%] md:max-w-[85%] lg:max-w-xl mx-auto lg:mx-0  bg-white rounded-3xl md:rounded-xl shadow-lg p-8 lg:shadow-none lg:rounded-none lg:bg-[#F8F8F880] '>
+    <div className='max-w-[95%] sm:max-w-[90%] md:max-w-[85%]   lg:max-w-[20rem] mx-auto lg:m-5  bg-white rounded-3xl md:rounded-xl shadow-lg p-8 lg:p-0  lg:shadow-none lg:rounded-none lg:bg-[#F8F8F880] '>
       {orderType === 'Pickup & Drop' ? (
         <>
           <div className='mb-5 w-full hidden lg:block'>
@@ -497,17 +590,19 @@ const Checkout = () => {
             </div>
           </div>
           <h2 className='text-3xl font-medium lg:text-4xl md:font-generalSemiBold'>Pricing</h2>
-          <div className='mt-5 flex flex-col gap-3'>
-            <div className=' flex flex-row justify-between'>
+          <div id="map" className="hidden lg:block w-full lg:w-full h-28 border-2 rounded-xl   mb-8 mt-8"></div>
+
+          <div className='mt-5 flex flex-col gap-2'>
+            <div className=' flex flex-row justify-between font-semibold lg:mb-1'>
               <p>Trip Fare ({distance.toFixed(1)} kms)</p>
-              <p> ₹{amount}</p> {/* Amount is already fixed to 2 decimal places */}
+              <p className='text-2xl font-semibold'> ₹{amount}</p> {/* Amount is already fixed to 2 decimal places */}
             </div>
-            <div className=' flex flex-row justify-between'>
+            <div className=' flex flex-row justify-between lg:text-sm'>
               <span>Standard fee (upto 2.0 kms)</span>
               <p>₹40</p>
             </div>
             {distance > 2 && distance <= 10 && (
-              <div className=' flex flex-row justify-between'>
+              <div className=' flex flex-row justify-between lg:text-sm'>
                 <span>From 2.0 to 10.0 kms</span>
                 <p>₹10/km</p>
               </div>
@@ -554,6 +649,8 @@ const Checkout = () => {
             </div>
           </div>
           <h2 className='text-3xl font-medium lg:text-4xl md:font-generalSemiBold'>Pricing</h2>
+          {/* <div id="map" className="block md:hiddenw-full lg:w-96 h-28 border-2 rounded-xl lg:translate-x-3  mb-4"></div> */}
+        
           <div className="mt-5 w-full rounded-2xl">
             {routeOptions.map((option) => {
               const gst = option.basePrice * option.gstRate;
@@ -620,13 +717,13 @@ const Checkout = () => {
       {error && <p className="text-red-500 mt-4">{error}</p>}
       <div className='mt-10 flex justify-start gap-3'>
         <Button
-          className='py-6 px-4 rounded-xl border border-gray-300 bg-white text-black hover:bg-white hover:text-black'
+          className='py-6 px-4 lg:p-2 rounded-xl border border-gray-300 bg-white text-black hover:bg-white hover:text-black w-14 lg:w-16'
           onClick={() => router.push('/dashboard/booking/verification')}
         >
           <span className='text-2xl rounded-2xl'><ChevronLeft size={20} /></span>
         </Button>
         <Button
-          className='py-6 px-10 w-80 rounded-lg md:rounded-xl bg-[#F3E545] hover:bg-[#F3E530] text-black lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white'
+          className='py-6 px-10 sm:py-5 sm:px-6 w-80 lg:w-full rounded-lg md:rounded-lg bg-[#F3E545] hover:bg-[#F3E530] text-black lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white'
           onClick={handlePayment}
           disabled={loading}
         >
