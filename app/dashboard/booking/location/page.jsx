@@ -8,7 +8,7 @@ export default function Page() {
       <div className='w-full md:w-1/2 px-4 md:px-8 '>
         <LeftDiv />
       </div>
-      <div className='w-full md:w-1/2 px-4 md:px-8 md:ml-auto md:translate-x-20 md:bg-[#F8F8F8] md:overflow-y-scroll md:min-h-screen '>
+      <div className='w-full md:w-1/2 px-4 md:px-14  md:translate-x-20 md:bg-[#F8F8F8] md:overflow-y-scroll md:min-h-screen md:pt-10 '>
         <RightDiv />
       </div>
     </div>

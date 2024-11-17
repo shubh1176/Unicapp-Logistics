@@ -8,9 +8,9 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Faq from '@/components/Faq';
 import {  useUser } from '@clerk/clerk-react'
-import Header from '@/components/Header';
 import Header2 from '@/components/Header2';
 import GetEstimate from '@/components/GetEstimate';
+import Header3 from '@/components/Header3';
 
 function Contact() {
   const router = useRouter();
@@ -49,7 +49,7 @@ function Contact() {
     <div className='bg-[#F1EDEA] max-w-screen overflow-hidden'>
       {/* Header: Show based on screen size */}
       <div className="hidden lg:block">
-        <Header />
+        <Header3 />
       </div>
       <div className="block lg:hidden">
         <Header2 />
@@ -58,7 +58,7 @@ function Contact() {
       {/* Main Content Section */}
       <div className='lg:flex lg:flex-row lg:justify-between  lg:p-20 p-6'>
         {/* Left Side */}
-        <div className='lg:flex lg:flex-col lg:ml-8 lg:translate-y-11 lg:translate-x-20'>
+        <div className='lg:flex lg:flex-col lg:ml-8 lg:translate-y-11 lg:translate-x-0'>
           <h2 className='text-4xl lg:text-6xl font-generalSemiBold'>Contact Us</h2>
           <div className='flex flex-col mt-5 lg:mt-10'>
             <span className='font-generalLight text-base lg:text-xl'>Email, call or complete the form to learn how</span>
@@ -85,7 +85,7 @@ function Contact() {
         </div>
 
         {/* Form Section */}
-        <div className='mt-12 lg:mt-0 max-w-md'>
+        <div className='mt-12 max-w-md lg:mt-0 lg:max-w-lg'>
           <div className='bg-white rounded-2xl p-6 lg:p-10 shadow-md'>
             <h1 className='font-generalLight text-3xl lg:text-5xl mb-6 lg:mb-4'>Get in touch</h1>
             <span className='font-semibold mb-4 text-sm lg:text-lg'>Customer Support</span>
@@ -93,11 +93,11 @@ function Contact() {
               Our support team is available around the clock to address any concerns or queries you may have.
             </p>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 gap-4">
+              <div className="flex flex-col gap-4">
                 <div>
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2  lg:border-black lg:rounded-none  lg:shadow-none"
                     id="name"
                     type="text"
                     name="name"
@@ -109,7 +109,7 @@ function Contact() {
                 <div>
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email Address</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
                     id="email"
                     type="email"
                     name="email"
@@ -121,7 +121,7 @@ function Contact() {
                 <div>
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">Phone Number</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
                     id="phone"
                     type="text"
                     name="phone"
@@ -133,7 +133,7 @@ function Contact() {
                 <div>
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">Message</label>
                   <Textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0  lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
                     id="message"
                     name="message"
                     value={formData.message}

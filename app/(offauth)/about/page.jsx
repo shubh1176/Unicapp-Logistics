@@ -1,36 +1,21 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+
 import React from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  ArrowBigRightDash,
-  ArrowRight,
-  ChevronDown,
-  CircleUserRound,
-  CircleUserRoundIcon,
-  WalletMinimal,
-} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import Footer from "@/components/Footer";
-import { UserButton, useUser } from "@clerk/clerk-react";
+import {  useUser } from "@clerk/clerk-react";
 import Header2 from "@/components/Header2";
 import GetEstimate from "@/components/GetEstimate";
-import Header from "@/components/Header";
+import Header3 from "@/components/Header3";
 
 const AboutUs = () => {
   const router = useRouter();
   const { user } = useUser();
   return (
-    <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden ">
+    <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden pt-4 pb-4 ">
       <div className="hidden lg:block">
-        <Header />
+        <Header3 />
       </div>
       <div className="block lg:hidden">
         <Header2 />

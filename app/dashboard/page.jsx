@@ -342,29 +342,29 @@ function DashboardPage() {
           <nav className="mt-4">
             <ul>
               <li>
-                <a
-                  href="/dashboard"
-                  className="flex py-2 px-4 rounded items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]"
+                <button
+                  onClick={() => router.push("/dashboard")}
+                  className="w-full flex py-2 px-4 rounded items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]"
                 >
                   <CircleUserRound /> Account
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="/dashboard/wallet"
-                  className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]"
+                <button
+                  onClick={() => router.push("/dashboard/wallet")}
+                  className="w-full py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]"
                 >
                   <WalletMinimal /> Wallet
-                </a>
+                </button>
               </li>
               {userData?.isAdmin && (
                 <li>
-                  <a
-                    href="/dashboard/admin-panel"
+                  <button
+                  onClick={() => router.push("/dashboard/admin-panel")}
                     className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]"
                   >
                     <ShieldCheck /> Admin Panel
-                  </a>
+                  </button>
                 </li>
               )}
               <li className="">
@@ -380,7 +380,7 @@ function DashboardPage() {
           </nav>
         </div>
       </aside>
-      <DashboardMobileHeader />
+      <DashboardMobileHeader />  {/* shown on small screens only */} 
 
       {/* Main Content */}
       <div className="flex flex-col flex-grow">

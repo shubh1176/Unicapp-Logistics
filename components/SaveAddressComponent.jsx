@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const Icons = {
     Home: <GoHomeFill size={15} />,
-    Office: <Image src="/images/office.svg" width={25} height={25} alt="Office" />,
+    Office: <Image src="/images/office.svg" width={20} height={20} alt="Office" />,
     Others: <Building size={15} />,
 }
 
@@ -69,10 +69,10 @@ const saveAddress = () => {
 
       {
         addressList.length > 0 ? (
-            addressList.map((address, index) => ( <div key={index} className="w-full flex justfy-between text-[10px] items-center border border-gray-300 rounded-lg p-2 space-x-10 mb-3">
+            addressList.map((address, index) => ( <div key={index} className="w-full flex justfy-between text-[10px] lg:text-base items-center border border-gray-300 rounded-lg p-2 space-x-10 mb-3">
                 <div className='flex items-center gap-4'>
                 <span>{Icons[address.addressType]}</span>
-                <span className='font-bold'>{address.addressType}</span>
+                <span className='font-bold '>{address.addressType}</span>
                 </div>
 
                 <span>{`${address.streetAddress}, ${address.apartment}, ${address.pincode}, ${address.city}, ${address.state}`}</span>
