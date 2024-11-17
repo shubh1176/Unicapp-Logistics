@@ -68,27 +68,27 @@ function RightDivAdd() {
   };
 
   return (
-    <div className=" p-6 sm:px-8 lg:px-10 lg:py-6  lg:-translate-x-16 w-full max-w-md mx-auto bg-white lg:bg-[#F8F8F8] rounded-3xl  lg:rounded-none shadow-lg lg:shadow-none">
+    <div className=" p-6 sm:px-8 lg:p-0  lg:-translate-x-0 w-full max-w-md lg:max-w-[20rem] mx-auto lg:m-5 bg-white lg:bg-[#F8F8F8] rounded-3xl  lg:rounded-none shadow-lg lg:shadow-none">
       <div className="w-full hidden lg:block">
-        <h2 className="text-sm md:text-base font-generalMedium text-[#8B14CC] text-start sm:text-start">STEP 2/6</h2>
+        <h2 className="text-sm md:text-sm font-generalMedium text-[#8B14CC] text-start sm:text-start">STEP 2/6</h2>
         <div className="flex mt-2 mb-4 justify-center sm:justify-start">
-          <div className="w-10 h-1 bg-[#8B14CC] rounded mx-1"></div>
-          <div className="w-10 h-1 bg-[#8B14CC] rounded mx-1"></div>
-          <div className="w-10 h-1 bg-gray-300 rounded mx-1"></div>
-          <div className="w-10 h-1 bg-gray-300 rounded mx-1"></div>
-          <div className="w-10 h-1 bg-gray-300 rounded mx-1"></div>
-          <div className="w-10 h-1 bg-gray-300 rounded mx-1"></div>
+          <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
+          <div className="w-12 h-1 bg-gray-300 rounded mx-1"></div>
+          <div className="w-12 h-1 bg-gray-300 rounded mx-1"></div>
+          <div className="w-12 h-1 bg-gray-300 rounded mx-1"></div>
+          <div className="w-12 h-1 bg-gray-300 rounded mx-1"></div>
         </div>
         <h1 className="text-2xl font-bold text-center sm:text-left">Add more address details</h1>
-        <p className="mt-1 text-base font-generalRegular text-center sm:text-left">Enter house number, floor, etc.</p>
+        <p className="mt-1 lg:mt-0 lg:text-sm lg:font-semibold font-generalRegular text-center sm:text-left">Enter house number, floor, etc.</p>
       </div>
 
-      <div className="w-full lg:mt-4 space-y-4">
+      <div className="w-full lg:mt-4 space-y-4 lg:text-sm">
         <div className='mb-6 lg:mb-0'>
-          <label className="block mb-3 md:mb-1 font-generalRegular font-bold text-xl md:text-base md:font-normal">Pickup details</label>
+          <label className="block mb-3 md:mb-1 font-generalRegular font-bold text-xl md:text-sm md:font-normal lg:font-semibold">Pickup details</label>
           <Input
             placeholder="House no."
-            className="mb-2 w-full h-10 rounded-xl "
+            className="mb-2 w-full h-10 rounded-xl lg:text-xs"
             value={detailedPickupAddress.houseNo}
             onChange={(e) => {
               setDetailedPickupAddress({ ...detailedPickupAddress, houseNo: e.target.value });
@@ -98,23 +98,23 @@ function RightDivAdd() {
           {errors.pickupHouseNo && <p className="text-red-500 text-sm">{errors.pickupHouseNo}</p>}
           <Input
             placeholder="Floor"
-            className="mb-2 w-full h-10 rounded-xl"
+            className="mb-2 w-full h-10 rounded-xl lg:text-xs"
             value={detailedPickupAddress.floor}
             onChange={(e) => setDetailedPickupAddress({ ...detailedPickupAddress, floor: e.target.value })}
           />
           <Input
             placeholder="Nearby landmark (optional)"
-            className="w-full h-10 rounded-xl"
+            className="w-full h-10 rounded-xl lg:text-xs"
             value={detailedPickupAddress.landmark}
             onChange={(e) => setDetailedPickupAddress({ ...detailedPickupAddress, landmark: e.target.value })}
           />
         </div>
 
         <div>
-          <label className="block mb-3 md:mb-1 font-generalRegular font-bold text-xl md:text-base md:font-normal">Drop-off details</label>
+          <label className="block mb-3 md:mb-1 font-generalRegular font-bold text-xl md:text-sm md:font-normal lg:font-semibold">Drop-off details</label>
           <Input
             placeholder="House no."
-            className="mb-2 w-full h-10 rounded-xl"
+            className="mb-2 w-full h-10 rounded-xl lg:text-xs"
             value={detailedDropOffAddress.houseNo}
             onChange={(e) => {
               setDetailedDropOffAddress({ ...detailedDropOffAddress, houseNo: e.target.value });
@@ -124,13 +124,13 @@ function RightDivAdd() {
           {errors.dropOffHouseNo && <p className="text-red-500 text-sm">{errors.dropOffHouseNo}</p>}
           <Input
             placeholder="Floor"
-            className="mb-2 w-full h-10 rounded-xl"
+            className="mb-2 w-full h-10 rounded-xl lg:text-xs"
             value={detailedDropOffAddress.floor}
             onChange={(e) => setDetailedDropOffAddress({ ...detailedDropOffAddress, floor: e.target.value })}
           />
           <Input
             placeholder="Nearby landmark (optional)"
-            className="w-full h-10 rounded-xl"
+            className="w-full h-10 rounded-xl lg:text-xs"
             value={detailedDropOffAddress.landmark}
             onChange={(e) => setDetailedDropOffAddress({ ...detailedDropOffAddress, landmark: e.target.value })}
           />
@@ -165,7 +165,7 @@ function RightDivAdd() {
       <div className="flex justify-start mt-6 gap-3 w-full">
         <Button
           variant="outline"
-          className="py-3 px-4 rounded-xl border border-gray-300 text-gray-600 w-16 sm:w-20"
+          className="p-2 rounded-xl border border-gray-300 text-gray-600 w-16 lg:w-12"
           onClick={(e) => {
             e.preventDefault();
             router.push('/dashboard/booking/location');
@@ -174,7 +174,7 @@ function RightDivAdd() {
           <ChevronLeft size={20} />
         </Button>
         <Button
-          className="py-3 px-6 rounded-xl w-full sm:w-2/3 bg-[#F3E545] hover:bg-bg-[#F3E530]  lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white text-black hover:text-black"
+          className="py-3 px-6 rounded-xl w-full  bg-[#F3E545] hover:bg-bg-[#F3E530]  lg:bg-[#8B14CC] lg:text-white text-center lg:hover:bg-[#8D26CA] lg:hover:text-white text-black hover:text-black"
           onClick={(e) => {
             e.preventDefault();
             handleContinue();
