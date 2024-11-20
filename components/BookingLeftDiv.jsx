@@ -13,13 +13,14 @@ import {
   timeState,
   itemDescriptionState,
   amountState,
+  orderTypeState,
 } from "@/recoil/store";
 import { ArrowDown, ArrowUp, Box, Calendar, IndianRupee } from "lucide-react";
 import Header2 from "@/components/Header2";
 import Image from "next/image";
 import BookingMobileHeader from "@/components/BookingMobileHeader";
 import { usePathname } from "next/navigation";
-
+import { useRouter } from "next/navigation";
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 const BookingLeftDiv = () => {
@@ -33,7 +34,8 @@ const BookingLeftDiv = () => {
   const time = useRecoilValue(timeState);
   const itemDescription = useRecoilValue(itemDescriptionState);
   const amount = useRecoilValue(amountState);
-
+  const orderType = useRecoilValue(orderTypeState);
+  const router = useRouter();
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const handleResize = () => {
@@ -167,7 +169,7 @@ const BookingLeftDiv = () => {
     <>
       <div className={`hidden lg:flex flex-col items-center  lg:w-full  p-8 `}>
         <div className="flex  flex-col items-start ml-0 lg:ml-32">
-          <div className="flex  items-center -translate-x-6 lg:mb-4  h-16 w-56">
+          <div onClick={()=>router.push("/")} className="flex  items-center -translate-x-6 lg:mb-4  h-16 w-56">
             <img src="/images/blackonwhitelogo.svg" alt="unicapp" />
           </div>
 
@@ -179,7 +181,7 @@ const BookingLeftDiv = () => {
           
               <div
                 id="map"
-                className={`  ${pathname === "/dashboard/booking/checkout" ?"hidden":"block"} w-full lg:w-96 h-28 border-2 rounded-xl lg:translate-x-3  mb-4`}
+                className={`  ${pathname === "/dashboard/booking/checkout" && orderType === "Pickup & Drop" ?"hidden":"block"} w-full lg:w-96 h-28 border-2 rounded-xl lg:translate-x-3  mb-4`}
               ></div>
           
             <div className={`grid gap-4 lg:flex lg:flex-col lg:items-start`}>

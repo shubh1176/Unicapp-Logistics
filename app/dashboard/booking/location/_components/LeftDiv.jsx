@@ -1,16 +1,19 @@
+"use client"
 import Image from 'next/image';
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 function LeftDiv() {
+  const router = useRouter();
   return (
     <div className='flex flex-col justify-center items-end  h-full pt-24 md:pt-0 px-6 md:px-0 gap-3 bg-gradient-to-b from-[#8D14CE] to-[#470A68] rounded-b-2xl w-full md:bg-none '>
       <div className='-translate-y-10 md:translate-y-0 md:translate-x-1 max-w-sm w-full'>
         {/* Conditionally render the logo for small screens */}
-        <div className='block md:hidden mb-5 -ml-9 -mt-12'>
+        <div onClick={()=>router.push("/")} className='block md:hidden mb-5 -ml-9 -mt-12'>
           <Image src='/images/yellowonwhite.svg' height={200} width={200} alt="Unicapp Logo" />
         </div>
         {/* Conditionally render the logo for medium and larger screens */}
-        <div className='hidden md:block  -translate-x-4  md:-translate-x-12 translate-y-5'>
+        <div onClick={()=>router.push("/")} className='hidden md:block  -translate-x-4  md:-translate-x-12 translate-y-5'>
           <img src='/images/blackonwhitelogo.svg' alt='Unicapp' className="w-24 md:w-64 h-36 " />
         </div>
         <div className='mb-4 md:mb-5 text-left  md:mt-0'>

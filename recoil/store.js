@@ -112,7 +112,7 @@ export const widthState = atom({
 
 export const routeState = atom({
   key: 'routeState',
-  default: '',
+  default: 'By Surface',
 });
 
 export const walletState = atom({

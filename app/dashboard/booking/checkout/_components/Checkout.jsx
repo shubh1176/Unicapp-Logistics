@@ -686,9 +686,9 @@ const Checkout = () => {
                       {route === option.label && <div className="w-full h-6 bg-[#F3E530] text-black lg:bg-[#8D26CA] rounded-sm lg:text-white "><Check size={23} strokeWidth={1.75} /></div>}
                     </div>
                   </div>
-                  <button onClick={() => setShowPriceDetails(!showPriceDetails)} className='flex gap-1 items-center font-semibold mt-2'>See details{showPriceDetails ? <ChevronUp size={16} /> : <ChevronDown size={16} />}</button>
+                  <button onClick={() => setShowPriceDetails(!showPriceDetails)} className='flex gap-1 items-center font-semibold mt-2 relative top-4'>See details{showPriceDetails ? <ChevronUp size={16} /> : <ChevronDown size={16} />}</button>
                   {(showPriceDetails && route === option.label)  && (
-                    <div className="w-full mt-2 ">
+                    <div className="w-full mt-4 ">
                       <div className="w-full text-sm text-black text-opacity-75 mt-2 flex flex-col gap-3">
                         <div className='w-full flex flex-row justify-between '>
                           <span>Courier charges:</span>
