@@ -318,10 +318,10 @@ function DashboardPage() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-gradient-to-b from-[#470a68] to-[#8D14CE] p-2 pl-0">
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-64 transform ${
+        className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-52 transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 lg:relative lg:translate-x-0`}
       >
@@ -381,7 +381,7 @@ function DashboardPage() {
       </aside>
       <DashboardMobileHeader /> {/* shown on small screens only */}
       {/* Main Content */}
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col flex-grow bg-white rounded-lg overflow-y-scroll h-[97vh] hide-scrollbar">
         {/* Header for Large Screens */}
         <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4  w-full mb-3">
           <div className="flex items-center space-x-4 lg:justify-between w-full">
@@ -473,7 +473,7 @@ function DashboardPage() {
 
         {/* Content based on role */}
         {userData?.role === "Business" ? (
-          <div className="flex-1">
+          <div className="flex-1 bg-gray-50 rounded-lg">
             {/* Business User Content */}
             <h1 className="text-4xl font-generalSemiBold mb-4 ml-6 mt-4">
               Welcome {user?.firstName} 👋
@@ -806,7 +806,7 @@ function DashboardPage() {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col h-full w-full p-6 bg-gray-50">
+          <div className="flex flex-col h-full w-full p-6 bg-gray-50 rounded-lg">
             <h1 className="text-4xl font-extrabold text-gray-800 mb-6 hidden sm:block">
               Welcome {user?.firstName} 👋
             </h1>

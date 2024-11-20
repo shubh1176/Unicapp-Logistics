@@ -177,14 +177,14 @@ function WalletPage() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-gradient-to-b from-[#470a68] to-[#8D14CE] p-2 pl-0">
       {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-64 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:relative lg:translate-x-0`}>
+      <aside className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-52 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:relative lg:translate-x-0`}>
         <div className="flex items-center justify-between p-4 mt-7 ml-3">
           <Image
             src={'/images/yellowcaplogo.svg'}
-            height={50}
-            width={150}
+            height={200}
+            width={200}
             alt="Logo"
             onClick={() => router.replace('/')}
             className="hover:cursor-pointer"
@@ -194,26 +194,36 @@ function WalletPage() {
           </button>
         </div>
         <div className="p-4">
-          <nav className="mt-4">
+        <nav className="mt-4">
             <ul>
               <li>
-                <a href="/dashboard" className="flex py-2 px-4 rounded items-center gap-2 mb-2 hover:bg-[#c964cf]">
+                <button
+                  onClick={() => router.push("/dashboard")}
+                  className="w-full flex py-2 px-4 rounded items-center gap-2 mb-2 hover:bg-[#c964cf] "
+                >
                   <CircleUserRound /> Account
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/dashboard/wallet" className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]">
+                <button
+                  onClick={() => router.push("/dashboard/wallet")}
+                  className="w-full py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]"
+                >
                   <WalletMinimal /> Wallet
-                </a>
+                </button>
               </li>
               {userData?.isAdmin && (
                 <li>
-                  <a href="/dashboard/admin-panel" className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]">
+                  <button
+                    onClick={() => router.push("/dashboard/admin-panel")}
+                    className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]"
+                  >
                     <ShieldCheck /> Admin Panel
-                  </a>
+                  </button>
                 </li>
               )}
               <li className="">
+                {/* Sign Out Button for small screens */}
                 <button
                   onClick={signOut}
                   className="flex items-center gap-2 py-2 px-4 text-left w-full hover:bg-[#c964cf]"
@@ -227,7 +237,7 @@ function WalletPage() {
       </aside>
 
       {/* Main Content */}
-      <div className="flex flex-col flex-grow md:px-12 lg:px-16">
+      <div className="flex flex-col flex-grow md:px-12 lg:px-0 bg-white rounded-lg overflow-y-scroll h-[97vh] hide-scrollbar">
         {/* Header for Small Screens */}
         <header className="lg:hidden bg-gradient-to-b from-[#8D14CE] to-[#470A68] text-white rounded-b-xl py-4 px-4">
           <div className="flex items-center justify-between">
@@ -241,7 +251,7 @@ function WalletPage() {
         </header>
 
         {/* Header for Large Screens */}
-        <header className="hidden lg:flex items-center justify-between pt-14 pb-3 px-4 bg-white w-full mb-10">
+        <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4  w-full mb-3">
           <button className="lg:hidden" onClick={() => setSidebarOpen(!sidebarOpen)}>
             <Menu size={24} />
           </button>
@@ -251,9 +261,12 @@ function WalletPage() {
           >
             + Book a new pickup
           </button>
+          
         </header>
+        <hr className="border-gray-200 border-1 w-full" />
 
-        <div className="px-6 mt-7">
+
+        <div className="px-8 pt-5 bg-gray-50">
           {/* Main Wallet Section */}
           <div className="flex-1">
             <h2 className="text-2xl font-bold mb-4 hidden lg:block">Wallet</h2>
