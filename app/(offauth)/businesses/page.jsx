@@ -40,7 +40,7 @@ export default function page() {
       <div className='flex items-center'><IoShieldCheckmark /><span className='ml-1 font-bold text-xs'>Secured</span></div>
       <div className='flex items-center'><FaPhone /><span className='ml-1 font-bold text-xs'>24/7 Assistance</span></div>
     </div>
-    <ul className="space-y-4 font-montserrat hidden md:block">
+    <ul className="space-y-6 font-montserrat hidden md:block">
       {/* Feature 1 */}
       <li className="flex items-start space-x-2 w-[55%]">
         <span className="text-2xl mt-1"><RiMoneyRupeeCircleFill  /></span>
@@ -120,7 +120,7 @@ export default function page() {
         type="submit"
         className="w-full bg-[#FFD966] text-[#470A68] font-semibold py-3 rounded-lg hover:bg-yellow-500 transition-all"
       >
-        Sign up
+        Send Enquiry
       </button>
     </form>
   </div>
@@ -198,7 +198,7 @@ export default function page() {
 
      
 
-      <div className='w-full flex flex-col items-center justify-center text-center   md:mb-32 '>
+      <div className='w-full flex flex-col items-center justify-center text-center md:h-screen   md:mb-32 '>
      
         <div className='flex flex-row gap-1.5 text-[18px]  md:text-3xl'>
           <h2 className='font-generalSemiBold  '>SHIP WITH THE</h2>
@@ -210,17 +210,17 @@ export default function page() {
           <div className='flex flex-col items-center text-sm text-center'>
             <Image src={'/images/stopwatch.svg'} height={150} width={150} alt="Same Day"  className='w-14 h-10 md:w-36 md:h-36'/>
             <h2 className='font-generalSemiBold mt-4 md:mt-4 text-xs md:text-xl'>Same Day</h2>
-            <span className='hidden md:block'>We provide same day intracity <br  /> deliveries, so that you can make <br /> your customers even happier!</span>
+            <span className='hidden md:block mt-2'>We provide same day intracity <br  /> deliveries, so that you can make <br /> your customers even happier!</span>
           </div>
           <div className='flex flex-col items-center text-sm text-center'>
             <Image src={'/images/calendar.svg'} height={150} width={150} alt="Scheduled" className='w-14 h-10  md:w-36 md:h-36' />
             <h2 className='font-generalSemiBold mt-4 md:mt-4 text-xs md:text-xl'>Scheduled</h2>
-            <span className='hidden md:block'>Plan and schedule your <br /> pickups to ensure you never <br /> miss a delivery</span>
+            <span className='hidden md:block mt-2'>Plan and schedule your <br /> pickups to ensure you never <br /> miss a delivery</span>
           </div>
           <div className='flex flex-col items-center text-sm text-center'>
             <Image src={'/images/8.svg'} height={150} width={150} alt="Multiple drop-off points" className='w-14 h-10  md:w-36 md:h-36' />
             <h2 className='font-generalSemiBold mt-4 md:mt-4 text-xs md:text-xl'>Multiple drop-<br className='block md:hidden'/>off points</h2>
-            <span className='hidden md:block'>We value your time, so we provide <br /> multiple drop-off points, eliminating the <br /> need to book each shipment separately.</span>
+            <span className='hidden md:block mt-2'>We value your time, so we provide <br /> multiple drop-off points, eliminating the <br /> need to book each shipment separately.</span>
           </div>
         </div>
         </div>
@@ -230,8 +230,8 @@ export default function page() {
     
 
       <div className='z-10 hidden  md:flex flex-col items-center justify-center text-center mt-14 mb-11'>
-      <div className='hidden md:block absolute z-0 inset-0 top-[1890px]'>
-          <Image src={'/images/ribbonDesktopBusiness.png'} className='w-[1900px] h-[950px] z-0 ' width={2000} height={100} alt="Logo" />
+      <div className='hidden md:block absolute z-0 inset-0 top-[1900px]'>
+          <Image src={'/images/ribbonDesktopBusiness.png'} className='w-[1900px] h-[1030px] z-0 ' width={2000} height={100} alt="Logo" />
         </div>
         <div className='z-10'>
           <h2 className='text-5xl font-generalSemiBold mb-4'>Deliveries Made Easy</h2>
@@ -271,14 +271,14 @@ export default function page() {
         <Image src={'/images/deliverymadeeasy.png'} className='w-[1900px] z-0 ' width={2000} height={100} objectFit="cover" alt="Ribbon Background" />
         </div>
 
-      <div className='hidden md:flex justify-center items-center mt-56 mb-28'>
+      <div className='hidden md:flex justify-center items-center px-10 h-screen mt-40 mb-28'>
         <Image src={'/images/businessgrouppage.svg'} height={544} width={1306} alt="Business Group" />
       </div>
      
 <div className='block  md:hidden mt-28 px-8'>
         <Image src={'/images/businessgrouppage2.png'} className=' z-0 ' width={2000} height={100} objectFit="cover" alt="Ribbon Background" />
         </div>
-      <div className='max-w-screen overflow-hidden my-36'>
+      <div className='max-w-screen overflow-hidden '>
         <TestimonialSection/>
       </div>
       <div className='w-full mb-20'>

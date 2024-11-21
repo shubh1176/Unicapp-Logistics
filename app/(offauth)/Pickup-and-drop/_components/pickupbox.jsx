@@ -12,6 +12,7 @@ import {
 import MapboxDialog from "@/components/MapboxDialog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Clock3, Store } from "lucide-react";
 
 const DeliveryComponent = () => {
   const [pickupLocation, setPickupLocation] = useRecoilState(pickupLocationState);
@@ -63,7 +64,7 @@ const DeliveryComponent = () => {
         <form className=" flex items-center flex-col  space-y-2 mb-14 mt-6">
           <div className="flex justify-center gap-6 ">
             <div >
-              <label className="block mb-2 font-generalLight text-white translate-x-6">Pickup address</label>
+              {/* <label className="block mb-2 font-generalLight text-white translate-x-6">Pickup address</label> */}
               <div className="relative w-64">
                 <Image
                   src={"/images/Arrowupwhite.svg"}
@@ -76,7 +77,7 @@ const DeliveryComponent = () => {
                 <input
                   type="text"
                   placeholder="Pickup Address"
-                  className="pl-10 w-full border-2 border-white border-opacity h-12 rounded-xl   bg-opacity-50 bg-white text-opacity-95 ml-5   bg-[#FFFFFF80] placeholder:text-[#FFFFFF]  text-[#FFFFFF] text-md outline-none"
+                  className="pl-10 w-full border border-white border-opacity h-12 rounded-xl   bg-opacity-50 bg-white text-opacity-95 ml-5   bg-[#FFFFFF80] placeholder:text-[#FFFFFF]  text-[#FFFFFF] text-md outline-none"
                   value={pickupLocation}
                   onChange={(e) => setPickupLocation(e.target.value)}
                   style={{ '::placeholder': { color: 'rgba(255, 255, 255, 1)', opacity: 1 } }}
@@ -84,7 +85,7 @@ const DeliveryComponent = () => {
               </div>
             </div>
             <div >
-              <label className="block mb-2 font-generalLight text-white">Drop-off address</label>
+              {/* <label className="block mb-2 font-generalLight text-white">Drop-off address</label> */}
               <div className="relative w-64">
                 <Image
                   src={"/images/Arrowdownwhite.svg"}
@@ -97,7 +98,7 @@ const DeliveryComponent = () => {
                 <input
                   type="text"
                   placeholder="Drop off Address"
-                  className="pl-10 w-full border-2 border-white border-opacity h-12 rounded-xl   bg-opacity-50 bg-white text-opacity-95   bg-[#FFFFFF80] placeholder:text-[#FFFFFF]  text-[#FFFFFF] text-md outline-none   "
+                  className="pl-10 w-full border border-white border-opacity h-12 rounded-xl   bg-opacity-50 bg-white text-opacity-95   bg-[#FFFFFF80] placeholder:text-[#FFFFFF]  text-[#FFFFFF] text-md outline-none   "
 
                   // className="pl-10 w-full border-2 border-white h-12 rounded-xl focus:border-0 focus:ring-0 bg-opacity-50 bg-white text-white text-opacity-95  placeholder:text-white focus:outline-none"
                   value={dropLocation}
@@ -134,8 +135,16 @@ const DeliveryComponent = () => {
           defaultLocation={dropCoords}
         />
       )}
-      <div className="text-white mt-4 mb-2 flex justify-between gap-20 px-10">
-        <Image src={"/images/bottomtextstore.svg"} height={30} width={525} alt="Bottom Text" />
+      <div className="text-white font-generalRegular mt-4 mb-2 flex justify-between gap-20 px-20">
+        <div className="flex items-center gap-2">
+          <Clock3 size={15}/>
+          <p>Pickup within 20 mins</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Store size={15}/>
+          <p>Store pickups available</p>
+        </div>
+        {/* <Image src={"/images/bottomtextstore.svg"} height={30} width={500} alt="Bottom Text" /> */}
       </div>
       {/* Decorative Images */}
       <Image src="/images/flower.svg" width={120} height={120} className="absolute top-16 left-[-15px]" alt="Flower" />
