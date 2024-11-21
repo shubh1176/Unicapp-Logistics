@@ -17,7 +17,7 @@ function Faq() {
   };
 
   return (
-    <div className="flex flex-col text-xs   mx-4 sm:text-lg md:text-xl mb-5">
+    <div className="flex flex-col text-xs justify-center  md:h-screen  mx-4 sm:text-lg md:text-xl mb-5 md:mb-0">
       {/* FAQ Heading */}
       <div className="justify-center items-center flex flex-col px-4 sm:px-6">
         <div className="mb-3 text-center">

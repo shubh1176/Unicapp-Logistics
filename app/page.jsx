@@ -261,7 +261,7 @@ export default function Home() {
       {/* <MissionSection /> */}
       <TestimonialSection />
 
-      <div className="flex flex-col content-center items-center mt-10 xl:mt-20  xl:mb-40 mb-10">
+      <div className="flex flex-col content-center items-center mt-10 lg:mt-0 lg:min-h-screen lg:mb-40 mb-10">
         {" "}
         {/* Adjusted bottom margin */}
         <div>

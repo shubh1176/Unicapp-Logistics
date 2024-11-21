@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 
 export const MissionCard = () => {
   return (
-    <div className="relative bg-purple-500 w-80 h-72 md:w-96 md:h-80 rounded-2xl flex items-center justify-center">
+    <div className="relative bg-purple-500 w-80 h-72 md:w-96 md:h-80 rounded-3xl flex items-center justify-center">
       {/* Dashed Border */}
       <div
         className="absolute inset-0 rounded-2xl m-5 border border-white"
@@ -140,7 +140,7 @@ export const DeliveryOptionsCard = () => {
 
 const MissionSection = () => {
   return (
-    <div className="flex flex-col   lg:my-16 lg:flex-row justify-center items-center space-y-8 md:space-y-6 md:space-x-0 lg:space-x-8 lg:space-y-0">
+    <div className="flex flex-col lg:h-screen   lg:flex-row justify-center items-center space-y-8 md:space-y-6 md:space-x-0 lg:space-x-8 lg:space-y-0">
       <MissionCard />
       <DeliveryOptionsCard />
     </div>

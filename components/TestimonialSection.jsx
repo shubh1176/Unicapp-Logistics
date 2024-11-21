@@ -118,7 +118,7 @@ const TestimonialSection = () => {
   const testimonials = activeTab === "individual" ? individuals.concat(individuals) : businesses.concat(businesses); // Display 8 cards in total for demo
 
   return (
-    <div className="py-12">
+    <div className="py-12 lg:py-0 lg:h-screen">
       {/* Section Heading */}
       <h2 className="text-2xl lg:text-3xl text-center lg:text-start font-bold text-black lg:ml-20 mb-8">
         See what others are sending

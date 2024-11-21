@@ -18,7 +18,7 @@ import Image from "next/image";
 
 function WhyUs() {
   return (
-    <div className="relative bg-[#202020] flex flex-col items-center  sm:gap-6 md:gap-8 mb-7 pb-0  md:pb-10  sm:pt-20 md:pt-10">
+    <div className="relative bg-[#202020] md:min-h-screen flex flex-col items-center  sm:gap-6 md:gap-8 mb-7 pb-0  md:pb-10  sm:pt-20 md:pt-8">
       {/* Responsive Ribbon Background */}
       <div className="hidden lg:block absolute lg:top-48 inset-0 z-0 transform w-full h-20 sm:h-32 md:h-40 lg:h-60 xl:h-80 translate-y-20 md:translate-y-36 lg:translate-y-48">
         <Image
@@ -36,13 +36,13 @@ function WhyUs() {
       <div className="flex flex-col gap-1 sm:gap-2 mt-9 sm:mt-11 text-center z-10 -translate-y-8 sm:-translate-y-10">
         <div>
           <span className="font-filson text-center text-2xl sm:text-4xl md:text-6xl xl:text-5xl text-[#F6F6F6]">
-            Unicapp is simply
+            Unicapp is simply {" "}
           </span>
           <span className="font-filson text-center text-2xl sm:text-4xl md:text-6xl xl:text-5xl text-[#FDDA02]">
             better
           </span>
         </div>
-        <span className="font-generalRegular text-white mt-1 text-xs sm:text-lg md:text-2xl xl:text-xl -translate-y-1 sm:-translate-y-2">
+        <span className="font-generalRegular text-white mt-3 text-xs sm:text-lg md:text-2xl xl:text-xl -translate-y-1 sm:-translate-y-2">
           Skip comparing companies and juggling couriers.
         </span>
       </div>
