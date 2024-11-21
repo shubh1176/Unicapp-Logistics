@@ -90,18 +90,19 @@ function OrganizationAddressPage() {
   };
 
   return (
-    <div className="flex flex-col items-start justify-center min-h-screen bg-[#F1EDEA] px-4">
+    <div className="flex flex-col items-start justify-center h-screen  bg-[#F1EDEA] ">
       <div className='max-w-lg w-full ml-20'>
         <div className="mb-6">
-          <span className="text-5xl font-filson">
+          <span className="text-3xl font-filson">
             Can you tell us a bit about< br /> your organization?
           </span>
         </div>
         <div className="w-full max-w-lg">
-          <div className="mb-4">
-            <span className="text-lg font-generalMedium">Organization Address</span>
+          <div className="mb-2">
+            <span className="text-base font-generalMedium">Organization Address</span>
           </div>
-          <div className="grid grid-col-2 gap-4 mb-4 w-96">
+         
+          <div className="grid grid-col-2 gap-4 mb-4 ">
             <Input
               value={street}
               onChange={(e) => {
@@ -109,7 +110,7 @@ function OrganizationAddressPage() {
                 setError('');
               }}
               placeholder="Street Address"
-              className={`col-span-2 rounded-lg focus:border-none font-generalLight ${error && !street ? 'border-red-500' : ''}`}
+              className={` rounded-lg border-2 focus:border-none font-generalLight placeholder:text-xs ${error && !street ? 'border-red-500' : ''}`}
             />
             <Input
               value={building}
@@ -118,7 +119,7 @@ function OrganizationAddressPage() {
                 setError('');
               }}
               placeholder="Office, Building, Apartment"
-              className={`col-span-2 rounded-lg focus:border-none font-generalLight ${error && !building ? 'border-red-500' : ''}`}
+              className={` rounded-lg border-2 focus:border-none font-generalLight placeholder:text-xs ${error && !building ? 'border-red-500' : ''}`}
             />
             <Input
               value={city}
@@ -127,7 +128,7 @@ function OrganizationAddressPage() {
                 setError('');
               }}
               placeholder="City"
-              className={`rounded-lg focus:border-none font-generalLight ${error && !city ? 'border-red-500' : ''}`}
+              className={`rounded-lg border-2 focus:border-none font-generalLight placeholder:text-xs ${error && !city ? 'border-red-500' : ''}`}
             />
             <Input
               value={state}
@@ -136,7 +137,7 @@ function OrganizationAddressPage() {
                 setError('');
               }}
               placeholder="State"
-              className={`rounded-lg focus:border-none font-generalLight ${error && !state ? 'border-red-500' : ''}`}
+              className={`rounded-lg border-2 focus:border-none font-generalLight placeholder:text-xs ${error && !state ? 'border-red-500' : ''}`}
             />
             <Input
               value={pincode}
@@ -145,19 +146,19 @@ function OrganizationAddressPage() {
                 setError('');
               }}
               placeholder="Pincode"
-              className={`col-span-2 rounded-lg focus:border-none font-generalLight ${error && !pincode ? 'border-red-500' : ''}`}
+              className={`col-span-2 w-[49%] border-2 rounded-lg focus:border-none font-generalLight placeholder:text-xs ${error && !pincode ? 'border-red-500' : ''}`}
             />
           </div>
           {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 mr-8 -translate-y-10 mb-12 translate-x-10 ">
+      <div className="absolute bottom-[72px]  right-0  mr-0  ">
         <Image src={'/images/84.svg'} width={400} height={410} alt="Ribbon" />
       </div>
       
-      <div className="w-full mt-8 translate-y-28 mb-10">
+      <div className="w-full absolute bottom-4">
         <div className="w-full border-t border-black my-4"></div>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center px-3">
           <Button
             variant="outline"
             className="text-black border border-gray-300 rounded-lg px-6 py-2 hover:bg-gray-100"
