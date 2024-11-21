@@ -11,12 +11,14 @@ import {  useUser } from '@clerk/clerk-react'
 import Header2 from '@/components/Header2';
 import GetEstimate from '@/components/GetEstimate';
 import Header3 from '@/components/Header3';
+import { or } from 'drizzle-orm';
 
 function Contact() {
   const router = useRouter();
   const { user } = useUser()
   const [formData, setFormData] = useState({
     name: '',
+    organization: '',
     email: '',
     phone: '',
     message: ''
@@ -39,7 +41,7 @@ function Contact() {
 
     if (res.ok) {
       alert('Your message has been sent successfully.');
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({ name: '', organization: '', email: '', phone: '', message: '' });
     } else {
       alert('Failed to send your message. Please try again later.');
     }
@@ -88,16 +90,17 @@ function Contact() {
         <div className='mt-12 max-w-md lg:mt-0 lg:max-w-lg'>
           <div className='bg-white rounded-2xl p-6 lg:p-10 shadow-md'>
             <h1 className='font-generalLight text-3xl lg:text-5xl mb-6 lg:mb-4'>Get in touch</h1>
-            <span className='font-semibold mb-4 text-sm lg:text-lg'>Customer Support</span>
+            {/* <span className='font-semibold mb-4 text-sm lg:text-lg'>Customer Support</span>
             <p className='text-gray-600 mb-6'>
               Our support team is available around the clock to address any concerns or queries you may have.
-            </p>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            </p> */}
+            <form onSubmit={handleSubmit} className="space-y-8 mt-4">
               <div className="flex flex-col gap-4">
+                <div className='flex gap-6 mb-3'>
                 <div>
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name</label>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="name">Name</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2  lg:border-black lg:rounded-none  lg:shadow-none"
+                    className="shadow appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2  lg:border-black lg:rounded-none  lg:shadow-none"
                     id="name"
                     type="text"
                     name="name"
@@ -107,9 +110,24 @@ function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email Address</label>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="name">Organization</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
+                    className="shadow appearance-none border rounded w-full px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2  lg:border-black lg:rounded-none  lg:shadow-none"
+                    id="name"
+                    type="text"
+                    name="name"
+                    value={formData.organization}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                </div>
+
+               <div className='flex gap-6 mb-3'>
+               <div>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="email">Email Address</label>
+                  <Input
+                    className="shadow appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
                     id="email"
                     type="email"
                     name="email"
@@ -119,9 +137,9 @@ function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">Phone Number</label>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="phone">Phone Number</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
+                    className="shadow appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
                     id="phone"
                     type="text"
                     name="phone"
@@ -130,10 +148,12 @@ function Contact() {
                     required
                   />
                 </div>
+               </div>
+                
                 <div>
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">Message</label>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="message">Message</label>
                   <Textarea
-                    className="shadow resize-none appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0  lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
+                    className="shadow resize-none appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0  lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
                     id="message"
                     name="message"
                     value={formData.message}
@@ -167,15 +187,16 @@ function Contact() {
             className='rounded-2xl'
           ></iframe>
         </div>
-        <div className='mt-8 lg:mt-0 lg:ml-32 lg:flex  lg:flex-col ml-5 '>
-          <h2 className='text-lg lg:text-3xl font-generalLight'>Connecting Near and Far</h2>
+        <div className='mt-8 lg:mt-0  lg:flex  lg:flex-col lg:justify-center ml-5 '>
+          <p className='text-lg lg:text-xl mb-3 font-generalRegular'>Our Location</p>
+          <h2 className='text-lg lg:text-3xl font-bold'>Connecting Near and Far</h2>
           <span className='mt-4 lg:mt-8 font-bold'>Head Office</span>
           <span className='mt-4'>Unicapp Logistics Pvt. Ltd.<br /> 44, Backary portion, 2nd Floor, <br /> Regal Building, Connaught Place,<br /> New Delhi -110001<br />India</span>
         </div>
       </div>
 
       {/* Estimate Section */}
-      <div className='w-full mt-10 lg:mt-32'>
+      <div className='w-full mt-10 lg:mt-48 lg:mb-24'>
         <GetEstimate  />
       </div>
 
