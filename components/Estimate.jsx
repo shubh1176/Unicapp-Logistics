@@ -245,19 +245,19 @@ function EstimateComponent() {
   return (
     <>
       <div
-  className={`hidden lg:flex relative flex-col items-start py-10 px-6 mx-10 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg max-h-[110vh] ${
-    showPriceDetails
-      ? serviceType === "Courier"
-        ? "h-[110vh]"
-        : serviceType === "Pickup & Drop"
-        ? "h-[95vh]"
-        : "h-auto"
-      : "h-auto"
-  }`}
->
+        className={`hidden lg:flex relative flex-col items-start py-10 px-6 mx-10 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg max-h-[110vh] ${
+          showPriceDetails
+            ? serviceType === "Courier"
+              ? "h-[110vh]"
+              : serviceType === "Pickup & Drop"
+              ? "h-[95vh]"
+              : "h-auto"
+            : "h-auto"
+        }`}
+      >
         {" "}
         <div className="w-1/2 pr-4">
-          <h1 className="text-6xl font-filson mb-4 translate-x-4">
+          <h1 className="text-5xl font-filson mb-4 translate-x-4">
             Get an <span className="text-[#F3E545] font-filson">Estimate</span>
           </h1>
 
@@ -274,7 +274,7 @@ function EstimateComponent() {
             <p className="font-generalSemiBold text-2xl mt-3 mb-2">
               Intra-city deliveries
             </p>
-            <p className="mb-4 font-generalRegular text-sm">
+            <p className="mb-4 font-generalRegular text-sm w-[75%]">
               For intra-city deliveries, we utilise our dedicated team of
               delivery captains to ensure prompt and reliable service.
             </p>
@@ -290,7 +290,7 @@ function EstimateComponent() {
             <p className="font-generalSemiBold text-2xl mb-2">
               Inter-city deliveries
             </p>
-            <p className="font-generalRegular text-sm">
+            <p className="font-generalRegular text-sm w-[75%]">
               For intercity courier services, we partner with the nation's most
               trusted and reliable logistics companies to ensure timely and
               secure deliveries.
@@ -300,8 +300,8 @@ function EstimateComponent() {
         <div
           className={`absolute right-0 transform -translate-x-5  bg-white bg-opacity-25 rounded-xl min-h-28 max-w-full ml-5 `}
         >
-          <div className="bg-black bg-opacity-25 w-full h-full rounded-xl py-6 px-4 border-black border-2 border-opacity-5">
-            <div className="flex flex-row gap-3 mb-4 w-auto mr-5">
+          <div className="bg-black bg-opacity-25 w-full flex flex-col items-center justify-center h-full rounded-xl py-6 px-6 border-black border-2 border-opacity-5">
+            <div className="flex flex-row justify-center gap-3 mb-4 w-full ">
               <div
                 className={`relative flex flex-col px-4 py-2 w-80 rounded-2xl h-24 bg-opacity-50 pt-3 pl-5 ${
                   serviceType === "Pickup & Drop"
@@ -357,7 +357,7 @@ function EstimateComponent() {
             </div>
 
             {/* Address Input Fields */}
-            <div className="flex flex-col gap-3 justify-center">
+            <div className="flex flex-col gap-3 items-center justify-center">
               <div className="flex flex-row gap-3 justify-center">
                 <div className="mb-4 mt-4">
                   <div className="relative">
@@ -365,12 +365,12 @@ function EstimateComponent() {
                       src={"/images/Arrowupwhite.svg"}
                       width={15}
                       height={18}
-                      className="absolute left-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 -translate-x-2"
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 "
                       onClick={() => setIsPickupDialogOpen(true)}
                       alt="Open Pickup Dialog"
                     />
                     <input
-                      className="pl-10 w-80 h-12 rounded-xl focus:border-none focus:ring-0 bg-[#202020] bg-opacity-75 border-[#202020] text-white -translate-x-2"
+                      className="pl-10 w-80 h-12 rounded-xl focus:border-none focus:ring-0 bg-[#202020] bg-opacity-75 border-[#202020] text-white "
                       placeholder="Pickup address"
                       value={pickupAddress}
                       onChange={(e) => setPickupAddress(e.target.value)}
@@ -384,12 +384,12 @@ function EstimateComponent() {
                       src={"/images/Arrowdownwhite.svg"}
                       width={15}
                       height={18}
-                      className="absolute left-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 -translate-x-2"
+                      className="absolute left-3 top-1/2 transform -translate-y-1/2 cursor-pointer z-10 "
                       onClick={() => setIsDropDialogOpen(true)}
                       alt="Open Drop-off Dialog"
                     />
                     <input
-                      className="pl-10 w-80 h-12 rounded-xl focus:border-[#202020] focus:border-opacity-30 focus:ring-[#202020] bg-[#202020] bg-opacity-75 border-[#202020] text-white -translate-x-2"
+                      className="pl-10 w-80 h-12 rounded-xl focus:border-[#202020] focus:border-opacity-30 focus:ring-[#202020] bg-[#202020] bg-opacity-75 border-[#202020] text-white "
                       placeholder="Drop-off address"
                       value={dropAddress}
                       onChange={(e) => setDropAddress(e.target.value)}
@@ -433,18 +433,24 @@ function EstimateComponent() {
 
             {/* Price Details and Map */}
             {showPriceDetails && (
-              <div className="mt-4 p-4 rounded-lg flex flex-row gap-3 justify-center">
+              <div className="mt-4 w-full  rounded-lg flex flex-row gap-3 justify-center">
                 <div
                   id="map"
                   ref={mapContainerRef}
-                  className="w-1/2 h-36 rounded-lg -translate-x-2"
+                  className="w-1/2 h-36 rounded-lg "
                 ></div>
                 <div className="flex flex-col bg-[#202020] opacity-75 rounded-xl p-4 w-80">
                   {serviceType === "Pickup & Drop" ? (
                     <>
-                      <p className="text-sm mb-2">
+                    <div className="flex justify-between w-full">
+                    <p className="text-base mb-2 font-bold">
                         Trip Fare ({distance?.toFixed(1)} kms)
                       </p>
+                      <p className="text-lg mb-2 font-bold">
+                      ₹{amount?.toFixed(0)}
+                      </p>
+                    </div>
+                      
                       <div className="flex flex-row justify-between text-xs gap-4">
                         <span>Standard fee (upto 2.0 kms)</span>
                         <p>₹40</p>
@@ -468,7 +474,8 @@ function EstimateComponent() {
                     </>
                   ) : (
                     <>
-                      <p className="text-sm mb-2">Courier charges</p>
+                     <div className="flex justify-between w-full"><p className="text-base mb-2 font-bold">Courier charges</p> <p className="text-lg mb-2 font-bold">₹{amount}</p></div>
+                      
                       <div className="flex flex-row justify-between text-xs gap-4">
                         <span>Courier charges</span>
                         <p>₹{(amount / 1.18).toFixed(2)}</p>{" "}

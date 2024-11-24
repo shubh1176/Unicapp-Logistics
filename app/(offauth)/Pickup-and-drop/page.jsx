@@ -71,7 +71,7 @@ export default function Page() {
 
   return (
     <div className='bg-[#F1EDEA]'>
-     <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl mt-0 py-1">
+     <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl mt-0 py-0 -translate-y-4">
         <div>
           <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" />
         </div>
@@ -110,7 +110,7 @@ export default function Page() {
         </div>
         <div className="flex items-center gap-2">
         {user ? (
-          <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
+          <div className="flex items-center space-x-4 border-2 rounded-lg py-0 px-3">
           <UserButton />
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-black text-xs p-2 rounded-lg cursor-pointer hover:bg-opacity-20 hover:text-black">

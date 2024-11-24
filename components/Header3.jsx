@@ -58,7 +58,7 @@ function Header3() {
     </div>
     <div className="flex items-center gap-2">
     {user ? (
-        <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
+        <div className="flex items-center space-x-4 border-2 rounded-lg py-0 px-3">
         <UserButton />
         <DropdownMenu>
           <DropdownMenuTrigger className="flex items-center gap-1 text-white text-xs p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">

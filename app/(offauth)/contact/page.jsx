@@ -89,7 +89,7 @@ function Contact() {
         {/* Form Section */}
         <div className='mt-12 max-w-md lg:mt-0 lg:max-w-lg'>
           <div className='bg-white rounded-2xl p-6 lg:p-10 shadow-md'>
-            <h1 className='font-generalLight text-3xl lg:text-5xl mb-6 lg:mb-4'>Get in touch</h1>
+            <h1 className='font-generalLight text-3xl lg:text-5xl mb-6 lg:mb-12'>Get in touch</h1>
             {/* <span className='font-semibold mb-4 text-sm lg:text-lg'>Customer Support</span>
             <p className='text-gray-600 mb-6'>
               Our support team is available around the clock to address any concerns or queries you may have.
@@ -174,8 +174,8 @@ function Contact() {
       </div>
 
       {/* Map and Location Info */}
-      <div className='mt-12 lg:mt-20 lg:ml-32 flex flex-col lg:flex-row'>
-        <div className="w-full lg:w-5/12 h-96">
+      <div className='mt-12 lg:mt-0 lg:px-24 w-full flex flex-col lg:flex-row lg:h-screen'>
+        <div className="w-full lg:w-[55%] h-96 lg:h-full">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d799.555333633901!2d77.21645935361299!3d28.63083352312202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd49c7175d4f%3A0x16da96dd1f463918!2sRegal%20Building%2C%20Hanuman%20Road%20Area%2C%20Connaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1722761292583!5m2!1sen!2sin"
             width="100%"

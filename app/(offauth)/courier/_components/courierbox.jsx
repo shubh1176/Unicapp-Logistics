@@ -12,6 +12,7 @@ import {
 import MapboxDialog from "@/components/MapboxDialog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Clock3, Store } from "lucide-react";
 
 const CourierComponent = () => {
   const [pickupLocation, setPickupLocation] = useRecoilState(pickupLocationState);
@@ -62,7 +63,7 @@ const CourierComponent = () => {
         <form className=" flex items-center flex-col  space-y-2 mb-14 mt-0">
           <div className="flex justify-center gap-6">
             <div >
-              <label className="block mb-2 font-generalLight text-white translate-x-6">Pickup Pincode</label>
+              {/* <label className="block mb-2 font-generalLight text-white translate-x-6">Pickup Pincode</label> */}
               <div className="relative w-64">
                 <div 
                   className="absolute left-3 top-1/2 transform -translate-y-1/2 cursor-pointer ml-6"
@@ -77,7 +78,7 @@ const CourierComponent = () => {
                 </div>
                 <input
                   type="text"
-                  placeholder=""
+                  placeholder="Pickup Pincode"
                   className="pl-10 w-full border-2 border-white border-opacity h-12 rounded-xl   bg-opacity-50 bg-white text-opacity-95 ml-5   bg-[#FFFFFF80] placeholder:text-[#FFFFFF]  text-[#FFFFFF] text-md outline-none"
                   value={pickupLocation}
                   onChange={(e) => setPickupLocation(e.target.value)}
@@ -86,7 +87,7 @@ const CourierComponent = () => {
               </div>
             </div>
             <div >
-              <label className="block mb-2 font-generalLight text-white">Delivery Pincode</label>
+              {/* <label className="block mb-2 font-generalLight text-white">Delivery Pincode</label> */}
               <div className="relative w-64">
                 <div 
                   className="absolute left-7 top-1/2 transform -translate-y-1/2 cursor-pointer -translate-x-3 z-10"
@@ -101,7 +102,7 @@ const CourierComponent = () => {
                 </div>
                 <input
                   type="text"
-                  placeholder=""
+                  placeholder="Delivery Pincode"
                   className="pl-10 w-full border-2 border-white border-opacity h-12 rounded-xl   bg-opacity-50 bg-white text-opacity-95   bg-[#FFFFFF80] placeholder:text-[#FFFFFF]  text-[#FFFFFF] text-md outline-none   "
                   value={dropLocation}
                   onChange={(e) => setDropLocation(e.target.value)}
@@ -133,8 +134,16 @@ const CourierComponent = () => {
           defaultLocation={dropCoords}
         />
       )}
-      <div className="text-white mt-4 mb-2 flex justify-between gap-20 px-10">
-        <Image src={'/images/bottomtext.svg'} height={30} width={525} alt="Bottom Text" />
+      <div className="text-white font-generalRegular mt-4 mb-2 flex justify-between gap-20 px-20">
+        <div className="flex items-center gap-2">
+          <Clock3 size={15}/>
+          <p>Pickup within 30 mins</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Store size={15}/>
+          <p>Deliver to 21,000+ pincodes</p>
+        </div>
+        {/* <Image src={"/images/bottomtextstore.svg"} height={30} width={500} alt="Bottom Text" /> */}
       </div>
       <Image src="/images/7.svg" width={150} height={150} className="absolute top-16 left-6" alt="Flower" />
       <Image src="/images/6.svg" width={180} height={180} className="absolute bottom-16 left-28" alt="Book" />

@@ -131,7 +131,7 @@ export default function Page() {
   return (
     <>
       <div className="bg-[#F1EDEA]  hidden lg:block">
-        <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl mt-0 m-5">
+        <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl mt-0 m-5 -translate-y-4">
           <div>
             <Image
               src={"/images/blackonwhitelogo.svg"}
@@ -197,10 +197,10 @@ export default function Page() {
           </div>
           <div className="flex items-center gap-2">
             {user ? (
-              <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
+              <div className="flex items-center space-x-4 border-2 rounded-lg py-0 px-3 ">
                 <UserButton />
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center gap-1 text-black text-lg p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">
+                  <DropdownMenuTrigger className="flex items-center gap-1 text-black text-lg p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-black focus:outline-none">
                     {user.fullName || "Guest"} <ChevronDown />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">
@@ -240,7 +240,7 @@ export default function Page() {
             )}
           </div>
         </div>
-        <div className=" mt-10">
+        <div className=" mt-10 lg:mt-0 lg:-translate-y-6">
           <EstimateComponent />
 
           <div

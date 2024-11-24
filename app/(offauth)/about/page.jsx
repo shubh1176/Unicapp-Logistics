@@ -13,7 +13,7 @@ const AboutUs = () => {
   const router = useRouter();
   const { user } = useUser();
   return (
-    <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden pt-4 pb-4 ">
+    <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden pt-0 pb-4 ">
       <div className="hidden lg:block">
         <Header3 />
       </div>
@@ -27,11 +27,11 @@ const AboutUs = () => {
           {/* Left Side */}
           <div className="lg:w-1/2 px-4  lg:px-24 md:-translate-y-10">
             <div className="mt-10 md:mt-40">
-              <div className="flex flex-row gap-2 lg:gap-3">
+              <div className="flex flex-row items-center gap-2 lg:gap-3">
                 <span className="text-4xl lg:text-6xl font-generalMedium">
                   About
                 </span>
-                <span className="font-filson text-4xl lg:text-6xl tracking-tight">
+                <span className="font-semibold text-4xl lg:text-6xl tracking-tight">
                   unicapp
                 </span>
               </div>
@@ -84,7 +84,7 @@ const AboutUs = () => {
         </div>
 
         {/* Estimate Section */}
-        <div className="mt-10 w-full">
+        <div className="my-20 lg:my-32 w-full">
           <GetEstimate />
         </div>
       </div>

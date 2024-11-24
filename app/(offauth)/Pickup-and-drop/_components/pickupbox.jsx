@@ -91,7 +91,7 @@ const DeliveryComponent = () => {
                   src={"/images/Arrowdownwhite.svg"}
                   width={15}
                   height={18}
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 cursor-pointer ml-6 -translate-x-7 z-10"
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 cursor-pointer ml-1  "
                   onClick={() => setShowDropDialog(true)}
                   alt="Drop-off"
                 />
@@ -138,7 +138,7 @@ const DeliveryComponent = () => {
       <div className="text-white font-generalRegular mt-4 mb-2 flex justify-between gap-20 px-20">
         <div className="flex items-center gap-2">
           <Clock3 size={15}/>
-          <p>Pickup within 20 mins</p>
+          <p>Pickup within 30 mins</p>
         </div>
         <div className="flex items-center gap-2">
           <Store size={15}/>

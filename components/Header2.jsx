@@ -15,7 +15,7 @@ const Header2 = () => {
     const router = useRouter();
     const { user } = useUser()
     return (
-        <div className="w-screen bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] lg:bg-none flex justify-between items-center px-4  lg:mt-0  lg:py-0">
+        <div className="w-screen bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] lg:bg-none flex justify-between items-center px-4  lg:mt-0  lg:py-0 lg:-translate-y-4 lg:pr-8">
         <div>
         <Image src={'/images/yellowonwhite.svg'} width={160} height={30} alt="Logo" className='block lg:hidden relative right-3' />
           <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" className='hidden lg:block' />
@@ -55,7 +55,7 @@ const Header2 = () => {
         </div>
         <div className="hidden lg:flex items-center gap-2">
         {user ? (
-          <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
+          <div className="flex items-center space-x-4 border-2 rounded-lg py-0 px-3">
           <UserButton />
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-black text-xs p-2 rounded-lg cursor-pointer hover:bg-opacity-20 hover:text-black">
