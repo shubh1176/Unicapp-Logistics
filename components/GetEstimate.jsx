@@ -4,7 +4,7 @@ import {useRouter} from "next/navigation"
 const GetEstimate = () => {
   const router = useRouter()
   return (
-    <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] rounded-2xl flex justify-between items-center p-4 lg:px-8 lg:py-6 w-[90%]  max-w-5xl mx-auto">
+    <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] rounded-xl lg:rounded-2xl flex justify-between items-center p-4 lg:px-8 lg:py-6 w-[90%]  max-w-5xl mx-auto">
 
     {/* Text Section */}
     <div>

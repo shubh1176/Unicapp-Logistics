@@ -397,16 +397,16 @@ export default function page() {
           alt="Ribbon Background"
         />
       </div>
-      <div className="max-w-screen overflow-hidden ">
+      <div className="max-w-screen  mt-28 lg:mt-0">
         <TestimonialSection />
       </div>
-      <div className="w-full mb-20">
+      <div className="w-full mb-20 mt-20 lg:mt-0">
         <GetEstimate />
       </div>
-      <div className="mb-20">
+      <div className="mb-20 mt-28 lg:mt-0">
         <Faq />
       </div>
-      <div className="relative bottom-5">
+      <div className="relative  lg:bottom-5">
         <Footer />
       </div>
     </div>

@@ -31,15 +31,15 @@ function Header() {
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-2 md:gap-4">
-        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 text-sm md:text-lg">
+        <Button variant="ghost" className="text-white hover:bg-white hover:text-white hover:bg-opacity-20 text-sm md:text-lg">
           Home
         </Button>
         <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center gap-1 text-white text-sm md:text-lg p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20">
+          <DropdownMenuTrigger className="flex items-center gap-1 text-white hover:text-white text-sm md:text-lg p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 focus:outline-none">
             Services <ChevronDown />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">
-            <DropdownMenuItem className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer" onClick={() => router.push('/Pickup-and-drop')}>
+            <DropdownMenuItem className="px-4 py-2 hover:bg-gray-100  rounded-md cursor-pointer" onClick={() => router.push('/Pickup-and-drop')}>
               Pickup & Drop
             </DropdownMenuItem>
             <DropdownMenuItem className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer" onClick={() => router.replace('/courier')}>
@@ -53,13 +53,13 @@ function Header() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 text-sm md:text-lg" onClick={() => router.push('/businesses')}>
+        <Button variant="ghost" className="text-white hover:bg-white hover:text-white hover:bg-opacity-20 text-sm md:text-lg" onClick={() => router.push('/businesses')}>
           For Business
         </Button>
-        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 text-sm md:text-lg" onClick={() => router.push('/about')}>
+        <Button variant="ghost" className="text-white hover:bg-white hover:text-white hover:bg-opacity-20 text-sm md:text-lg" onClick={() => router.push('/about')}>
           About Us
         </Button>
-        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 text-sm md:text-lg" onClick={() => router.push('/contact')}>
+        <Button variant="ghost" className="text-white hover:bg-white hover:text-white hover:bg-opacity-20 text-sm md:text-lg" onClick={() => router.push('/contact')}>
           Contact
         </Button>
       </div>

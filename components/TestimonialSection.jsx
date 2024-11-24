@@ -5,23 +5,28 @@ import { FaStar, FaUser, FaBuilding } from "react-icons/fa"; // Import icons
 // TestimonialCard component for individual cards
 const TestimonialCard = ({ name, service, review, image }) => {
   return (
-    <div className="bg-purple-100 w-72 md:w-auto flex items-center rounded-2xl shadow-md p-4  border border-purple-500 hover:border-purple-600 transition-all duration-300">
-      <img
+    <div className="bg-purple-100 w-72 md:w-auto flex flex-col items-center gap-3 rounded-2xl shadow-md p-4  border border-purple-500 hover:border-purple-600 transition-all duration-300">
+      {/* <img
         className="w-14 h-14 rounded-full"
         src={image} // Replace with actual image
         alt="User"
-      />
-      <div className="ml-4 w-full">
+      /> */}
+      <div className="w-full flex justify-between">
+       
+        <h4 className="font-bold text-black text-sm lg:text-base ">{service}</h4>
         <div className="flex items-center mb-1">
           {[...Array(5)].map((_, i) => (
             <FaStar key={i} className="text-yellow-400" />
           ))}
         </div>
-        <h4 className="font-bold text-black">{service}</h4>
-        <p className="text-gray-600 text-xs break-words overflow-hidden text-ellipsis">
+        </div>
+        <p className="text-gray-600 text-xs break-words overflow-hidden text-ellipsis w-full">
           {review}
         </p>
-      </div>
+        <p className="text-gray-600 text-xs break-words overflow-hidden text-ellipsis w-full">
+          {"___"}{"username"}
+        </p>
+      
     </div>
   );
 };
@@ -135,7 +140,7 @@ const TestimonialSection = () => {
         style={{marginBottom:"15px"}}
        
       >
-        <div className="grid  md:grid-cols-4 grid-cols-4  gap-8 lg:gap-6 px-4 md:w-screen">
+        <div className="grid  md:grid-cols-4 grid-cols-4  gap-8 lg:gap-6 px-4  md:w-screen">
         {testimonials.slice(0, 4).map((testimonial, index) => (
           <TestimonialCard
             key={index}
@@ -154,7 +159,7 @@ const TestimonialSection = () => {
         direction="right"
        
       >
-        <div className="grid  grid-cols-4  gap-8 lg:gap-6 px-4 md:w-screen">
+        <div className="grid  grid-cols-4  gap-8 lg:gap-6 px-4 md:w-screen mb-5">
         {testimonials.slice(4, 8).map((testimonial, index) => (
           <TestimonialCard
             key={index}

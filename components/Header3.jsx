@@ -20,10 +20,10 @@ function Header3() {
   
   return (
     <div className="bg-[#470A68] flex justify-between items-center px-4 h-20 rounded-xl py-1 m-5">
-    <div>
-      <Image src={'/images/yellowonwhite.svg'} width={200} height={50} alt="Logo" />
+    <div className='relative right-6 lg:right-0'>
+      <Image src={'/images/yellowonwhite.svg'} width={200} height={50} alt="Logo" className='w-44 lg:w-auto' />
     </div>
-    <div className="flex items-center gap-4">
+    <div className="lg:flex items-center gap-4 hidden">
       <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 hover:text-white text-lg" onClick={() => router.push('/')}>
         Home
       </Button>
@@ -56,12 +56,12 @@ function Header3() {
         Contact
       </Button>
     </div>
-    <div className="flex items-center gap-2">
+    <div className=" items-center gap-2 hidden lg:flex">
     {user ? (
         <div className="flex items-center space-x-4 border-2 rounded-lg py-0 px-3">
         <UserButton />
         <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center gap-1 text-white text-xs p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">
+          <DropdownMenuTrigger className="flex items-center gap-1  text-white text-xs p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">
             {user.fullName || 'Guest'} <ChevronDown />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">
@@ -85,6 +85,49 @@ function Header3() {
         </>
       )}
     </div>
+       {/* Mobile Dropdown Menu */}
+   <div className="lg:hidden flex ">
+    {!user ? (
+       <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20  " onClick={() => router.replace('/dashboard')}>
+       Sign In
+     </Button>
+    ):(
+      <UserButton  appearance={Image} />
+    )}
+    
+  
+        <DropdownMenu>
+          <DropdownMenuTrigger className="flex items-center text-white focus:outline-none">
+            <EllipsisVertical size={24} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="bg-white text-black  mt-0 rounded-md shadow-lg w-48 p-2 mr-7">
+          {user && <DropdownMenuItem
+              className="py-2 w-full border-b border-gray-300  cursor-pointer text-lg"
+              onClick={() => router.push("/dashboard")}
+            >
+              Dashboard
+            </DropdownMenuItem>}
+            <DropdownMenuItem
+              className="py-2 w-full border-b border-gray-300  cursor-pointer text-lg"
+              onClick={() => router.push("/businesses")}
+            >
+              For Business
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="py-2 w-full border-b border-gray-300 cursor-pointer  text-lg"
+              onClick={() => router.push("/about")}
+            >
+              About Us
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="py-2 w-full cursor-pointer text-lg"
+              onClick={() => router.push("/contact")}
+            >
+              Contact
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
   </div>
   )
 }

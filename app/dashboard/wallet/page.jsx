@@ -179,7 +179,7 @@ function WalletPage() {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen bg-gradient-to-b from-[#470a68] to-[#8D14CE] p-2 pl-0">
       {/* Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-52 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:relative lg:translate-x-0`}>
+      <aside className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white lg:w-[15%] transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 lg:relative lg:translate-x-0`}>
         <div className="flex items-center justify-between p-4 mt-7 ml-3">
           <Image
             src={'/images/yellowcaplogo.svg'}
@@ -237,7 +237,7 @@ function WalletPage() {
       </aside>
 
       {/* Main Content */}
-      <div className="flex flex-col flex-grow md:px-12 lg:px-0 bg-white rounded-lg overflow-y-scroll h-[97vh] hide-scrollbar">
+      <div className="flex flex-col flex-grow md:px-12 lg:px-0 bg-white rounded-lg overflow-y-scroll h-[97vh] hide-scrollbar lg:w-[85%]">
         {/* Header for Small Screens */}
         <header className="lg:hidden bg-gradient-to-b from-[#8D14CE] to-[#470A68] text-white rounded-b-xl py-4 px-4">
           <div className="flex items-center justify-between">
@@ -269,7 +269,7 @@ function WalletPage() {
         <div className="px-8 pt-5 bg-gray-50">
           {/* Main Wallet Section */}
           <div className="flex-1">
-            <h2 className="text-2xl font-bold mb-4 hidden lg:block">Wallet</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold mb-4 hidden lg:block">Wallet</h2>
             <div className="bg-white p-6 rounded-lg shadow-lg w-full lg:w-96">
               <div className="flex flex-col mb-4 gap-6">
                 <div className="text-gray-500">CURRENT BALANCE</div>

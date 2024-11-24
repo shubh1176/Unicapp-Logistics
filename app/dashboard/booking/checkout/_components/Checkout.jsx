@@ -597,10 +597,10 @@ const Checkout = () => {
           <h2 className='text-3xl font-medium lg:text-4xl md:font-generalSemiBold'>Pricing</h2>
           <div id="map" className="hidden lg:block w-full lg:w-full h-28 border-2 rounded-xl   mb-8 mt-8"></div>
 
-          <div className='mt-5 flex flex-col gap-2'>
+          <div className='mt-5 flex flex-col gap-2 text-sm'>
             <div className=' flex flex-row justify-between font-semibold lg:mb-1'>
               <p>Trip Fare ({distance.toFixed(1)} kms)</p>
-              <p className='text-2xl font-semibold'> ₹{amount}</p> {/* Amount is already fixed to 2 decimal places */}
+              <p className='text-xl lg:text-2xl font-semibold'> ₹{amount}</p> {/* Amount is already fixed to 2 decimal places */}
             </div>
             <div className=' flex flex-row justify-between lg:text-sm'>
               <span>Standard fee (upto 2.0 kms)</span>

@@ -50,12 +50,10 @@ function Contact() {
   return (
     <div className='bg-[#F1EDEA] max-w-screen overflow-hidden'>
       {/* Header: Show based on screen size */}
-      <div className="hidden lg:block">
+      <div >
         <Header3 />
       </div>
-      <div className="block lg:hidden">
-        <Header2 />
-      </div>
+      
 
       {/* Main Content Section */}
       <div className='lg:flex lg:flex-row lg:justify-between  lg:p-20 p-6'>
@@ -100,7 +98,7 @@ function Contact() {
                 <div>
                   <label className="block text-gray-700 text-sm font-bold " htmlFor="name">Name</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2  lg:border-black lg:rounded-none  lg:shadow-none"
+                    className=" appearance-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
                     id="name"
                     type="text"
                     name="name"
@@ -112,7 +110,7 @@ function Contact() {
                 <div>
                   <label className="block text-gray-700 text-sm font-bold " htmlFor="name">Organization</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2  lg:border-black lg:rounded-none  lg:shadow-none"
+                    className=" appearance-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
                     id="name"
                     type="text"
                     name="name"
@@ -127,7 +125,7 @@ function Contact() {
                <div>
                   <label className="block text-gray-700 text-sm font-bold " htmlFor="email">Email Address</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
+                    className=" appearance-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
                     id="email"
                     type="email"
                     name="email"
@@ -139,7 +137,7 @@ function Contact() {
                 <div>
                   <label className="block text-gray-700 text-sm font-bold " htmlFor="phone">Phone Number</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0 lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
+                    className=" appearance-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
                     id="phone"
                     type="text"
                     name="phone"
@@ -153,7 +151,7 @@ function Contact() {
                 <div>
                   <label className="block text-gray-700 text-sm font-bold " htmlFor="message">Message</label>
                   <Textarea
-                    className="shadow resize-none appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lg:border-0  lg:border-b-2 lg:border-black lg:rounded-none  lg:shadow-none"
+                    className=" appearance-none resize-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
                     id="message"
                     name="message"
                     value={formData.message}
@@ -174,7 +172,7 @@ function Contact() {
       </div>
 
       {/* Map and Location Info */}
-      <div className='mt-12 lg:mt-0 lg:px-24 w-full flex flex-col lg:flex-row lg:h-screen'>
+      <div className='mt-12 lg:mt-0 px-4 lg:px-24 w-full flex flex-col-reverse  lg:flex-row lg:h-screen'>
         <div className="w-full lg:w-[55%] h-96 lg:h-full">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d799.555333633901!2d77.21645935361299!3d28.63083352312202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd49c7175d4f%3A0x16da96dd1f463918!2sRegal%20Building%2C%20Hanuman%20Road%20Area%2C%20Connaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1722761292583!5m2!1sen!2sin"
@@ -196,12 +194,12 @@ function Contact() {
       </div>
 
       {/* Estimate Section */}
-      <div className='w-full mt-10 lg:mt-48 lg:mb-24'>
+      <div className='w-full mt-20 lg:mt-48 lg:mb-24'>
         <GetEstimate  />
       </div>
 
       {/* FAQ and Footer */}
-      <div className='w-full mt-12 lg:mt-20'>
+      <div className='w-full mt-20'>
         <Faq />
       </div>
       <div className='mt-12 lg:mt-24 md:mb-5'>

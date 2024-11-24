@@ -13,15 +13,15 @@ const AboutUs = () => {
   const router = useRouter();
   const { user } = useUser();
   return (
-    <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden pt-0 pb-4 ">
-      <div className="hidden lg:block">
+    <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden pt-0 lg:pb-4 ">
+      <div >
         <Header3 />
       </div>
-      <div className="block lg:hidden">
+      {/* <div className="block lg:hidden">
         <Header2 />
-      </div>
+      </div> */}
 
-      <div className="flex flex-col items-center sm:px-8 lg:px-20">
+      <div className="flex flex-col items-center px-4 lg:px-20">
         {/* Main Content */}
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-14 w-full">
           {/* Left Side */}

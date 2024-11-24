@@ -318,10 +318,10 @@ function DashboardPage() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen bg-gradient-to-b from-[#470a68] to-[#8D14CE] p-2 pl-0">
-      {/* Sidebar */}
+<div className="flex flex-col lg:flex-row min-h-screen bg-transparent lg:bg-gradient-to-b lg:from-[#470a68] lg:to-[#8D14CE] lg:p-2 lg:pl-0 ">
+{/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-52 transform ${
+        className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-52 lg:w-[15%] transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 lg:relative lg:translate-x-0`}
       >
@@ -381,7 +381,7 @@ function DashboardPage() {
       </aside>
       <DashboardMobileHeader /> {/* shown on small screens only */}
       {/* Main Content */}
-      <div className="flex flex-col flex-grow bg-white rounded-lg overflow-y-scroll h-[97vh] hide-scrollbar">
+      <div className="flex flex-col flex-grow bg-white rounded-lg overflow-y-scroll h-[97vh] hide-scrollbar lg:w-[85%]">
         {/* Header for Large Screens */}
         <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4  w-full mb-3">
           <div className="flex items-center space-x-4 lg:justify-between w-full">
@@ -415,7 +415,7 @@ function DashboardPage() {
                   </label>
                 </div>
               )}
-              <div className="hidden lg:flex items-center border-2 rounded-lg py-2 px-3">
+              <div className="hidden lg:flex items-center border-2 rounded-lg py-1 px-3">
                 {/* Combined Dropdown for account, wallet, and sign out */}
                 <DropdownMenu>
                   <DropdownMenuTrigger className="flex items-center gap-1 text-lg">
@@ -475,7 +475,7 @@ function DashboardPage() {
         {userData?.role === "Business" ? (
           <div className="flex-1 bg-gray-50 rounded-lg">
             {/* Business User Content */}
-            <h1 className="text-4xl font-generalSemiBold mb-4 ml-6 mt-4">
+            <h1 className="text-3xl font-generalSemiBold mb-4 ml-6 mt-4">
               Welcome {user?.firstName} 👋
             </h1>
             <div className="p-4 mb-4 -translate-x-3.5 ml-6">
@@ -582,7 +582,7 @@ function DashboardPage() {
 
               {filteredOrders.length > 0 ? (
                 <>
-                  <div className="overflow-x-auto rounded shadow">
+                  <div className="overflow-x-auto rounded shadow max-w-full">
                     <Table>
                       <TableHeader>
                         <TableRow className="bg-gray-200">
@@ -636,8 +636,8 @@ function DashboardPage() {
                             </TableRow>
                             {expandedOrderId === order.order_id && (
                               <TableRow key={`${order.order_id}-details`}>
-                                <TableCell colSpan={11}>
-                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-0 py-0   ">
+                                <TableCell colSpan={7}>
+                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-0 py-0  ">
                                     <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-0 pb-6">
                                       <div className="flex flex-row gap-2 mt-3">
                                         <Truck size={20} strokeWidth={1.25} />{" "}
@@ -806,16 +806,16 @@ function DashboardPage() {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col h-full w-full p-6 bg-gray-50 rounded-lg">
-            <h1 className="text-4xl font-extrabold text-gray-800 mb-6 hidden sm:block">
+          <div className="flex flex-col  w-full p-6 lg:px-8 lg:py-5 bg-gray-50 rounded-lg ">
+            <h1 className="text-3xl font-extrabold text-gray-800 mb-6 hidden sm:block">
               Welcome {user?.firstName} 👋
             </h1>
 
-            <div className="flex flex-col items-center w-full space-y-8 ">
+            <div className="flex flex-col gap-4 items-center w-full space-y-8 ">
               {/* Orders Section */}
-              <div className="bg-white p-8 rounded-3xl shadow-lg w-full max-w-5xl ">
+              <div className="bg-white p-6 rounded-3xl shadow-lg w-full  ">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-3xl font-semibold text-gray-700">
+                  <h2 className="text-2xl font-semibold text-gray-700">
                     Your Orders
                   </h2>
                 </div>
@@ -999,7 +999,11 @@ function DashboardPage() {
                   + Add a new address
                 </button>
               </div> */}
+              <div className="w-full py-5 bg-gray-50">
               <SaveAddressComponent />
+              </div>
+
+              
             </div>
           </div>
         )}

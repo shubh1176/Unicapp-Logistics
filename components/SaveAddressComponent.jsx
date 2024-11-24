@@ -58,8 +58,8 @@ const saveAddress = () => {
   }, []);
 
   return (
-    <div className="p-8 w-full max-w-5xl mx-auto bg-white lg:rounded-xl rounded-3xl shadow-lg">
-    <h2 className="text-3xl font-semibold text-gray-700 mb-4">
+    <div className="p-5 w-full  mx-auto bg-white lg:rounded-2xl rounded-3xl shadow-lg ">
+    <h2 className="text-2xl font-semibold text-gray-700 mb-4">
       Saved Addresses
     </h2>
 
@@ -69,8 +69,8 @@ const saveAddress = () => {
 
       {
         addressList.length > 0 ? (
-            addressList.map((address, index) => ( <div key={index} className="w-full flex justfy-between text-[10px] lg:text-base items-center border border-gray-300 rounded-lg p-2 space-x-10 mb-3">
-                <div className='flex items-center gap-4'>
+            addressList.map((address, index) => ( <div key={index} className="w-full flex justfy-between text-[10px] lg:text-sm items-center border border-gray-300 rounded-lg p-2 space-x-10 mb-3">
+                <div className='flex items-center gap-4 lg:text-sm'>
                 <span>{Icons[address.addressType]}</span>
                 <span className='font-bold '>{address.addressType}</span>
                 </div>
@@ -86,17 +86,17 @@ const saveAddress = () => {
         
         <button
           onClick={() => setShowForm(true)}
-          className="px-6 py-2 bg-[#F5F5F5] text-black rounded-lg hover:bg-gray-100 transition-colors duration-200"
+          className="px-6 py-2 bg-[#F5F5F5] text-black rounded-lg lg:text-sm hover:bg-gray-100 transition-colors duration-200"
         >
           + Add a new address
         </button>
       </>
     ) : (
-      <div className="mt-6">
+      <div className="mt-0">
         <h3 className="text-xl font-semibold mb-4">New Address</h3>
         <div className="flex flex-col space-y-4">
           {/* Address type radio buttons */}
-          <div className="flex space-x-6">
+          <div className="flex lg:text-sm space-x-6 ">
             {["Home", "Office", "Others"].map((type) => (
               <label
                 key={type}
@@ -121,7 +121,7 @@ const saveAddress = () => {
             placeholder="Street Address"
             value={addressData.streetAddress}
             onChange={handleChange}
-            className="border-b p-2 rounded-md w-full placeholder:text-sm"
+            className="border-b p-2 rounded-md w-full  text-sm"
             required
           />
           <input
@@ -130,7 +130,7 @@ const saveAddress = () => {
             placeholder="Office, Building, Apartment (optional)"
             value={addressData.apartment}
             onChange={handleChange}
-            className="border-b p-2 rounded-md w-full placeholder:text-sm"
+            className="border-b p-2 rounded-md w-full  text-sm"
           />
           <div className="grid grid-cols-2 gap-4">
             <input
@@ -139,7 +139,7 @@ const saveAddress = () => {
               placeholder="Pincode"
               value={addressData.pincode}
               onChange={handleChange}
-              className="border-b p-2 rounded-md w-full placeholder:text-sm"
+              className="border-b p-2 rounded-md w-full  text-sm"
               required
             />
             <input
@@ -148,7 +148,7 @@ const saveAddress = () => {
               placeholder="City"
               value={addressData.city}
               onChange={handleChange}
-              className="border-b p-2 rounded-md w-full placeholder:text-sm"
+              className="border-b p-2 rounded-md w-full  text-sm"
               required
             />
           </div>
@@ -158,7 +158,7 @@ const saveAddress = () => {
             placeholder="State"
             value={addressData.state}
             onChange={handleChange}
-            className="border-b p-2 rounded-md w-1/2 placeholder:text-sm"
+            className="border-b p-2 rounded-md w-1/2  text-sm"
             required
           />
 
@@ -166,13 +166,13 @@ const saveAddress = () => {
           <div className="flex justify-end space-x-4 mt-4">
             <button
               onClick={saveAddress}
-              className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800"
+              className="px-6 py-2 lg:text-sm bg-black text-white rounded-lg hover:bg-gray-800"
             >
               Save Address
             </button>
             <button
               onClick={() => setShowForm(false)}
-              className="px-6 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+              className="px-6 py-2 lg:text-sm bg-gray-300 rounded-lg hover:bg-gray-400"
             >
               Cancel
             </button>

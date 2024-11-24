@@ -21,11 +21,11 @@ const Header2 = () => {
           <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" className='hidden lg:block' />
         </div>
         <div className="lg:flex items-center gap-4 hidden ">
-          <Button variant="ghost" className="text-black hover:bg-[#E5D5E6] text-lg hover: rounded-xl" onClick={() => router.push('/')}>
+          <Button variant="ghost" className="text-black  hover:bg-[#E5D5E6] text-lg hover:cursor-pointer " onClick={() => router.push('/')}>
             Home
           </Button>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-black text-lg hover:cursor-pointer ">
+            <DropdownMenuTrigger className="flex items-center gap-1 text-black p-2 text-lg hover:cursor-pointer hover:bg-[#E5D5E6]  hover:rounded-lg">
               Services <ChevronDown />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">
@@ -85,11 +85,14 @@ const Header2 = () => {
 
         {/* Mobile Dropdown Menu */}
    <div className="lg:hidden flex ">
-    {!user && (
+    {!user ? (
        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20  " onClick={() => router.replace('/dashboard')}>
        Sign In
      </Button>
+    ):(
+      <UserButton  appearance={Image} />
     )}
+    
   
         <DropdownMenu>
           <DropdownMenuTrigger className="flex items-center text-white focus:outline-none">
