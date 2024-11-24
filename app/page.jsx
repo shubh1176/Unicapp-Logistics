@@ -259,7 +259,10 @@ export default function Home() {
       </div> */}
 
       {/* <MissionSection /> */}
+      <div className="mt-16 lg:mt-0">
       <TestimonialSection />
+      </div>
+      
 
       <div className="flex flex-col content-center items-center mt-10 lg:mt-0 lg:min-h-screen lg:mb-40 mb-10">
         {" "}
@@ -301,7 +304,7 @@ export default function Home() {
   
 
 
-      <div className="mt-10 md:mt-20 mb-10">
+      <div className="mt-16 md:mt-20 mb-10">
         <Faq />
       </div>
 

@@ -21,7 +21,7 @@ function Header3() {
   return (
     <div className="bg-[#470A68] flex justify-between items-center px-4 h-20 rounded-xl py-1 m-5">
     <div className='relative right-6 lg:right-0'>
-      <Image src={'/images/yellowonwhite.svg'} width={200} height={50} alt="Logo" className='w-44 lg:w-auto' />
+      <Image src={'/images/yellowonwhite.svg'} width={200} height={50} alt="Logo" className='w-44 lg:w-auto' onClick={() => router.push('/')} />
     </div>
     <div className="lg:flex items-center gap-4 hidden">
       <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 hover:text-white text-lg" onClick={() => router.push('/')}>

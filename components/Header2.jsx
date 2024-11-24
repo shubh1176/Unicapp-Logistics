@@ -17,8 +17,8 @@ const Header2 = () => {
     return (
         <div className="w-screen bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] lg:bg-none flex justify-between items-center px-4  lg:mt-0  lg:py-0 lg:-translate-y-4 lg:pr-8">
         <div>
-        <Image src={'/images/yellowonwhite.svg'} width={160} height={30} alt="Logo" className='block lg:hidden relative right-3' />
-          <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" className='hidden lg:block' />
+        <Image  onClick={() => router.push('/')} src={'/images/yellowonwhite.svg'} width={160} height={30} alt="Logo" className='block lg:hidden relative right-3' />
+          <Image  onClick={() => router.push('/')} src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" className='hidden lg:block' />
         </div>
         <div className="lg:flex items-center gap-4 hidden ">
           <Button variant="ghost" className="text-black  hover:bg-[#E5D5E6] text-lg hover:cursor-pointer " onClick={() => router.push('/')}>
