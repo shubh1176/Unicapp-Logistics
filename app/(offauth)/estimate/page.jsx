@@ -36,6 +36,7 @@ import { UserButton, useUser } from "@clerk/clerk-react";
 import Header2 from "@/components/Header2";
 import { useRecoilValue } from "recoil";
 import MissionSection from "@/components/MissionSection";
+import MobileEstimateComponent from "@/components/MobileEstimateComponent";
 
 export default function Page() {
   const router = useRouter();
@@ -240,7 +241,7 @@ export default function Page() {
             )}
           </div>
         </div>
-        <div className=" mt-10 lg:mt-0 lg:-translate-y-6">
+        <div className=" mt-10 lg:mt-0 lg:-translate-y-6 ">
           <EstimateComponent />
 
           <div
@@ -417,8 +418,8 @@ export default function Page() {
       </div> */}
 
       {/* // here we optimized Estimate for mobile also */}
-      <div className=" lg:hidden">
-        <EstimateComponent />
+      <div className="">
+        <MobileEstimateComponent />
       </div>
     </>
   );

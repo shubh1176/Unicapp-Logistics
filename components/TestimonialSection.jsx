@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
 import { FaStar, FaUser, FaBuilding } from "react-icons/fa"; // Import icons
-
+import { individuals, businesses } from "../utils/data";
 // TestimonialCard component for individual cards
-const TestimonialCard = ({ name, service, review, image }) => {
+const TestimonialCard = ({ name, service, review }) => {
   return (
-    <div className="bg-purple-100 w-72 md:w-auto flex flex-col items-center gap-3 rounded-2xl shadow-md p-4  border border-purple-500 hover:border-purple-600 transition-all duration-300">
+    <div className="bg-purple-100 w-72 md:w-auto flex flex-col  items-center justify-between gap-1 rounded-2xl shadow-md p-4   border border-purple-500 hover:border-purple-600 transition-all duration-300">
       {/* <img
         className="w-14 h-14 rounded-full"
         src={image} // Replace with actual image
@@ -13,18 +13,18 @@ const TestimonialCard = ({ name, service, review, image }) => {
       /> */}
       <div className="w-full flex justify-between">
        
-        <h4 className="font-bold text-black text-sm lg:text-base ">{service}</h4>
+        <h4 className="font-bold text-black text-sm lg:text-[16px] ">{service}</h4>
         <div className="flex items-center mb-1">
           {[...Array(5)].map((_, i) => (
             <FaStar key={i} className="text-yellow-400" />
           ))}
         </div>
         </div>
-        <p className="text-gray-600 text-xs break-words overflow-hidden text-ellipsis w-full">
+        <p className="text-gray-600 text-[8px] break-words overflow-hidden text-ellipsis w-full">
           {review}
         </p>
-        <p className="text-gray-600 text-xs break-words overflow-hidden text-ellipsis w-full">
-          {"___"}{"username"}
+        <p className="text-gray-600 text-[8px] break-words overflow-hidden text-ellipsis w-full">
+          {"___"}{name}
         </p>
       
     </div>
@@ -66,61 +66,9 @@ const TestimonialTabs = ({ activeTab, setActiveTab }) => {
 const TestimonialSection = () => {
   const [activeTab, setActiveTab] = useState("individual");
 
-  const individuals = [
-    {
-      name: "Jane Doe",
-      service: "Multiple drop-off points",
-      review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "John Smith",
-      service: "Tiffin Delivery",
-      review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Alice Johnson",
-      service: "Picked Up Keys",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Robert Brown",
-      service: "Multiple drop-off points",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-  ];
+  
 
-  const businesses = [
-    {
-      name: "Company ABC",
-      service: "Document Delivery",
-      review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Company XYZ",
-      service: "Rakhi Delivery",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Company 123",
-      service: "Document Delivery",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Company 456",
-      service: "Rakhi Delivery",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-  ];
-
-  const testimonials = activeTab === "individual" ? individuals.concat(individuals) : businesses.concat(businesses); // Display 8 cards in total for demo
+  const testimonials = activeTab === "individual" ? individuals : businesses; // Display 8 cards in total for demo
 
   return (
     <div className="py-12 lg:py-0 lg:h-screen">

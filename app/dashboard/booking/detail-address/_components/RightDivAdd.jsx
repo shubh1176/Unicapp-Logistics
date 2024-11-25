@@ -165,10 +165,20 @@ function RightDivAdd() {
       <div className="flex justify-start mt-6 gap-3 w-full">
         <Button
           variant="outline"
-          className="p-2 rounded-xl border border-gray-300 text-gray-600 w-16 lg:w-12"
+          className="p-2 hidden lg:flex rounded-xl border border-gray-300 text-gray-600 w-16 lg:w-12"
           onClick={(e) => {
             e.preventDefault();
             router.push('/dashboard/booking/location');
+          }}
+        >
+          <ChevronLeft size={20} />
+        </Button>
+        <Button
+          variant="outline"
+          className="p-2 flex lg:hidden rounded-xl border border-gray-300 text-gray-600 w-16 lg:w-12"
+          onClick={(e) => {
+            e.preventDefault();
+            router.push('/estimate');
           }}
         >
           <ChevronLeft size={20} />

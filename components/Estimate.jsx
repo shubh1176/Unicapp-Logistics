@@ -59,6 +59,7 @@ function EstimateComponent() {
   const [weight, setWeight] = useRecoilState(weightState);
   const [userName, setUserName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [verified, setVerified] = useState(false);
   const { user } = useUser();
   console.log(user);
@@ -75,6 +76,19 @@ function EstimateComponent() {
     { label: "By Air", basePrice: 120, gstRate: 0.18 },
   ];
 
+
+  const handleResize = () => {
+    setIsSmallScreen(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   const handlePickupLocationSelect = (location) => {
     setPickupAddress(location.address);
     setPickupCoords(location.location);
@@ -166,12 +180,13 @@ function EstimateComponent() {
   };
 
   useEffect(() => {
-    if (pickupCoords && dropCoords && mapContainerRef.current) {
+    if (!isSmallScreen && pickupCoords && dropCoords && mapContainerRef.current) {
       const map = new mapboxgl.Map({
         container: mapContainerRef.current,
         style: "mapbox://styles/mapbox/streets-v11",
         center: [pickupCoords.longitude, pickupCoords.latitude],
         zoom: 11,
+        interactive: false,
       });
 
       mapRef.current = map; // Store the map instance
@@ -217,7 +232,7 @@ function EstimateComponent() {
 
       return () => map.remove();
     }
-  }, [pickupCoords, dropCoords, pickupAddress, dropAddress, showPriceDetails]);
+  }, [pickupCoords, dropCoords, pickupAddress, dropAddress, showPriceDetails,isSmallScreen]);
   useEffect(() => {
     const fetchUserData = async () => {
       if (user) {
@@ -524,77 +539,7 @@ function EstimateComponent() {
         />
       </div>
 
-      <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden py-0 my-0 block lg:hidden">
-        <BookingMobileHeader />
-        <div className="px-5">
-          <div className="bg-white max-w-md rounded-3xl mx-auto p-6">
-            <input
-              type="text"
-              placeholder="Name*"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              required
-              className="w-full h-14 px-4 py-2 text-sm text-gray-500 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0094B2]"
-            />
-
-            <input
-              type="number"
-              placeholder=" Phone Number*"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-              className="w-full h-14 px-4 py-2 mt-5 text-sm text-gray-500  rounded-xl border border-gary-300 focus:outline-none focus:border-[#0094B2]"
-            />
-            <div className="flex items-center rounded-xl border border-gray-300 h-14 px-4 py-2 mt-5 focus-within:border-[#0094B2]">
-              <Image
-                src="/images/weightkg.svg"
-                width={25}
-                height={25}
-                alt="Weight"
-                className="relative"
-              />
-              <input
-                type="number"
-                placeholder="Enter weight of the item in kg*"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                required
-                className="w-full px-2 py-2 text-sm text-gray-500 focus:outline-none"
-              />
-            </div>
-
-            {priceCalculated && (
-              <div className="mt-5">
-                <hr className="mb-4" />
-                <div>
-                  <h3 className="text-xl font-bold text-black  ">
-                    {" "}
-                    Our prices start from
-                  </h3>
-                  <div className="flex flex-row justify-between mt-2 ">
-                    <p>Trip Fare ({distance?.toFixed(1)} kms)</p>
-                    <p className="text-2xl font-bold">
-                      &#8377;{amount?.toFixed(2)}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="flex justify-center">
-            <button
-              onClick={
-                priceCalculated
-                  ? () => router.push("/dashboard/booking/detail-address")
-                  : calculateFare
-              }
-              className="w-full max-w-md mx-auto h-12 px-4 py-2 mt-5 text-sm text-black bg-[#F3E545] rounded-xl focus:outline-none focus:ring-2 focus:ring-white focus:border-white"
-            >
-              {priceCalculated ? "Unicapp it!" : "See prices"}
-            </button>
-          </div>
-        </div>
-      </div>
+     
     </>
   );
 }
