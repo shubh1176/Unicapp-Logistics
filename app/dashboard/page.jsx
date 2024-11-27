@@ -1,11 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import {
-  UserButton,
-  useUser,
-  useClerk,
-} from "@clerk/clerk-react";
+import { UserButton, useUser, useClerk } from "@clerk/clerk-react";
 import { useRouter } from "next/navigation";
 import { db } from "@/utils/db";
 import * as schema from "@/utils/schema";
@@ -39,6 +35,7 @@ import {
   LogOut,
   ChevronDown,
   UserRound,
+  Save,
 } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -51,6 +48,8 @@ import {
 } from "@/components/ui/dialog"; // Import Dialog components
 import { Button } from "@/components/ui/button"; // Assuming Button is here
 import { preferredTimeSlotState } from "@/recoil/store"; // Recoil state for preferredTimeSlot
+import SaveAddressComponent from "@/components/SaveAddressComponent";
+import DashboardMobileHeader from "@/components/DashboardMobileHeader";
 
 const svgArray = [
   "/images/loading1.svg",
@@ -149,9 +148,7 @@ function DashboardPage() {
           setUserData(userData);
 
           if (!userData.onboarded) {
-            console.log(
-              "User is not onboarded, redirecting to role selection"
-            );
+            console.log("User is not onboarded, redirecting to role selection");
             router.push("/dashboard/onboarding/role");
             return;
           }
@@ -165,7 +162,9 @@ function DashboardPage() {
           }
 
           if (userData.role === "Business" && userData.verified) {
-            console.log("User is a verified business, checking organization data");
+            console.log(
+              "User is a verified business, checking organization data"
+            );
             const orgData = await db
               .select()
               .from(schema.OrganizationData)
@@ -229,7 +228,9 @@ function DashboardPage() {
 
   useEffect(() => {
     if (statusFilter) {
-      setFilteredOrders(orders.filter((order) => order.status === statusFilter));
+      setFilteredOrders(
+        orders.filter((order) => order.status === statusFilter)
+      );
     } else {
       setFilteredOrders(orders);
     }
@@ -268,7 +269,7 @@ function DashboardPage() {
 
         // Update state with new role
         setUserData({ ...userData, role: newRole });
-        window.location.reload(); // Refresh the page
+        // window.location.reload(); // Refresh the page
       } catch (error) {
         console.error("Error updating user role:", error);
       }
@@ -317,10 +318,10 @@ function DashboardPage() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen">
-      {/* Sidebar */}
+<div className="flex flex-col lg:flex-row min-h-screen bg-transparent lg:bg-gradient-to-b lg:from-[#470a68] lg:to-[#8D14CE] lg:p-2 lg:pl-0 ">
+{/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-64 transform ${
+        className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-52 lg:w-[15%] transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 lg:relative lg:translate-x-0`}
       >
@@ -340,29 +341,29 @@ function DashboardPage() {
           <nav className="mt-4">
             <ul>
               <li>
-                <a
-                  href="/dashboard"
-                  className="flex py-2 px-4 rounded items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]"
+                <button
+                  onClick={() => router.push("/dashboard")}
+                  className="w-full flex py-2 px-4 rounded items-center gap-2 mb-2 hover:bg-[#c964cf] bg-[#c964cf]"
                 >
                   <CircleUserRound /> Account
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="/dashboard/wallet"
-                  className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]"
+                <button
+                  onClick={() => router.push("/dashboard/wallet")}
+                  className="w-full py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]"
                 >
                   <WalletMinimal /> Wallet
-                </a>
+                </button>
               </li>
               {userData?.isAdmin && (
                 <li>
-                  <a
-                    href="/dashboard/admin-panel"
+                  <button
+                    onClick={() => router.push("/dashboard/admin-panel")}
                     className="py-2 px-4 rounded flex items-center gap-2 mb-2 hover:bg-[#c964cf]"
                   >
                     <ShieldCheck /> Admin Panel
-                  </a>
+                  </button>
                 </li>
               )}
               <li className="">
@@ -378,11 +379,11 @@ function DashboardPage() {
           </nav>
         </div>
       </aside>
-
+      <DashboardMobileHeader /> {/* shown on small screens only */}
       {/* Main Content */}
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col flex-grow bg-white rounded-lg overflow-y-scroll h-[97vh] hide-scrollbar lg:w-[85%]">
         {/* Header for Large Screens */}
-        <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4 bg-white w-full mb-10">
+        <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4  w-full mb-3">
           <div className="flex items-center space-x-4 lg:justify-between w-full">
             <button
               className="lg:hidden"
@@ -408,11 +409,13 @@ function DashboardPage() {
                     htmlFor="role-switch"
                     className="text-lg font-semibold"
                   >
-                    {userData.role === "Business" ? "Business" : "Individual"}
+                    {/* {userData.role === "Business" ? "Business" : "Individual"}
+                     */}
+                    Business
                   </label>
                 </div>
               )}
-              <div className="hidden lg:flex items-center border-2 rounded-lg py-2 px-3">
+              <div className="hidden lg:flex items-center border-2 rounded-lg py-1 px-3">
                 {/* Combined Dropdown for account, wallet, and sign out */}
                 <DropdownMenu>
                   <DropdownMenuTrigger className="flex items-center gap-1 text-lg">
@@ -420,13 +423,20 @@ function DashboardPage() {
                     <ChevronDown />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <Dialog open={timeSlotDialogOpen} onOpenChange={setTimeSlotDialogOpen}>
+                    <Dialog
+                      open={timeSlotDialogOpen}
+                      onOpenChange={setTimeSlotDialogOpen}
+                    >
                       <DialogTrigger asChild>
-                        <DropdownMenuItem>Select Preferred Time Slot</DropdownMenuItem>
+                        <DropdownMenuItem>
+                          Select Preferred Time Slot
+                        </DropdownMenuItem>
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
-                          <DialogTitle>Select Your Preferred Time Slot</DialogTitle>
+                          <DialogTitle>
+                            Select Your Preferred Time Slot
+                          </DialogTitle>
                         </DialogHeader>
                         <select
                           value={preferredTimeSlot}
@@ -459,12 +469,13 @@ function DashboardPage() {
             </div>
           </div>
         </header>
+        <hr className="border-gray-200 border-1 w-full" />
 
         {/* Content based on role */}
         {userData?.role === "Business" ? (
-          <div className="flex-1">
+          <div className="flex-1 bg-gray-50 rounded-lg">
             {/* Business User Content */}
-            <h1 className="text-4xl font-generalSemiBold mb-4 ml-6">
+            <h1 className="text-3xl font-generalSemiBold mb-4 ml-6 mt-4">
               Welcome {user?.firstName} 👋
             </h1>
             <div className="p-4 mb-4 -translate-x-3.5 ml-6">
@@ -472,7 +483,7 @@ function DashboardPage() {
                 Orders Summary
               </h3>
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-                <div className="p-4 rounded-3xl shadow bg-white text-center flex flex-col h-40">
+                <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
                   <div className="flex flex-row justify-between">
                     <p className="text-gray-500 font-filson">Total Orders</p>
                     <Image
@@ -484,7 +495,7 @@ function DashboardPage() {
                   </div>
                   <p className="text-4xl font-bold mt-10">{orders.length}</p>
                 </div>
-                <div className="p-4 rounded-3xl shadow bg-white text-center flex flex-col h-40">
+                <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
                   <div className="flex flex-row justify-between">
                     <p className="text-gray-500 font-filson">Order Placed</p>
                     <Image
@@ -498,7 +509,7 @@ function DashboardPage() {
                     {orderCount("Order Placed")}
                   </p>
                 </div>
-                <div className="p-4 rounded-3xl shadow bg-white text-center flex flex-col h-40">
+                <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
                   <div className="flex flex-row justify-between">
                     <p className="text-gray-500 font-filson">In-Transit</p>
                     <Image
@@ -512,7 +523,7 @@ function DashboardPage() {
                     {orderCount("In-Transit")}
                   </p>
                 </div>
-                <div className="p-4 rounded-3xl shadow bg-white text-center flex flex-col h-40">
+                <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
                   <div className="flex flex-row justify-between">
                     <p className="text-gray-500 font-filson">
                       Return to Origin (RTO)
@@ -531,70 +542,53 @@ function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded shadow ml-6 mr-6">
-              <div className="flex justify-between font-filson items-center mb-4">
-                <h3 className="text-xl font-filson">Orders</h3>
-                <div className="flex items-center">
-                  <label
-                    htmlFor="status-filter"
-                    className="block text-gray-700 mr-2"
-                  >
-                    Filter by Status:
-                  </label>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger>
-                      <button className="px-4 py-2 font-filson bg-white border border-gray-300 rounded text-gray-700 hover:bg-gray-100">
-                        {statusFilter || "Select Status"}
-                      </button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem onClick={() => setStatusFilter("")}>
-                        All
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => setStatusFilter("Order Placed")}
-                      >
-                        Order Placed
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => setStatusFilter("Out for delivery")}
-                      >
-                        Out for delivery
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => setStatusFilter("In-Transit")}
-                      >
-                        In-Transit
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => setStatusFilter("Delivered")}
-                      >
-                        Delivered
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => setStatusFilter("Completed")}
-                      >
-                        Completed
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() =>
-                          setStatusFilter("Return to Origin (RTO)")
-                        }
-                      >
-                        Return to Origin (RTO)
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+            <div className="bg-white  ml-6 mr-6">
+              <h2 className="text-2xl  font-generalMedium mt-5 mb-8">
+              Delivery Reports
+              </h2>
+                
+              <div className="flex justify-between items-center  mb-4">
+                <div className="flex w-full pl-7 space-x-8 border-b border-gray-300">
+                  {[
+                    { label: "All Deliveries", value: "" },
+                    { label: "In-Transit", value: "In-Transit" },
+                    { label: "Scheduled", value: "Scheduled" },
+                    { label: "Completed", value: "Completed" },
+                    { label: "Failed Attempts", value: "Failed Attempts" },
+                    { label: "Returns", value: "Returns" },
+                  ].map((filter) => (
+                    <button
+                      key={filter.value}
+                      onClick={() => setStatusFilter(filter.value)}
+                      className={`relative pb-4  text-sm font-medium ${
+                        statusFilter === filter.value
+                          ? "text-[#0094B2]"
+                          : "text-gray-700 hover:text-gray-900"
+                      }`}
+                    >
+                      {filter.label}
+                      {statusFilter === filter.value && (
+                        <span
+                          className="absolute bottom-0 left-0 h-[2px] bg-[#0094B2] w-full"
+                          style={{
+                            transition: "width 0.3s ease-in-out",
+                          }}
+                        ></span>
+                      )}
+                    </button>
+                  ))}
                 </div>
               </div>
 
               {filteredOrders.length > 0 ? (
                 <>
-                  <div className="overflow-x-auto">
+                  <div className="overflow-x-auto rounded shadow max-w-full">
                     <Table>
                       <TableHeader>
-                        <TableRow>
-                          <TableHead className="font-filson">Order ID</TableHead>
+                        <TableRow className="bg-gray-200">
+                          <TableHead className="font-filson ">
+                            Order ID
+                          </TableHead>
                           <TableHead className="font-filson">
                             Delivery Type:
                           </TableHead>
@@ -632,7 +626,7 @@ function DashboardPage() {
                                 <div
                                   className={`${getStatusStyle(
                                     order.status
-                                  )} rounded-2xl px-4`}
+                                  )} rounded-2xl px-4 `}
                                 >
                                   <span>{order.status}</span>
                                 </div>
@@ -642,82 +636,87 @@ function DashboardPage() {
                             </TableRow>
                             {expandedOrderId === order.order_id && (
                               <TableRow key={`${order.order_id}-details`}>
-                                <TableCell colSpan={11}>
-                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-gray-50 rounded-lg shadow-inner">
-                                    <div className="flex flex-col border rounded-lg bg-white px-4 py-2 pb-6">
+                                <TableCell colSpan={7}>
+                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-0 py-0  ">
+                                    <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-0 pb-6">
                                       <div className="flex flex-row gap-2 mt-3">
-                                        <Truck
-                                          size={20}
-                                          strokeWidth={1.25}
-                                        />{" "}
+                                        <Truck size={20} strokeWidth={1.25} />{" "}
                                         <h4 className="font-bold mb-4">
                                           {" "}
-                                          Order Details
+                                          ORDER DETAILS
                                         </h4>
                                       </div>
-                                      <p>
-                                        <strong>Order Date:</strong>{" "}
-                                        {moment(order.date).format("LL")}
-                                      </p>
-                                      <p>
-                                        <strong>Delivery Type:</strong>{" "}
-                                        {order.deliveryType || "N/A"}
-                                      </p>
-                                      <p>
-                                        <strong>Delivery Fees:</strong>{" "}
-                                        {order.deliveryFees || "N/A"}
-                                      </p>
-                                      <p>
-                                        <strong>Weight / Dimension:</strong>{" "}
-                                        {order.weight || "N/A"} kg (
+                                      <div className="flex flex-wrap gap-4 justify-between">
+
+                                      <div>
+                                        <p className="font-generalMedium text-gray-400">ORDER DATE:</p>{" "}
+                                        <p className="text-gray-800">{moment(order.date).format("LL")}</p>
+                                        
+                                      </div>
+                                      <div>
+                                        <p className="font-generalMedium text-gray-400">DELIVERY TYPE:</p>{" "}
+                                        <p className="text-gray-800">{order.deliveryType || "N/A"}</p>
+                                      </div>
+                                      <div>
+                                        <p className="font-generalMedium text-gray-400">DELIVERY FEES:</p>{" "}
+                                       <p className="text-gray-800">{order.deliveryFees || "N/A"}</p> 
+                                      </div>
+                                      <div>
+                                        <p className="font-generalMedium text-gray-400 mr-5">INSURANCE:</p>{" "}
+                                        <p className="text-gray-800">{order.insurance || "N/A"}</p>
+                                      </div>
+                                      <div>
+                                        <p className="font-generalMedium text-gray-400 ">WEIGHT / DIMENSION:</p>{" "}
+                                       <p className="text-gray-800">{order.weight || "N/A"} kg (
                                         {order.length}cm x {order.width}cm x{" "}
-                                        {order.height}cm)
-                                      </p>
+                                        {order.height}cm)</p> 
+                                      </div>
+                                      </div>
+                                     
+                                      
+                                     
                                     </div>
-                                    <div className="flex flex-col border rounded-lg bg-white px-4 py-2 pb-6">
-                                      <div className="flex flex-row gap-2 mt-3">
+                                    <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-2 pb-6">
+                                      <div className="flex flex-row gap-2 mt-0">
                                         <UserRound
                                           size={20}
                                           strokeWidth={1.25}
                                         />{" "}
                                         <span className="font-bold mb-4">
-                                          Customer Information
+                                          CUSTOMER INFORMATION
                                         </span>
                                       </div>
-                                      <div className="flex flex-row justify-between">
-                                        <p className="text-sm">
-                                          <strong>From:</strong>{" "}
-                                          {order.pickupLocation || "N/A"}
-                                        </p>
-                                        <p className="text-sm">
-                                          <strong>To:</strong>{" "}
-                                          {order.dropLocation || "N/A"}
-                                        </p>
+                                      <div className="flex flex-row  gap-10 justify-between">
+                                        <div className="text-sm">
+                                          <p className="font-generalMedium text-gray-400 text-base">FROM:</p>{" "}
+                                         <p className="text-gray-800">{order.pickupLocation || "N/A"}</p>
+                                        </div>
+                                        <div className="text-sm">
+                                          <p className="font-generalMedium text-gray-400 text-base">TO:</p>{" "}
+                                         <p className="text-gray-800">{order.dropLocation || "N/A"}</p> 
+                                        </div>
                                       </div>
                                     </div>
-                                    <div className="flex flex-col border rounded-lg bg-white px-4 py-2 pb-6">
-                                      <div className="flex flex-row gap-2 mt-3">
-                                        <Truck
-                                          size={20}
-                                          strokeWidth={1.25}
-                                        />
+                                    <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-2 pb-6">
+                                      <div className="flex flex-row gap-2 mt-0">
+                                        <Truck size={20} strokeWidth={1.25} />
                                         <h4 className="font-bold mb-4">
                                           {" "}
-                                          Delivery Information
+                                          DELIVERY INFORMATION
                                         </h4>
                                       </div>
-                                      <p>
-                                        <strong>Shipped Through:</strong>{" "}
-                                        {order.shipping_service || "N/A"}
-                                      </p>
-                                      <p>
-                                        <strong>Tracking Number:</strong>{" "}
-                                        {order.Tracking_number || "N/A"}
-                                      </p>
-                                      <p>
-                                        <strong>Tracking Link:</strong>{" "}
-                                        {order.Tracking_link || "N/A"}
-                                      </p>
+                                      <div>
+                                        <p className="font-generalMedium text-gray-400 text-base">SHIPPED THROUGH:</p>{" "}
+                                       <p className="text-gray-800">{order.shipping_service || "N/A"}</p> 
+                                      </div>
+                                      <div>
+                                        <p className="font-generalMedium text-gray-400 text-base">TRACKING NUMBER:</p>{" "}
+                                      <p className="text-gray-800"> {order.Tracking_number || "N/A"}</p>  
+                                      </div>
+                                      <div>
+                                        <p className="font-generalMedium text-gray-400 text-base">TRACKING LINK:</p>{" "}
+                                       <p className="text-gray-800"> {order.Tracking_link || "N/A"}</p>
+                                      </div>
                                     </div>
                                   </div>
                                 </TableCell>
@@ -729,17 +728,19 @@ function DashboardPage() {
                     </Table>
                   </div>
 
-                  <div className="flex justify-between items-center mt-4">
-                    <div className="flex justify-between items-center mb-4">
-                      <div className="mt-2">
+                  <div className="flex justify-between items-center mt-4  mb-4 rounded border">
+                    <div className="flex gap-2 items-center  ">
+                      <div className="mt-0">
                         <DropdownMenu>
                           <DropdownMenuTrigger>
-                            <button className="px-4 py-3 font-filson bg-white border border-gray-300 rounded text-gray-700 hover:bg-gray-100 flex flex-row gap-1">
+                            <button className="px-4 py-3 font-filson bg-white border-r border-gray-300  text-gray-700 hover:bg-gray-100 flex flex-row gap-1">
                               {itemsPerPage} <ChevronUp />
                             </button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
-                            <DropdownMenuItem onClick={() => setItemsPerPage(5)}>
+                            <DropdownMenuItem
+                              onClick={() => setItemsPerPage(5)}
+                            >
                               5
                             </DropdownMenuItem>
                             <DropdownMenuItem
@@ -765,31 +766,36 @@ function DashboardPage() {
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </div>
-                    </div>
-                    <button
-                      onClick={() => setCurrentPage(currentPage - 1)}
-                      disabled={currentPage === 1}
-                      variant="outline"
-                      className="px-4 py-2 rounded hover:cursor-pointer"
-                    >
-                      <ChevronLeft />
-                    </button>
-                    <span className="text-gray-700">
-                      {`${
-                        (currentPage - 1) * itemsPerPage + 1
-                      }-${Math.min(
+                      <span className="text-gray-700 ">
+                      {`${(currentPage - 1) * itemsPerPage + 1}-${Math.min(
                         currentPage * itemsPerPage,
                         filteredOrders.length
                       )} of ${filteredOrders.length} Orders`}
                     </span>
+                    </div>
+                    <div className="flex  items-center">
+                        <button className="px-4 py-3 flex gap-1 items-end rounded hover:cursor-pointer border-l">
+                         Page 1 <ChevronDown size={20} />
+                        </button>
+                      
+                      <button
+                      onClick={() => setCurrentPage(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      variant="outline"
+                      className="px-4 py-3  rounded hover:cursor-pointer border-l"
+                    >
+                      <ChevronLeft />
+                    </button>
+                   
                     <button
                       onClick={() => setCurrentPage(currentPage + 1)}
                       disabled={currentPage === totalPages}
                       variant="outline"
-                      className="px-4 py-2 rounded hover:cursor-pointer"
+                      className="px-4 py-3 rounded hover:cursor-pointer  border-l"
                     >
                       <ChevronRight />
-                    </button>
+                    </button></div>
+                    
                   </div>
                 </>
               ) : (
@@ -800,22 +806,22 @@ function DashboardPage() {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col h-full w-full p-6 bg-gray-50">
-            <h1 className="text-4xl font-extrabold text-gray-800 mb-6 hidden sm:block">
+          <div className="flex flex-col  w-full p-6 lg:px-8 lg:py-5 bg-gray-50 rounded-lg ">
+            <h1 className="text-3xl font-extrabold text-gray-800 mb-6 hidden sm:block">
               Welcome {user?.firstName} 👋
             </h1>
 
-            <div className="flex flex-col items-center w-full space-y-8">
+            <div className="flex flex-col gap-4 items-center w-full space-y-8 ">
               {/* Orders Section */}
-              <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-5xl">
+              <div className="bg-white p-6 rounded-3xl shadow-lg w-full  ">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-3xl font-semibold text-gray-700">
+                  <h2 className="text-2xl font-semibold text-gray-700">
                     Your Orders
                   </h2>
                 </div>
 
-                <div className="lg:hidden mb-6">
-                  <div className="flex justify-center mb-4">
+                <div className="lg:hidden mb-6 ">
+                  {/* <div className="flex justify-center mb-4 ">
                     <button
                       onClick={() => setActiveTab("pickupDrop")}
                       className={`text-lg px-4 py-2 focus:outline-none ${
@@ -836,7 +842,7 @@ function DashboardPage() {
                     >
                       Courier
                     </button>
-                  </div>
+                  </div> */}
 
                   <div className="space-y-4">
                     {filteredIndividualOrders.slice(0, 4).map((order) => (
@@ -931,8 +937,12 @@ function DashboardPage() {
                           <TableHead className="text-gray-600">
                             Order Type
                           </TableHead>
-                          <TableHead className="text-gray-600">Status</TableHead>
-                          <TableHead className="text-gray-600">Weight</TableHead>
+                          <TableHead className="text-gray-600">
+                            Status
+                          </TableHead>
+                          <TableHead className="text-gray-600">
+                            Weight
+                          </TableHead>
                           <TableHead className="text-gray-600">
                             Special Instructions
                           </TableHead>
@@ -977,7 +987,7 @@ function DashboardPage() {
               </div>
 
               {/* Saved Addresses Section */}
-              <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl hidden lg:block">
+              {/* <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl  lg:block">
                 <h2 className="text-3xl font-semibold text-gray-700 mb-4">
                   Saved Addresses
                 </h2>
@@ -988,7 +998,12 @@ function DashboardPage() {
                 >
                   + Add a new address
                 </button>
+              </div> */}
+              <div className="w-full py-5 bg-gray-50">
+              <SaveAddressComponent />
               </div>
+
+              
             </div>
           </div>
         )}

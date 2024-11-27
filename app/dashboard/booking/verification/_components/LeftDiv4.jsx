@@ -15,6 +15,7 @@ import {
   amountState,
 } from '@/recoil/store';
 import { ArrowDown, ArrowUp, Box, Calendar, IndianRupee } from 'lucide-react';
+import BookingMobileHeader from '@/components/BookingMobileHeader';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
@@ -137,19 +138,21 @@ const LeftDiv4 = () => {
   }, [pickupCoords, dropCoords, stops, pickupLocation, dropLocation, isSmallScreen]);
 
   return (
-    <div className={`flex flex-col items-center ${isSmallScreen ? 'h-auto w-full bg-gradient-to-b from-[#8D14CE] to-[#470A68] rounded-b-2xl p-4' : 'lg:h-full lg:w-full mt-10 lg:-translate-y-28 p-8 lg:p-10'}`}>
+
+    <>
+     <div className={`hidden lg:flex flex-col items-center lg:h-full lg:w-full mt-10 lg:-translate-y-28 p-8 lg:p-10`}>
       <div className="items-start ml-0 lg:ml-32">
-        {!isSmallScreen && (
+      
           <div className="flex justify-between items-center mb-4 lg:mb-0 lg:-translate-x-5 lg:translate-y-8 h-44 w-44">
             <img src='/images/blackonwhitelogo.svg' alt='unicapp' />
           </div>
-        )}
+      
         <div className="text-center lg:text-left">
           <h2 className="text-2xl font-bold mb-5 lg:mb-3 lg:translate-x-2 lg:-translate-y-4 text-white lg:text-black">Your Package</h2>
-          {!isSmallScreen && (
+        
             <div id="map" className="w-full lg:w-96 h-36 border-2 rounded-xl lg:translate-x-3 lg:-translate-y-4 mb-4"></div>
-          )}
-          <div className={`grid gap-4 ${isSmallScreen ? 'grid-cols-1' : 'lg:flex lg:flex-col lg:items-start'}`}>
+       
+          <div className={`grid gap-4 lg:flex lg:flex-col lg:items-start`}>
             <div className="flex items-center mb-6 sm:justify-center sm:space-x-2">
               <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
                 <ArrowUp size={20} />
@@ -168,7 +171,7 @@ const LeftDiv4 = () => {
                 <p className="text-sm text-gray-200 lg:text-gray-500">{dropLocation ? formatAddress(dropLocation) : '--'}</p>
               </div>
             </div>
-            <div className={`flex items-center mb-6 ${isSmallScreen ? 'hidden' : 'block'}`}>
+            <div className={` items-center mb-6 block`}>
               <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                 <Box size={16} />
               </div>
@@ -177,7 +180,7 @@ const LeftDiv4 = () => {
                 <p className="text-sm text-gray-200 lg:text-gray-500">{itemDescription || '--'}</p>
               </div>
             </div>
-            <div className={`flex items-center mb-6 ${isSmallScreen ? 'hidden' : 'block'}`}>
+            <div className={` items-center mb-6 block`}>
               <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                 <IndianRupee size={16} />
               </div>
@@ -186,7 +189,7 @@ const LeftDiv4 = () => {
                 <p className="text-sm text-gray-200 lg:text-gray-500">{amount ? `₹${amount}` : '--'}</p>
               </div>
             </div>
-            {!isSmallScreen && (
+          
               <>
                 {/* Stops */}
                 {stops.length > 0 && stops.map((stop, index) => (
@@ -212,11 +215,15 @@ const LeftDiv4 = () => {
                   </div>
                 </div>
               </>
-            )}
+          
           </div>
         </div>
       </div>
     </div>
+
+    <BookingMobileHeader />
+    </>
+   
   );
 };
 

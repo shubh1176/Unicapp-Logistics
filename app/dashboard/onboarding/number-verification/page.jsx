@@ -160,7 +160,7 @@ const NumberVerificationPage = () => {
     <div className="flex flex-col items-center justify-center h-screen px-6 sm:px-10">
       {!showOtpDialog ? (
         <div className="flex flex-col items-center justify-center h-full w-full max-w-xs sm:max-w-sm translate-y-[-10%] sm:translate-y-[-20%]">
-          <Image src={'/images/blackonwhitelogo.svg'} height={150} width={150} alt="Logo" className="mb-6 sm:mb-8" />
+          <Image src={'/images/blackonwhitelogo.svg'} height={20} width={250} alt="Logo" className="mb-6 sm:mb-0" />
           <h2 className="text-xl sm:text-2xl font-generalMedium mb-6 sm:mb-8 text-center">Enter Your Phone Number</h2>
           <div className="flex mb-4 sm:mb-6 w-full gap-2">
             <Popover open={open} onOpenChange={setOpen}>

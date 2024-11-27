@@ -109,10 +109,10 @@ function RightDiv() {
   };
 
   return (
-    <div className='flex flex-col justify-center items-start h-full p-4 md:p-10'>
-      <div className='w-full max-w-md bg-white rounded-lg shadow-lg p-5'>
+    <div className='flex flex-col justify-center   '>
+      <div className='w-full max-w-[20rem] rounded-lg  m-5 '>
         <div className='mb-5'>
-          <h2 className="text-sm md:text-base font-generalMedium text-[#8B14CC]">STEP 1/6</h2>
+          <h2 className="text-sm md:text-sm font-generalMedium text-[#8B14CC]">STEP 1/6</h2>
           <div className="flex mt-4 mb-9">
             <div className="w-12 h-1 bg-[#8B14CC] rounded mx-1"></div>
             <div className="w-12 h-1 bg-gray-300 rounded mx-1"></div>
@@ -122,26 +122,29 @@ function RightDiv() {
             <div className="w-12 h-1 bg-gray-300 rounded mx-1"></div>
           </div>
         </div>
-        <div className="flex flex-row justify-between content-center gap-5 border-2 border-black rounded-xl w-full py-1 px-3 font-generalSemiBold mb-10">
+        <div className="flex flex-row justify-between content-center gap-2 border border-black rounded-lg w-full p-[2px] font-generalSemiBold mb-5 bg-white h-10">
           <Button
-            className={`px-2 py-2 w-1/2 rounded-xl ${orderType === 'Pickup & Drop' ? 'bg-[#8B14CC] text-white' : 'bg-white text-black'} hover:bg-white hover:text-black text-center text-base`}
+          size={10}
+            className={`px-2 py-0 w-1/2 rounded-lg ${orderType === 'Pickup & Drop' ? 'bg-[#8B14CC] hover:bg-[#8B14CC] text-white' : 'bg-white text-black hover:bg-[#8B14CC] hover:text-white'} cursor-pointer    text-center text-sm`}
             onClick={() => setOrderType('Pickup & Drop')}
           >
             Pickup & Drop
           </Button>
+          <div className='w-0 border-r my-1' />
           <Button
-            className={`px-2 py-2 w-1/2 rounded-xl ${orderType === 'Courier' ? 'bg-[#8B14CC] text-white' : 'bg-white text-black'}  hover:bg-white hover:text-black text-center text-base`}
+          size={10}
+            className={`px-2 py-0 w-1/2 rounded-lg ${orderType === 'Courier' ? 'bg-[#8B14CC] hover:bg-[#8B14CC] text-white' : 'bg-white text-black hover:bg-[#8B14CC] hover:text-white'}  cursor-pointer  text-center text-sm`}
             onClick={() => setOrderType('Courier')}
           >
             Courier
           </Button>
         </div>
-        <h1 className='text-xl md:text-3xl font-bold font-filson mt-5'>{orderType}</h1>
-        <p className='mt-2 text-sm md:text-lg font-generalRegular'>Enter your {orderType.toLowerCase()} addresses</p>
+        <h1 className='text-xl md:text-2xl font-bold font-filson mt-5'>{orderType}</h1>
+        <p className='mt-0 md:mb-5 text-sm md:text-sm font-generalRegular'>Enter your {orderType.toLowerCase()} addresses</p>
 
-        <form className='w-full'>
-          <div className='mb-7'>
-            <label className='block mb-2 font-generalRegular'>Pickup address</label>
+        <form className='w-full lg:text-sm '>
+          <div className='mb-7 '>
+            <label className='block mb-2 font-generalRegular '>Pickup address</label>
             <div className='relative'>
               <Image
                 src={'/images/Arrowup.svg'} 
@@ -152,7 +155,7 @@ function RightDiv() {
               />
               <Input
                 placeholder="Enter address..."
-                className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0'
+                className='pl-10 w-full border-2 border-black border-opacity-25 h-10 rounded-xl focus:border-0 focus:ring-0'
                 value={pickupLocation}
                 onChange={(e) => setPickupLocation(e.target.value)}
               />
@@ -171,7 +174,7 @@ function RightDiv() {
               />
               <Input
                 placeholder="Enter address..."
-                className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl  focus:border-0 focus:ring-0'
+                className='pl-10 w-full border-2 border-black border-opacity-25 h-10 rounded-xl  focus:border-0 focus:ring-0'
                 value={dropLocation}
                 onChange={(e) => setDropLocation(e.target.value)}
               />
@@ -204,7 +207,7 @@ function RightDiv() {
                                 />
                                 <Input
                                   placeholder={`Enter address...`}
-                                  className='pl-10 w-full border-2 border-black border-opacity-25 h-12 rounded-xl focus:border-0 focus:ring-0'
+                                  className='pl-10 w-full border-2 border-black border-opacity-25 h-10 rounded-xl focus:border-0 focus:ring-0'
                                   value={stop.address}
                                   onChange={(e) => {
                                     const updatedStops = [...stops];
@@ -230,12 +233,12 @@ function RightDiv() {
                   )}
                 </Droppable>
               </DragDropContext>
-              <Button variant="ghost" type="button" className="mt-5 font-generalRegular hover:bg-white hover:text-[#0094B2]" onClick={addStop}> + Add Stop</Button>
+              <Button variant="ghost" type="button" className="mt-2 font-generalRegular hover:bg-white hover:text-[#0094B2]" onClick={addStop}> + Add Stop</Button>
             </>
           )}
           <div>
             <Button
-              className='mt-7 w-full bg-[#8B14CC] hover:bg-[#8B14CC] rounded-xl font-generalRegular'
+              className={`${orderType === 'Pickup & Drop'?"mt-4":"mt-7"} w-full bg-[#8B14CC] hover:bg-[#8B14CC] rounded-xl font-generalRegular'`}
               onClick={handleNextClick}
               disabled={loading}
             >

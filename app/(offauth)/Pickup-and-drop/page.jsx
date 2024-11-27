@@ -17,6 +17,7 @@ import Footer from '@/components/Footer';
 import Faq from '@/components/Faq';
 import DeliveryComponent from './_components/pickupbox';
 import { UserButton, useUser } from '@clerk/clerk-react';
+import MissionSection from '@/components/MissionSection';
 
 export default function Page() {
   const router = useRouter();
@@ -69,8 +70,8 @@ export default function Page() {
   };
 
   return (
-    <div className='bg-[#F1EDEA] pt-1'>
-     <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl mt-5 py-1">
+    <div className='bg-[#F1EDEA]'>
+     <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl mt-0 py-0 -translate-y-4">
         <div>
           <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" />
         </div>
@@ -109,7 +110,7 @@ export default function Page() {
         </div>
         <div className="flex items-center gap-2">
         {user ? (
-          <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
+          <div className="flex items-center space-x-4 border-2 rounded-lg py-0 px-3">
           <UserButton />
           <DropdownMenu>
             <DropdownMenuTrigger className="flex items-center gap-1 text-black text-xs p-2 rounded-lg cursor-pointer hover:bg-opacity-20 hover:text-black">
@@ -141,8 +142,8 @@ export default function Page() {
         <DeliveryComponent />
       </div>
       <div className='bg-white rounded-3xl mx-auto mt-8 p-8 relative overflow-hidden h-full py-20' style={{ maxWidth: '85%'}}>
-        <div className="absolute inset-0 z-0">
-          <Image src={'/images/another_ribbon.svg'} layout="fill" objectFit="cover" alt="Ribbon Background" />
+        <div className="absolute inset-0 z-0 top-14 ">
+          <Image src={'/images/another_ribbon.svg'} width={1600} height={1000}  layout="cover" objectFit="cover" alt="Ribbon Background" />
         </div>
         <div className='translate-y-4'>
         <h2 className='font-generalSemiBold text-5xl mb-4 z-10 relative -translate-y-10 translate-x-4'>We deliver, all your needs.</h2>
@@ -151,14 +152,14 @@ export default function Page() {
         {/* Navigation buttons at top-right */}
         <div className="absolute top-1 right-1 flex gap-2 z-20">
           <button
-            className="bg-white rounded-full border-2 p-2 -translate-y-6 -translate-x-4"
+            className="bg-white hover:bg-[#9E3CE1]  hover:text-white rounded-full border-2 p-2 -translate-y-6 -translate-x-4"
             onClick={handlePrev}
             disabled={currentSlide === 0}
           >
             <ChevronLeft size={26} />
           </button>
           <button
-            className="bg-[#9E3CE1] rounded-full border-2 p-2 text-white -translate-y-6 -translate-x-4"
+            className="bg-white  hover:bg-[#9E3CE1] rounded-full border-2 p-2 hover:text-white -translate-y-6 -translate-x-4"
             onClick={handleNext}
             disabled={currentSlide === items.length - 1}
           >
@@ -166,7 +167,7 @@ export default function Page() {
           </button>
         </div>
 
-        <div className='relative mt-6 z-10 ml-3'>
+        <div className='relative mt-6 z-10 ml-3 '>
           <Carousel
             ref={carouselRef}
             responsive={responsive}
@@ -178,10 +179,11 @@ export default function Page() {
             containerClass="carousel-container"
             removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
             afterChange={(previousSlide, { currentSlide }) => setCurrentSlide(currentSlide)}
+            
           >
             {items.map((item, index) => (
-              <div key={index} className="flex-none w-full p-1">
-                <div className="p-1 bg-[#F6EFF9] rounded-3xl h-52 w-52 transform transition-transform duration-300 hover:scale-105">
+              <div key={index} className="flex-none w-full p-1  ">
+                <div className="p-1 bg-[#F6EFF9] rounded-3xl h-52 w-[12.7rem] transform transition-transform duration-300 hover:scale-105">
                   <div className="flex flex-col items-center p-3 gap-3">
                     <Image src={item.src} height={item.height} width={item.width} alt={item.label} className="pt-5"/>
                     <span className='pt-8 text-xl font-generalRegular'>{item.label}</span>
@@ -196,18 +198,11 @@ export default function Page() {
       <div className='mt-16'>
         <WhyUs />
       </div>
-      <div className="relative flex flex-col content-center items-center mt-20 mb-28">
-        <div className="relative">
-          <Image src={'/images/sticker.svg'} height={800} width={1000} />
-          <div className="absolute bottom-40 right-60 w-20 h-20 transform translate-x-1/2 rotate-0">
-            <Image src={'/images/iconblack.svg'} height={80} width={80} />
-          </div>
-        </div>
-      </div>
+     <MissionSection/>
       <div className='mb-20'>
         <Faq />
       </div>
-      <div className='mt-10'>
+      <div className='relative top-5'>
         <Footer />
       </div>
 

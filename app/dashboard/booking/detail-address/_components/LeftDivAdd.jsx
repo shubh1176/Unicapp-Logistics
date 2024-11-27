@@ -15,6 +15,9 @@ import {
   amountState,
 } from '@/recoil/store';
 import { ArrowDown, ArrowUp, Box, Calendar, IndianRupee } from 'lucide-react';
+import Header2 from '@/components/Header2';
+import Image from 'next/image';
+import BookingMobileHeader from '@/components/BookingMobileHeader';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
@@ -48,7 +51,7 @@ const LeftDivAdd = () => {
     const [firstPart, ...restParts] = address.split(',');
     return (
       <>
-        <span className="font-generalSemiBold text-lg">{firstPart}</span>
+        <span className="font-generalSemiBold text-base">{firstPart}</span>
         {!isSmallScreen && restParts.length > 0 && (
           <>
             <br />
@@ -66,6 +69,7 @@ const LeftDivAdd = () => {
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [pickupCoords.longitude, pickupCoords.latitude],
         zoom: 11,
+        interactive: false,
       });
 
       const waypoints = [
@@ -136,40 +140,41 @@ const LeftDivAdd = () => {
     }
   }, [pickupCoords, dropCoords, stops, pickupLocation, dropLocation, isSmallScreen]);
 
-  return (
-    <div className={`flex flex-col items-center ${isSmallScreen ? 'h-auto w-full bg-gradient-to-b from-[#8D14CE] to-[#470A68] rounded-b-2xl p-4' : 'lg:h-full lg:w-full mt-10 lg:-translate-y-28 p-8 lg:p-10'}`}>
-      <div className="items-start ml-0 lg:ml-32">
-        {!isSmallScreen && (
-          <div className="flex justify-between items-center mb-4 lg:mb-0 lg:-translate-x-5 lg:translate-y-8 h-44 w-44">
+  return <>
+  <div className={`hidden lg:flex flex-col items-center  lg:w-full  p-8 `}>
+      <div className="flex  flex-col items-start ml-0 lg:ml-32">
+        
+          <div className="flex  items-center -translate-x-6 lg:mb-4  h-16 w-56">
             <img src='/images/blackonwhitelogo.svg' alt='unicapp' />
           </div>
-        )}
-        <div className="text-center lg:text-left">
-          <h2 className="text-2xl font-bold mb-5 lg:mb-3 lg:translate-x-2 lg:-translate-y-4 text-white lg:text-black">Your Package</h2>
-          {!isSmallScreen && (
-            <div id="map" className="w-full lg:w-96 h-36 border-2 rounded-xl lg:translate-x-3 lg:-translate-y-4 mb-4"></div>
-          )}
-          <div className={`grid gap-4 ${isSmallScreen ? 'grid-cols-1' : 'lg:flex lg:flex-col lg:items-start'}`}>
-            <div className="flex items-center mb-6 sm:justify-center sm:space-x-2">
-              <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
+       
+        <div className="flex flex-col gap-5">
+          <h2 className="text-xl font-bold mb-5 lg:mb-0 lg:translate-x-2  text-white lg:text-black">Your Package</h2>
+          
+            <div id="map" className="w-full lg:w-96 h-28 border-2 rounded-xl lg:translate-x-3  mb-4"></div>
+        
+          <div className={`grid gap-4 lg:flex lg:flex-col lg:items-start`}>
+            <div className="flex   sm:justify-center sm:space-x-2">
+              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center z-10 ">
                 <ArrowUp size={20} />
               </div>
               <div className="ml-1 w-full lg:w-80 text-center sm:text-left">
-                <p className="text-sm font-generalRegular opacity-50 text-white lg:text-black">Pickup</p>
+                <p className="text-xs font-generalRegular opacity-50 text-white lg:text-black">Pickup</p>
                 <p className="text-sm text-gray-200 lg:text-gray-500">{pickupLocation ? formatAddress(pickupLocation) : '--'}</p>
               </div>
             </div>
-            <div className="flex items-center mb-6 sm:justify-center sm:space-x-2">
-              <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
+            <div className='w-32 border border-[#D9D9D9] rotate-90 relative bottom-6 right-12'/>
+            <div className="flex   sm:justify-center sm:space-x-2">
+              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center  justify-center z-10">
                 <ArrowDown size={20} />
               </div>
               <div className="ml-1 w-full lg:w-80 text-center sm:text-left">
-                <p className="text-sm font-generalRegular opacity-50 text-white lg:text-black">Drop Off Point</p>
+                <p className="text-xs font-generalRegular opacity-50 text-white lg:text-black">Drop Off Point</p>
                 <p className="text-sm text-gray-200 lg:text-gray-500">{dropLocation ? formatAddress(dropLocation) : '--'}</p>
               </div>
             </div>
-            <div className={`flex items-center mb-6 ${isSmallScreen ? 'hidden' : 'block'}`}>
-              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+            <div className={`flex   `}>
+              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center ">
                 <Box size={16} />
               </div>
               <div className="ml-3 w-full lg:w-80">
@@ -177,7 +182,7 @@ const LeftDivAdd = () => {
                 <p className="text-sm text-gray-200 lg:text-gray-500">{itemDescription || '--'}</p>
               </div>
             </div>
-            <div className={`flex items-center mb-6 ${isSmallScreen ? 'hidden' : 'block'}`}>
+            <div className={`flex`}>
               <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                 <IndianRupee size={16} />
               </div>
@@ -186,11 +191,11 @@ const LeftDivAdd = () => {
                 <p className="text-sm text-gray-200 lg:text-gray-500">{amount ? `₹${amount}` : '--'}</p>
               </div>
             </div>
-            {!isSmallScreen && (
+            
               <>
                 {/* Stops */}
                 {stops.length > 0 && stops.map((stop, index) => (
-                  <div key={index} className="flex items-center mb-6 lg:flex">
+                  <div key={index} className="flex  ">
                     <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                       <ArrowDown size={20} />
                     </div>
@@ -201,23 +206,28 @@ const LeftDivAdd = () => {
                   </div>
                 ))}
                 {/* Date & Time */}
-                <div className="flex items-center mb-6">
+                <div className="flex  mb-6">
                   <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
                     <Calendar size={16} />
                   </div>
                   <div className="ml-3 w-full lg:w-80">
                     <p className="text-sm font-generalRegular opacity-50">Date & Time</p>
-                    <p className="text-sm text-gray-500">{date ? date.toDateString() : '--'}</p>
-                    <p className="text-sm text-gray-500">{time || '--'}</p>
+                    <p className="text-xs text-gray-500">{date ? date.toDateString() : '--'}</p>
+                    <p className="text-xs text-gray-500">{time || '--'}</p>
                   </div>
                 </div>
               </>
-            )}
+            
           </div>
         </div>
       </div>
     </div>
-  );
+
+ <BookingMobileHeader />
+
+
+  </>
+
 };
 
 export default LeftDivAdd;

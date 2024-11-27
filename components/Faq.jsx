@@ -17,7 +17,7 @@ function Faq() {
   };
 
   return (
-    <div className="flex flex-col text-xs   mx-4 sm:text-lg md:text-xl mb-5">
+    <div className="flex flex-col text-xs justify-center  md:h-screen  mx-4 sm:text-lg md:text-xl mb-5 md:mb-0">
       {/* FAQ Heading */}
       <div className="justify-center items-center flex flex-col px-4 sm:px-6">
         <div className="mb-3 text-center">
@@ -42,10 +42,10 @@ function Faq() {
       </div>
 
       {/* Accordion Section */}
-      <div className="border border-opacity-20 md:border-opacity-50 border-gray-950  rounded-2xl sm:rounded-2xl md:rounded-3xl mx-4 sm:mx-6 md:mx-40 mt-6 md:mt-10 pb-4 px-3 sm:px-5 md:px-9">
+      <div className="border border-opacity-20 md:border-opacity-50 border-gray-950  rounded-2xl sm:rounded-2xl md:rounded-3xl mx-4 sm:mx-6 lg:mx-40 mt-6 md:mt-10 py-4 px-6 sm:px-5 md:px-9">
         {/* Single Accordion Component */}
         <Accordion type="single" collapsible>
-          <AccordionItem value="item-1" className="pt-4">
+          <AccordionItem value="item-1" className="">
             <AccordionTrigger
               className="font-generalRegular hover:no-underline text-left"
               onClick={() => handleToggle("item-1")}

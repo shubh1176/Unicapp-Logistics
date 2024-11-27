@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import Header from "../components/Header";
 import { FaArrowUp, FaArrowUpLong } from "react-icons/fa6";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import GetEstimate from "@/components/GetEstimate";
+import LocationSelectorMobile from "@/components/LocationSelectorMobile";
 
 
 // Load non-essential components lazily to improve loading performance
@@ -28,13 +30,13 @@ export default function Home() {
         <div className="md:py-20 text-center bg-gradient-to-b h-auto md:h-[80vh] lg:h-[70vh] from-[#8D14CE] to-[#470A68] text-white pb-16 md:pb-24  rounded-br-[36px] rounded-bl-[36px] flex flex-col justify-center items-center">
           <div className="flex flex-col items-center space-y-3">
             <div className="flex flex-col px-4  mb-1">
-              <h1 className="text-[29px] leading-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-filson">
-                <span className="bg-[#F5E27B] text-center pt-1 px-2 sm:pt-2 sm:px-3 lg:pt-3 lg:px-4 font-filson inline-flex rounded-lg lg:rounded-2xl text-[#202020]">
+              <h1 className="text-[29px] leading-[32px] sm:text-4xl md:text-5xl lg:text-6xl  font-filson">
+                <span className="bg-[#F5E27B] text-center pt-1 px-2 sm:pt-2 sm:px-3 lg:pt-2 lg:px-4 font-filson inline-flex rounded-lg lg:rounded-2xl text-[#202020]">
                   Deliver
                 </span>{" "}
                 any item, any time
               </h1>
-              <h1 className="text-[29px] leading-[32px]  sm:text-4xl md:text-5xl lg:text-6xl font-filson">
+              <h1 className="text-[29px] leading-[32px]  sm:text-4xl md:text-5xl lg:text-6xl font-filson mt-1 md:mt-2 lg:mt-3">
                 with just a few clicks!
               </h1>
             </div>
@@ -58,10 +60,11 @@ export default function Home() {
               priority 
             />
           </div>
-          <div className="md:hidden w-full px-20 max-w-md md:max-w-lg lg:max-w-xl mt-8 flex flex-col md:flex-row justify-between gap-1 font-montserrat">
+          <LocationSelectorMobile />
+          {/* <div className="md:hidden w-full px-20 max-w-md md:max-w-lg lg:max-w-xl mt-8 flex flex-col md:flex-row justify-between gap-1 font-montserrat">
             <div className="flex flex-col gap-1">
               <div className="relative w-full">
-                {/* FaArrowUp Icon positioned inside the input */}
+                
                 <FaArrowUpLong className="absolute left-3 top-3  text-white" />
                 <input
                   type="text"
@@ -70,7 +73,7 @@ export default function Home() {
                 />
               </div>
               <div className="relative w-full">
-                {/* FaArrowUp Icon positioned inside the input */}
+               
                 <FaArrowUpLong className="absolute left-3 top-3 text-white" />
                 <input
                   type="text"
@@ -86,7 +89,7 @@ export default function Home() {
             >
               Get an estimate
             </button>
-          </div>
+          </div> */}
           {/* Responsive Image Loading and Positioning */}
           <div className="absolute top-40   sm:top-96 md:top-40 lg:top-32 left-8 sm:left-20 md:left-14 lg:left-52 w-12 sm:w-12 md:w-16 lg:w-24 h-12 sm:h-12 md:h-16 lg:h-24 transform -translate-x-1/2 rotate-0">
             <Image
@@ -256,9 +259,12 @@ export default function Home() {
       </div> */}
 
       {/* <MissionSection /> */}
+      <div className="mt-16 lg:mt-0">
       <TestimonialSection />
+      </div>
+      
 
-      <div className="flex flex-col content-center items-center mt-10 xl:mt-20  xl:mb-40 mb-10">
+      <div className="flex flex-col content-center items-center mt-10 lg:mt-0 lg:min-h-screen lg:mb-40 mb-10">
         {" "}
         {/* Adjusted bottom margin */}
         <div>
@@ -294,25 +300,11 @@ export default function Home() {
         />
       </div>
 
-      <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] rounded-lg flex justify-between items-center p-3 px-6 w-[90%]  max-w-5xl mx-auto">
-
-      {/* Text Section */}
-      <div>
-        <h3 className="text-white text-base md:text-xl lg:text-2xl font-bold mb-1">Get an estimate</h3>
-        <p className="text-purple-200 text-[8px] md:text-xs lg:text-sm">
-          Enter your pickup & drop locations to check prices for delivery
-        </p>
-      </div>
-
-      {/* Button Section */}
-      <button className="bg-[#F3E545] text-black flex gap-3 items-center font-semibold py-1.5 px-4 xl:px-48 rounded-sm lg:rounded-lg  text-[8px] md:text-xs lg:text-sm hover:bg-yellow-300 transition-all">
-        See prices {" "} <FaLongArrowAltRight className="hidden xl:block" size={15}/>
-      </button>
-    </div>
+     <GetEstimate />
   
 
 
-      <div className="mt-10 md:mt-20 mb-10">
+      <div className="mt-16 md:mt-20 mb-10">
         <Faq />
       </div>
 

@@ -24,7 +24,7 @@ function Page() {
   };
 
   return (
-    <div className="flex flex-col items-start justify-start min-h-screen mt-52 bg-[#F1EDEA] px-4">
+    <div className="flex flex-col items-start justify-center h-screen  bg-[#F1EDEA] ">
       <div className="max-w-lg w-full ml-20">
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-black font-filson">
@@ -50,13 +50,13 @@ function Page() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 right-0 mb-8 mr-8 -translate-y-14 translate-x-10">
+      <div className="absolute bottom-[72px]  right-0  mr-0  ">
         <Image src={'/images/84.svg'} width={400} height={400} alt="Ribbon" />
       </div>
 
-      <div className="w-full translate-y-72">
+      <div className="w-full absolute bottom-4  ">
         <div className="w-full border-t border-black my-4"></div>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center px-3">
           <Button
             variant="outline"
             className="text-black border border-gray-300 rounded-lg px-6 py-2 hover:bg-gray-100"

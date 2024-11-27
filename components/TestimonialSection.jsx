@@ -1,33 +1,39 @@
 import React, { useState } from "react";
+import Marquee from "react-fast-marquee";
 import { FaStar, FaUser, FaBuilding } from "react-icons/fa"; // Import icons
-
+import { individuals, businesses } from "../utils/data";
 // TestimonialCard component for individual cards
-const TestimonialCard = ({ name, service, review, image }) => {
+const TestimonialCard = ({ name, service, review }) => {
   return (
-    <div className="bg-purple-100 w-72 md:w-auto flex items-center rounded-2xl shadow-md p-4  border border-purple-500 hover:border-purple-600 transition-all duration-300">
-      <img
+    <div className="bg-purple-100 w-72 md:w-auto flex flex-col  items-center justify-between gap-1 rounded-2xl shadow-md p-4   border border-purple-500 hover:border-purple-600 transition-all duration-300">
+      {/* <img
         className="w-14 h-14 rounded-full"
         src={image} // Replace with actual image
         alt="User"
-      />
-      <div className="ml-4 w-full">
+      /> */}
+      <div className="w-full flex justify-between">
+       
+        <h4 className="font-bold text-black text-sm lg:text-[16px] ">{service}</h4>
         <div className="flex items-center mb-1">
           {[...Array(5)].map((_, i) => (
             <FaStar key={i} className="text-yellow-400" />
           ))}
         </div>
-        <h4 className="font-bold text-black">{service}</h4>
-        <p className="text-gray-600 text-xs break-words overflow-hidden text-ellipsis">
+        </div>
+        <p className="text-gray-600 text-[8px] break-words overflow-hidden text-ellipsis w-full">
           {review}
         </p>
-      </div>
+        <p className="text-gray-600 text-[8px] break-words overflow-hidden text-ellipsis w-full">
+          {"___"}{name}
+        </p>
+      
     </div>
   );
 };
 
 const TestimonialTabs = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="flex ml-20  lg:justify-start space-x-0 mb-8">
+    <div className="flex ml-12 md:ml-20  lg:justify-start space-x-0 mb-8">
       {/* Individuals Tab */}
       <button
         onClick={() => setActiveTab("individual")}
@@ -60,64 +66,12 @@ const TestimonialTabs = ({ activeTab, setActiveTab }) => {
 const TestimonialSection = () => {
   const [activeTab, setActiveTab] = useState("individual");
 
-  const individuals = [
-    {
-      name: "Jane Doe",
-      service: "Multiple drop-off points",
-      review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "John Smith",
-      service: "Tiffin Delivery",
-      review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Alice Johnson",
-      service: "Picked Up Keys",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Robert Brown",
-      service: "Multiple drop-off points",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-  ];
+  
 
-  const businesses = [
-    {
-      name: "Company ABC",
-      service: "Document Delivery",
-      review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Company XYZ",
-      service: "Rakhi Delivery",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Company 123",
-      service: "Document Delivery",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      name: "Company 456",
-      service: "Rakhi Delivery",
-      review: "Lorem Ipsum has been the industry's standard dummy text ever since.",
-      image: "https://via.placeholder.com/150",
-    },
-  ];
-
-  const testimonials = activeTab === "individual" ? individuals.concat(individuals) : businesses.concat(businesses); // Display 8 cards in total for demo
+  const testimonials = activeTab === "individual" ? individuals : businesses; // Display 8 cards in total for demo
 
   return (
-    <div className="py-12">
+    <div className="py-12 lg:py-0 lg:h-screen">
       {/* Section Heading */}
       <h2 className="text-2xl lg:text-3xl text-center lg:text-start font-bold text-black lg:ml-20 mb-8">
         See what others are sending
@@ -127,7 +81,14 @@ const TestimonialSection = () => {
       <TestimonialTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Grid Layout for 2 Rows with 4 Cards per Row */}
-      <div className="grid animate-scroll-right-to-left mb-4 grid-cols-4 gap-80 lg:gap-6 px-4">
+      <Marquee
+        gradient={false}
+        speed={50}
+        direction="left"
+        style={{marginBottom:"15px"}}
+       
+      >
+        <div className="grid  md:grid-cols-4 grid-cols-4  gap-8 lg:gap-6 px-4  md:w-screen">
         {testimonials.slice(0, 4).map((testimonial, index) => (
           <TestimonialCard
             key={index}
@@ -137,8 +98,16 @@ const TestimonialSection = () => {
             image={testimonial.image}
           />
         ))}
-      </div>
-      <div className="grid animate-scroll-left-to-right grid-cols-4  gap-80 lg:gap-6 px-4">
+        </div>
+      
+      </Marquee>
+      <Marquee
+        gradient={false}
+        speed={50}
+        direction="right"
+       
+      >
+        <div className="grid  grid-cols-4  gap-8 lg:gap-6 px-4 md:w-screen mb-5">
         {testimonials.slice(4, 8).map((testimonial, index) => (
           <TestimonialCard
             key={index}
@@ -148,7 +117,9 @@ const TestimonialSection = () => {
             image={testimonial.image}
           />
         ))}
-      </div>
+        </div>
+       
+      </Marquee>
     </div>
   );
 };

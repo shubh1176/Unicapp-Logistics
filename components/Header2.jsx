@@ -1,36 +1,31 @@
-"use client";
+"use client"
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ChevronDown, ArrowLeft, ArrowRight, CircleUserRound, WalletMinimal } from 'lucide-react';
+import { ChevronDown, CircleUserRound, EllipsisVertical, WalletMinimal } from 'lucide-react';
+import { UserButton, useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
-import Footer from '@/components/Footer';
-import Faq from '@/components/Faq';
-import CourierComponent from './_components/courierbox';
-import { UserButton, useUser } from '@clerk/clerk-react'
-
-
-function page() {
-    const router = useRouter()
+const Header2 = () => {
+    const router = useRouter();
     const { user } = useUser()
-  return (
-    <div className='bg-[#F1EDEA] '>
-      <div className="bg-gradient-to-r flex justify-between items-center px-4 rounded-xl  -translate-y-4">
+    return (
+        <div className="w-screen bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] lg:bg-none flex justify-between items-center px-4  lg:mt-0  lg:py-0 lg:-translate-y-4 lg:pr-8">
         <div>
-          <Image src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" />
+        <Image  onClick={() => router.push('/')} src={'/images/yellowonwhite.svg'} width={160} height={30} alt="Logo" className='block lg:hidden relative right-3' />
+          <Image  onClick={() => router.push('/')} src={'/images/blackonwhitelogo.svg'} width={200} height={50} alt="Logo" className='hidden lg:block' />
         </div>
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" className="text-black hover:bg-[#E5D5E6] text-lg  rounded-xl" onClick={() => router.push('/')}>
+        <div className="lg:flex items-center gap-4 hidden ">
+          <Button variant="ghost" className="text-black  hover:bg-[#E5D5E6] text-lg hover:cursor-pointer " onClick={() => router.push('/')}>
             Home
           </Button>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1   text-black text-lg hover:cursor-pointer ">
+            <DropdownMenuTrigger className="flex items-center gap-1 text-black p-2 text-lg hover:cursor-pointer hover:bg-[#E5D5E6]  hover:rounded-lg">
               Services <ChevronDown />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">
@@ -58,7 +53,7 @@ function page() {
             Contact
           </Button>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
         {user ? (
           <div className="flex items-center space-x-4 border-2 rounded-lg py-0 px-3">
           <UserButton />
@@ -87,37 +82,53 @@ function page() {
           </div>
         )}
         </div>
-      </div>
-      <div className='mb-10'>
-        <CourierComponent />
-      </div>
 
-      <div className='bg-[#2A2A2A] w-full flex flex-row pt-7 pb-7 justify-between pr-10 pl-10 mt-10'>
-        <div className='flex flex-col'>
-            <div className='flex flex-row gap-2'>
-                <span className='text-[#F3E545] font-semibold text-xl'>Unicapp</span><span className=' text-white font-semibold text-xl'>ships through</span>
-            </div>
-            <div>
-                <span className='text-[#FFFFFF] font-generalLight text-sm'>& many more</span>
-            </div>
-        </div>
-        <div className='mt-2'>
-            <Image src={'/images/shipcompanies.svg'} width={957.14} height={50} />
-        </div>
+        {/* Mobile Dropdown Menu */}
+   <div className="lg:hidden flex ">
+    {!user ? (
+       <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20  " onClick={() => router.replace('/dashboard')}>
+       Sign In
+     </Button>
+    ):(
+      <UserButton  appearance={Image} />
+    )}
+    
+  
+        <DropdownMenu>
+          <DropdownMenuTrigger className="flex items-center text-white focus:outline-none">
+            <EllipsisVertical size={24} />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="bg-white text-black  mt-0 rounded-md shadow-lg w-48 p-2 mr-7">
+          {user && <DropdownMenuItem
+              className="py-2 w-full border-b border-gray-300  cursor-pointer text-lg"
+              onClick={() => router.push("/dashboard")}
+            >
+              Dashboard
+            </DropdownMenuItem>}
+            <DropdownMenuItem
+              className="py-2 w-full border-b border-gray-300  cursor-pointer text-lg"
+              onClick={() => router.push("/businesses")}
+            >
+              For Business
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="py-2 w-full border-b border-gray-300 cursor-pointer  text-lg"
+              onClick={() => router.push("/about")}
+            >
+              About Us
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              className="py-2 w-full cursor-pointer text-lg"
+              onClick={() => router.push("/contact")}
+            >
+              Contact
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
-
-      <div className='flex justify-center items-center content-center mb-28 mt-20'>
-        <Image src={'/images/courierguy.svg'} height={565} width={1121} />
+  
       </div>
-      <div className='mb-20'>
-        <Faq />
-      </div>
-      <div className='mt-10'>
-        <Footer />
-      </div>
-        
-    </div>
-  )
+    )
 }
 
-export default page
+export default Header2

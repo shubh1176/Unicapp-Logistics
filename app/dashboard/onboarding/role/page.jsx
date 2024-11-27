@@ -82,10 +82,10 @@ const RoleSelectionPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen px-2 sm:px-4 md:px-8 lg:px-16 -translate-y-4">
-      <div className="-translate-y-10 sm:-translate-y-20 w-full max-w-xs sm:max-w-md">
+    <div className="flex flex-col items-center justify-center h-screen px-2 sm:px-4 md:px-8 lg:px-16 ">
+      <div className="-translate-y-10  w-full max-w-xs sm:max-w-md">
         <div className="flex flex-col items-center justify-center h-full">
-          <Image src="/images/blackonwhitelogo.svg" alt="Logo" width={200} height={20} className="translate-y-2 sm:translate-y-3 hover:cursor-pointer" onClick={() =>{router.push('/')}}/>
+          <Image src="/images/blackonwhitelogo.svg" alt="Logo" width={250} height={20} className="translate-y-2 sm:translate-y-3 hover:cursor-pointer" onClick={() =>{router.push('/')}}/>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-generalMedium mb-3 sm:mb-4 -translate-y-2 sm:-translate-y-3 text-center">How can we define you better?</h2>
           <p className="text-black mb-4 sm:mb-6 font-generalRegular w-full text-center text-sm sm:text-base md:text-lg -translate-y-2 sm:-translate-y-3">We'll fit your experience to your needs. Don't worry, you can change it later.</p>
           <div className="flex flex-row mb-4 sm:mb-6 gap-2 sm:gap-4 w-full justify-center">

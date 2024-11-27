@@ -7,20 +7,18 @@ import Footer from '@/components/Footer';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Faq from '@/components/Faq';
-import { ArrowRight, ChevronDown, CircleUserRound, CircleUserRoundIcon, WalletMinimal } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { UserButton, useUser } from '@clerk/clerk-react'
+import {  useUser } from '@clerk/clerk-react'
+import Header2 from '@/components/Header2';
+import GetEstimate from '@/components/GetEstimate';
+import Header3 from '@/components/Header3';
+import { or } from 'drizzle-orm';
 
 function Contact() {
   const router = useRouter();
   const { user } = useUser()
   const [formData, setFormData] = useState({
     name: '',
+    organization: '',
     email: '',
     phone: '',
     message: ''
@@ -43,117 +41,64 @@ function Contact() {
 
     if (res.ok) {
       alert('Your message has been sent successfully.');
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({ name: '', organization: '', email: '', phone: '', message: '' });
     } else {
       alert('Failed to send your message. Please try again later.');
     }
   };
 
   return (
-    <div className='bg-[#F1EDEA] pt-1'>
-      <div className="bg-[#470A68] flex justify-between items-center px-4 h-20 rounded-xl py-1 m-5">
-      <div>
-        <Image src={'/images/yellowonwhite.svg'} width={200} height={50} alt="Logo" />
+    <div className='bg-[#F1EDEA] max-w-screen overflow-hidden'>
+      {/* Header: Show based on screen size */}
+      <div >
+        <Header3 />
       </div>
-      <div className="flex items-center gap-4">
-        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 hover:text-white text-lg" onClick={() => router.push('/')}>
-          Home
-        </Button>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="flex items-center gap-1 text-white text-lg p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">
-            Services <ChevronDown />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">
-            <DropdownMenuItem className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer" onClick={() => router.push('/Pickup-and-drop')}>
-              Pickup & Drop
-            </DropdownMenuItem>
-            <DropdownMenuItem className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer" onClick={() => router.push('/courier')}>
-              Intercity Courier
-            </DropdownMenuItem>
-            <DropdownMenuItem className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer">
-              API Integration
-            </DropdownMenuItem>
-            <DropdownMenuItem className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer" onClick={() => router.push('/businesses')}>
-              Last-mile Delivery
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 hover:text-white text-lg" onClick={() => router.push('/businesses')}>
-          For business
-        </Button>
-        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 hover:text-white text-lg" onClick={() => router.push('/about')}>
-          About us
-        </Button>
-        <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 hover:text-white text-lg" onClick={() => router.push('/contact')}>
-          Contact
-        </Button>
-      </div>
-      <div className="flex items-center gap-2">
-      {user ? (
-          <div className="flex items-center space-x-4 border-2 rounded-lg py-2 px-3">
-          <UserButton />
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 text-white text-xs p-2 rounded-lg cursor-pointer hover:bg-white hover:bg-opacity-20 hover:text-white">
-              {user.fullName || 'Guest'} <ChevronDown />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white shadow-lg rounded-md mt-2 p-2">
-              <DropdownMenuItem className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer gap-2" onClick={() => router.push('/dashboard')}>
-              <CircleUserRoundIcon />Account
-              </DropdownMenuItem>
-              <DropdownMenuItem className="px-4 py-2 hover:bg-gray-100 rounded-md cursor-pointer gap-2" onClick={() => router.push('/dashboard/wallet')}>
-              <WalletMinimal />Wallet
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-        ) : (
-          <>
-            <Button variant="ghost" className="text-white hover:bg-white hover:bg-opacity-20 hover:text-white text-md" onClick={()=>router.replace('/dashboard')}>
-              Log In
-            </Button>
-            <Button className="text-[#470A68] bg-white hover:border-2 hover:outline-2 hover:bg-[#470A68] hover:text-white" onClick={()=>router.replace('/dashboard')}>
-              Sign up
-            </Button>
-          </>
-        )}
-      </div>
-    </div>
+      
 
-      <div className='flex flex-row gap-9 p-20'>
-        <div className='flex flex-col ml-8 translate-y-11 translate-x-20'>
-          <div className=''>
-            <h2 className='text-6xl font-generalSemiBold'>Contact Us</h2>
-            <div className='flex flex-col mt-5 p-2'>
-              <span className='font-generalLight text-xl'>Email, call or complete the form to learn how</span>
-              <span className='font-generalLight text-xl'>Unicapp can help you with your deliveries.</span>
-              <span className='font-generalLight text-xl mt-10'>Email: contact@unicapp.in</span>
-              <span className='font-generalLight text-xl mt-2'>Call : +91 9625811881</span>
-            </div>
+      {/* Main Content Section */}
+      <div className='lg:flex lg:flex-row lg:justify-between  lg:p-20 p-6'>
+        {/* Left Side */}
+        <div className='lg:flex lg:flex-col lg:ml-8 lg:translate-y-11 lg:translate-x-0'>
+          <h2 className='text-4xl lg:text-6xl font-generalSemiBold'>Contact Us</h2>
+          <div className='flex flex-col mt-5 lg:mt-10'>
+            <span className='font-generalLight text-base lg:text-xl'>Email, call or complete the form to learn how</span>
+            <span className='font-generalLight text-base lg:text-xl'>Unicapp can help you with your deliveries.</span>
+            <span className='font-generalLight text-base lg:text-xl mt-6 lg:mt-10'>Email: contact@unicapp.in</span>
+            <span className='font-generalLight text-base lg:text-xl mt-2'>Call : +91 9625811881</span>
           </div>
-          <div className='flex flex-row gap-5 mt-12'>
-            <div className='w-60'>
-              <h3 className='font-generalMedium underline text-base mb-2'>Customer Support</h3>
-              <span className='font-generalRegular mt-1 text-right text-sm'>Our support team is available <br></br> around the clock to address any <br></br> concerns or queries you may <br></br> have.</span>
+
+          {/* Customer Support and Feedback */}
+          <div className='flex flex-col lg:flex-row gap-5 mt-8 lg:mt-12'>
+            <div className='w-full lg:w-60'>
+              <h3 className='font-generalMedium underline text-sm lg:text-base mb-2'>Customer Support</h3>
+              <span className='font-generalRegular text-sm lg:text-base'>
+                Our support team is available around the clock to address any concerns or queries you may have.
+              </span>
             </div>
-            <div className='w-60'>
-              <h3 className='font-generalMedium underline text-base mb-2'>Feedback and Suggestions</h3>
-              <span className='font-generalRegular mt-1 text-right text-sm'>Our support team is available <br></br> around the clock to address any <br></br> concerns or queries you may <br></br> have.</span>
+            <div className='w-full lg:w-60'>
+              <h3 className='font-generalMedium underline text-sm lg:text-base mb-2'>Feedback and Suggestions</h3>
+              <span className='font-generalRegular text-sm lg:text-base'>
+                Our support team is available to receive any feedback or suggestions to improve our services.
+              </span>
             </div>
           </div>
         </div>
-        <div>
-          <div className='bg-white rounded-2xl flex flex-col p-10 ml-52 mr-14 shadow-md'>
-            <h1 className='font-generalLight text-5xl mb-9'>Get in touch</h1>
-            <span className='font-semibold mb-4 text-sm'>Customer Support</span>
-            <p className='text-gray-600 mb-8'>
+
+        {/* Form Section */}
+        <div className='mt-12 max-w-md lg:mt-0 lg:max-w-lg'>
+          <div className='bg-white rounded-2xl p-6 lg:p-10 shadow-md'>
+            <h1 className='font-generalLight text-3xl lg:text-5xl mb-6 lg:mb-12'>Get in touch</h1>
+            {/* <span className='font-semibold mb-4 text-sm lg:text-lg'>Customer Support</span>
+            <p className='text-gray-600 mb-6'>
               Our support team is available around the clock to address any concerns or queries you may have.
-            </p>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            </p> */}
+            <form onSubmit={handleSubmit} className="space-y-8 mt-4">
+              <div className="flex flex-col gap-4">
+                <div className='flex gap-6 mb-3'>
                 <div>
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name</label>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="name">Name</label>
                   <Input
-                    className="shadow appearance-none bordee rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className=" appearance-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
                     id="name"
                     type="text"
                     name="name"
@@ -163,9 +108,24 @@ function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email Address</label>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="name">Organization</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className=" appearance-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
+                    id="name"
+                    type="text"
+                    name="name"
+                    value={formData.organization}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                </div>
+
+               <div className='flex gap-6 mb-3'>
+               <div>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="email">Email Address</label>
+                  <Input
+                    className=" appearance-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
                     id="email"
                     type="email"
                     name="email"
@@ -175,9 +135,9 @@ function Contact() {
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">Phone Number</label>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="phone">Phone Number</label>
                   <Input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className=" appearance-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
                     id="phone"
                     type="text"
                     name="phone"
@@ -186,10 +146,12 @@ function Contact() {
                     required
                   />
                 </div>
+               </div>
+                
                 <div>
-                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">Message</label>
+                  <label className="block text-gray-700 text-sm font-bold " htmlFor="message">Message</label>
                   <Textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className=" appearance-none resize-none   w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-0 border-b-2  border-black rounded-none  shadow-none"
                     id="message"
                     name="message"
                     value={formData.message}
@@ -209,8 +171,9 @@ function Contact() {
         </div>
       </div>
 
-      <div className="mt-12 ml-32 flex flex-row">
-        <div className="w-5/12 h-96 translate-x-14">
+      {/* Map and Location Info */}
+      <div className='mt-12 lg:mt-0 px-4 lg:px-24 w-full flex flex-col-reverse  lg:flex-row lg:h-screen'>
+        <div className="w-full lg:w-[55%] h-96 lg:h-full">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d799.555333633901!2d77.21645935361299!3d28.63083352312202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd49c7175d4f%3A0x16da96dd1f463918!2sRegal%20Building%2C%20Hanuman%20Road%20Area%2C%20Connaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1722761292583!5m2!1sen!2sin"
             width="100%"
@@ -222,30 +185,24 @@ function Contact() {
             className='rounded-2xl'
           ></iframe>
         </div>
-        <div className='ml-32 mt-10 flex flex-col translate-y-8'>
-          <h2 className=' mb-3'>Our Location</h2>
-          <h2 className='text-3xl font-generalLight'>Connecting Near and Far</h2>
-          <span className='mt-8 font-bold'>Head Office</span>
+        <div className='mt-8 lg:mt-0  lg:flex  lg:flex-col lg:justify-center ml-5 '>
+          <p className='text-lg lg:text-xl mb-3 font-generalRegular'>Our Location</p>
+          <h2 className='text-lg lg:text-3xl font-bold'>Connecting Near and Far</h2>
+          <span className='mt-4 lg:mt-8 font-bold'>Head Office</span>
           <span className='mt-4'>Unicapp Logistics Pvt. Ltd.<br /> 44, Backary portion, 2nd Floor, <br /> Regal Building, Connaught Place,<br /> New Delhi -110001<br />India</span>
         </div>
       </div>
 
-      <div className='mt-20 mb-36'>
-      <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] text-white rounded-xl pl-4 pr-4 py-3 mx-56 mt-36 mb-16 flex flex-row gap-4 items-center">
-          <div className='translate-x-6'>
-            <h2 className="text-4xl font-bold mb-4 font-filson translate-y-4 ">Get an estimate</h2>
-            <p className="mb-4 font-generalRegular ">Enter your pickup & drop locations to check prices for delivery and courier.</p>
-          </div>
-          <div className="ml-40"> 
-            <Button className="bg-[#F3E545] text-black py-2 px-4 rounded-xl w-96 hover:bg-[#E8D828] gap-4" onClick={()=>{router.push('/estimate')}}>See prices <Image src={'/images/arrow2.svg'} width={30} height={25} /> </Button>
-          </div>
-        </div>
+      {/* Estimate Section */}
+      <div className='w-full mt-20 lg:mt-48 lg:mb-24'>
+        <GetEstimate  />
       </div>
 
-      <div className='mt-20 mb-24'>
+      {/* FAQ and Footer */}
+      <div className='w-full mt-20'>
         <Faq />
       </div>
-      <div className='mb-3'>
+      <div className='mt-12 lg:mt-24 md:mb-5'>
         <Footer />
       </div>
     </div>
