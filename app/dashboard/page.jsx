@@ -318,7 +318,7 @@ function DashboardPage() {
   }
 
   return (
-<div className="flex flex-col lg:flex-row min-h-screen bg-transparent lg:bg-gradient-to-b lg:from-[#470a68] lg:to-[#8D14CE] lg:p-2 lg:pl-0 ">
+<div className="flex flex-col lg:flex-row min-h-screen bg-transparent lg:bg-gradient-to-b lg:from-[#470a68] lg:to-[#8D14CE]    ">
 {/* Sidebar */}
       <aside
         className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-52 lg:w-[15%] transform ${
@@ -381,7 +381,8 @@ function DashboardPage() {
       </aside>
       <DashboardMobileHeader /> {/* shown on small screens only */}
       {/* Main Content */}
-      <div className="flex flex-col flex-grow bg-white rounded-lg overflow-y-scroll h-[97vh] hide-scrollbar lg:w-[85%]">
+      <div className="lg:w-[85%] lg:h-screen lg:p-3">
+      <div className="flex flex-col flex-grow bg-white rounded-lg overflow-y-scroll h-full hide-scrollbar  lg:my-auto">
         {/* Header for Large Screens */}
         <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4  w-full mb-3">
           <div className="flex items-center space-x-4 lg:justify-between w-full">
@@ -1008,6 +1009,8 @@ function DashboardPage() {
           </div>
         )}
       </div>
+      </div>
+      
     </div>
   );
 }

@@ -263,9 +263,9 @@ function EstimateComponent() {
         className={`hidden lg:flex relative flex-col items-start py-10 px-6 mx-10 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg max-h-[110vh] ${
           showPriceDetails
             ? serviceType === "Courier"
-              ? "h-[110vh]"
+              ? "h-[40rem]"
               : serviceType === "Pickup & Drop"
-              ? "h-[95vh]"
+              ? "h-[38rem]"
               : "h-auto"
             : "h-auto"
         }`}
