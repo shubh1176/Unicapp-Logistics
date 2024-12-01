@@ -318,8 +318,8 @@ function DashboardPage() {
   }
 
   return (
-<div className="flex flex-col lg:flex-row min-h-screen bg-transparent lg:bg-gradient-to-b lg:from-[#470a68] lg:to-[#8D14CE]    ">
-{/* Sidebar */}
+    <div className="flex flex-col lg:flex-row min-h-screen bg-transparent lg:bg-gradient-to-b lg:from-[#470a68] lg:to-[#8D14CE]    ">
+      {/* Sidebar */}
       <aside
         className={`fixed inset-y-0 left-0 z-20 bg-gradient-to-b from-[#470a68] to-[#8D14CE] text-white w-52 lg:w-[15%] transform ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -382,447 +382,492 @@ function DashboardPage() {
       <DashboardMobileHeader /> {/* shown on small screens only */}
       {/* Main Content */}
       <div className="lg:w-[85%] lg:h-screen lg:p-3">
-      <div className="flex flex-col flex-grow bg-white rounded-lg overflow-y-scroll h-full hide-scrollbar  lg:my-auto">
-        {/* Header for Large Screens */}
-        <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4  w-full mb-3">
-          <div className="flex items-center space-x-4 lg:justify-between w-full">
-            <button
-              className="lg:hidden"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-            >
-              <Menu size={24} />
-            </button>
-            <button
-              onClick={() => router.push("/dashboard/booking/location")}
-              className="px-4 py-2 bg-[#FFDD00] font-filson text-black rounded-xl hover:bg-[#ffdd00c9]"
-            >
-              + Book a new pickup
-            </button>
-            <div className="flex items-center space-x-2">
-              {userData && (
-                <div className="flex items-center space-x-2">
-                  <Switch
-                    checked={userData.role === "Business"}
-                    onCheckedChange={toggleRole}
-                    id="role-switch"
-                  />
-                  <label
-                    htmlFor="role-switch"
-                    className="text-lg font-semibold"
-                  >
-                    {/* {userData.role === "Business" ? "Business" : "Individual"}
-                     */}
-                    Business
-                  </label>
-                </div>
-              )}
-              <div className="hidden lg:flex items-center border-2 rounded-lg py-1 px-3">
-                {/* Combined Dropdown for account, wallet, and sign out */}
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center gap-1 text-lg">
-                    {user?.fullName || "Guest"}
-                    <ChevronDown />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <Dialog
-                      open={timeSlotDialogOpen}
-                      onOpenChange={setTimeSlotDialogOpen}
+        <div className="flex flex-col flex-grow bg-white rounded-lg overflow-y-scroll h-full hide-scrollbar  lg:my-auto">
+          {/* Header for Large Screens */}
+          <header className="hidden lg:flex items-center justify-between pt-4 pb-3 px-4  w-full mb-3">
+            <div className="flex items-center space-x-4 lg:justify-between w-full">
+              <button
+                className="lg:hidden"
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+              >
+                <Menu size={24} />
+              </button>
+              <button
+                onClick={() => router.push("/dashboard/booking/location")}
+                className="px-4 py-2 bg-[#FFDD00] font-filson text-black rounded-xl hover:bg-[#ffdd00c9]"
+              >
+                + Book a new pickup
+              </button>
+              <div className="flex items-center space-x-2">
+                {userData && (
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      checked={userData.role === "Business"}
+                      onCheckedChange={toggleRole}
+                      id="role-switch"
+                    />
+                    <label
+                      htmlFor="role-switch"
+                      className="text-lg font-semibold"
                     >
-                      <DialogTrigger asChild>
-                        <DropdownMenuItem>
-                          Select Preferred Time Slot
-                        </DropdownMenuItem>
-                      </DialogTrigger>
-                      <DialogContent>
-                        <DialogHeader>
-                          <DialogTitle>
-                            Select Your Preferred Time Slot
-                          </DialogTitle>
-                        </DialogHeader>
-                        <select
-                          value={preferredTimeSlot}
-                          onChange={handleTimeSlotChange}
-                          className="p-2 border border-gray-300 rounded w-full"
-                        >
-                          <option value="">Select a time slot</option>
-                          {timeSlots.map((slot) => (
-                            <option key={slot} value={slot}>
-                              {slot}
-                            </option>
-                          ))}
-                        </select>
-                        <DialogFooter>
-                          <Button
-                            onClick={handleConfirmTimeSlot}
-                            disabled={!preferredTimeSlot}
+                      {/* {userData.role === "Business" ? "Business" : "Individual"}
+                       */}
+                      Business
+                    </label>
+                  </div>
+                )}
+                <div className="hidden lg:flex items-center border-2 rounded-lg py-1 px-3">
+                  {/* Combined Dropdown for account, wallet, and sign out */}
+                  <DropdownMenu>
+                    <DropdownMenuTrigger className="flex items-center gap-1 text-lg">
+                      {user?.fullName || "Guest"}
+                      <ChevronDown />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <Dialog
+                        open={timeSlotDialogOpen}
+                        onOpenChange={setTimeSlotDialogOpen}
+                      >
+                        <DialogTrigger asChild>
+                          <DropdownMenuItem>
+                            Select Preferred Time Slot
+                          </DropdownMenuItem>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>
+                              Select Your Preferred Time Slot
+                            </DialogTitle>
+                          </DialogHeader>
+                          <select
+                            value={preferredTimeSlot}
+                            onChange={handleTimeSlotChange}
+                            className="p-2 border border-gray-300 rounded w-full"
                           >
-                            Confirm
-                          </Button>
-                        </DialogFooter>
-                      </DialogContent>
-                    </Dialog>
-                    <DropdownMenuItem onClick={signOut}>
-                      <LogOut size={16} /> Sign Out
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            </div>
-          </div>
-        </header>
-        <hr className="border-gray-200 border-1 w-full" />
-
-        {/* Content based on role */}
-        {userData?.role === "Business" ? (
-          <div className="flex-1 bg-gray-50 rounded-lg">
-            {/* Business User Content */}
-            <h1 className="text-3xl font-generalSemiBold mb-4 ml-6 mt-4">
-              Welcome {user?.firstName} 👋
-            </h1>
-            <div className="p-4 mb-4 -translate-x-3.5 ml-6">
-              <h3 className="text-2xl font-generalMedium mb-5">
-                Orders Summary
-              </h3>
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
-                <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
-                  <div className="flex flex-row justify-between">
-                    <p className="text-gray-500 font-filson">Total Orders</p>
-                    <Image
-                      src={"/images/Truck.svg"}
-                      width={30}
-                      height={30}
-                      alt="Truck"
-                    />
-                  </div>
-                  <p className="text-4xl font-bold mt-10">{orders.length}</p>
-                </div>
-                <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
-                  <div className="flex flex-row justify-between">
-                    <p className="text-gray-500 font-filson">Order Placed</p>
-                    <Image
-                      src={"/images/Boxes.svg"}
-                      width={30}
-                      height={30}
-                      alt="Boxes"
-                    />
-                  </div>
-                  <p className="text-4xl font-bold mt-10">
-                    {orderCount("Order Placed")}
-                  </p>
-                </div>
-                <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
-                  <div className="flex flex-row justify-between">
-                    <p className="text-gray-500 font-filson">In-Transit</p>
-                    <Image
-                      src={"/images/return.svg"}
-                      width={30}
-                      height={30}
-                      alt="Return"
-                    />
-                  </div>
-                  <p className="text-4xl font-bold mt-10">
-                    {orderCount("In-Transit")}
-                  </p>
-                </div>
-                <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
-                  <div className="flex flex-row justify-between">
-                    <p className="text-gray-500 font-filson">
-                      Return to Origin (RTO)
-                    </p>
-                    <Image
-                      src={"/images/chart.svg"}
-                      width={30}
-                      height={30}
-                      alt="Chart"
-                    />
-                  </div>
-                  <p className="text-4xl font-bold mt-10">
-                    {orderCount("Return to Origin (RTO)")}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white  ml-6 mr-6">
-              <h2 className="text-2xl  font-generalMedium mt-5 mb-8">
-              Delivery Reports
-              </h2>
-                
-              <div className="flex justify-between items-center  mb-4">
-                <div className="flex w-full pl-7 space-x-8 border-b border-gray-300">
-                  {[
-                    { label: "All Deliveries", value: "" },
-                    { label: "In-Transit", value: "In-Transit" },
-                    { label: "Scheduled", value: "Scheduled" },
-                    { label: "Completed", value: "Completed" },
-                    { label: "Failed Attempts", value: "Failed Attempts" },
-                    { label: "Returns", value: "Returns" },
-                  ].map((filter) => (
-                    <button
-                      key={filter.value}
-                      onClick={() => setStatusFilter(filter.value)}
-                      className={`relative pb-4  text-sm font-medium ${
-                        statusFilter === filter.value
-                          ? "text-[#0094B2]"
-                          : "text-gray-700 hover:text-gray-900"
-                      }`}
-                    >
-                      {filter.label}
-                      {statusFilter === filter.value && (
-                        <span
-                          className="absolute bottom-0 left-0 h-[2px] bg-[#0094B2] w-full"
-                          style={{
-                            transition: "width 0.3s ease-in-out",
-                          }}
-                        ></span>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {filteredOrders.length > 0 ? (
-                <>
-                  <div className="overflow-x-auto rounded shadow max-w-full">
-                    <Table>
-                      <TableHeader>
-                        <TableRow className="bg-gray-200">
-                          <TableHead className="font-filson ">
-                            Order ID
-                          </TableHead>
-                          <TableHead className="font-filson">
-                            Delivery Type:
-                          </TableHead>
-                          <TableHead className="font-filson">Date</TableHead>
-                          <TableHead className="font-filson">Weight</TableHead>
-                          <TableHead className="font-filson">Status</TableHead>
-                          <TableHead className="font-filson">
-                            Special Instructions
-                          </TableHead>
-                          <TableHead className="font-filson">Amount</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {currentOrders.map((order) => (
-                          <>
-                            <TableRow
-                              key={order.order_id}
-                              onClick={() =>
-                                setExpandedOrderId(
-                                  order.order_id === expandedOrderId
-                                    ? null
-                                    : order.order_id
-                                )
-                              }
+                            <option value="">Select a time slot</option>
+                            {timeSlots.map((slot) => (
+                              <option key={slot} value={slot}>
+                                {slot}
+                              </option>
+                            ))}
+                          </select>
+                          <DialogFooter>
+                            <Button
+                              onClick={handleConfirmTimeSlot}
+                              disabled={!preferredTimeSlot}
                             >
-                              <TableCell>{order.order_id}</TableCell>
-                              <TableCell>
-                                {order.deliveryType || "N/A"}
-                              </TableCell>
-                              <TableCell>
-                                {moment(order.date).format("LL")}
-                              </TableCell>
-                              <TableCell>{order.weight} kg</TableCell>
-                              <TableCell className="flex items-center mt-2">
-                                <div
-                                  className={`${getStatusStyle(
-                                    order.status
-                                  )} rounded-2xl px-4 `}
-                                >
-                                  <span>{order.status}</span>
-                                </div>
-                              </TableCell>
-                              <TableCell>{order.specialInstructions}</TableCell>
-                              <TableCell>₹{order.amount}</TableCell>
-                            </TableRow>
-                            {expandedOrderId === order.order_id && (
-                              <TableRow key={`${order.order_id}-details`}>
-                                <TableCell colSpan={7}>
-                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-0 py-0  ">
-                                    <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-0 pb-6">
-                                      <div className="flex flex-row gap-2 mt-3">
-                                        <Truck size={20} strokeWidth={1.25} />{" "}
-                                        <h4 className="font-bold mb-4">
-                                          {" "}
-                                          ORDER DETAILS
-                                        </h4>
-                                      </div>
-                                      <div className="flex flex-wrap gap-4 justify-between">
+                              Confirm
+                            </Button>
+                          </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
+                      <DropdownMenuItem onClick={signOut}>
+                        <LogOut size={16} /> Sign Out
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </div>
+            </div>
+          </header>
+          <hr className="border-gray-200 border-1 w-full" />
 
-                                      <div>
-                                        <p className="font-generalMedium text-gray-400">ORDER DATE:</p>{" "}
-                                        <p className="text-gray-800">{moment(order.date).format("LL")}</p>
-                                        
-                                      </div>
-                                      <div>
-                                        <p className="font-generalMedium text-gray-400">DELIVERY TYPE:</p>{" "}
-                                        <p className="text-gray-800">{order.deliveryType || "N/A"}</p>
-                                      </div>
-                                      <div>
-                                        <p className="font-generalMedium text-gray-400">DELIVERY FEES:</p>{" "}
-                                       <p className="text-gray-800">{order.deliveryFees || "N/A"}</p> 
-                                      </div>
-                                      <div>
-                                        <p className="font-generalMedium text-gray-400 mr-5">INSURANCE:</p>{" "}
-                                        <p className="text-gray-800">{order.insurance || "N/A"}</p>
-                                      </div>
-                                      <div>
-                                        <p className="font-generalMedium text-gray-400 ">WEIGHT / DIMENSION:</p>{" "}
-                                       <p className="text-gray-800">{order.weight || "N/A"} kg (
-                                        {order.length}cm x {order.width}cm x{" "}
-                                        {order.height}cm)</p> 
-                                      </div>
-                                      </div>
-                                     
-                                      
-                                     
-                                    </div>
-                                    <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-2 pb-6">
-                                      <div className="flex flex-row gap-2 mt-0">
-                                        <UserRound
-                                          size={20}
-                                          strokeWidth={1.25}
-                                        />{" "}
-                                        <span className="font-bold mb-4">
-                                          CUSTOMER INFORMATION
-                                        </span>
-                                      </div>
-                                      <div className="flex flex-row  gap-10 justify-between">
-                                        <div className="text-sm">
-                                          <p className="font-generalMedium text-gray-400 text-base">FROM:</p>{" "}
-                                         <p className="text-gray-800">{order.pickupLocation || "N/A"}</p>
-                                        </div>
-                                        <div className="text-sm">
-                                          <p className="font-generalMedium text-gray-400 text-base">TO:</p>{" "}
-                                         <p className="text-gray-800">{order.dropLocation || "N/A"}</p> 
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-2 pb-6">
-                                      <div className="flex flex-row gap-2 mt-0">
-                                        <Truck size={20} strokeWidth={1.25} />
-                                        <h4 className="font-bold mb-4">
-                                          {" "}
-                                          DELIVERY INFORMATION
-                                        </h4>
-                                      </div>
-                                      <div>
-                                        <p className="font-generalMedium text-gray-400 text-base">SHIPPED THROUGH:</p>{" "}
-                                       <p className="text-gray-800">{order.shipping_service || "N/A"}</p> 
-                                      </div>
-                                      <div>
-                                        <p className="font-generalMedium text-gray-400 text-base">TRACKING NUMBER:</p>{" "}
-                                      <p className="text-gray-800"> {order.Tracking_number || "N/A"}</p>  
-                                      </div>
-                                      <div>
-                                        <p className="font-generalMedium text-gray-400 text-base">TRACKING LINK:</p>{" "}
-                                       <p className="text-gray-800"> {order.Tracking_link || "N/A"}</p>
-                                      </div>
-                                    </div>
+          {/* Content based on role */}
+          {userData?.role === "Business" ? (
+            <div className="flex-1 bg-gray-50 rounded-lg">
+              {/* Business User Content */}
+              <h1 className="text-3xl font-generalSemiBold mb-4 ml-6 mt-4">
+                Welcome {user?.firstName} 👋
+              </h1>
+              <div className="p-4 mb-4 -translate-x-3.5 ml-6">
+                <h3 className="text-2xl font-generalMedium mb-5">
+                  Orders Summary
+                </h3>
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+                  <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
+                    <div className="flex flex-row justify-between">
+                      <p className="text-gray-500 font-filson">Total Orders</p>
+                      <Image
+                        src={"/images/Truck.svg"}
+                        width={30}
+                        height={30}
+                        alt="Truck"
+                      />
+                    </div>
+                    <p className="text-4xl font-bold mt-10">{orders.length}</p>
+                  </div>
+                  <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
+                    <div className="flex flex-row justify-between">
+                      <p className="text-gray-500 font-filson">Order Placed</p>
+                      <Image
+                        src={"/images/Boxes.svg"}
+                        width={30}
+                        height={30}
+                        alt="Boxes"
+                      />
+                    </div>
+                    <p className="text-4xl font-bold mt-10">
+                      {orderCount("Order Placed")}
+                    </p>
+                  </div>
+                  <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
+                    <div className="flex flex-row justify-between">
+                      <p className="text-gray-500 font-filson">In-Transit</p>
+                      <Image
+                        src={"/images/return.svg"}
+                        width={30}
+                        height={30}
+                        alt="Return"
+                      />
+                    </div>
+                    <p className="text-4xl font-bold mt-10">
+                      {orderCount("In-Transit")}
+                    </p>
+                  </div>
+                  <div className="p-4 rounded-3xl shadow bg-[#F5F5F5] text-center flex flex-col h-40">
+                    <div className="flex flex-row justify-between">
+                      <p className="text-gray-500 font-filson">
+                        Return to Origin (RTO)
+                      </p>
+                      <Image
+                        src={"/images/chart.svg"}
+                        width={30}
+                        height={30}
+                        alt="Chart"
+                      />
+                    </div>
+                    <p className="text-4xl font-bold mt-10">
+                      {orderCount("Return to Origin (RTO)")}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white  ml-6 mr-6">
+                <h2 className="text-2xl  font-generalMedium mt-5 mb-8">
+                  Delivery Reports
+                </h2>
+
+                <div className="flex justify-between items-center  mb-4">
+                  <div className="flex w-full pl-7 space-x-8 border-b border-gray-300">
+                    {[
+                      { label: "All Deliveries", value: "" },
+                      { label: "In-Transit", value: "In-Transit" },
+                      { label: "Scheduled", value: "Scheduled" },
+                      { label: "Completed", value: "Completed" },
+                      { label: "Failed Attempts", value: "Failed Attempts" },
+                      { label: "Returns", value: "Returns" },
+                    ].map((filter) => (
+                      <button
+                        key={filter.value}
+                        onClick={() => setStatusFilter(filter.value)}
+                        className={`relative pb-4  text-sm font-medium ${
+                          statusFilter === filter.value
+                            ? "text-[#0094B2]"
+                            : "text-gray-700 hover:text-gray-900"
+                        }`}
+                      >
+                        {filter.label}
+                        {statusFilter === filter.value && (
+                          <span
+                            className="absolute bottom-0 left-0 h-[2px] bg-[#0094B2] w-full"
+                            style={{
+                              transition: "width 0.3s ease-in-out",
+                            }}
+                          ></span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {filteredOrders.length > 0 ? (
+                  <>
+                    <div className="overflow-x-auto rounded shadow max-w-full">
+                      <Table>
+                        <TableHeader>
+                          <TableRow className="bg-gray-200">
+                            <TableHead className="font-filson ">
+                              Order ID
+                            </TableHead>
+                            <TableHead className="font-filson">
+                              Delivery Type:
+                            </TableHead>
+                            <TableHead className="font-filson">Date</TableHead>
+                            <TableHead className="font-filson">
+                              Weight
+                            </TableHead>
+                            <TableHead className="font-filson">
+                              Status
+                            </TableHead>
+                            <TableHead className="font-filson">
+                              Special Instructions
+                            </TableHead>
+                            <TableHead className="font-filson">
+                              Amount
+                            </TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {currentOrders.map((order) => (
+                            <>
+                              <TableRow
+                                key={order.order_id}
+                                onClick={() =>
+                                  setExpandedOrderId(
+                                    order.order_id === expandedOrderId
+                                      ? null
+                                      : order.order_id
+                                  )
+                                }
+                              >
+                                <TableCell>{order.order_id}</TableCell>
+                                <TableCell>
+                                  {order.deliveryType || "N/A"}
+                                </TableCell>
+                                <TableCell>
+                                  {moment(order.date).format("LL")}
+                                </TableCell>
+                                <TableCell>{order.weight} kg</TableCell>
+                                <TableCell className="flex items-center mt-2">
+                                  <div
+                                    className={`${getStatusStyle(
+                                      order.status
+                                    )} rounded-2xl px-4 `}
+                                  >
+                                    <span>{order.status}</span>
                                   </div>
                                 </TableCell>
+                                <TableCell>
+                                  {order.specialInstructions}
+                                </TableCell>
+                                <TableCell>₹{order.amount}</TableCell>
                               </TableRow>
-                            )}
-                          </>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </div>
-
-                  <div className="flex justify-between items-center mt-4  mb-4 rounded border">
-                    <div className="flex gap-2 items-center  ">
-                      <div className="mt-0">
-                        <DropdownMenu>
-                          <DropdownMenuTrigger>
-                            <button className="px-4 py-3 font-filson bg-white border-r border-gray-300  text-gray-700 hover:bg-gray-100 flex flex-row gap-1">
-                              {itemsPerPage} <ChevronUp />
-                            </button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuItem
-                              onClick={() => setItemsPerPage(5)}
-                            >
-                              5
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              onClick={() => setItemsPerPage(10)}
-                            >
-                              10
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              onClick={() => setItemsPerPage(15)}
-                            >
-                              15
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              onClick={() => setItemsPerPage(20)}
-                            >
-                              20
-                            </DropdownMenuItem>
-                            <DropdownMenuItem
-                              onClick={() => setItemsPerPage(50)}
-                            >
-                              50
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </div>
-                      <span className="text-gray-700 ">
-                      {`${(currentPage - 1) * itemsPerPage + 1}-${Math.min(
-                        currentPage * itemsPerPage,
-                        filteredOrders.length
-                      )} of ${filteredOrders.length} Orders`}
-                    </span>
+                              {expandedOrderId === order.order_id && (
+                                <TableRow key={`${order.order_id}-details`}>
+                                  <TableCell colSpan={7}>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-0 py-0  ">
+                                      <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-0 pb-6">
+                                        <div className="flex flex-row gap-2 mt-3">
+                                          <Truck size={20} strokeWidth={1.25} />{" "}
+                                          <h4 className="font-bold mb-4">
+                                            {" "}
+                                            ORDER DETAILS
+                                          </h4>
+                                        </div>
+                                        <div className="flex flex-wrap gap-4 justify-between">
+                                          <div>
+                                            <p className="font-generalMedium text-gray-400">
+                                              ORDER DATE:
+                                            </p>{" "}
+                                            <p className="text-gray-800">
+                                              {moment(order.date).format("LL")}
+                                            </p>
+                                          </div>
+                                          <div>
+                                            <p className="font-generalMedium text-gray-400">
+                                              DELIVERY TYPE:
+                                            </p>{" "}
+                                            <p className="text-gray-800">
+                                              {order.deliveryType || "N/A"}
+                                            </p>
+                                          </div>
+                                          <div>
+                                            <p className="font-generalMedium text-gray-400">
+                                              DELIVERY FEES:
+                                            </p>{" "}
+                                            <p className="text-gray-800">
+                                              {order.deliveryFees || "N/A"}
+                                            </p>
+                                          </div>
+                                          <div>
+                                            <p className="font-generalMedium text-gray-400 mr-5">
+                                              INSURANCE:
+                                            </p>{" "}
+                                            <p className="text-gray-800">
+                                              {order.insurance || "N/A"}
+                                            </p>
+                                          </div>
+                                          <div>
+                                            <p className="font-generalMedium text-gray-400 ">
+                                              WEIGHT / DIMENSION:
+                                            </p>{" "}
+                                            <p className="text-gray-800">
+                                              {order.weight || "N/A"} kg (
+                                              {order.length}cm x {order.width}cm
+                                              x {order.height}cm)
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-2 pb-6">
+                                        <div className="flex flex-row gap-2 mt-0">
+                                          <UserRound
+                                            size={20}
+                                            strokeWidth={1.25}
+                                          />{" "}
+                                          <span className="font-bold mb-4">
+                                            CUSTOMER INFORMATION
+                                          </span>
+                                        </div>
+                                        <div className="flex flex-row  gap-10 justify-between">
+                                          <div className="text-sm">
+                                            <p className="font-generalMedium text-gray-400 text-base">
+                                              FROM:
+                                            </p>{" "}
+                                            <p className="text-gray-800">
+                                              {order.pickupLocation || "N/A"}
+                                            </p>
+                                          </div>
+                                          <div className="text-sm">
+                                            <p className="font-generalMedium text-gray-400 text-base">
+                                              TO:
+                                            </p>{" "}
+                                            <p className="text-gray-800">
+                                              {order.dropLocation || "N/A"}
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="flex flex-col border rounded-lg bg-gray-50 px-4 py-2 pb-6">
+                                        <div className="flex flex-row gap-2 mt-0">
+                                          <Truck size={20} strokeWidth={1.25} />
+                                          <h4 className="font-bold mb-4">
+                                            {" "}
+                                            DELIVERY INFORMATION
+                                          </h4>
+                                        </div>
+                                        <div>
+                                          <p className="font-generalMedium text-gray-400 text-base">
+                                            SHIPPED THROUGH:
+                                          </p>{" "}
+                                          <p className="text-gray-800">
+                                            {order.shipping_service || "N/A"}
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <p className="font-generalMedium text-gray-400 text-base">
+                                            TRACKING NUMBER:
+                                          </p>{" "}
+                                          <p className="text-gray-800">
+                                            {" "}
+                                            {order.Tracking_number || "N/A"}
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <p className="font-generalMedium text-gray-400 text-base">
+                                            TRACKING LINK:
+                                          </p>{" "}
+                                          <p className="text-gray-800">
+                                            {" "}
+                                            {order.Tracking_link || "N/A"}
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </TableCell>
+                                </TableRow>
+                              )}
+                            </>
+                          ))}
+                        </TableBody>
+                      </Table>
                     </div>
-                    <div className="flex  items-center">
+
+                    <div className="flex justify-between items-center mt-4  mb-4 rounded border">
+                      <div className="flex gap-2 items-center  ">
+                        <div className="mt-0">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger>
+                              <button className="px-4 py-3 font-filson bg-white border-r border-gray-300  text-gray-700 hover:bg-gray-100 flex flex-row gap-1">
+                                {itemsPerPage} <ChevronUp />
+                              </button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem
+                                onClick={() => setItemsPerPage(5)}
+                              >
+                                5
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => setItemsPerPage(10)}
+                              >
+                                10
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => setItemsPerPage(15)}
+                              >
+                                15
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => setItemsPerPage(20)}
+                              >
+                                20
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => setItemsPerPage(50)}
+                              >
+                                50
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </div>
+                        <span className="text-gray-700 ">
+                          {`${(currentPage - 1) * itemsPerPage + 1}-${Math.min(
+                            currentPage * itemsPerPage,
+                            filteredOrders.length
+                          )} of ${filteredOrders.length} Orders`}
+                        </span>
+                      </div>
+                      <div className="flex  items-center">
                         <button className="px-4 py-3 flex gap-1 items-end rounded hover:cursor-pointer border-l">
-                         Page 1 <ChevronDown size={20} />
+                          Page 1 <ChevronDown size={20} />
                         </button>
-                      
-                      <button
-                      onClick={() => setCurrentPage(currentPage - 1)}
-                      disabled={currentPage === 1}
-                      variant="outline"
-                      className="px-4 py-3  rounded hover:cursor-pointer border-l"
-                    >
-                      <ChevronLeft />
-                    </button>
-                   
-                    <button
-                      onClick={() => setCurrentPage(currentPage + 1)}
-                      disabled={currentPage === totalPages}
-                      variant="outline"
-                      className="px-4 py-3 rounded hover:cursor-pointer  border-l"
-                    >
-                      <ChevronRight />
-                    </button></div>
-                    
+
+                        <button
+                          onClick={() => setCurrentPage(currentPage - 1)}
+                          disabled={currentPage === 1}
+                          variant="outline"
+                          className="px-4 py-3  rounded hover:cursor-pointer border-l"
+                        >
+                          <ChevronLeft />
+                        </button>
+
+                        <button
+                          onClick={() => setCurrentPage(currentPage + 1)}
+                          disabled={currentPage === totalPages}
+                          variant="outline"
+                          className="px-4 py-3 rounded hover:cursor-pointer  border-l"
+                        >
+                          <ChevronRight />
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <div className="p-4 text-center text-gray-700">
+                    No orders found.
                   </div>
-                </>
-              ) : (
-                <div className="p-4 text-center text-gray-700">
-                  No orders found.
-                </div>
-              )}
+                )}
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="flex flex-col  w-full p-6 lg:px-8 lg:py-5 bg-gray-50 rounded-lg ">
-            <h1 className="text-3xl font-extrabold text-gray-800 mb-6 hidden sm:block">
-              Welcome {user?.firstName} 👋
-            </h1>
+          ) : (
+            <div className="flex flex-col  w-full p-6 lg:px-8 lg:py-5 bg-gray-50 rounded-lg ">
+              <h1 className="text-3xl font-extrabold text-gray-800 mb-6 hidden sm:block">
+                Welcome {user?.firstName} 👋
+              </h1>
 
-            <div className="flex flex-col gap-4 items-center w-full space-y-8 ">
-              {/* Orders Section */}
-              <div className="bg-white p-6 rounded-3xl shadow-lg w-full  ">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-semibold text-gray-700">
-                    Your Orders
-                  </h2>
-                </div>
+              <div className="flex flex-col gap-4 items-center w-full space-y-8 ">
+                {/* Orders Section */}
+                <div className="bg-white p-6 rounded-3xl shadow-lg w-full  ">
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-2xl font-semibold text-gray-700">
+                      Your Orders
+                    </h2>
+                  </div>
 
-                <div className="lg:hidden mb-6 ">
-                  {/* <div className="flex justify-center mb-4 ">
+                  <div className="lg:hidden mb-6 ">
+                    {/* <div className="flex justify-center mb-4 ">
                     <button
                       onClick={() => setActiveTab("pickupDrop")}
                       className={`text-lg px-4 py-2 focus:outline-none ${
@@ -845,150 +890,159 @@ function DashboardPage() {
                     </button>
                   </div> */}
 
-                  <div className="space-y-4">
-                    {filteredIndividualOrders.slice(0, 4).map((order) => (
-                      <div
-                        key={order.order_id}
-                        className={`bg-black bg-opacity-5 rounded-lg p-4 cursor-pointer ${
-                          expandedOrderId === order.order_id
-                            ? "bg-black bg-opacity-5"
-                            : ""
-                        }`}
-                        onClick={() =>
-                          setExpandedOrderId(
-                            order.order_id === expandedOrderId
-                              ? null
-                              : order.order_id
-                          )
-                        }
-                      >
-                        <div className="flex justify-between">
-                          <div className="w-full">
-                            <div className="flex items-center mb-2">
-                              <Image
-                                src={"/images/arrowupgreen.svg"}
-                                height={25}
-                                width={25}
-                                alt="Pickup Location"
-                              />
-                              <p className="text-lg ml-2 font-generalMedium overflow-hidden truncate max-w-full">
-                                {order.pickupLocation || "N/A"}
-                              </p>
+                    <div className="space-y-4">
+                      {filteredIndividualOrders.slice(0, 4).map((order) => (
+                        <div
+                          key={order.order_id}
+                          className={`bg-black bg-opacity-5 rounded-lg p-4 cursor-pointer ${
+                            expandedOrderId === order.order_id
+                              ? "bg-black bg-opacity-5"
+                              : ""
+                          }`}
+                          onClick={() =>
+                            setExpandedOrderId(
+                              order.order_id === expandedOrderId
+                                ? null
+                                : order.order_id
+                            )
+                          }
+                        >
+                          <div className="flex justify-between">
+                            <div className="w-full">
+                              <div className="flex items-center mb-2">
+                                <Image
+                                  src={"/images/arrowupgreen.svg"}
+                                  height={25}
+                                  width={25}
+                                  alt="Pickup Location"
+                                />
+                                <p className="text-lg ml-2 font-generalMedium overflow-hidden truncate max-w-full">
+                                  {order.pickupLocation || "N/A"}
+                                </p>
+                              </div>
+                              <div className="flex items-center mb-2">
+                                <Image
+                                  src={"/images/arrowdownred.svg"}
+                                  height={25}
+                                  width={25}
+                                  alt="Drop Location"
+                                />
+                                <p className="text-lg ml-2 font-generalMedium overflow-hidden truncate max-w-full">
+                                  {order.dropLocation || "N/A"}
+                                </p>
+                              </div>
+                              <div className="border-t border-dashed w-full border-black mb-7"></div>{" "}
+                              {/* Adjusted width to w-full */}
                             </div>
-                            <div className="flex items-center mb-2">
-                              <Image
-                                src={"/images/arrowdownred.svg"}
-                                height={25}
-                                width={25}
-                                alt="Drop Location"
-                              />
-                              <p className="text-lg ml-2 font-generalMedium overflow-hidden truncate max-w-full">
-                                {order.dropLocation || "N/A"}
-                              </p>
-                            </div>
-                            <div className="border-t border-dashed w-full border-black mb-7"></div>{" "}
-                            {/* Adjusted width to w-full */}
                           </div>
-                        </div>
-                        <div className="flex flex-row justify-between">
-                          <p className="text-gray-600 text-xs mt-2">
-                            {moment(order.date).format("LL")}
-                          </p>
-                          <p
-                            className={`px-3 py-1 rounded-full ${getStatusStyle(
-                              order.status
-                            )}`}
-                          >
-                            {order.status || "N/A"}
-                          </p>
-                        </div>
-                        {expandedOrderId === order.order_id && (
-                          <div className="mt-4">
-                            <p className="text-sm">
-                              <strong>Order ID:</strong> {order.order_id}
-                            </p>
-                            <p className="text-sm">
-                              <strong>Weight/Dimension:</strong>{" "}
-                              {order.weight || "N/A"} kg ({order.length}cm x{" "}
-                              {order.width}cm x {order.height}cm)
-                            </p>
-                            <p className="text-sm">
-                              <strong>Delivery Fees:</strong> ₹{order.amount}
-                            </p>
-                            <p className="text-sm">
-                              <strong>Special Instructions:</strong>{" "}
-                              {order.specialInstructions || "N/A"}
-                            </p>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                {/* Table for Large Screens */}
-                {individualOrders.length > 0 && (
-                  <div className="hidden lg:block overflow-x-auto">
-                    <Table className="w-full">
-                      <TableHeader className="bg-gray-100">
-                        <TableRow>
-                          <TableHead className="text-gray-600">
-                            Order ID
-                          </TableHead>
-                          <TableHead className="text-gray-600">Date</TableHead>
-                          <TableHead className="text-gray-600">
-                            Order Type
-                          </TableHead>
-                          <TableHead className="text-gray-600">
-                            Status
-                          </TableHead>
-                          <TableHead className="text-gray-600">
-                            Weight
-                          </TableHead>
-                          <TableHead className="text-gray-600">
-                            Special Instructions
-                          </TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody className="divide-y divide-gray-200">
-                        {individualOrders.map((order) => (
-                          <TableRow
-                            key={order.order_id}
-                            className="hover:bg-gray-50 transition-colors duration-200"
-                          >
-                            <TableCell className="py-4 text-gray-800">
-                              {order.order_id}
-                            </TableCell>
-                            <TableCell className="py-4 text-gray-800">
+                          <div className="flex flex-row justify-between">
+                            <p className="text-gray-600 text-xs mt-2">
                               {moment(order.date).format("LL")}
-                            </TableCell>
-                            <TableCell className="py-4 text-gray-800">
-                              {order.order_type || "N/A"}
-                            </TableCell>
-                            <TableCell className="py-4 text-gray-800">
-                              <span
-                                className={`px-3 py-1 rounded-full ${getStatusStyle(
-                                  order.status
-                                )}`}
-                              >
-                                {order.status || "N/A"}
-                              </span>
-                            </TableCell>
-                            <TableCell className="py-4 text-gray-800">
-                              {order.weight || "N/A"} kg
-                            </TableCell>
-                            <TableCell className="py-4 text-gray-800">
-                              {order.specialInstructions || "N/A"}
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </div>
-                )}
-              </div>
+                            </p>
+                            <p
+                              className={`px-3 py-1 rounded-full ${getStatusStyle(
+                                order.status
+                              )}`}
+                            >
+                              {order.status || "N/A"}
+                            </p>
+                          </div>
+                          {expandedOrderId === order.order_id && (
+                            <div className="mt-4 space-y-4">
+                              <div className="flex justify-between">
+                                <div className="text-sm">
+                                  <p className="text-gray-400">Order ID:</p> <p>{order.order_id}</p>
+                                </div>
+                                <div className="text-sm">
+                                  <p className="text-gray-400">Delivery Fees:</p> <p>₹{order.amount}</p>
+                                </div>
+                              </div>
+                              <div className="flex justify-between">
+                                <div className="text-sm">
+                                  <p className="text-gray-400">Weight/Dimension:</p>{" "}
+                                  <p>
+                                    {order.weight || "N/A"} kg ({order.length}cm
+                                    x {order.width}cm x {order.height}cm)
+                                  </p>
+                                </div>
 
-              {/* Saved Addresses Section */}
-              {/* <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl  lg:block">
+                                {/* <div className="text-sm">
+                                  <p className="text-gray-400">Special Instructions:</p>{" "}
+                                  <p>{order.specialInstructions || "N/A"}</p>
+                                </div> */}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {/* Table for Large Screens */}
+                  {individualOrders.length > 0 && (
+                    <div className="hidden lg:block overflow-x-auto">
+                      <Table className="w-full">
+                        <TableHeader className="bg-gray-100">
+                          <TableRow>
+                            <TableHead className="text-gray-600">
+                              Order ID
+                            </TableHead>
+                            <TableHead className="text-gray-600">
+                              Date
+                            </TableHead>
+                            <TableHead className="text-gray-600">
+                              Order Type
+                            </TableHead>
+                            <TableHead className="text-gray-600">
+                              Status
+                            </TableHead>
+                            <TableHead className="text-gray-600">
+                              Weight
+                            </TableHead>
+                            <TableHead className="text-gray-600">
+                              Special Instructions
+                            </TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody className="divide-y divide-gray-200">
+                          {individualOrders.map((order) => (
+                            <TableRow
+                              key={order.order_id}
+                              className="hover:bg-gray-50 transition-colors duration-200"
+                            >
+                              <TableCell className="py-4 text-gray-800">
+                                {order.order_id}
+                              </TableCell>
+                              <TableCell className="py-4 text-gray-800">
+                                {moment(order.date).format("LL")}
+                              </TableCell>
+                              <TableCell className="py-4 text-gray-800">
+                                {order.order_type || "N/A"}
+                              </TableCell>
+                              <TableCell className="py-4 text-gray-800">
+                                <span
+                                  className={`px-3 py-1 rounded-full ${getStatusStyle(
+                                    order.status
+                                  )}`}
+                                >
+                                  {order.status || "N/A"}
+                                </span>
+                              </TableCell>
+                              <TableCell className="py-4 text-gray-800">
+                                {order.weight || "N/A"} kg
+                              </TableCell>
+                              <TableCell className="py-4 text-gray-800">
+                                {order.specialInstructions || "N/A"}
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </div>
+                  )}
+                </div>
+
+                {/* Saved Addresses Section */}
+                {/* <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl  lg:block">
                 <h2 className="text-3xl font-semibold text-gray-700 mb-4">
                   Saved Addresses
                 </h2>
@@ -1000,17 +1054,14 @@ function DashboardPage() {
                   + Add a new address
                 </button>
               </div> */}
-              <div className="w-full py-5 bg-gray-50">
-              <SaveAddressComponent />
+                <div className="w-full py-5 bg-gray-50">
+                  <SaveAddressComponent />
+                </div>
               </div>
-
-              
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-      </div>
-      
     </div>
   );
 }
