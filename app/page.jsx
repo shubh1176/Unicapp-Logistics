@@ -30,17 +30,17 @@ export default function Home() {
         <div className="md:py-20 text-center bg-gradient-to-b h-auto md:h-[80vh] lg:h-[70vh] from-[#8D14CE] to-[#470A68] text-white pb-16 md:pb-24  rounded-br-[36px] rounded-bl-[36px] flex flex-col justify-center items-center">
           <div className="flex flex-col items-center space-y-3">
             <div className="flex flex-col px-4  mb-1">
-              <h1 className="text-[29px] leading-[32px] sm:text-4xl md:text-5xl lg:text-6xl  font-filson">
+              <h1 className="text-xl xxs:text-2xl xxs:leading-[1.5rem] xs:text-[1.8rem] xs:leading-[2rem] sm:text-4xl md:text-5xl lg:text-6xl  font-filson">
                 <span className="bg-[#F5E27B] text-center pt-1 px-2 sm:pt-2 sm:px-3 lg:pt-2 lg:px-4 font-filson inline-flex rounded-lg lg:rounded-2xl text-[#202020]">
                   Deliver
                 </span>{" "}
                 any item, any time
               </h1>
-              <h1 className="text-[29px] leading-[32px]  sm:text-4xl md:text-5xl lg:text-6xl font-filson mt-1 md:mt-2 lg:mt-3">
+              <h1 className="text-2xl leading-[1.5rem] xs:text-[1.8rem] xs:leading-[2rem]  sm:text-4xl md:text-5xl lg:text-6xl font-filson mt-1 md:mt-2 lg:mt-3">
                 with just a few clicks!
               </h1>
             </div>
-            <p className="text-center w-[60%] md:w-auto sm:mt-6 text-sm sm:text-lg md:text-xl lg:text-2xl font-generalLight">
+            <p className="text-center w-[60%] md:w-auto sm:mt-6 text-[10px] xxs:text-xs xs:text-sm sm:text-lg md:text-xl lg:text-2xl font-generalLight">
               No need to step out, ship with ease using our{" "}
               <br className="hidden md:block" /> doorstep pickup and delivery
               service.
@@ -171,7 +171,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute top-[300px] sm:bottom-20 md:bottom-28 left-[-10px] sm:right-32  lg:left-[980px] w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform translate-x-1/2 rotate-0">
+          <div className="absolute top-[17rem] xs:top-[18.8rem] sm:bottom-20 md:bottom-28 left-[-10px] sm:right-32  lg:left-[980px] w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 transform translate-x-1/2 rotate-0">
             <Image
               src={"/images/grocery.png"}
               alt="Grocery Basket"
@@ -181,7 +181,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute md:hidden top-72 sm:top-80 md:top-96 right-8 sm:right-12 md:right-24 w-12 sm:w-10 md:w-12 lg:w-16 h-12 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-0">
+          <div className="absolute md:hidden top-64 xs:top-72 sm:top-80 md:top-96 right-8 sm:right-12 md:right-24 w-12 sm:w-10 md:w-12 lg:w-16 h-12 sm:h-10 md:h-12 lg:h-16 transform translate-x-1/2 rotate-0">
             <Image
               src={"/images/box.png"}
               alt="Box"
