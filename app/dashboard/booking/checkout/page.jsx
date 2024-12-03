@@ -5,7 +5,7 @@ import BookingLeftDiv from '@/components/BookingLeftDiv';
 
 function Page() {
   return (
-    <div className="flex flex-col lg:gap-4 lg:flex-row h-auto lg:h-full bg-[#F1EDEA] lg:overflow-hidden">
+    <div className="flex flex-col lg:gap-4 lg:flex-row h-auto lg:min-h-screen bg-[#F1EDEA] lg:overflow-hidden">
       <div className="lg:w-1/2 w-full md:w-1/2   lg:pb-0 lg:px-6 lg:pt-0 lg:mr-8 ">
         <BookingLeftDiv />
       </div>

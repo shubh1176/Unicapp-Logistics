@@ -97,28 +97,28 @@ const RightDiv2 = () => {
           {dates.map((day, index) => (
             <button
               key={index}
-              className={`p-2 flex flex-col justify-center items-center w-14 h-14 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl border ${
+              className={`p-2 flex flex-col justify-center items-center h-10 w-10 xxs:h-12 xxs:w-12 xs:w-14 xs:h-14 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl border ${
                 date.toDateString() === day.toDateString()
                   ? "lg:bg-[#8B14CC] bg-[#0094B2] bg-opacity-20 lg:bg-opacity-100 text-black lg:text-white md:border-transparent"
                   : "bg-white border-gray-300 text-gray-600 hover:border-[#0094B2] md:hover:border-[#8D26CA] hover:text-black"
               }  `}
               onClick={() => handleDateChange(day)}
             >
-              <span className="block text-xs sm:text-xs font-semibold">
+              <span className="block text-[10px] xxs:text-xs sm:text-xs font-semibold">
                 {index === 0 ? "Today" : format(day, "eee")}
               </span>
-              <span className="block text-lg sm:text-base font-bold">
+              <span className="block text-sm xxs:text-lg sm:text-base font-bold">
                 {format(day, "d")}
               </span>
             </button>
           ))}
           <Popover>
             <PopoverTrigger asChild>
-              <button className="p-2 w-14 h-14 sm:w-14 sm:h-14 border bg-white border-gray-300 text-gray-600 rounded-lg sm:rounded-xl">
-                <span className="block text-xs sm:text-sm font-semibold">
+              <button className="p-0 xxs:p-1 xs:p-2 h-10 w-10 xxs:w-12 xxs:h-12 xs:w-14 xs:h-14 sm:w-14 sm:h-14 border bg-white border-gray-300 text-gray-600 rounded-lg sm:rounded-xl">
+                <span className="block text-[10px] xxs:text-xs sm:text-sm font-semibold">
                   More
                 </span>
-                <span className="block text-lg sm:text-base font-bold">⌄</span>
+                <span className="block text-sm sm:text-base font-bold">⌄</span>
               </button>
             </PopoverTrigger>
             <PopoverContent className="p-4 sm:p-5 rounded-xl">
@@ -141,7 +141,7 @@ const RightDiv2 = () => {
             <Button
             size={10}
               key={index}
-              className={`py-2 px-4 w-full sm:w-[150px] lg:text-xs rounded-lg sm:rounded-lg border ${
+              className={`py-2 px-4 w-full text-xs xxs:text-sm sm:w-[150px] lg:text-xs rounded-lg sm:rounded-lg border ${
                 time === timeOption
                   ? "lg:bg-[#8B14CC] bg-[#0094B2] lg:hover:bg-[#8B14CC] hover:bg-[#0094B2] bg-opacity-20 hover:bg-opacity-30  lg:bg-opacity-100 text-black lg:text-white lg:border-transparent"
                   : "bg-white hover:bg-white border-gray-300 text-gray-600  hover:text-black hover:border-[#0094B2] lg:hover:border-[#8D26CA]"

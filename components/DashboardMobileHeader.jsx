@@ -9,7 +9,7 @@ const DashboardMobileHeader = () => {
       <Header2 />
      
        
-        <h1 className="text-3xl font-bold text-center text-white mt-5">
+        <h1 className=" text-2xl xxs:text-3xl font-bold text-center text-white mt-5">
           Welcome {user?.firstName} 👋
         </h1>
       

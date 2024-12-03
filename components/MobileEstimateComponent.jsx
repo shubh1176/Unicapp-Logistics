@@ -137,7 +137,7 @@ const MobileEstimateComponent = () => {
   return (
     <div className="bg-[#F1EDEA]  max-w-screen overflow-hidden py-0 my-0 block lg:hidden">
     <BookingMobileHeader />
-    <div className="px-5">
+    <div className="px-5 mb-5 ">
       <div className="bg-white max-w-md rounded-3xl mx-auto p-6">
         <input
           type="text"

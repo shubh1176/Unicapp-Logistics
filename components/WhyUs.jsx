@@ -48,7 +48,7 @@ function WhyUs() {
       </div>
 
       {/* Responsive Grid Layout for Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-4 xl:gap-8 mx-14 md:mx-24 lg:mx-16 xl:mx-32 mb-8 md:m-00 z-10">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-4 xl:gap-8 mx-8 xs:mx-14 md:mx-24 lg:mx-16 xl:mx-32 mb-8 md:m-00 z-10">
         <Card className="rounded-lg h-20 md:h-40  sm:rounded-xl xl:rounded-2xl content-center items-center p-2  sm:p-5">
           <CardHeader className="space-y-0 p-0">
             <CardDescription className="flex flex-row gap-1 md:gap-2 mb-1 items-center   text-[7px] sm:text-sm md:text-lg xl:text-sm">

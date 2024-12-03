@@ -21,7 +21,7 @@ export default function page() {
       <div className="">
         <Header2 />
 
-        <div className="h-[450px]  md:min-h-screen rounded-t-none  rounded-b-3xl md:mb-32 flex flex-col md:flex-row items-center  justify-evenly md:rounded-3xl bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-64 md:mx-16 md:px-14 md:py-32">
+        <div className="h-[450px]  md:h-[38rem] rounded-t-none  rounded-b-3xl md:mb-32 flex flex-col md:flex-row items-center  justify-evenly md:rounded-3xl bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-64 md:mx-16 md:px-14 md:py-32">
           {/* Left side - Text and Features */}
           <div className="text-white space-y-6 w-full md:w-[60%] ">
             <h1 className="text-[27px] md:text-[44px] text-center md:text-start font-bold font-filson leading-[40px] md:leading-[60px] mb-6 md:mb-0">

@@ -163,7 +163,7 @@ const saveAddress = () => {
           />
 
           {/* Submit and cancel buttons */}
-          <div className="flex justify-end space-x-4 mt-4">
+          <div className="flex gap-2 xxs:gap-0 flex-col xxs:flex-row xxs:justify-end xxs:space-x-4 mt-4">
             <button
               onClick={saveAddress}
               className="px-6 py-2 lg:text-sm bg-black text-white rounded-lg hover:bg-gray-800"
@@ -172,7 +172,7 @@ const saveAddress = () => {
             </button>
             <button
               onClick={() => setShowForm(false)}
-              className="px-6 py-2 lg:text-sm bg-gray-300 rounded-lg hover:bg-gray-400"
+              className="m-0 xxs:px-6 py-2 lg:text-sm bg-gray-300 rounded-lg hover:bg-gray-400"
             >
               Cancel
             </button>

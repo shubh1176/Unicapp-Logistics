@@ -48,7 +48,7 @@ function Contact() {
   };
 
   return (
-    <div className='bg-[#F1EDEA] max-w-screen overflow-hidden'>
+    <div className='bg-[#F1EDEA] min-w-screen overflow-hidden'>
       {/* Header: Show based on screen size */}
       <div >
         <Header3 />
