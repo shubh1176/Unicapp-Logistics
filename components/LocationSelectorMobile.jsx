@@ -2,7 +2,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { FaArrowUp, FaArrowUpLong } from "react-icons/fa6";
+import { FaArrowDownLong, FaArrowUp, FaArrowUpLong } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import mapboxgl from "mapbox-gl";
 import {
@@ -93,10 +93,10 @@ function LocationSelectorMobile() {
         </div>
         <div className="relative w-full">
           {/* FaArrowUp Icon positioned inside the input */}
-          <FaArrowUpLong className="absolute left-3 top-3 text-white" />
+          <FaArrowDownLong className="absolute left-3 top-3 text-white" />
           <input
             type="text"
-            placeholder="Dropout Location"
+            placeholder="Dropoff Location"
             className="w-full text-sm p-3 pl-10 py-2 rounded-lg bg-[#FFFFFF80] placeholder:text-[#FFFFFF] placeholder:text-sm text-[#FFFFFF] text-md focus:outline-none focus:ring-2 focus:ring-[#F5E27B]"
             onClick={() => setIsDropDialogOpen(true)}
             value={dropAddress}

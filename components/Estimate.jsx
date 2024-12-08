@@ -260,12 +260,12 @@ function EstimateComponent() {
   return (
     <>
       <div
-        className={`hidden lg:flex relative flex-col items-start py-10 px-6 mx-10 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg max-h-[110vh] ${
+        className={`hidden lg:flex relative flex-col items-start py-10 laptop:pb-16 px-6 mx-10 bg-gradient-to-b from-[#9E3CE1] to-[#56217B] text-white rounded-2xl shadow-lg max-h-[110vh] ${
           showPriceDetails
             ? serviceType === "Courier"
-              ? "h-[40rem]"
-              : serviceType === "Pickup & Drop"
               ? "h-[38rem]"
+              : serviceType === "Pickup & Drop"
+              ? "h-[36rem] laptop:h-[34.2rem]"
               : "h-auto"
             : "h-auto"
         }`}
@@ -313,7 +313,7 @@ function EstimateComponent() {
           </div>
         </div>
         <div
-          className={`absolute right-0 transform -translate-x-5  bg-white bg-opacity-25 rounded-xl min-h-28 max-w-full ml-5 `}
+          className={`absolute right-0 transform -translate-x-10  bg-white bg-opacity-25 rounded-xl min-h-28 max-w-full ml-5 `}
         >
           <div className="bg-black bg-opacity-25 w-full flex flex-col items-center justify-center h-full rounded-xl py-6 px-6 border-black border-2 border-opacity-5">
             <div className="flex flex-row justify-center gap-3 mb-4 w-full ">

@@ -93,32 +93,32 @@ const RightDiv2 = () => {
         <h3 className="text-sm md:text-sm md:font-semibold mb-2 md:mb-1">
           Select day
         </h3>
-        <div className="flex flex-wrap gap-3 sm:gap-2">
+        <div className="flex flex-wrap justify-between  sm:gap-2">
           {dates.map((day, index) => (
             <button
               key={index}
-              className={`p-2 flex flex-col justify-center items-center h-10 w-10 xxs:h-12 xxs:w-12 xs:w-14 xs:h-14 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl border ${
+              className={`p-2 flex flex-col justify-center items-center h-10 w-10 xxs:h-12 xxs:w-12 xs:w-16 xs:h-16 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl border ${
                 date.toDateString() === day.toDateString()
                   ? "lg:bg-[#8B14CC] bg-[#0094B2] bg-opacity-20 lg:bg-opacity-100 text-black lg:text-white md:border-transparent"
                   : "bg-white border-gray-300 text-gray-600 hover:border-[#0094B2] md:hover:border-[#8D26CA] hover:text-black"
-              }  `}
+              } ${index===3 && "md:block hidden"} `}
               onClick={() => handleDateChange(day)}
             >
-              <span className="block text-[10px] xxs:text-xs sm:text-xs font-semibold">
+              <span className="block text-[10px] xxs:text-xs xs:text-sm sm:text-xs font-semibold">
                 {index === 0 ? "Today" : format(day, "eee")}
               </span>
-              <span className="block text-sm xxs:text-lg sm:text-base font-bold">
+              <span className="block text-sm xxs:text-lg  sm:text-base font-bold">
                 {format(day, "d")}
               </span>
             </button>
           ))}
           <Popover>
             <PopoverTrigger asChild>
-              <button className="p-0 xxs:p-1 xs:p-2 h-10 w-10 xxs:w-12 xxs:h-12 xs:w-14 xs:h-14 sm:w-14 sm:h-14 border bg-white border-gray-300 text-gray-600 rounded-lg sm:rounded-xl">
-                <span className="block text-[10px] xxs:text-xs sm:text-sm font-semibold">
+              <button className="p-0 xxs:p-1 xs:p-2 h-10 w-10 xxs:w-12 xxs:h-12 xs:w-16 xs:h-16 sm:w-14 sm:h-14 border bg-white border-gray-300 text-gray-600 rounded-lg sm:rounded-xl">
+                <span className="block text-[10px] xxs:text-xs xs:text-sm sm:text-sm font-semibold">
                   More
                 </span>
-                <span className="block text-sm sm:text-base font-bold">⌄</span>
+                <span className="block text-base sm:text-base font-bold">⌄</span>
               </button>
             </PopoverTrigger>
             <PopoverContent className="p-4 sm:p-5 rounded-xl">

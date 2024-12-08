@@ -169,7 +169,7 @@ const BookingLeftDiv = () => {
     <>
       <div className={`hidden lg:flex flex-col items-center  lg:w-full  p-8 `}>
         <div className="flex  flex-col items-start ml-0 lg:ml-32">
-          <div onClick={()=>router.push("/")} className="flex  items-center -translate-x-6 lg:mb-4  h-16 w-56">
+          <div onClick={()=>router.push("/")} className="flex  items-center -translate-x-6 lg:mb-4  h-16 w-56 cursor-pointer">
             <img src="/images/blackonwhitelogo.svg" alt="unicapp" />
           </div>
 

@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 
 export const MissionCard = () => {
   return (
-    <div className="relative bg-purple-500 w-80 h-72 md:w-96 md:h-80 rounded-3xl flex items-center justify-center">
+    <div className="relative bg-purple-500 w-80 h-72 md:w-96 md:h-96 laptop:h-[28rem] laptop:w-[28rem] rounded-3xl flex items-center justify-center">
       {/* Dashed Border */}
       <div
         className="absolute inset-0 rounded-2xl m-5 border border-white"
@@ -19,7 +19,7 @@ export const MissionCard = () => {
       <div className="text-center relative p-4 px-16 text-xs">
         {/* Badge */}
         <div className="inline-block bg-white px-4 py-1 rounded-full mb-4">
-          <span className="text-purple-500 font-semibold">Our Mission</span>
+          <span className="text-purple-500 font-semibold laptop:text-base">Our Mission</span>
         </div>
 
         {/* Mission Text */}
@@ -85,7 +85,7 @@ export const DeliveryOptionsCard = () => {
 
   return (
     <div className="">
-        <div className="bg-[#F6DF5FCC] w-80 h-72  md:w-96 md:h-80 rounded-3xl relative flex items-center justify-center">
+        <div className="bg-[#F6DF5FCC] w-80 h-72  md:w-96 md:h-96 laptop:h-[28rem] laptop:w-[28rem] rounded-3xl relative flex items-center justify-center">
       {/* Central Image */}
       <div className="absolute z-10">
         <div className=" w-20 h-20 md:w-24 md:h-24 rounded-full p-4">
