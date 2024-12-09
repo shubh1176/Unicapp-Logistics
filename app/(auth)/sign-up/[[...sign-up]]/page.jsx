@@ -10,7 +10,11 @@ export default function Page() {
         <span className="mt-3 text-lg lg:text-xl font-generalRegular -translate-y-4">
           Unicapp is a one-stop solution for all your delivery<br className="hidden lg:inline"/> needs, your delivery superhero!
         </span>
-        <div className="w-full mt-8 lg:mt-16 lg:px-36 px-4">
+
+        <div className="mt-8 block lg:hidden lg:mt-24 lg:mr-52 w-full mb-14 max-w-md">
+        <SignUp />
+      </div>
+        <div className="w-full mt-4 lg:mt-16 lg:px-36 px-4">
           <span>
             By continuing you agree to our{' '}
             <a href="/T&C" className="underline text-black">
@@ -23,7 +27,7 @@ export default function Page() {
           </span>
         </div>
       </div>
-      <div className="mt-12 lg:mt-24 lg:mr-52 w-full mb-14 max-w-md">
+      <div className="mt-12 hidden lg:block lg:mt-24 lg:mr-52 w-full mb-14 max-w-md">
         <SignUp />
       </div>
     </div>
