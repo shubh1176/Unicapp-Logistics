@@ -31,7 +31,7 @@ const AboutUs = () => {
                 <span className="text-4xl lg:text-6xl font-generalMedium">
                   About
                 </span>
-                <span className="font-semibold text-4xl lg:text-6xl tracking-tight">
+                <span className="font-semibold font-filson relative top-1 lg:top-2 text-4xl lg:text-6xl tracking-tight">
                   unicapp
                 </span>
               </div>

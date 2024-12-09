@@ -1,8 +1,22 @@
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Footer() {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const handleResize = () => {
+    setIsSmallScreen(window.innerWidth < 768);
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const router = useRouter()
   return (
     <div className="bg-[#202020] md:rounded-2xl rounded-t-3xl rounded-b-none  sm:mx-0 sm:mb-0 md:mx-5 content p-8 md:p-10 text-white relative mt-10">
@@ -22,8 +36,8 @@ function Footer() {
           </div>
           <div className="flex flex-col">
             <h4 className="text-lg mb-2 md:mb-4 text-neutral-500">SERVICES</h4>
-            <span className="mb-2 text-xs md:text-sm text-neutral-400 hover:cursor-pointer" onClick={() => { router.push('/Pickup-and-drop') }}>Same Day Pickup/Delivery</span>
-            <span className="mb-2 text-xs md:text-sm text-neutral-400 hover:cursor-pointer" onClick={() => { router.push('/courier') }}>Courier Delivery</span>
+            <span className="mb-2 text-xs md:text-sm text-neutral-400 hover:cursor-pointer" onClick={() => { router.push(`${isSmallScreen ? '/' : '/Pickup-and-drop'}`) }}>Same Day Pickup/Delivery</span>
+            <span className="mb-2 text-xs md:text-sm text-neutral-400 hover:cursor-pointer" onClick={() => { router.push(`${isSmallScreen ? '/' : '/courier'}`) }}>Courier Delivery</span>
             <span className="mb-2 text-xs md:text-sm text-neutral-400 hover:cursor-pointer" onClick={() => { router.push('/businesses') }}>Online Store Integration</span>
             <span className="mb-2 text-xs md:text-sm text-neutral-400 hover:cursor-pointer" onClick={() => { router.push('/businesses') }}>Last-mile Delivery</span>
           </div>

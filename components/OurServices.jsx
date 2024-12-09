@@ -8,7 +8,7 @@ function OurServices() {
   const router = useRouter();
   return (
     <div className='bg-[#fefae060]'>
-      <div className='flex flex-col items-center gap-2  md:gap-10 border-solid bg-[#ffffffa3] px-4 md:px-8 pb-0 md:pb-5 pt-6 md:pt-16 mt-10 mb-10 mx-4 md:mx-12 lg:mx-24 rounded-3xl shadow-lg transition-all duration-300 ease-in-out'>
+      <div className='flex flex-col items-center gap-4  md:gap-6 border-solid bg-[#ffffffa3] px-4 md:px-8 pb-0 md:pb-5 pt-6 md:pt-16 mt-10 mb-10 mx-4 md:mx-12 lg:mx-24 rounded-3xl shadow-lg transition-all duration-300 ease-in-out'>
         <span className='bg-[#7cc4f851] text-[#4B8EBF] rounded-lg py-2 px-3 font-generalMedium transition-all duration-300 ease-in-out text-xs md:text-base'>
           OUR SERVICES
         </span>
@@ -21,7 +21,7 @@ function OurServices() {
           </h2>
         </div>
 
-        <div className='text-center transition-all duration-300 ease-in-out'>
+        <div className='text-center transition-all duration-300 ease-in-out -translate-y-3 md:-translate-y-5'>
           <span className='font-generalRegular text-base md:text-lg lg:text-2xl'>
             A personal{' '}
             <span className='font-generalRegular text-[#9E3CE1] text-base md:text-lg lg:text-2xl'>
@@ -32,7 +32,7 @@ function OurServices() {
         </div>
 
         {/* Service Cards for Small Screens */}
-        <div className='grid grid-cols-2 gap-3 md:hidden mb-6 mt-6 mx-2 md:mx-8 md:px-12 lg:px-56 transition-all duration-300 ease-in-out'>
+        <div className='grid grid-cols-2 gap-3 md:hidden mb-6 mt-0 mx-2 md:mx-8 md:px-12 lg:px-56 transition-all duration-300 ease-in-out'>
           <div className='flex flex-col items-center transition-all duration-300 ease-in-out'>
             <div className='bg-[#F8EBAB] h-28 w-36 md:h-60 md:w-60 rounded-2xl flex justify-center items-center transition-all duration-300 ease-in-out'>
               <Image src={'/images/groupimage.png'} height={140} width={140} alt="Pickup & Drop" />

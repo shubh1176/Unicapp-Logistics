@@ -8,11 +8,11 @@ import React from 'react'
 function RightDiv5() {
     const router = useRouter()
   return (
-    <div className="flex justify-center "> {/* Ensure RightDiv5 is centered on the screen */}
-      <div className='flex flex-col gap-7 mt-0 lg:mt-20  text-center lg:text-left'> {/* Adjust margin for small screens */}
-        <div className='flex flex-col lg:flex-row gap-4 items-center'>
-            <Image src={'/images/Approval.svg'} width={100} height={100} />
-            <h2 className='font-generalSemiBold mt-4 lg:mt-8 text-4xl'>Order Confirmed!</h2>
+    <div className="flex justify-start laptop:items-center "> {/* Ensure RightDiv5 is centered on the screen */}
+      <div className='flex flex-col gap-7 mt-0 lg:mt-20   lg:text-left'> {/* Adjust margin for small screens */}
+        <div className='flex flex-col lg:flex-row gap-1 lg:gap-4 lg:justify-center lg:items-center'>
+            <Image src={'/images/Approval.svg'} width={100} height={10} className='mx-auto'/>
+            <h2 className='font-generalSemiBold mt-4 lg:mt-8 text-4xl lg:mb-6'>Order Confirmed!</h2>
         </div>
         <div className='lg:translate-x-4'>
             <span className='text-base font-generalMedium'>

@@ -5,7 +5,7 @@ import { individuals, businesses } from "../utils/data";
 // TestimonialCard component for individual cards
 const TestimonialCard = ({ name, service, review }) => {
   return (
-    <div className="bg-purple-100 w-72 md:w-auto flex flex-col  items-center justify-between gap-1 rounded-2xl shadow-md p-4   border border-purple-500 hover:border-purple-600 transition-all duration-300">
+    <div className="bg-purple-100 w-72 md:w-auto  flex flex-col  items-center justify-between gap-1 rounded-2xl  p-4   border border-purple-500 hover:border-purple-600 transition-all duration-300">
       {/* <img
         className="w-14 h-14 rounded-full"
         src={image} // Replace with actual image
@@ -13,17 +13,17 @@ const TestimonialCard = ({ name, service, review }) => {
       /> */}
       <div className="w-full flex justify-between">
        
-        <h4 className="font-bold text-black text-sm lg:text-[16px] ">{service}</h4>
+        <h4 className="font-bold text-black text-sm lg:text-[16px] laptop:text-lg">{service}</h4>
         <div className="flex items-center mb-1">
           {[...Array(5)].map((_, i) => (
             <FaStar key={i} className="text-yellow-400" />
           ))}
         </div>
         </div>
-        <p className="text-gray-600 text-[8px] break-words overflow-hidden text-ellipsis w-full">
+        <p className="text-gray-600 text-[8px] laptop:text-xs break-words overflow-hidden text-ellipsis w-full">
           {review}
         </p>
-        <p className="text-gray-600 text-[8px] break-words overflow-hidden text-ellipsis w-full">
+        <p className="text-gray-600 text-[8px] laptop:text-xs break-words overflow-hidden text-ellipsis w-full">
           {"___"}{name}
         </p>
       
@@ -88,7 +88,7 @@ const TestimonialSection = () => {
         style={{marginBottom:"15px"}}
        
       >
-        <div className="grid  md:grid-cols-4 grid-cols-4  gap-8 lg:gap-6 px-4  md:w-screen">
+        <div className="grid  md:grid-cols-4 grid-cols-4 laptop:grid-cols-4 gap-8  lg:gap-6 px-4  md:w-screen">
         {testimonials.slice(0, 4).map((testimonial, index) => (
           <TestimonialCard
             key={index}
