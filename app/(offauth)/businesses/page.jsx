@@ -96,7 +96,7 @@ export default function page() {
           </div>
 
           {/* Right side - Form */}
-          <div className="bg-white p-8 text-sm rounded-lg shadow-lg w-[90%]  md:max-w-lg relative top-10 md:top-0">
+          <div className="bg-white p-8 text-sm rounded-lg shadow-lg w-[90%] md:w-auto  md:max-w-lg relative top-10 md:top-0">
             <form className="space-y-5">
               <div>
                 <input
