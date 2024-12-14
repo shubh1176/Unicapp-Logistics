@@ -5,7 +5,7 @@ import { individuals, businesses } from "../utils/data";
 // TestimonialCard component for individual cards
 const TestimonialCard = ({ name, service, review }) => {
   return (
-    <div className="bg-purple-100 w-72 md:w-auto  flex flex-col  items-center justify-between gap-1 rounded-2xl  p-4   border border-purple-500 hover:border-purple-600 transition-all duration-300">
+    <div className="bg-purple-100 bg-opacity-50 w-72 md:w-auto  flex flex-col  items-center justify-between gap-1 rounded-2xl  p-4   border border-[#deb6fc] hover:border-[#ba78ec] transition-all duration-300">
       {/* <img
         className="w-14 h-14 rounded-full"
         src={image} // Replace with actual image

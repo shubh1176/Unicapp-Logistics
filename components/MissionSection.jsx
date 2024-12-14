@@ -19,12 +19,12 @@ export const MissionCard = () => {
       <div className="text-center relative p-4 px-16 text-xs">
         {/* Badge */}
         <div className="inline-block bg-white px-4 py-1 rounded-full mb-4">
-          <span className="text-purple-500 font-semibold laptop:text-base">Our Mission</span>
+          <span className="text-purple-500 font-semibold lg:text-xl ">Our Mission</span>
         </div>
 
         {/* Mission Text */}
         <h2
-          className="text-white text-sm  md:text-lg font-light font-generalSans leading-snug"
+          className="text-white text-sm  md:text-lg lg:text-xl font-light font-generalSans leading-snug"
           style={{ wordSpacing: "-3px" }}
         >
           To be a one-stop solution for all your delivery needs.
@@ -66,12 +66,12 @@ export const DeliveryOptionsCard = () => {
 //  const isSmallScreen = window.innerWidth < 768;
   // Adjusted positions with reduced circle radius
   const positions = [
-    { x: 0, y: -100 }, // Top (was -120)
-    { x: 85, y: -55 }, // Top Right (was 100, -60)
-    { x: 85, y: 55 }, // Bottom Right (was 100, 60)
-    { x: 0, y: 100 }, // Bottom (was 120)
-    { x: -85, y: 55 }, // Bottom Left (was -100, 60)
-    { x: -85, y: -55 }, // Top Left (was -100, -60)
+    { x: 0, y: -120 }, // Top (was -120)
+    { x: 105, y: -65 }, // Top Right (was 100, -60)
+    { x: 105, y: 65 }, // Bottom Right (was 100, 60)
+    { x: 0, y: 120 }, // Bottom (was 120)
+    { x: -105, y: 65 }, // Bottom Left (was -100, 60)
+    { x: -105, y: -65 }, // Top Left (was -100, -60)
   ];
 
   const smallPositions = [
@@ -88,11 +88,11 @@ export const DeliveryOptionsCard = () => {
         <div className="bg-[#F6DF5FCC] w-80 h-72  md:w-96 md:h-96 laptop:h-[28rem] laptop:w-[28rem] rounded-3xl relative flex items-center justify-center">
       {/* Central Image */}
       <div className="absolute z-10">
-        <div className=" w-20 h-20 md:w-24 md:h-24 rounded-full p-4">
+        <div className=" w-20 h-20 md:w-28 md:h-28 rounded-full p-4">
           <Image
             src={"/images/iconblack.svg"} // Original central icon image
-            width={60} // Set the size of the central image
-            height={60}
+            width={70} // Set the size of the central image
+            height={70}
             className="w-full h-full"
             alt="Black Icon"
           />
@@ -111,12 +111,12 @@ export const DeliveryOptionsCard = () => {
               transform: `translate(${x}px, ${y}px)`, // Use the updated x and y values
             }}
           >
-            <div className="bg-[#FFFFFF75] hidden md:block rounded-full p-3 shadow-lg">
+            <div className="bg-[#FFFFFF75] hidden md:block rounded-full p-4 shadow-lg">
               <Image
                 src={item.src} // Use the original image sources you provided
                 alt={item.alt}
-                width={30} // Set the size of the icons
-                height={30}
+                width={40} // Set the size of the icons
+                height={40}
                 className="w-full h-full"
               />
             </div>

@@ -82,7 +82,7 @@ function LocationSelectorMobile() {
       <div className="flex flex-col gap-1">
         <div className="relative w-full">
           {/* FaArrowUp Icon positioned inside the input */}
-          <FaArrowUpLong className="absolute left-3 top-3  text-white" />
+          <FaArrowUpLong className="absolute left-3 top-2.5 text-white" />
           <input
             type="text"
             placeholder="Pickup Location"
@@ -93,7 +93,7 @@ function LocationSelectorMobile() {
         </div>
         <div className="relative w-full">
           {/* FaArrowUp Icon positioned inside the input */}
-          <FaArrowDownLong className="absolute left-3 top-3 text-white" />
+          <FaArrowDownLong className="absolute left-3 top-2.5 text-white" />
           <input
             type="text"
             placeholder="Dropoff Location"

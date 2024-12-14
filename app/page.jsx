@@ -264,7 +264,7 @@ export default function Home() {
       </div>
       
 
-      <div className="flex flex-col content-center items-center mt-10 lg:mt-0 lg:min-h-screen lg:mb-40 mb-10">
+      <div className="flex flex-col content-center items-center mt-10 lg:mt-0 lg:min-h-screen lg:mb-10 mb-10">
         {" "}
         {/* Adjusted bottom margin */}
         <div>
@@ -304,10 +304,10 @@ export default function Home() {
   
 
 
-      <div className="mt-16 md:mt-20 mb-10">
+      <div className="mt-16 md:mt-10 mb-10">
         <Faq />
       </div>
-      <div className="mt-16 md:mt-20 mb-10">
+      <div className="mt-16 md:mt-10 mb-20">
       <GetEstimate />
       </div>
      
