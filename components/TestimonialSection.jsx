@@ -33,7 +33,12 @@ const TestimonialCard = ({ name, service, review }) => {
 
 const TestimonialTabs = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="flex ml-12 md:ml-20  lg:justify-start space-x-0 mb-8">
+    <div className="pl-5">
+ <h2 className="text-2xl lg:text-3xl text-start lg:text-start font-bold text-black lg:ml-20 mb-4">
+        See what others are sending
+      </h2>
+
+<div className="flex   md:ml-20  lg:justify-start space-x-0 mb-8">
       {/* Individuals Tab */}
       <button
         onClick={() => setActiveTab("individual")}
@@ -60,6 +65,9 @@ const TestimonialTabs = ({ activeTab, setActiveTab }) => {
         Businesses
       </button>
     </div>
+    </div>
+
+  
   );
 };
 
@@ -73,9 +81,7 @@ const TestimonialSection = () => {
   return (
     <div className="py-12 lg:py-0 lg:h-screen">
       {/* Section Heading */}
-      <h2 className="text-2xl lg:text-3xl text-center lg:text-start font-bold text-black lg:ml-20 mb-8">
-        See what others are sending
-      </h2>
+     
 
       {/* Tabs */}
       <TestimonialTabs activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -88,7 +94,7 @@ const TestimonialSection = () => {
         style={{marginBottom:"15px"}}
        
       >
-        <div className="grid  md:grid-cols-4 grid-cols-4 laptop:grid-cols-4 gap-8  lg:gap-6 px-4  md:w-screen">
+        <div className="grid  md:grid-cols-4 grid-cols-4 laptop:grid-cols-4 gap-8  lg:gap-4 px-4  md:w-screen">
         {testimonials.slice(0, 4).map((testimonial, index) => (
           <TestimonialCard
             key={index}

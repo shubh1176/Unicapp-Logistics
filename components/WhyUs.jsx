@@ -36,24 +36,24 @@ function WhyUs() {
       <div className="flex flex-col gap-1 sm:gap-2 mt-9 sm:mt-11 text-center z-10 -translate-y-6 sm:-translate-y-10">
         <div>
           <span className="font-filson text-center text-2xl sm:text-4xl md:text-6xl xl:text-5xl text-[#F6F6F6]">
-            Unicapp is simply {" "}
+            Unicapp is simply{" "}
           </span>
           <span className="font-filson text-center text-2xl sm:text-4xl md:text-6xl xl:text-5xl text-[#FDDA02]">
             better
           </span>
         </div>
-        <span className="font-generalRegular text-white mt-0 text-xs sm:text-lg md:text-2xl xl:text-xl -translate-y-1 sm:-translate-y-2">
+        <span className="font-generalRegular text-white mt-0 text-xs sm:text-lg md:text-2xl xl:text-xl -translate-y-1 sm:-translate-y-0">
           Skip comparing companies and juggling couriers.
         </span>
       </div>
 
       {/* Responsive Grid Layout for Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-4 xl:gap-8 mx-8 xs:mx-14 md:mx-24 lg:mx-16 xl:mx-32 laptop:mx-60 mb-8 md:m-00 z-10">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-4 xl:gap-8 mx-8 xs:mx-14 md:mx-24 lg:mx-16 xl:mx-32 laptop:mx-40 mb-8 md:m-00 z-10">
         <Card className="rounded-lg h-20 md:h-40  sm:rounded-xl xl:rounded-2xl content-center items-center p-3  sm:p-5">
           <CardHeader className="space-y-0 p-0">
             <CardDescription className="flex flex-row gap-1 md:gap-2 mb-1 items-center   text-[7px] sm:text-sm md:text-lg xl:text-sm">
               <Calendar className="-translate-y-0.5  w-[10px] h-[10px] lg:w-5 lg:h-5 " />{" "}
-             <span >Need for Speed</span> 
+              <span>Need for Speed</span>
             </CardDescription>
             <CardTitle className="mt-2 sm:mt-3 md:mt-5 lg:mt-4 xl:mt-3  font-filson text-[10px] sm:text-base md:text-xl xl:text-lg">
               Same day delivery
@@ -69,9 +69,9 @@ function WhyUs() {
 
         <Card className="rounded-lg  h-20 md:h-40 sm:rounded-xl xl:rounded-2xl content-center items-center p-3 sm:p-5">
           <CardHeader className="space-y-0 p-0 ">
-          <CardDescription className="flex flex-row gap-1 md:gap-2 mb-0 items-center   text-[7px] sm:text-sm md:text-lg xl:text-sm">
+            <CardDescription className="flex flex-row gap-1 md:gap-2 mb-0 items-center   text-[7px] sm:text-sm md:text-lg xl:text-sm">
               <IndianRupee className="-translate-y-0.5  w-[10px] h-[10px] lg:w-5 lg:h-5 " />{" "}
-                <span className="mb-1 md:mb-0">Affordable</span> 
+              <span className="mb-1 md:mb-1">Affordable</span>
             </CardDescription>
             <CardTitle className="mt-0  sm:mt-3 md:mt-5 lg:mt-4 xl:mt-3 font-filson text-[10px] sm:text-base md:text-xl xl:text-lg">
               Value for money
@@ -79,15 +79,16 @@ function WhyUs() {
           </CardHeader>
           <CardContent className="p-0 mt-1 ">
             <p className="text-[#777777] font-generalLight  text-[6px] sm:text-sm md:text-base xl:text-sm xl:mb-4">
-              We may not be the cheapest, but our prices are still lower than
-              what's currently on the market.
+              We may not be the cheapest option out there, but we offer
+              excellent value with competitive prices and dependable quality you
+              can trust.
             </p>
           </CardContent>
         </Card>
 
         <Card className="rounded-lg h-20 md:h-40  sm:rounded-xl xl:rounded-2xl content-center items-center p-3  sm:p-5">
           <CardHeader className="space-y-0 p-0">
-          <CardDescription className="flex flex-row gap-1 md:gap-2 mb-1 items-center   text-[7px] sm:text-sm md:text-lg xl:text-sm">
+            <CardDescription className="flex flex-row gap-1 md:gap-2 mb-1 items-center   text-[7px] sm:text-sm md:text-lg xl:text-sm">
               <Headset className="-translate-y-0.5  w-[10px] h-[10px] lg:w-5 lg:h-5 " />{" "}
               Flexibility
             </CardDescription>
@@ -106,11 +107,12 @@ function WhyUs() {
 
         <Card className="rounded-lg h-20 md:h-40  sm:rounded-xl xl:rounded-2xl content-center items-center p-3  sm:p-5">
           <CardHeader className="space-y-0 p-0">
-          <CardDescription className="flex flex-row gap-1 md:gap-2 mb-1 items-center   text-[7px] sm:text-sm md:text-lg xl:text-sm">
-              <Route className="-translate-y-0.5  w-[10px] h-[10px] lg:w-5 lg:h-5 " /> Ease
+            <CardDescription className="flex flex-row gap-1 md:gap-2 mb-1 items-center   text-[7px] sm:text-sm md:text-lg xl:text-sm">
+              <Route className="-translate-y-0.5  w-[10px] h-[10px] lg:w-5 lg:h-5 " />{" "}
+              Ease
             </CardDescription>
             <CardTitle className="mt-2 sm:mt-3 md:mt-5 lg:mt-4 xl:mt-3 font-filson text-[10px] sm:text-base md:text-xl xl:text-lg">
-            <span> Multiple drop-off points</span> 
+              <span> Multiple drop-off points</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0  mt-1 ">
@@ -133,8 +135,9 @@ function WhyUs() {
           </CardHeader>
           <CardContent className="p-3 pt-0 mt-1 md:p-0">
             <p className="text-[#777777] font-generalLight text-[8px] sm:text-sm md:text-base xl:text-sm">
-              Get a tracking link for your own updates and easily share it with
-              your customers for their peace of mind.
+              Get a tracking link to monitor your delivery updates and easily
+              share it effortlessly with your customers to keep them informed
+              and reassured.
             </p>
           </CardContent>
         </Card>
