@@ -9,7 +9,7 @@ const GetEstimate = () => {
     {/* Text Section */}
     <div>
       <h3 className="text-white font-filson text-sm xs:text-base md:text-xl lg:text-2xl font-bold  lg:mb-1">Get an estimate</h3>
-      <p className="text-purple-200 font-filson text-[6px] md:text-xs lg:text-sm">
+      <p className="text-purple-200  text-[6px] md:text-xs lg:text-sm">
         Enter your pickup & drop locations to check prices for delivery
       </p>
     </div>

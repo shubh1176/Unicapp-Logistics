@@ -20,7 +20,7 @@ module.exports = {
       screens: {
         xs: "420px",
         xxs: "350px",
-        laptop: '1440px'
+        laptop: '1400px'
       },
       colors: {
         border: "hsl(var(--border))",

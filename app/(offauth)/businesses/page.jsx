@@ -21,10 +21,10 @@ export default function page() {
       <div className="">
         <Header2 />
 
-        <div className="h-[450px]  md:h-[38rem] rounded-t-none  rounded-b-3xl md:mb-32 flex flex-col md:flex-row items-center  justify-evenly md:rounded-3xl bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-64 md:mx-16 md:px-14 md:py-32">
+        <div className="h-[450px]  md:h-[34rem] rounded-t-none  rounded-b-3xl md:mb-32 flex flex-col md:flex-row items-center  justify-evenly md:rounded-3xl bg-[linear-gradient(270deg,#9E3CE1_0%,#56217B_100%)] mb-64 md:mx-16 md:px-4 md:py-4 laptop:p-0">
           {/* Left side - Text and Features */}
           <div className="text-white space-y-6 w-full md:w-[60%] ">
-            <h1 className="text-[27px] md:text-[44px] text-center md:text-start font-bold font-filson leading-[40px] md:leading-[60px] mb-6 md:mb-0">
+            <h1 className="text-2xl xs:text-[27px] md:text-[44px] text-center md:text-start font-bold font-filson leading-[40px] md:leading-[60px] mb-6 md:mb-0">
               Need a shipping partner? <br />
               <span className="bg-yellow-400 px-2 py-[10px] md:leading-[55px] text-black rounded-xl">
                 Unicapp
@@ -41,15 +41,15 @@ export default function page() {
             <div className="flex items-center justify-around px-8 md:hidden">
               <div className="flex items-center">
                 <RiMoneyRupeeCircleFill />
-                <span className="ml-1 font-bold text-xs">Pocket-friendly</span>
+                <span className="ml-1 font-bold text-[9px] xxs:text-[10px] xs:text-xs">Pocket-friendly</span>
               </div>
               <div className="flex items-center">
                 <IoShieldCheckmark />
-                <span className="ml-1 font-bold text-xs">Secured</span>
+                <span className="ml-1 font-bold text-[9px] xxs:text-[10px] xs:text-xs">Secured</span>
               </div>
               <div className="flex items-center">
                 <FaPhone />
-                <span className="ml-1 font-bold text-xs">24/7 Assistance</span>
+                <span className="ml-1 font-bold text-[9px] xxs:text-[10px] xs:text-xs">24/7 Assistance</span>
               </div>
             </div>
             <ul className="space-y-6 font-montserrat hidden md:block">
@@ -96,7 +96,7 @@ export default function page() {
           </div>
 
           {/* Right side - Form */}
-          <div className="bg-white p-8 text-sm rounded-lg shadow-lg  max-w-lg relative top-10 md:top-0">
+          <div className="bg-white p-8 text-sm rounded-lg shadow-lg w-[90%] md:w-auto  md:max-w-lg relative top-10 md:top-0">
             <form className="space-y-5">
               <div>
                 <input
@@ -227,13 +227,13 @@ export default function page() {
       </div> */}
 
       <div className="w-full flex flex-col items-center justify-center text-center md:h-screen   md:mb-32 ">
-        <div className="flex flex-row gap-1.5 text-[18px]  md:text-3xl">
+        <div className="flex flex-row gap-1.5 text-[16px] xs:text-[18px]  md:text-3xl">
           <h2 className="font-generalSemiBold  ">SHIP WITH THE</h2>
           <h2 className="font-generalSemiBold text-[#9E3CE0] ">BEST</h2>
           <h2 className="font-generalSemiBold ">IN THE BUSINESS</h2>
         </div>
         <div className="bg-[#F8F6F5] rounded-3xl md:rounded-2xl px-10 md:px-0  mx-40  md:mx-10 mt-8 w-[90%] md:w-auto">
-          <div className="w-full flex flex-row gap-12 justify-around md:gap-36 py-10 md:p-12  md:justify-center">
+          <div className="w-full flex flex-row gap-3 xs:gap-12 justify-around md:gap-36 py-10 md:p-12  md:justify-center">
             <div className="flex flex-col items-center text-sm text-center">
               <Image
                 src={"/images/stopwatch.svg"}
@@ -242,7 +242,7 @@ export default function page() {
                 alt="Same Day"
                 className="w-14 h-10 md:w-36 md:h-36"
               />
-              <h2 className="font-generalSemiBold mt-4 md:mt-4 text-xs md:text-xl">
+              <h2 className="font-generalSemiBold mt-4 md:mt-4 text-[8px] xs:text-[10px] md:text-xl">
                 Same Day
               </h2>
               <span className="hidden md:block mt-2">
@@ -258,7 +258,7 @@ export default function page() {
                 alt="Scheduled"
                 className="w-14 h-10  md:w-36 md:h-36"
               />
-              <h2 className="font-generalSemiBold mt-4 md:mt-4 text-xs md:text-xl">
+              <h2 className="font-generalSemiBold mt-4 md:mt-4 text-[8px] xs:text-[10px] md:text-xl">
                 Scheduled
               </h2>
               <span className="hidden md:block mt-2">
@@ -274,7 +274,7 @@ export default function page() {
                 alt="Multiple drop-off points"
                 className="w-14 h-10  md:w-36 md:h-36"
               />
-              <h2 className="font-generalSemiBold mt-4 md:mt-4 text-xs md:text-xl">
+              <h2 className="font-generalSemiBold mt-4 md:mt-4 text-[8px] xs:text-[10px] md:text-xl">
                 Multiple drop-
                 <br className="block md:hidden" />
                 off points

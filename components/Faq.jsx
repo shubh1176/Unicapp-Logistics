@@ -53,7 +53,7 @@ function Faq() {
               What is Unicapp?
             </AccordionTrigger>
             {openItem === "item-1" && (
-              <AccordionContent className="font-generalLight text-sm sm:text-base md:text-lg text-left">
+              <AccordionContent className="font-generalLight text-[10px] sm:text-base md:text-lg text-left">
                 Unicapp is your go-to for on-demand delivery across India. From
                 forgotten items and store pickups to urgent medicines and gifts,
                 we deliver any item, any time. Our mission is to make Unicapp a
@@ -70,7 +70,7 @@ function Faq() {
               What services does Unicapp offer?
             </AccordionTrigger>
             {openItem === "item-2" && (
-              <AccordionContent className="font-generalLight text-sm sm:text-base md:text-lg text-left">
+              <AccordionContent className="font-generalLight text-[10px]  sm:text-base md:text-lg text-left">
                 Unicapp provides a wide range of delivery services, including
                 on-demand or same-day intracity deliveries and intercity courier
                 services.
@@ -86,7 +86,7 @@ function Faq() {
               How do I book a delivery with Unicapp?
             </AccordionTrigger>
             {openItem === "item-3" && (
-              <AccordionContent className="font-generalLight text-sm sm:text-base md:text-lg text-left">
+              <AccordionContent className="font-generalLight text-[10px]  sm:text-base md:text-lg text-left">
                 Booking a delivery with Unicapp is easy! Simply visit our
                 website, enter the pickup and drop-off details, choose your
                 delivery type, add package description, and confirm the booking.
@@ -103,7 +103,7 @@ function Faq() {
               What areas does Unicapp cover?
             </AccordionTrigger>
             {openItem === "item-4" && (
-              <AccordionContent className="font-generalLight text-sm sm:text-base md:text-lg text-left">
+              <AccordionContent className="font-generalLight text-[10px]  sm:text-base md:text-lg text-left">
                 Unicapp operates only in New Delhi for intracity deliveries and
                 offers intercity courier services that reach almost every corner
                 of the country. Coming soon to other cities.
@@ -119,7 +119,7 @@ function Faq() {
               How fast is Unicapp's delivery service?
             </AccordionTrigger>
             {openItem === "item-5" && (
-              <AccordionContent className="font-generalLight text-sm sm:text-base md:text-lg text-left ">
+              <AccordionContent className="font-generalLight text-[10px]  sm:text-base md:text-lg text-left ">
                 For intracity deliveries, we offer on-demand and same-day
                 delivery options. For intercity deliveries, timing depends on
                 the distance and service type selected, but we aim to deliver

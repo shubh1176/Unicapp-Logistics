@@ -91,7 +91,7 @@ export default function Home() {
             </button>
           </div> */}
           {/* Responsive Image Loading and Positioning */}
-          <div className="absolute top-40   sm:top-96 md:top-40 lg:top-32 laptop:top-40 left-8 sm:left-20 md:left-14 lg:left-52 laptop:left-[22rem]  w-12 sm:w-12 md:w-16 lg:w-24 h-12 sm:h-12 md:h-16 lg:h-24 laptop:w-32 laptop:h-32 transform -translate-x-1/2 rotate-0">
+          <div className="absolute top-40   sm:top-96 md:top-40 lg:top-32 laptop:top-40 left-8 sm:left-20 md:left-14 lg:left-52 laptop:left-[17rem]  w-12 sm:w-12 md:w-16 lg:w-24 h-12 sm:h-12 md:h-16 lg:h-24 laptop:w-32 laptop:h-32 transform -translate-x-1/2 rotate-0">
             <Image
               src={"/images/flower.png"}
               alt="Flower Bouquet"
@@ -101,7 +101,7 @@ export default function Home() {
               sizes="(max-width: 640px) 50px, (max-width: 768px) 75px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute top-56  sm:bottom-6 md:bottom-9 lg:top-[430px] laptop:top-[30rem]  left-6 sm:right-48 md:right-96 lg:left-[900px] laptop:left-[1050px] w-8 sm:w-10 md:w-12 lg:w-16 h-8 sm:h-10 md:h-12 lg:h-16 laptop:w-28 laptop:h-28 transform translate-x-1/2 rotate-12">
+          <div className="absolute top-56  sm:bottom-6 md:bottom-9 lg:top-[20rem] laptop:top-[27rem]  left-6 sm:right-48 md:right-96 lg:left-[900px] laptop:left-[900px] w-8 sm:w-10 md:w-12 lg:w-16 h-8 sm:h-10 md:h-12 lg:h-16 laptop:w-28 laptop:h-28 transform translate-x-1/2 rotate-12">
             <Image
               src={"/images/lunchbox.png"}
               alt="Lunch Box"
@@ -111,7 +111,7 @@ export default function Home() {
               sizes="(max-width: 640px) 50px, (max-width: 768px) 75px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute bottom-14 sm:bottom-24 md:bottom-44 lg:bottom-52 lg:left-28 left-12 sm:left-20 md:left-32 laptop:left-[16rem]  w-8 sm:w-12 md:w-16 lg:w-16 h-8 sm:h-12 md:h-16 lg:h-16 laptop:w-24 laptop:h-24 transform -translate-x-1/2 rotate-12">
+          <div className="absolute bottom-14 sm:bottom-24 md:bottom-44 lg:bottom-52 lg:left-28 left-12 sm:left-20 md:left-32 laptop:bottom-56 laptop:left-[8rem]  w-8 sm:w-12 md:w-16 lg:w-16 h-8 sm:h-12 md:h-16 lg:h-16 laptop:w-24 laptop:h-24 transform -translate-x-1/2 rotate-12">
             <Image
               src={"/images/book.png"}
               alt="Book"
@@ -121,7 +121,7 @@ export default function Home() {
               sizes="(max-width: 640px) 50px, (max-width: 768px) 75px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute bottom-14 sm:bottom-8 md:bottom-10 laptop:bottom-5 right-0 sm:left-64 md:left-96 laptop:left-[40rem]  w-12 sm:w-16 md:w-20 lg:w-28 h-12 sm:h-16 md:h-20 lg:h-28 laptop:w-32 laptop:h-32 transform -translate-x-1/2 rotate-12">
+          <div className="absolute bottom-14 sm:bottom-8 md:bottom-10 laptop:bottom-5 right-0 sm:left-64 md:left-96 laptop:left-[35rem]  w-12 sm:w-16 md:w-20 lg:w-28 h-12 sm:h-16 md:h-20 lg:h-28 laptop:w-32 laptop:h-32 transform -translate-x-1/2 rotate-12">
             <Image
               src={"/images/charger.png"}
               alt="Charger"
@@ -131,7 +131,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute top-52 sm:bottom-20 md:bottom-24 lg:top-[340px] laptop:top-[28rem] right-6 sm:left-32 md:left-56 laptop:left-[25rem]  w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 laptop:w-32 laptop:h-32 transform -translate-x-1/2 rotate-0">
+          <div className="absolute top-52 sm:bottom-20 md:bottom-24 lg:top-[340px] laptop:top-[24rem] right-6 sm:left-32 md:left-56 laptop:left-[20rem]  w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 laptop:w-32 laptop:h-32 transform -translate-x-1/2 rotate-0">
             <Image
               src={"/images/drink.png"}
               alt="Coffee Cup"
@@ -141,7 +141,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute top-40 sm:bottom-28 md:bottom-44 lg:top-60 laptop:top-80 right-0 sm:left-40 md:left-64 laptop:left-[30rem] w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 laptop:w-28 laptop:h-28 transform -translate-x-1/2 rotate-0">
+          <div className="absolute top-40 sm:bottom-28 md:bottom-44 lg:top-60 laptop:top-[18rem] right-0 sm:left-40 md:left-64 laptop:left-[25rem] w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 laptop:w-28 laptop:h-28 transform -translate-x-1/2 rotate-0">
             <Image
               src={"/images/Medicines1.png"}
               alt="Medicines"
@@ -151,7 +151,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="hidden md:block absolute top-20 sm:top-48 md:top-48 lg:top-36 laptop:top-48 right-24 sm:right-4 md:right-64 lg:right-44 laptop:right-80 w-10 sm:w-16 md:w-20 lg:w-28 h-10 sm:h-16 md:h-20 lg:h-28 laptop:w-36 laptop:h-36 transform translate-x-1/2 sm:translate-x-7 rotate-4">
+          <div className="hidden md:block absolute top-20 sm:top-48 md:top-48 lg:top-36 laptop:top-40 right-24 sm:right-4 md:right-64 lg:right-44 laptop:right-[15rem] w-10 sm:w-16 md:w-20 lg:w-28 h-10 sm:h-16 md:h-20 lg:h-28 laptop:w-36 laptop:h-36 transform translate-x-1/2 sm:translate-x-7 rotate-4">
             <Image
               src={"/images/dress.png"}
               alt="Dress"
@@ -161,7 +161,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 100px, (max-width: 1024px) 150px, 200px"
             />
           </div>
-          <div className="hidden md:block absolute top-32 sm:top-40 md:top-60 lg:top-64 laptop:top-80 right-16 sm:right-20 md:right-32 laptop:right-36 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 laptop:w-28 laptop:h-28 transform translate-x-1/2 rotate-0">
+          <div className="hidden md:block absolute top-32 sm:top-40 md:top-60 lg:top-64 laptop:top-[18rem] right-16 sm:right-20 md:right-32 laptop:right-36 w-10 sm:w-12 md:w-16 lg:w-20 h-10 sm:h-12 md:h-16 lg:h-20 laptop:w-28 laptop:h-28 transform translate-x-1/2 rotate-0">
             <Image
               src={"/images/key.png"}
               alt="Key"
@@ -171,7 +171,7 @@ export default function Home() {
               sizes="(max-width: 640px) 60px, (max-width: 768px) 80px, (max-width: 1024px) 100px, 150px"
             />
           </div>
-          <div className="absolute top-[17rem] xs:top-[18.8rem] laptop:top-[22rem] sm:bottom-20 md:bottom-28 left-[-10px] sm:right-32  lg:left-[980px] laptop:left-[1100px] w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 laptop:w-32 laptop:h-32 transform translate-x-1/2 rotate-0">
+          <div className="absolute top-[17rem] xs:top-[18.8rem] laptop:top-[19rem] sm:bottom-20 md:bottom-28 left-[-10px] sm:right-32  lg:left-[980px] laptop:left-[64rem] w-10 sm:w-12 md:w-16 lg:w-24 h-10 sm:h-12 md:h-16 lg:h-24 laptop:w-32 laptop:h-32 transform translate-x-1/2 rotate-0">
             <Image
               src={"/images/grocery.png"}
               alt="Grocery Basket"
@@ -264,7 +264,7 @@ export default function Home() {
       </div>
       
 
-      <div className="flex flex-col content-center items-center mt-10 lg:mt-0 lg:min-h-screen lg:mb-40 mb-10">
+      <div className="flex flex-col content-center items-center mt-10 lg:mt-0 lg:min-h-screen lg:mb-10 mb-10">
         {" "}
         {/* Adjusted bottom margin */}
         <div>
@@ -304,10 +304,10 @@ export default function Home() {
   
 
 
-      <div className="mt-16 md:mt-20 mb-10">
+      <div className="mt-16 md:mt-10 mb-10">
         <Faq />
       </div>
-      <div className="mt-16 md:mt-20 mb-10">
+      <div className="mt-16 md:mt-10 mb-20">
       <GetEstimate />
       </div>
      
