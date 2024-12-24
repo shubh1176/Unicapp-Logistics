@@ -321,10 +321,10 @@ export default function Page() {
           <MissionSection/>
 
           </div>
-          <div className="mt-20">
+          <div className="mt-20 lg:mt-0">
             <Faq />
           </div>
-          <div className="mt-20">
+          <div className="mt-20  lg:mt-10">
             <Footer />
           </div>
           

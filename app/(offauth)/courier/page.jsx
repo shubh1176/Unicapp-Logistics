@@ -106,10 +106,10 @@ function page() {
         </div>
       </div>
 
-      <div className='flex justify-center items-center content-center mb-28 mt-20'>
+      <div className='flex justify-center items-center content-center mb-28 mt-32'>
         <Image src={'/images/courierguy.svg'} height={565} width={1121} />
       </div>
-      <div className='mb-20'>
+      <div className='mb-10'>
         <Faq />
       </div>
       <div className='mt-10'>

@@ -14,13 +14,15 @@ import { Input } from '@/components/ui/input';
 import Footer from '@/components/Footer';
 import { UserButton, useUser } from '@clerk/clerk-react'
 import Faq2 from '@/components/Faq2';
+import GetEstimate from '@/components/GetEstimate';
+import Header3 from '@/components/Header3';
 
 const AboutUs = () => {
   const router = useRouter();
   const { user } = useUser()
   return (
-    <div className='bg-[#F1EDEA] pt-1'>
-    <div className="bg-[#470A68] flex justify-between items-center px-4 h-20 rounded-xl m-5">
+    <div className='bg-[#F1EDEA] min-w-screen overflow-hidden '>
+    {/* <div className="bg-[#470A68] flex justify-between items-center px-4 h-20 rounded-xl m-5">
       <div>
         <Image src={'/images/yellowonwhite.svg'} width={200} height={50} alt="Logo" />
       </div>
@@ -86,24 +88,27 @@ const AboutUs = () => {
           </>
         )}
       </div>
-    </div>
-    <div className="content-center">
-        <div className=' flex flex-row '>
-          <div className='mx-20 px-24 w-1/2 -translate-x-10 -translate-y-10'>
-            <div className='mt-40 flex flex-row gap-3'>
-              <span className='text-8xl font-generalBold'>FAQs</span>
+    </div> */}
+     <div >
+        <Header3 />
+      </div>
+    <div className="">
+        <div className=' flex flex-col items-center lg:items-start gap-10 lg:gap-0 lg:flex-row '>
+          <div className='lg:mx-20 lg:px-24 lg:w-1/2 lg:-translate-x-10 lg:-translate-y-10'>
+            <div className='lg:mt-40 flex flex-row gap-3'>
+              <span className='text-5xl lg:text-8xl font-generalBold'>FAQs</span>
             </div>
             <div className='mt-2'>
               <span>Still have questions?<br />Reach us at +91 96258 11881 or <br />email us at contact@unicapp.in.</span>
             </div>
           </div>
-          <div className='w-full mt-5 mr-10'>
+          <div className='w-full flex justify-center mt-5 lg:mr-10'>
             <Faq2 />
           </div>
 
 
         </div>
-        <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] text-white rounded-xl pl-4 py-3 mx-56 mt-36 mb-16 flex flex-row gap-4 items-center">
+        {/* <div className="bg-gradient-to-r from-[#470A68] to-[#8D14CE] text-white rounded-xl pl-4 py-3 mx-56 mt-36 mb-16 flex flex-row gap-4 items-center">
           <div className='translate-x-6'>
             <h2 className="text-4xl font-bold mb-4 font-filson translate-y-4 ">Get an estimate</h2>
             <p className="mb-4 font-generalRegular ">Enter your pickup & drop locations to check prices for delivery and courier.</p>
@@ -111,9 +116,12 @@ const AboutUs = () => {
           <div className="ml-40"> 
             <Button className="bg-[#F3E545] text-black py-2 px-4 rounded-xl w-96 hover:bg-[#E8D828] gap-4" onClick={()=>{router.push('/estimate')}}>See prices <Image src={'/images/arrow2.svg'} width={30} height={25} /> </Button>
           </div>
+        </div> */}
+        <div className='my-20 lg:my-32 '>
+        <GetEstimate/>
         </div>
       </div>
-      <div>
+      <div >
         <Footer />
       </div>
     </div>
