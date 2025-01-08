@@ -400,12 +400,13 @@ export default function page() {
       <div className="max-w-screen  mt-28 lg:mt-0">
         <TestimonialSection />
       </div>
-      <div className="w-full mb-20 mt-20 lg:mt-0">
-        <GetEstimate />
-      </div>
-      <div className="mb-20 mt-28 lg:mt-0">
+      <div className="mb-20 lg:mb-0 mt-28 lg:mt-0 lg:-translate-y-32">
         <Faq />
       </div>
+      <div className="w-full mb-40 lg:mb-20 mt-20 lg:mt-0 lg:-translate-y-20">
+        <GetEstimate />
+      </div>
+    
       <div className="relative  lg:bottom-5">
         <Footer />
       </div>

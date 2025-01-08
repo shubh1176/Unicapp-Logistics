@@ -199,7 +199,7 @@ export default function Page() {
         <WhyUs />
       </div>
      <MissionSection/>
-      <div className='mb-20'>
+      <div className='mb-10'>
         <Faq />
       </div>
       <div className='relative top-5'>

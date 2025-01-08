@@ -173,7 +173,7 @@ function Contact() {
 
       {/* Map and Location Info */}
       <div className='mt-12 lg:mt-0 px-4 lg:px-24  w-full flex flex-col-reverse  lg:flex-row lg:h-screen laptop:h-[90vh] laptop:w-[95%]'>
-        <div className="w-full lg:w-[55%] px-4 lg:px-0  laptop:w-[65%] h-96 lg:h-full">
+        <div className="w-full lg:w-[55%] px-4 lg:px-0   h-96 lg:h-[90%]">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d799.555333633901!2d77.21645935361299!3d28.63083352312202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd49c7175d4f%3A0x16da96dd1f463918!2sRegal%20Building%2C%20Hanuman%20Road%20Area%2C%20Connaught%20Place%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1722761292583!5m2!1sen!2sin"
             width="100%"

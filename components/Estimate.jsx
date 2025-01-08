@@ -479,7 +479,7 @@ function EstimateComponent() {
                       {distance > 10 && (
                         <div className="flex flex-row justify-between text-xs">
                           <span>Every additional km (rate/km)</span>
-                          <p>₹{(distance - 10) * 16}</p>
+                          <p>₹{((distance - 10) * 16).toFixed(2)}</p>
                         </div>
                       )}
                       <div className="flex flex-row justify-between text-xs">

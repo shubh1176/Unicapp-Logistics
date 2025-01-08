@@ -202,7 +202,7 @@ function RightDiv() {
                                   src={'/images/Arrowdown.svg'} 
                                   width={15}
                                   height={18}
-                                  className='absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
+                                  className={`absolute left-3 ${errors[`stop-${index}`]?"bottom-8":"bottom-3"}  text-gray-400 cursor-pointer`}
                                   onClick={() => setOpenStopDialog(index)}
                                 />
                                 <Input
@@ -219,7 +219,7 @@ function RightDiv() {
                                   }}
                                 />
                                 <MinusCircle
-                                  className='absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer'
+                                  className={`absolute right-3 ${errors[`stop-${index}`]?"bottom-7":"bottom-2"}  text-gray-400 cursor-pointer`}
                                   onClick={() => removeStop(index)}
                                 />
                                 {errors[`stop-${index}`] && <p className="text-red-500">{errors[`stop-${index}`]}</p>}

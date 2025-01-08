@@ -155,7 +155,7 @@ const Checkout = () => {
    
     if (!isSmallScreen && pickupCoords && dropCoords) {
       const map = new mapboxgl.Map({
-        container: 'map-new',
+        container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [pickupCoords.longitude, pickupCoords.latitude],
         zoom: 11,
@@ -595,7 +595,7 @@ const Checkout = () => {
             </div>
           </div>
           <h2 className='text-3xl font-medium lg:text-4xl md:font-generalSemiBold'>Pricing</h2>
-          <div id="map-new" className="hidden lg:block w-full lg:w-full h-28 border-2 rounded-xl   mb-8 mt-8"></div>
+          <div id="map" className="hidden lg:block w-full lg:w-full h-28 border-2 rounded-xl   mb-8 mt-8"></div>
 
           <div className='mt-5 flex flex-col gap-2 text-sm'>
             <div className=' flex flex-row justify-between font-semibold lg:mb-1'>
